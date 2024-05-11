@@ -1,34 +1,35 @@
 package com.po.fuck;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Disposable;
 
-public class Player implements Disposable {
-    private final Vector2 position = new Vector2();
-    private final InputController inputController = new InputController(position);
+public class Player {
+    protected final Vector2 position = new Vector2();
+    protected final Gun gun = new Gun(this, new Sprite(new Texture("glock2.png")));
 
-    private final Vector2 size = Constants.PLAYER_SIZE;
+    private final Sprite sprite = new Sprite(new Texture("player2.png"));
 
-    private final Texture sprite = new Texture("player.png");
+    // controllers
+    private final KeyboardController keyboardController = new KeyboardController(this);
+    private final MouseController mouseController = new MouseController(this);
 
 
     Player() {
-        Gdx.input.setInputProcessor(inputController);
+        InputMultiplexer multiplexer = new InputMultiplexer();
+        multiplexer.addProcessor(keyboardController);
+        multiplexer.addProcessor(mouseController);
+        Gdx.input.setInputProcessor(multiplexer);
     }
 
-    public void draw(SpriteBatch batch) {
-        batch.draw(sprite, position.x, position.y, size.x, size.y);
+    public void draw(CenterDrawer drawer) {
+        drawer.draw(sprite, position);
+        gun.draw(drawer);
     }
 
     public void update(float delta) {
-        inputController.update(delta);
-    }
-
-    @Override
-    public void dispose() {
-        sprite.dispose();
+        keyboardController.update(delta);
     }
 }

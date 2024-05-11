@@ -6,13 +6,15 @@ import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.movement.BasicMovement;
 import com.po.fuck.movement.Boost;
 
-public class InputController extends InputAdapter {
+public class KeyboardController extends InputAdapter {
     private final Vector2 direction = new Vector2(0, 0);
     Boost movement;
+    private final Player player;
 
-    InputController(Vector2 position) {
+    KeyboardController(Player player) {
+        this.player = player;
         movement = new Boost(
-                new BasicMovement(position, Constants.SPEED),
+                new BasicMovement(player.position, Constants.SPEED),
                 Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN
         );
     }
@@ -25,13 +27,13 @@ public class InputController extends InputAdapter {
     public boolean keyDown(int keycode) {
         switch (keycode) {
             case Input.Keys.W:
-                direction.y += 1;
+                direction.y -= 1;
                 break;
             case Input.Keys.A:
                 direction.x -= 1;
                 break;
             case Input.Keys.S:
-                direction.y -= 1;
+                direction.y += 1;
                 break;
             case Input.Keys.D:
                 direction.x += 1;
@@ -49,13 +51,13 @@ public class InputController extends InputAdapter {
     public boolean keyUp(int keycode) {
         switch (keycode) {
             case Input.Keys.W:
-                direction.y -= 1;
+                direction.y += 1;
                 break;
             case Input.Keys.A:
                 direction.x += 1;
                 break;
             case Input.Keys.S:
-                direction.y += 1;
+                direction.y -= 1;
                 break;
             case Input.Keys.D:
                 direction.x -= 1;

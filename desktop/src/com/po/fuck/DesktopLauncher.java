@@ -9,7 +9,7 @@ public class DesktopLauncher {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setForegroundFPS(60);
         config.setTitle("FUCK");
-        config.setWindowedMode(1280, 720);
+        config.setWindowedMode(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         new Lwjgl3Application(new FUCK(), config);
     }
 }

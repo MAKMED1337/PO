@@ -1,12 +1,11 @@
 package com.po.fuck;
 
-import com.badlogic.gdx.math.Vector2;
-
 public final class Constants {
-    public static final float SCREEN_WIDTH = 1280;
-    public static final float SCREEN_HEIGHT = 720;
+    public static final int SCREEN_WIDTH = 1280;
+    public static final int SCREEN_HEIGHT = 720;
 
-    public static final Vector2 PLAYER_SIZE = new Vector2(300, 300);
+    public static final int GAME_WIDTH = 1920;
+    public static final int GAME_HEIGHT = 1080;
 
     // movement
     public static final int SPEED = 500;
@@ -14,4 +13,7 @@ public final class Constants {
     public static final float BOOST_DURATION = 0.3f;
     public static final float BOOST_COOLDOWN = 1f;
 
+    // guns
+    public static final float MAX_DISTANCE_FROM_BODY = 200;
+    public static final float DISTANCE_FACTOR = 2;
 }
