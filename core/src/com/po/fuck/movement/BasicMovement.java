@@ -2,12 +2,12 @@ package com.po.fuck.movement;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class Movement implements IMovement {
+public class BasicMovement implements IMovement {
     private final int speed;
     protected Vector2 direction = new Vector2(0, 0);
     protected Vector2 position;
 
-    public Movement(Vector2 position, int speed) {
+    public BasicMovement(Vector2 position, int speed) {
         this.position = position;
         this.speed = speed;
     }

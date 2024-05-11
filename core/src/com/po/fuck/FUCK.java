@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import static com.po.fuck.Constants.SCREEN_HEIGHT;
+import static com.po.fuck.Constants.SCREEN_WIDTH;
+
 public class FUCK extends ApplicationAdapter {
     SpriteBatch batch;
     Player player;
@@ -14,7 +17,7 @@ public class FUCK extends ApplicationAdapter {
     @Override
     public void create() {
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 1920, 1080);
+        camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
         batch = new SpriteBatch();
         player = new Player();
     }

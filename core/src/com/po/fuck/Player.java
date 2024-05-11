@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.Disposable;
 
 public class Player implements Disposable {
     private final Vector2 position = new Vector2();
-    private final InputController input_controller = new InputController(position);
+    private final InputController inputController = new InputController(position);
 
     private final Vector2 size = Constants.PLAYER_SIZE;
 
@@ -16,7 +16,7 @@ public class Player implements Disposable {
 
 
     Player() {
-        Gdx.input.setInputProcessor(input_controller);
+        Gdx.input.setInputProcessor(inputController);
     }
 
     public void draw(SpriteBatch batch) {
@@ -24,7 +24,7 @@ public class Player implements Disposable {
     }
 
     public void update(float delta) {
-        input_controller.update(delta);
+        inputController.update(delta);
     }
 
     @Override
