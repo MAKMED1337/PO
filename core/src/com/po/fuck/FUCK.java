@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.po.fuck.updates.Initializer;
 
 import static com.po.fuck.Constants.GAME_HEIGHT;
 import static com.po.fuck.Constants.GAME_WIDTH;
@@ -13,6 +14,8 @@ public class FUCK extends ApplicationAdapter {
     SpriteBatch batch;
     Player player;
     private OrthographicCamera camera;
+
+    public static Initializer initializer = new Initializer();
 
     @Override
     public void create() {
@@ -29,10 +32,10 @@ public class FUCK extends ApplicationAdapter {
         batch.setProjectionMatrix(camera.combined);
 
         float delta = Gdx.graphics.getDeltaTime();
-        player.update(delta);
+        initializer.updatableCollection.update(delta);
 
         batch.begin();
-        player.draw(new CenterDrawer(batch));
+        initializer.drawableCollection.draw(new CenterDrawer(batch));
         batch.end();
     }
 

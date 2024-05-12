@@ -1,15 +1,22 @@
 package com.po.fuck.movement;
 
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.FUCK;
 
 // should be used as a last class in a movement chain
 public class Boost implements IMovement {
+    {
+        FUCK.initializer.init(this);
+    }
+
     private final IMovement movement;
     private final int boostDistance;
     private final float boostCooldown, boostDuration;
     private float timeSinceLastBoost;
 
     public Boost(IMovement movement, int boostDistance, float boostDuration, float boostCooldown) {
+        FUCK.initializer.dispose(movement);
+
         this.movement = movement;
 
         this.boostCooldown = boostCooldown;

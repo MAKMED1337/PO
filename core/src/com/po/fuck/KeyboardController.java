@@ -19,10 +19,6 @@ public class KeyboardController extends InputAdapter {
         );
     }
 
-    public void update(float delta) {
-        movement.update(delta);
-    }
-
     @Override
     public boolean keyDown(int keycode) {
         switch (keycode) {
