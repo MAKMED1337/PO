@@ -16,7 +16,14 @@ public class MouseController extends InputAdapter {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        player.gun.aim(new Vector2((float) (screenX * GAME_WIDTH) / Gdx.graphics.getWidth(), (float) (screenY * GAME_HEIGHT) / Gdx.graphics.getHeight()));
+        player.weapon.aim(new Vector2((float) (screenX * GAME_WIDTH) / Gdx.graphics.getWidth(), (float) (screenY * GAME_HEIGHT) / Gdx.graphics.getHeight()));
+        return true;
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        // ignore position, should be handled as a move event
+        player.weapon.attack();
         return true;
     }
 }

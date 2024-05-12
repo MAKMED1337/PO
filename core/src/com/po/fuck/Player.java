@@ -6,14 +6,16 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.updates.Drawable;
+import com.po.fuck.weapons.Glock;
+import com.po.fuck.weapons.Weapon;
 
 public class Player implements Drawable {
     {
         FUCK.initializer.init(this);
     }
 
-    protected final Vector2 position = new Vector2();
-    protected final Gun gun = new Gun(this, new Sprite(new Texture("glock2.png")));
+    public final Vector2 position = new Vector2();
+    protected final Weapon weapon = new Glock(this);
 
     private final Sprite sprite = new Sprite(new Texture("player2.png"));
 
@@ -31,6 +33,5 @@ public class Player implements Drawable {
     @Override
     public void draw(CenterDrawer drawer) {
         drawer.draw(sprite, position);
-        gun.draw(drawer);
     }
 }

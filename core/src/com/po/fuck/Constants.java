@@ -14,6 +14,6 @@ public final class Constants {
     public static final float BOOST_COOLDOWN = 1f;
 
     // guns
-    public static final float MAX_DISTANCE_FROM_BODY = 200;
+    public static final float MAX_DISTANCE_FROM_BODY = 100;
     public static final float DISTANCE_FACTOR = 2;
 }
