@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.updates.Drawable;
-import com.po.fuck.weapons.Glock;
+import com.po.fuck.weapons.LaserGun;
 import com.po.fuck.weapons.Weapon;
 
 public class Player implements Drawable {
@@ -15,7 +15,7 @@ public class Player implements Drawable {
     }
 
     public final Vector2 position = new Vector2();
-    protected final Weapon weapon = new Glock(this);
+    protected final Weapon weapon = new LaserGun(this);
 
     private final Sprite sprite = new Sprite(new Texture("player2.png"));
 

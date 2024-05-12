@@ -9,13 +9,13 @@ import static com.po.fuck.Constants.GAME_HEIGHT;
 import static com.po.fuck.Constants.GAME_WIDTH;
 
 public class MouseController extends InputAdapter implements Updatable {
-    private boolean pressed = false;
-
-    Player player;
-
     {
         FUCK.initializer.init(this);
     }
+
+    private boolean pressed = false;
+
+    Player player;
 
     MouseController(Player player) {
         this.player = player;
