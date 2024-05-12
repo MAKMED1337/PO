@@ -15,7 +15,7 @@ public final class UpdatableCollection implements Updatable {
 
     @Override
     public void update(float delta) {
-        for (Updatable updatable : objects)
+        for (Updatable updatable : new ArrayList<>(objects))
             updatable.update(delta);
     }
 }

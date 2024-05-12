@@ -16,7 +16,7 @@ public class DrawableCollection implements Drawable {
     @Override
     public void draw(CenterDrawer drawer) {
         for (int z = 0; z < MAX_Z; ++z)
-            for (Drawable drawable : objects[z])
+            for (Drawable drawable : new ArrayList<>(objects[z]))
                 drawable.draw(drawer);
     }
 
