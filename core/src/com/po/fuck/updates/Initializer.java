@@ -2,6 +2,8 @@ package com.po.fuck.updates;
 
 import com.po.fuck.Entity;
 import com.po.fuck.FUCK;
+import com.po.fuck.collision.Collidable;
+import com.po.fuck.collision.CollidableCollection;
 
 /**
  * Class responsible for initializing and disposing objects, managing their inclusion in appropriate collections.
@@ -10,6 +12,7 @@ import com.po.fuck.FUCK;
 public class Initializer {
     public UpdatableCollection updatableCollection = new UpdatableCollection();
     public DrawableCollection drawableCollection = new DrawableCollection();
+    public CollidableCollection collidableCollection = new CollidableCollection();
 
     /**
      * Initializes the given object by adding it to appropriate collections and active entities of the game.
@@ -22,7 +25,9 @@ public class Initializer {
         if (object instanceof Drawable)
             drawableCollection.add((Drawable) object);
         if (object instanceof Entity)
-            FUCK.entityHandler.addEntity( (Entity) object);
+            FUCK.entityHandler.addEntity((Entity) object);
+        if (object instanceof Collidable)
+            collidableCollection.add((Collidable) object);
     }
 
     /**
@@ -37,5 +42,7 @@ public class Initializer {
             drawableCollection.remove((Drawable) object);
         if (object instanceof Entity)
             FUCK.entityHandler.removeEntity((Entity) object);
+        if (object instanceof Collidable)
+            collidableCollection.remove((Collidable) object);
     }
 }

@@ -1,12 +1,12 @@
 package com.po.fuck;
 
-import static com.po.fuck.Constants.DEFAULT_SPEED;
-
-import java.util.ArrayList;
-
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.movement.BasicMovement;
+
+import java.util.ArrayList;
+
+import static com.po.fuck.Constants.DEFAULT_SPEED;
 
 /**
  * Class representing an enemy entity in the game.
@@ -27,8 +27,9 @@ public class Enemy extends Entity {
 	Enemy(Sprite sprite) {
 		super(sprite);
         this.speed = DEFAULT_SPEED / 20;
+        this.health_points = 10;
 
-        basicMovement = new BasicMovement(this.position, this.speed);
+        basicMovement = new BasicMovement(this, this.speed);
 	}
 
     /**
@@ -51,8 +52,7 @@ public class Enemy extends Entity {
             this.basicMovement.setDirection(new Vector2());
         else
             this.basicMovement.setDirection(GeometryMisc.direction(this, this.aggriedPlayer));
-        return;
-	}
+    }
 
     public void updatePosition(float delta){
         basicMovement.update(delta);

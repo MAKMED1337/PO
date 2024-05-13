@@ -16,5 +16,6 @@ public final class Constants {
     /* enemies */
     public static final float SPAWN_RATE = 5f;
 
-    /* guns */
+    /* physics */
+    public static final int COLLISION_ITERATIONS = 3;
 }

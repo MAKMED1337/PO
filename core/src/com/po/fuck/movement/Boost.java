@@ -4,20 +4,18 @@ import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.FUCK;
 
 // should be used as a last class in a movement chain
-public class Boost implements IMovement {
-    {
-        FUCK.initializer.init(this);
-    }
-
-    private final IMovement movement;
+public class Boost extends Movement {
+    private final Movement movement;
     private final int boostDistance;
     private final float boostCooldown, boostDuration;
     private float timeSinceLastBoost;
 
-    public Boost(IMovement movement, int boostDistance, float boostDuration, float boostCooldown) {
-        FUCK.initializer.dispose(movement);
+    public Boost(Movement movement, int boostDistance, float boostDuration, float boostCooldown) {
+        FUCK.initializer.dispose(movement); // ignore initial movement, call it manually
 
         this.movement = movement;
+        this.collidable = movement.collidable;
+        this.direction = movement.direction;
 
         this.boostCooldown = boostCooldown;
         this.boostDistance = boostDistance;
@@ -31,7 +29,7 @@ public class Boost implements IMovement {
         if (timeSinceLastBoost < boostDuration) {
             float boostTime = Math.min(delta, boostDuration - timeSinceLastBoost);
             float progress = boostTime / boostDuration;
-            movement.getPosition().add(movement.getDirection().cpy().setLength(progress * boostDistance));
+            move(direction.cpy().setLength(progress * boostDistance));
             nextDelta = delta - boostTime; // for the future movement
         }
 
@@ -56,20 +54,12 @@ public class Boost implements IMovement {
     }
 
     @Override
-    public Vector2 getPosition() {
-        return movement.getPosition();
-    }
-
-    @Override
     public boolean setDirection(Vector2 direction) {
         if (isBoosted())
             return false;
 
-        return movement.setDirection(direction);
-    }
-
-    @Override
-    public Vector2 getDirection() {
-        return movement.getDirection();
+        boolean result = movement.setDirection(direction);
+        this.direction = movement.direction;
+        return result;
     }
 }

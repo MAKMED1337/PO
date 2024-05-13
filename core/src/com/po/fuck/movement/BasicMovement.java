@@ -1,25 +1,15 @@
 package com.po.fuck.movement;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.FUCK;
+import com.po.fuck.collision.Collidable;
 
-public class BasicMovement implements IMovement {
-    {
-        FUCK.initializer.init(this);
-    }
-
+public class BasicMovement extends Movement {
     private final int speed;
-    protected Vector2 direction = new Vector2(0, 0);
-    protected Vector2 position;
 
-    /**
-     * Constructs a BasicMovement object with the given position and speed.
-     * 
-     * @param position The initial position of the object.
-     * @param speed The movement speed of the object.
-     */
-    public BasicMovement(Vector2 position, int speed) {
-        this.position = position;
+    public BasicMovement(Collidable collidable, int speed) {
+        direction = new Vector2(0, 0);
+        
+        this.collidable = collidable;
         this.speed = speed;
     }
 
@@ -34,16 +24,6 @@ public class BasicMovement implements IMovement {
         return true;
     }
 
-    @Override
-    public Vector2 getDirection() {
-        return direction;
-    }
-
-    @Override
-    public Vector2 getPosition() {
-        return position;
-    }
-
     /**
      * Updates the position of the object based on its current direction and speed.
      * 
@@ -54,6 +34,6 @@ public class BasicMovement implements IMovement {
     @Override
     public void update(float delta) {
         Vector2 velocity = this.direction.cpy().setLength(speed);
-        position.mulAdd(velocity, delta);
+        move(velocity.scl(delta));
     }
 }

@@ -25,8 +25,8 @@ public class FUCK extends ApplicationAdapter {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
         batch = new SpriteBatch();
-        player = new Player(new Sprite(new Texture("FUCKerWithoutHands.png")));
-        entityHandler.createEnemy();
+        player = new Player(new Sprite(new Texture("FUCKerWithoutHands2.png")));
+//        entityHandler.createEnemy();
         entityHandler.createEnemy();
     }
 

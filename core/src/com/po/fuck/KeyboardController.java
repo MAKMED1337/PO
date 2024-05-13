@@ -14,7 +14,7 @@ public class KeyboardController extends InputAdapter {
     KeyboardController(Player player) {
         this.player = player;
         movement = new Boost(
-                new BasicMovement(player.position, player.speed),
+                new BasicMovement(player, player.speed),
                 Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN
         );
     }
