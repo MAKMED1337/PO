@@ -2,12 +2,12 @@ package com.po.fuck.weapons;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.CenterDrawer;
-import com.po.fuck.Player;
+import com.po.fuck.Entity;
 
 public abstract class HandedWeapon extends Weapon {
     protected float DISTANCE_FACTOR = 2, MAX_DISTANCE_FROM_BODY = 100;
 
-    HandedWeapon(Player owner) {
+    HandedWeapon(Entity owner) {
         super(owner);
     }
 

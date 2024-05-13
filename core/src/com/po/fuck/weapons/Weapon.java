@@ -2,12 +2,12 @@ package com.po.fuck.weapons;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.Entity;
 import com.po.fuck.FUCK;
-import com.po.fuck.Player;
 import com.po.fuck.updates.Drawable;
 
 public abstract class Weapon implements Drawable {
-    protected final Player owner;
+    protected final Entity owner;
     protected Sprite sprite;
     protected Vector2 aiming;
 
@@ -15,7 +15,7 @@ public abstract class Weapon implements Drawable {
         FUCK.initializer.init(this);
     }
 
-    Weapon(Player owner) {
+    Weapon(Entity owner) {
         this.owner = owner;
     }
 

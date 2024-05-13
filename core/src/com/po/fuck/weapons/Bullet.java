@@ -42,6 +42,9 @@ public abstract class Bullet implements Drawable, Updatable {
             if (collidable instanceof Entity) {
                 ((Entity) collidable).takeDamage(1);
                 FUCK.initializer.dispose(this);
+
+                return; // damage only 1 enemy at the same time
+                // TODO: sort them by distance or something like this
             }
         }
     }

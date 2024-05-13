@@ -1,7 +1,7 @@
 package com.po.fuck.weapons;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.Player;
+import com.po.fuck.Entity;
 import com.po.fuck.updates.Updatable;
 
 public abstract class Gun extends HandedWeapon implements Updatable {
@@ -9,7 +9,7 @@ public abstract class Gun extends HandedWeapon implements Updatable {
 
     private float cooldownLeft = 0;
 
-    Gun(Player owner) {
+    Gun(Entity owner) {
         super(owner);
     }
 

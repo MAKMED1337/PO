@@ -1,7 +1,5 @@
 package com.po.fuck.updates;
 
-import com.po.fuck.Entity;
-import com.po.fuck.FUCK;
 import com.po.fuck.collision.Collidable;
 import com.po.fuck.collision.CollidableCollection;
 
@@ -24,8 +22,6 @@ public class Initializer {
             updatableCollection.add((Updatable) object);
         if (object instanceof Drawable)
             drawableCollection.add((Drawable) object);
-        if (object instanceof Entity)
-            FUCK.entityHandler.addEntity((Entity) object);
         if (object instanceof Collidable)
             collidableCollection.add((Collidable) object);
     }
@@ -40,8 +36,6 @@ public class Initializer {
             updatableCollection.remove((Updatable) object);
         if (object instanceof Drawable)
             drawableCollection.remove((Drawable) object);
-        if (object instanceof Entity)
-            FUCK.entityHandler.removeEntity((Entity) object);
         if (object instanceof Collidable)
             collidableCollection.remove((Collidable) object);
     }

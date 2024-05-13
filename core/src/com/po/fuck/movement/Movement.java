@@ -15,7 +15,7 @@ public abstract class Movement implements Updatable {
         FUCK.initializer.init(this);
     }
 
-    boolean setDirection(Vector2 direction) {
+    public boolean setDirection(Vector2 direction) {
         this.direction = direction;
         return true;
     }
