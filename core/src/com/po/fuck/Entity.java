@@ -13,7 +13,7 @@ public class Entity implements Drawable {
     public final Vector2 position = new Vector2();
     protected final Sprite sprite;
 
-    public float health_points = -1;
+    public float health_points = 0;
 
     public int speed = Constants.DEFAULT_SPEED;
 

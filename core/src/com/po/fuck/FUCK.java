@@ -19,7 +19,7 @@ public class FUCK extends ApplicationAdapter {
 
     public static Initializer initializer = new Initializer();
     public static EntitiesHandler entitiesHandler = new EntitiesHandler();
-
+    
     @Override
     public void create() {
         camera = new OrthographicCamera();

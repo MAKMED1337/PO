@@ -41,7 +41,7 @@ public class EntitiesHandler implements Updatable {
 
     private void notifyEnemiesPlayersPositions(){
         for(Enemy enemy : enemies){
-            enemy.passPlayerPositions(players);
+            enemy.updateAggriedPlayer(players);
         }
         return;
     }
