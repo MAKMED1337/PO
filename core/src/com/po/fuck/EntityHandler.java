@@ -20,7 +20,7 @@ public class EntityHandler implements Updatable {
 
     public void createEnemy(){
         deltaLastEnemyCreated = 0;
-        Enemy enemy = new Enemy(new Sprite(new Texture("player2.png")));
+        Enemy enemy = new Enemy(new Sprite(new Texture("SlimeLeftToRight.png")));
         enemies.add(enemy);
         return;
     }
