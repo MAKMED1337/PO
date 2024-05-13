@@ -17,15 +17,15 @@ public class FUCK extends ApplicationAdapter {
     Player player;
     private OrthographicCamera camera;
 
-    public static EntityHandler entityHandler = new EntityHandler();
     public static Initializer initializer = new Initializer();
+    public static EntityHandler entityHandler = new EntityHandler();
 
     @Override
     public void create() {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
         batch = new SpriteBatch();
-        player = new Player(new Sprite(new Texture("player2.png")));
+        player = new Player(new Sprite(new Texture("FUCKerWithoutHands.png")));
         entityHandler.createEnemy();
         entityHandler.createEnemy();
     }

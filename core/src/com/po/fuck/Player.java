@@ -26,7 +26,7 @@ public class Player extends Entity {
      */
     Player(Sprite sprite) {
         super(sprite);
-
+        health_points = 10;
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(keyboardController);
         multiplexer.addProcessor(mouseController);
