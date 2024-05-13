@@ -7,11 +7,14 @@ public final class Constants {
     public static final int GAME_WIDTH = 1920;
     public static final int GAME_HEIGHT = 1080;
 
-    // movement
-    public static final int SPEED = 500;
+    /* movement */
+    public static final int DEFAULT_SPEED = 500;
     public static final int BOOST_DISTANCE = 700;
     public static final float BOOST_DURATION = 0.3f;
     public static final float BOOST_COOLDOWN = 1f;
 
-    // guns
+    /* enemies */
+    public static final float SPAWN_RATE = 5f;
+
+    /* guns */
 }

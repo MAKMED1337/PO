@@ -3,6 +3,8 @@ package com.po.fuck;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.updates.Initializer;
@@ -16,13 +18,16 @@ public class FUCK extends ApplicationAdapter {
     private OrthographicCamera camera;
 
     public static Initializer initializer = new Initializer();
+    public static EntitiesHandler entitiesHandler = new EntitiesHandler();
 
     @Override
     public void create() {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
         batch = new SpriteBatch();
-        player = new Player();
+        player = new Player(new Sprite(new Texture("player2.png")));
+        entitiesHandler.createEnemy();
+        entitiesHandler.createEnemy();
     }
 
     @Override

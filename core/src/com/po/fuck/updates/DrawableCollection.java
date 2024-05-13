@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class DrawableCollection implements Drawable {
     public static final int MAX_Z = 20;
+    @SuppressWarnings("unchecked")
     private final ArrayList<Drawable>[] objects = new ArrayList[MAX_Z];
 
     {

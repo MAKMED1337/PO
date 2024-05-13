@@ -76,3 +76,12 @@ nb-configuration.xml
 ## Gradle
 
 .gradle
+
+
+## VSCode cache
+
+.vscode/*
+
+## Custom executable
+
+run.sh
