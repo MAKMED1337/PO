@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.po.fuck.updates.Updatable;
 
-public class EntitiesHandler implements Updatable {
+public class EntityHandler implements Updatable {
 
     {
         FUCK.initializer.init(this);

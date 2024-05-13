@@ -39,7 +39,7 @@ public class Enemy extends Entity {
      */
 
 	public <SuperPlayer extends Player> void updateAggriedPlayer(ArrayList<SuperPlayer> list) {
-        // Possibly add some more ifs whether to change player enemy is aggried to
+        // Possibly add some more logic whether to change player enemy is aggried to
         this.aggriedPlayer = null;
         for(Player player : list){
             if(!player.isAlive()) continue;

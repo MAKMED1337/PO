@@ -22,7 +22,7 @@ public class Initializer {
         if (object instanceof Drawable)
             drawableCollection.add((Drawable) object);
         if (object instanceof Entity)
-            FUCK.entitiesHandler.addEntity( (Entity) object);
+            FUCK.entityHandler.addEntity( (Entity) object);
     }
 
     /**
@@ -36,6 +36,6 @@ public class Initializer {
         if (object instanceof Drawable)
             drawableCollection.remove((Drawable) object);
         if (object instanceof Entity)
-            FUCK.entitiesHandler.removeEntity((Entity) object);
+            FUCK.entityHandler.removeEntity((Entity) object);
     }
 }

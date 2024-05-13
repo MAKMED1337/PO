@@ -13,7 +13,8 @@ public class Entity implements Drawable {
     public final Vector2 position = new Vector2();
     protected final Sprite sprite;
 
-    public float health_points = 0;
+    public int health_points = 0;
+    public boolean immortal = false;
 
     public int speed = Constants.DEFAULT_SPEED;
 
@@ -27,7 +28,13 @@ public class Entity implements Drawable {
     }
 
     public boolean isAlive(){
-        return true; // fix it afterwards
+        return immortal || health_points > 0;
+    }
+
+    public boolean takeDamage(int damage){
+        if(immortal) return false;
+        health_points = Math.max(0,health_points-damage);
+        return true;
     }
     
 }
