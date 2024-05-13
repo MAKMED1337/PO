@@ -1,5 +1,6 @@
 package com.po.fuck.updates;
 
+import com.badlogic.ashley.core.Entity;
 import com.po.fuck.collision.Collidable;
 import com.po.fuck.collision.CollidableCollection;
 

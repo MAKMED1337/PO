@@ -18,13 +18,12 @@ import static com.po.fuck.Constants.DEFAULT_SPEED;
 public final class BasicEnemy extends Entity implements Updatable {
     {
         sprite = new Sprite(new Texture("player2.png"));
-        health_points = 5;
         weapon = new Glock(this);
         movement = new BasicMovement(this, DEFAULT_SPEED / 10);
     }
 
     public BasicEnemy(Vector2 position) {
-        super(position);
+        super(position,5);
     }
 
     @Override

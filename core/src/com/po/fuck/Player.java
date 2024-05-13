@@ -31,7 +31,7 @@ public class Player extends Entity {
     private final MouseController mouseController = new MouseController(this);
 
     Player(Vector2 position) {
-        super(position);
+        super(position,10);
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(keyboardController);

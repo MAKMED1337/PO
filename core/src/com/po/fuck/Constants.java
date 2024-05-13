@@ -1,5 +1,7 @@
 package com.po.fuck;
 
+import com.badlogic.gdx.math.Vector2;
+
 public final class Constants {
     public static final int SCREEN_WIDTH = 1280;
     public static final int SCREEN_HEIGHT = 720;
@@ -18,4 +20,7 @@ public final class Constants {
 
     /* physics */
     public static final int COLLISION_ITERATIONS = 3;
+
+    /* healthbar offset */
+    public static Vector2 HEALTHBAR_OFFSET = new Vector2(0,1);
 }

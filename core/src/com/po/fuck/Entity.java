@@ -13,10 +13,16 @@ public class Entity extends GameObject {
     protected Weapon weapon = null;
 
     protected int health_points;
+    public final int MAX_HEALTH_POINTS;
     protected boolean immortal = false;
 
-    public Entity(Vector2 position) {
+    public HealthBar healthBar;
+
+    public Entity(Vector2 position,int HP) {
         super(position);
+        this.MAX_HEALTH_POINTS = HP;
+        this.health_points = HP;
+        healthBar = new HealthBar(this);
     }
 
     @Override
@@ -41,6 +47,7 @@ public class Entity extends GameObject {
 
     @Override
     public void dispose() {
+        FUCK.initializer.dispose(healthBar);
         FUCK.initializer.dispose(weapon);
         super.dispose();
     }
