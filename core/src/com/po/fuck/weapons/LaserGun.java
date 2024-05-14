@@ -3,7 +3,7 @@ package com.po.fuck.weapons;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.Player;
+import com.po.fuck.Entity;
 
 public final class LaserGun extends Gun {
     {
@@ -11,7 +11,7 @@ public final class LaserGun extends Gun {
         cooldown = 1;
     }
 
-    public LaserGun(Player owner) {
+    public LaserGun(Entity owner) {
         super(owner);
     }
 

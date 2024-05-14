@@ -1,8 +1,8 @@
 package com.po.fuck;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.collision.AABB;
 import com.po.fuck.collision.Collidable;
 import com.po.fuck.updates.Drawable;
 
@@ -34,9 +34,8 @@ public class GameObject implements Drawable, Collidable {
     }
 
     @Override
-    public AABB getCollision() {
-        Vector2 size = new Vector2(sprite.getWidth(), sprite.getHeight());
-        return new AABB(position.cpy().mulAdd(size, -0.5f), position.cpy().mulAdd(size, 0.5f));
+    public Polygon getCollision() {
+        return GeometryMisc.createRectangle(position, sprite);
     }
 
     public void dispose() {

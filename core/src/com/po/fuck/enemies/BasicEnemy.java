@@ -8,6 +8,7 @@ import com.po.fuck.FUCK;
 import com.po.fuck.movement.BasicMovement;
 import com.po.fuck.updates.Updatable;
 import com.po.fuck.weapons.Glock;
+import com.po.fuck.weapons.LaserGun;
 
 import static com.po.fuck.Constants.DEFAULT_SPEED;
 

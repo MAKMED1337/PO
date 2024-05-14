@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.badlogic.gdx.math.Polygon;
+
 public class CollidableCollection {
     private final ArrayList<Collidable> objects = new ArrayList<>();
 
@@ -15,7 +17,7 @@ public class CollidableCollection {
         objects.remove(collidable);
     }
 
-    public List<Collidable> collides(AABB other) {
+    public List<Collidable> collides(Polygon other) {
         return objects.stream().filter(x -> x.collide(other)).collect(Collectors.toList());
     }
 }

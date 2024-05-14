@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.movement.BasicMovement;
 import com.po.fuck.movement.Boost;
 import com.po.fuck.weapons.Glock;
+import com.po.fuck.weapons.LaserGun;
 
 import static com.po.fuck.Constants.DEFAULT_SPEED;
 
@@ -18,8 +19,7 @@ import static com.po.fuck.Constants.DEFAULT_SPEED;
 public class Player extends Entity {
     {
         sprite = new Sprite(new Texture("FUCKerWithoutHands2.png"));
-        weapon = new Glock(this);
-        health_points = 10;
+        weapon = new LaserGun(this);
         movement = new Boost(
                 new BasicMovement(this, DEFAULT_SPEED),
                 Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN
@@ -31,7 +31,7 @@ public class Player extends Entity {
     private final MouseController mouseController = new MouseController(this);
 
     Player(Vector2 position) {
-        super(position,10);
+        super(position, 10);
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(keyboardController);

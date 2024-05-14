@@ -1,12 +1,18 @@
 package com.po.fuck.weapons;
 
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.Entity;
 import com.po.fuck.FUCK;
+import com.po.fuck.GeometryMisc;
 import com.po.fuck.GifDecoder;
+import com.po.fuck.collision.Collidable;
 
 public final class LaserBeam extends Bullet {
     // version is also good, but for some reason it renders with artifacts
@@ -25,12 +31,20 @@ public final class LaserBeam extends Bullet {
 
     @Override
     public void update(float delta) {
-        super.update(delta);
-
         timeElapsed += delta;
         this.sprite = new Sprite(animation.getKeyFrame(timeElapsed));
 
-        if (timeElapsed > LIVE_TIME)
+        if (timeElapsed > LIVE_TIME) {
             FUCK.initializer.dispose(this);
+            return;
+        }
+
+        Polygon polygon = GeometryMisc.createRectangle(position, sprite);
+        List<Collidable> collidableList = FUCK.initializer.collidableCollection.collides(polygon);
+        for (Collidable collidable : collidableList) {
+            if (collidable instanceof Entity) {
+                ((Entity) collidable).takeDamage(3 * delta);
+            }
+        }
     }
 }

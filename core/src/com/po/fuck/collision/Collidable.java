@@ -1,5 +1,7 @@
 package com.po.fuck.collision;
 
+import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 
 public interface Collidable {
@@ -7,9 +9,9 @@ public interface Collidable {
 
     void setPosition(Vector2 position); // TODO: find something better
 
-    AABB getCollision();
+    Polygon getCollision();
 
-    default boolean collide(AABB other) {
-        return getCollision().intersects(other);
+    default boolean collide(Polygon other) {
+        return Intersector.intersectPolygons(getCollision(), other, null);
     }
 }

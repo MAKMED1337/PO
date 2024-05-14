@@ -1,11 +1,12 @@
 package com.po.fuck.weapons;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.CenterDrawer;
 import com.po.fuck.Entity;
 import com.po.fuck.FUCK;
-import com.po.fuck.collision.AABB;
+import com.po.fuck.GeometryMisc;
 import com.po.fuck.collision.Collidable;
 import com.po.fuck.updates.Drawable;
 import com.po.fuck.updates.Updatable;
@@ -35,9 +36,8 @@ public abstract class Bullet implements Drawable, Updatable {
     public void update(float delta) {
         position.mulAdd(velocity, delta);
 
-        Vector2 size = getSize();
-        AABB aabb = new AABB(position.cpy().mulAdd(size, -0.5f), position.cpy().mulAdd(size, 0.5f));
-        List<Collidable> collidableList = FUCK.initializer.collidableCollection.collides(aabb);
+        Polygon polygon = GeometryMisc.createRectangle(position, sprite);
+        List<Collidable> collidableList = FUCK.initializer.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
             if (collidable instanceof Entity) {
                 ((Entity) collidable).takeDamage(1);

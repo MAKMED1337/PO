@@ -2,6 +2,8 @@ package com.po.fuck;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 
 public class GeometryMisc {
@@ -50,5 +52,21 @@ public class GeometryMisc {
             }
         }
         return closestEntity;
+    }
+
+    public static Polygon createRectangle(Vector2 position, Sprite sprite){
+        Vector2 size = new Vector2(sprite.getWidth(), sprite.getHeight());
+        size.rotateDeg(-sprite.getRotation());
+        // return new AABB(position.cpy().mulAdd(size, -0.5f), position.cpy().mulAdd(size, 0.5f));
+        return new Polygon(new float[]{
+            position.cpy().mulAdd(size, -0.5f).x,
+            position.cpy().mulAdd(size, -0.5f).y,
+            position.cpy().mulAdd(size, -0.5f).x,
+            position.cpy().mulAdd(size, 0.5f).y,
+            position.cpy().mulAdd(size, 0.5f).x,
+            position.cpy().mulAdd(size, 0.5f).y,
+            position.cpy().mulAdd(size, 0.5f).x,
+            position.cpy().mulAdd(size, -0.5f).y
+        });
     }
 }
