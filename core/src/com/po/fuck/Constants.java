@@ -1,7 +1,5 @@
 package com.po.fuck;
 
-import com.badlogic.gdx.math.Vector2;
-
 public final class Constants {
     public static final int SCREEN_WIDTH = 1280;
     public static final int SCREEN_HEIGHT = 720;
@@ -15,12 +13,9 @@ public final class Constants {
     public static final float BOOST_DURATION = 0.3f;
     public static final float BOOST_COOLDOWN = 1f;
 
-    /* enemies */
-    public static final float SPAWN_RATE = 5f;
-
     /* physics */
     public static final int COLLISION_ITERATIONS = 3;
 
-    /* healthbar offset */
-    public static Vector2 HEALTHBAR_OFFSET = new Vector2(0,1);
+    /* health bar */
+    public static float HEALTHBAR_OFFSET = 5;
 }

@@ -21,12 +21,7 @@ public class Entity extends GameObject {
         healthBar = new HealthBar(this);
     }
 
-    @Override
-    public void draw(CenterDrawer drawer) {
-        drawer.draw(sprite, position);
-    }
-
-    public boolean isAlive(){
+    public boolean isAlive() {
         return immortal || health_points > 0;
     }
 
