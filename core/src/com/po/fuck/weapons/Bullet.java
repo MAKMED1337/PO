@@ -13,13 +13,13 @@ import com.po.fuck.updates.Updatable;
 import java.util.List;
 
 public abstract class Bullet implements Drawable, Updatable {
-    protected Sprite sprite;
-    protected Vector2 position;
-    protected Vector2 velocity;
-
     {
         FUCK.initializer.init(this);
     }
+
+    protected Sprite sprite;
+    protected Vector2 position;
+    protected Vector2 velocity;
 
     public Vector2 getSize() {
         return new Vector2(sprite.getWidth(), sprite.getHeight());

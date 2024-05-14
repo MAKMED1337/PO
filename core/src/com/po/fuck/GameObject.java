@@ -7,12 +7,12 @@ import com.po.fuck.collision.Collidable;
 import com.po.fuck.updates.Drawable;
 
 public class GameObject implements Drawable, Collidable {
-    public Vector2 position;
-    protected Sprite sprite;
-
     {
         FUCK.initializer.init(this);
     }
+
+    public Vector2 position;
+    protected Sprite sprite;
 
     GameObject(Vector2 position) {
         this.position = position;

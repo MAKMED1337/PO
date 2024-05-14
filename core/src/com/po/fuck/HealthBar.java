@@ -1,26 +1,25 @@
 package com.po.fuck;
 
-import static com.po.fuck.Constants.HEALTHBAR_OFFSET;
-import static com.po.fuck.DrawableMisc.createTexture;
-
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.po.fuck.updates.Drawable;
 import com.po.fuck.updates.Updatable;
-import com.badlogic.gdx.graphics.Color;
+
+import static com.po.fuck.Constants.HEALTHBAR_OFFSET;
+import static com.po.fuck.DrawableMisc.createTexture;
 
 public class HealthBar implements Drawable, Updatable {
     {
         FUCK.initializer.init(this);
     }
 
-    private Sprite healthBarSprite;
-    private Sprite backgroundSprite;
+    private final Sprite healthBarSprite;
+    private final Sprite backgroundSprite;
 
-    private Texture healthBarTexture;
-    private Texture backgroundTexture;
+    private final Texture healthBarTexture;
+    private final Texture backgroundTexture;
 
     Entity entity;
 

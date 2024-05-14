@@ -5,10 +5,6 @@ import com.po.fuck.movement.Movement;
 import com.po.fuck.weapons.Weapon;
 
 public class Entity extends GameObject {
-    {
-        FUCK.initializer.init(this);
-    }
-
     protected Movement movement = null;
     protected Weapon weapon = null;
 
@@ -34,7 +30,7 @@ public class Entity extends GameObject {
         return immortal || health_points > 0;
     }
 
-    public boolean takeDamage(int damage){
+    public boolean takeDamage(int damage) {
         if (immortal)
             return false;
 
