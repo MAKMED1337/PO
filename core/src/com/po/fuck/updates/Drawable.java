@@ -9,3 +9,4 @@ public interface Drawable {
 
     void draw(CenterDrawer drawer);
 }
+

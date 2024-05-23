@@ -1,20 +1,29 @@
 package com.po.fuck.updates;
 
+import com.po.fuck.lifetime.Manager;
+import com.po.fuck.lifetime.ClassData;
+
 import java.util.ArrayList;
 
-public final class UpdatableCollection implements Updatable {
-    private final ArrayList<Updatable> objects = new ArrayList<>();
+public final class UpdatableCollection {
+    static {
+        Manager.register_class(new ClassData<Updatable>(
+                Updatable.class,
+                object -> UpdatableCollection.add(object),
+                object -> UpdatableCollection.remove(object)));
+    }
 
-    public void add(Updatable updatable) {
+    static private final ArrayList<Updatable> objects = new ArrayList<>();
+
+    static public void add(Updatable updatable) {
         objects.add(updatable);
     }
 
-    public void remove(Updatable updatable) {
+    static public void remove(Updatable updatable) {
         objects.remove(updatable);
     }
 
-    @Override
-    public void update(float delta) {
+    static public void update(float delta) {
         for (Updatable updatable : new ArrayList<>(objects))
             updatable.update(delta);
     }

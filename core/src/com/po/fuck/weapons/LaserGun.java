@@ -16,7 +16,7 @@ public final class LaserGun extends Gun {
     }
 
     @Override
-    protected void shoot(Vector2 muzzle_position, Vector2 direction) {
-        new LaserBeam(muzzle_position, direction);
+    protected Bullet shoot(Vector2 muzzle_position, Vector2 direction) {
+        return new LaserBeam(muzzle_position, direction);
     }
 }

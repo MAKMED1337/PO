@@ -10,10 +10,6 @@ import static com.po.fuck.Constants.HEALTHBAR_OFFSET;
 import static com.po.fuck.DrawableMisc.createTexture;
 
 public final class HealthBar implements Drawable, Updatable {
-    {
-        FUCK.initializer.init(this);
-    }
-
     private final Sprite healthBarSprite;
     private final Sprite backgroundSprite;
 

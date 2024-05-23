@@ -16,7 +16,7 @@ public class Glock extends Gun {
     }
 
     @Override
-    protected void shoot(Vector2 muzzle_position, Vector2 direction) {
-        new CosmicBullet(muzzle_position, direction);
+    protected Bullet shoot(Vector2 muzzle_position, Vector2 direction) {
+        return new CosmicBullet(muzzle_position, direction);
     }
 }

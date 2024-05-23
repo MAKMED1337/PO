@@ -4,15 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.updates.Updatable;
+import com.po.fuck.weapons.Weapon;
 
 import static com.po.fuck.Constants.GAME_HEIGHT;
 import static com.po.fuck.Constants.GAME_WIDTH;
 
-public class MouseController extends InputAdapter implements Updatable {
-    {
-        FUCK.initializer.init(this);
-    }
-
+public final class MouseController extends InputAdapter implements Updatable {
     private boolean pressed = false;
 
     Player player;
@@ -21,9 +18,16 @@ public class MouseController extends InputAdapter implements Updatable {
         this.player = player;
     }
 
+    protected Weapon getWeapon() {
+        return player.weapon.get();
+    }
+
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        player.weapon.aim(new Vector2((float) (screenX * GAME_WIDTH) / Gdx.graphics.getWidth(), (float) (screenY * GAME_HEIGHT) / Gdx.graphics.getHeight()));
+        Weapon weapon = getWeapon();
+        if (weapon != null)
+            weapon.aim(new Vector2((float) (screenX * GAME_WIDTH) / Gdx.graphics.getWidth(),
+                    (float) (screenY * GAME_HEIGHT) / Gdx.graphics.getHeight()));
         return true;
     }
 
@@ -46,7 +50,10 @@ public class MouseController extends InputAdapter implements Updatable {
 
     @Override
     public void update(float delta) {
-        if (pressed)
-            player.weapon.attack();
+        if (pressed) {
+            Weapon weapon = getWeapon();
+            if (weapon != null)
+                weapon.attack();
+        }
     }
 }
