@@ -1,7 +1,6 @@
 package com.po.fuck.movement;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.FUCK;
 
 // should be used as a last class in a movement chain
 public class Boost extends Movement {
@@ -11,8 +10,6 @@ public class Boost extends Movement {
     private float timeSinceLastBoost;
 
     public Boost(Movement movement, int boostDistance, float boostDuration, float boostCooldown) {
-        FUCK.initializer.dispose(movement); // ignore initial movement, call it manually
-
         this.movement = movement;
         this.collidable = movement.collidable;
         this.direction = movement.direction;

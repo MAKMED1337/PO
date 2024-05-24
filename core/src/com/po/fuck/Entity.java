@@ -1,24 +1,26 @@
 package com.po.fuck;
 
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.lifetime.Managed;
+import com.po.fuck.lifetime.Manager;
 import com.po.fuck.movement.Movement;
 import com.po.fuck.weapons.Weapon;
 
 public class Entity extends GameObject {
-    protected Movement movement = null;
-    protected Weapon weapon = null;
+    protected Managed<Movement> movement = new Managed<>();
+    protected Managed<Weapon> weapon = new Managed<>();
 
     protected float health_points;
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
 
-    public HealthBar healthBar;
+    public Managed<HealthBar> healthBar;
 
     public Entity(Vector2 position, float HP) {
         super(position);
         this.MAX_HEALTH_POINTS = HP;
         this.health_points = HP;
-        healthBar = new HealthBar(this);
+        healthBar = Manager.create(new HealthBar(this));
     }
 
     public boolean isAlive() {
@@ -31,15 +33,15 @@ public class Entity extends GameObject {
 
         health_points = Math.max(0, health_points - damage);
         if (health_points == 0)
-            dispose();
+            Manager.destroy_raw(this);
 
         return true;
     }
 
     @Override
-    public void dispose() {
-        FUCK.initializer.dispose(healthBar);
-        FUCK.initializer.dispose(weapon);
-        super.dispose();
+    public void destructor() {
+        healthBar.destroy();
+        weapon.destroy();
+        super.destructor();
     }
 }

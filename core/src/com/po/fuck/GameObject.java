@@ -5,12 +5,9 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.collision.Collidable;
 import com.po.fuck.updates.Drawable;
+import com.po.fuck.lifetime.Destructable;
 
-public class GameObject implements Drawable, Collidable {
-    {
-        FUCK.initializer.init(this);
-    }
-
+public class GameObject implements Drawable, Collidable, Destructable {
     public Vector2 position;
     protected Sprite sprite;
 
@@ -38,7 +35,7 @@ public class GameObject implements Drawable, Collidable {
         return GeometryMisc.createRectangle(position, sprite);
     }
 
-    public void dispose() {
-        FUCK.initializer.dispose(this);
+    @Override
+    public void destructor() {
     }
 }

@@ -29,12 +29,12 @@ public class KeyboardController extends InputAdapter {
                 direction.x += 1;
                 break;
             case Input.Keys.CONTROL_LEFT:
-                if (player.movement instanceof Boost)
-                    ((Boost) player.movement).tryToUseBoost();
+                if (player.movement.get() instanceof Boost)
+                    ((Boost) player.movement.get()).tryToUseBoost();
                 break;
         }
 
-        player.movement.setDirection(direction);
+        player.movement.get().setDirection(direction);
         return true;
     }
 
@@ -55,7 +55,7 @@ public class KeyboardController extends InputAdapter {
                 break;
         }
 
-        player.movement.setDirection(direction);
+        player.movement.get().setDirection(direction);
         return true;
     }
 }
