@@ -18,13 +18,14 @@ public class FUCK extends ApplicationAdapter {
 
     SpriteBatch batch;
     private OrthographicCamera camera;
-
+    public static Assets assets = new Assets();
     @Override
     public void create() {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
         batch = new SpriteBatch();
-
+        assets.load();
+        assets.manager.finishLoading();
         player = new Player(new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2));
 
         new BasicEnemy(new Vector2(100, 100));
@@ -48,5 +49,6 @@ public class FUCK extends ApplicationAdapter {
     @Override
     public void dispose() {
         batch.dispose();
+        assets.dispose();
     }
 }
