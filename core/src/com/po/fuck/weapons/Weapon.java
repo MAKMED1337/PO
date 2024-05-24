@@ -10,6 +10,11 @@ public abstract class Weapon implements Drawable {
     protected Sprite sprite;
     protected Vector2 aiming;
 
+    @Override
+    public int get_z() {
+        return 1;
+    }
+
     Weapon(Entity owner) {
         this.owner = owner;
     }

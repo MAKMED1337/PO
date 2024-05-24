@@ -10,7 +10,7 @@ import com.po.fuck.collision.Collidable;
 import com.po.fuck.collision.CollidableCollection;
 import com.po.fuck.updates.Drawable;
 import com.po.fuck.updates.Updatable;
-import com.po.fuck.lifespan.Manager;
+import com.po.fuck.lifetime.Manager;
 
 import java.util.List;
 
@@ -18,6 +18,11 @@ public abstract class Bullet implements Drawable, Updatable {
     protected Sprite sprite;
     protected Vector2 position;
     protected Vector2 velocity;
+
+    @Override
+    public int get_z() {
+        return 1;
+    }
 
     public Vector2 getSize() {
         return new Vector2(sprite.getWidth(), sprite.getHeight());
