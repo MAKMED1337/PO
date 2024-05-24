@@ -7,7 +7,7 @@ import com.po.fuck.CenterDrawer;
 import com.po.fuck.Entity;
 import com.po.fuck.GeometryMisc;
 import com.po.fuck.collision.Collidable;
-import com.po.fuck.collision.CollidableCollection;
+import com.po.fuck.collections.All;
 import com.po.fuck.updates.Drawable;
 import com.po.fuck.updates.Updatable;
 import com.po.fuck.lifetime.Manager;
@@ -39,7 +39,7 @@ public abstract class Bullet implements Drawable, Updatable {
         position.mulAdd(velocity, delta);
 
         Polygon polygon = GeometryMisc.createRectangle(position, sprite);
-        List<Collidable> collidableList = CollidableCollection.collides(polygon);
+        List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
             if (collidable instanceof Entity) {
                 ((Entity) collidable).takeDamage(1);

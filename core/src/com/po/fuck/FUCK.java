@@ -6,23 +6,19 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.po.fuck.collision.CollidableCollection;
 import com.po.fuck.enemies.BasicEnemy;
 import com.po.fuck.lifetime.Destructable;
 import com.po.fuck.lifetime.Managed;
 import com.po.fuck.lifetime.Manager;
-import com.po.fuck.updates.UpdatableCollection;
-import com.po.fuck.updates.DrawableCollection;
+import com.po.fuck.collections.All;
 
 import static com.po.fuck.Constants.GAME_HEIGHT;
 import static com.po.fuck.Constants.GAME_WIDTH;
 
 public class FUCK extends ApplicationAdapter {
     static {
-        forceInit(UpdatableCollection.class);
-        forceInit(DrawableCollection.class);
-        forceInit(CollidableCollection.class);
-        forceInit(Destructable.class);
+       forceInit(Destructable.class);
+       forceInit(All.class);
     }
     public static Managed<Player> player;
 
@@ -48,10 +44,10 @@ public class FUCK extends ApplicationAdapter {
         batch.setProjectionMatrix(camera.combined);
 
         float delta = Gdx.graphics.getDeltaTime();
-        UpdatableCollection.update(delta);
+        All.updatableCollection.update(delta);
 
         batch.begin();
-        DrawableCollection.draw(new CenterDrawer(batch));
+        All.drawableCollection.draw(new CenterDrawer(batch));
         batch.end();
     }
 

@@ -12,7 +12,7 @@ import com.po.fuck.Entity;
 import com.po.fuck.GeometryMisc;
 import com.po.fuck.GifDecoder;
 import com.po.fuck.collision.Collidable;
-import com.po.fuck.collision.CollidableCollection;
+import com.po.fuck.collections.All;
 import com.po.fuck.lifetime.Manager;
 
 public final class LaserBeam extends Bullet {
@@ -41,7 +41,7 @@ public final class LaserBeam extends Bullet {
         }
 
         Polygon polygon = GeometryMisc.createRectangle(position, sprite);
-        List<Collidable> collidableList = CollidableCollection.collides(polygon);
+        List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
             if (collidable instanceof Entity) {
                 ((Entity) collidable).takeDamage(3 * delta);

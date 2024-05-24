@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.collision.Collidable;
 import com.po.fuck.updates.Updatable;
 
-import com.po.fuck.collision.CollidableCollection;
+import com.po.fuck.collections.All;
 
 import static com.po.fuck.Constants.COLLISION_ITERATIONS;
 
@@ -30,7 +30,7 @@ public abstract class Movement implements Updatable {
 
             // check all the collisions with the new position
             boolean selfOnly = true;
-            for (Collidable object : CollidableCollection.collides(collidable.getCollision()))
+            for (Collidable object : All.collidableCollection.collides(collidable.getCollision()))
                 selfOnly &= object.equals(collidable);
 
             if (!selfOnly) // if this object collides with something (other than self)
