@@ -16,7 +16,7 @@ public final class ClassData<T> {
      * @param destructor  can be null
      */
     public ClassData(Class<T> cls, Consumer<T> constructor, Consumer<T> destructor) {
-        if (this.cls == null)
+        if (cls == null)
             throw new NullPointerException("Cls can not be null");
 
         this.cls = cls;
