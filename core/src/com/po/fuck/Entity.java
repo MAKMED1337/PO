@@ -9,13 +9,21 @@ import com.po.fuck.movement.Movement;
 import com.po.fuck.weapons.Weapon;
 
 public class Entity extends GameObject {
+    public static float getSquaredDist(Entity a, Entity b) {
+        float x = a.position.x - b.position.x;
+        float y = a.position.y - b.position.y;
+        return x * x + y * y;
+    }
+    public static float getDist(Entity a, Entity b) {
+        return (float) Math.sqrt(getSquaredDist(a, b));
+    }
+
     protected Managed<Movement> movement = new Managed<>();
     protected Managed<Weapon> weapon = new Managed<>();
     public int teamTag;
     protected float health_points;
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
-
     public Managed<HealthBar> healthBar;
 
     public Entity(Vector2 position, float HP) {
@@ -23,7 +31,7 @@ public class Entity extends GameObject {
         this.MAX_HEALTH_POINTS = HP;
         this.health_points = HP;
         healthBar = Manager.create(new HealthBar(this));
-        teamTag = EntityCollection.totalTeams++;
+
         All.entityCollection.add(this);
     }
 
@@ -46,6 +54,7 @@ public class Entity extends GameObject {
     public void destructor() {
         healthBar.destroy();
         weapon.destroy();
+        All.entityCollection.remove(this);
         super.destructor();
     }
 }

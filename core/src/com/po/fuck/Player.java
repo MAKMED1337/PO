@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.collections.EntityCollection;
 import com.po.fuck.movement.BasicMovement;
 import com.po.fuck.movement.Boost;
 import com.po.fuck.weapons.LaserGun;
@@ -33,6 +34,7 @@ public class Player extends Entity {
 
     Player(Vector2 position) {
         super(position, 10);
+        teamTag = Constants.PLAYER_TEAM_TAG;
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(keyboardController.get());

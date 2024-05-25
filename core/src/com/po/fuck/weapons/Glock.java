@@ -13,10 +13,11 @@ public class Glock extends Gun {
 
     public Glock(Entity owner) {
         super(owner);
+        teamTag = owner.teamTag;
     }
 
     @Override
     protected Bullet shoot(Vector2 muzzle_position, Vector2 direction) {
-        return new CosmicBullet(muzzle_position, direction);
+        return new CosmicBullet(muzzle_position, direction, owner.teamTag);
     }
 }

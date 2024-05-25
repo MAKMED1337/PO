@@ -18,7 +18,7 @@ public abstract class Bullet implements Drawable, Updatable {
     protected Sprite sprite;
     protected Vector2 position;
     protected Vector2 velocity;
-
+    protected int teamTag;
     @Override
     public int get_z() {
         return 1;
@@ -38,6 +38,7 @@ public abstract class Bullet implements Drawable, Updatable {
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
             if (collidable instanceof Entity) {
+                if (((Entity) collidable).teamTag == this.teamTag) continue;
                 ((Entity) collidable).takeDamage(1);
                 Manager.destroy_raw(this);
 

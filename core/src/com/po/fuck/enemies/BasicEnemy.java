@@ -3,14 +3,19 @@ package com.po.fuck.enemies;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.Constants;
 import com.po.fuck.Entity;
 import com.po.fuck.FUCK;
 import com.po.fuck.Player;
+import com.po.fuck.collections.All;
+import com.po.fuck.collections.EntityCollection;
 import com.po.fuck.movement.BasicMovement;
 import com.po.fuck.updates.Updatable;
 import com.po.fuck.weapons.Glock;
 import com.po.fuck.weapons.Weapon;
 import com.po.fuck.lifetime.Manager;
+
+import java.util.ArrayList;
 
 import static com.po.fuck.Constants.DEFAULT_SPEED;
 
@@ -27,21 +32,31 @@ public final class BasicEnemy extends Entity implements Updatable {
 
     public BasicEnemy(Vector2 position) {
         super(position, 5);
+        this.teamTag = Constants.CREEP_TEAM_TAG;
     }
 
     @Override
     public void update(float delta) {
-        Player player = FUCK.player.get();
-        if (player == null)
+        ArrayList<Entity> opponents = All.entityCollection.getOpponents(this.teamTag);
+        if (opponents == null) {
             return;
+        }
+        Entity target = opponents.get(0);
+        float dist = Entity.getSquaredDist(this, target);
+        for (Entity opponent : opponents) {
+            if (Entity.getSquaredDist(this, opponent) < dist) {
+                dist = Entity.getSquaredDist(this, opponent);
+                target = opponent;
+            }
+        }
 
-        Vector2 playersPosition = player.getPosition();
+        Vector2 targetPosition = target.getPosition();
         Weapon w = weapon.get();
         if (w == null)
             return;
 
-        w.aim(playersPosition);
+        w.aim(targetPosition);
         w.attack();
-        movement.get().setDirection(playersPosition.sub(position));
+        movement.get().setDirection(targetPosition.sub(position));
     }
 }
