@@ -24,10 +24,6 @@ public abstract class Bullet implements Drawable, Updatable {
         return 1;
     }
 
-    public Vector2 getSize() {
-        return new Vector2(sprite.getWidth(), sprite.getHeight());
-    }
-
     @Override
     public void draw(CenterDrawer drawer) {
         sprite.setRotation(-velocity.angleDeg());
