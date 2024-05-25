@@ -1,6 +1,8 @@
 package com.po.fuck;
 
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.collections.All;
+import com.po.fuck.collections.EntityCollection;
 import com.po.fuck.lifetime.Managed;
 import com.po.fuck.lifetime.Manager;
 import com.po.fuck.movement.Movement;
@@ -9,7 +11,7 @@ import com.po.fuck.weapons.Weapon;
 public class Entity extends GameObject {
     protected Managed<Movement> movement = new Managed<>();
     protected Managed<Weapon> weapon = new Managed<>();
-
+    public int teamTag;
     protected float health_points;
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
@@ -21,6 +23,8 @@ public class Entity extends GameObject {
         this.MAX_HEALTH_POINTS = HP;
         this.health_points = HP;
         healthBar = Manager.create(new HealthBar(this));
+        teamTag = EntityCollection.totalTeams++;
+        All.entityCollection.add(this);
     }
 
     public boolean isAlive() {
