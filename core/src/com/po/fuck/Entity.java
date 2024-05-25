@@ -9,15 +9,6 @@ import com.po.fuck.movement.Movement;
 import com.po.fuck.weapons.Weapon;
 
 public class Entity extends GameObject {
-    public static float getSquaredDist(Entity a, Entity b) {
-        float x = a.position.x - b.position.x;
-        float y = a.position.y - b.position.y;
-        return x * x + y * y;
-    }
-    public static float getDist(Entity a, Entity b) {
-        return (float) Math.sqrt(getSquaredDist(a, b));
-    }
-
     protected Managed<Movement> movement = new Managed<>();
     protected Managed<Weapon> weapon = new Managed<>();
     public int teamTag;

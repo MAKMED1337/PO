@@ -3,10 +3,7 @@ package com.po.fuck.enemies;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.Constants;
-import com.po.fuck.Entity;
-import com.po.fuck.FUCK;
-import com.po.fuck.Player;
+import com.po.fuck.*;
 import com.po.fuck.collections.All;
 import com.po.fuck.collections.EntityCollection;
 import com.po.fuck.movement.BasicMovement;
@@ -42,10 +39,10 @@ public final class BasicEnemy extends Entity implements Updatable {
             return;
         }
         Entity target = opponents.get(0);
-        float dist = Entity.getSquaredDist(this, target);
+        float dist = GeometryMisc.distance(this, target);
         for (Entity opponent : opponents) {
-            if (Entity.getSquaredDist(this, opponent) < dist) {
-                dist = Entity.getSquaredDist(this, opponent);
+            if (GeometryMisc.distance(this, opponent) < dist) {
+                dist = GeometryMisc.distance(this, opponent);
                 target = opponent;
             }
         }
