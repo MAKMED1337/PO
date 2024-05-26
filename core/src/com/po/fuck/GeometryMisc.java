@@ -43,9 +43,9 @@ public class GeometryMisc {
      * @return The closest entity to the main entity from the list, or null if the
      *         list is empty.
      */
-    public static<A extends Entity> Entity closest(A main, List<A> list) {
-        A closestEntity = null;
-        for (A entity : list) {
+    public static<A extends Entity> Entity closest(A main, List<? extends Entity> list) {
+        Entity closestEntity = null;
+        for (Entity entity : list) {
             if (closestEntity == null || distance(main, closestEntity) > distance(main, entity))
                 closestEntity = entity;
         }
