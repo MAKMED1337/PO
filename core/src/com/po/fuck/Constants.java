@@ -18,6 +18,6 @@ public final class Constants {
 
     /* health bar */
     public static float HEALTHBAR_OFFSET = 5;
-    public static final int ENEMY_TAG = 0;
+    public static final int ENEMY_TEAM_TAG = 0;
     public static final int PLAYER_TEAM_TAG = 1;
 }

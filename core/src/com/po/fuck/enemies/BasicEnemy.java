@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.Constants;
 import com.po.fuck.GeometryMisc;
 import com.po.fuck.Entity;
+import com.po.fuck.collections.All;
 import com.po.fuck.movement.BasicMovement;
 import com.po.fuck.updates.Updatable;
 import com.po.fuck.weapons.Glock;
@@ -24,7 +25,7 @@ public final class BasicEnemy extends Entity implements Updatable {
         sprite = new Sprite(new Texture("player2.png"));
         weapon = Manager.create(new Glock(this));
         movement = Manager.create(new BasicMovement(this, DEFAULT_SPEED / 10));
-        teamTag = Constants.ENEMY_TAG;
+        teamTag = Constants.ENEMY_TEAM_TAG;
     }
 
     public BasicEnemy(Vector2 position) {
@@ -33,13 +34,11 @@ public final class BasicEnemy extends Entity implements Updatable {
 
     @Override
     public void update(float delta) {
-
-        Entity target = GeometryMisc.findClosestOpponent(this);
+        Entity target = GeometryMisc.findClosest(this, All.entityCollection.getOpponents(this.teamTag));
         if (target == null) return;
         Vector2 targetPosition = target.getPosition();
         Weapon w = weapon.get();
-        if (w == null)
-            return;
+        if (w == null) return;
 
         w.aim(targetPosition);
         w.attack();

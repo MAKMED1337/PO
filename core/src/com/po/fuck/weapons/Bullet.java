@@ -29,7 +29,7 @@ public abstract class Bullet implements Drawable, Updatable {
         sprite.setRotation(-velocity.angleDeg());
         drawer.draw(sprite, position);
     }
-    protected boolean tryDamage(Entity entity) {
+    protected boolean canDamage(Entity entity) {
         return entity.getTeamTag() != this.teamTag;
     }
 
@@ -40,14 +40,14 @@ public abstract class Bullet implements Drawable, Updatable {
         Polygon polygon = GeometryMisc.createRectangle(position, sprite);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
-            if (collidable instanceof Entity) {
-                if (this.tryDamage((Entity) collidable)) {
-                    ((Entity) collidable).takeDamage(1);
-                    Manager.destroy_raw(this);
+            if (!(collidable instanceof Entity)) continue;
+            Entity enemy = (Entity) collidable;
+            if (this.canDamage(enemy)) {
+                enemy.takeDamage(1);
+                Manager.destroy_raw(this);
 
-                    return; // damage only 1 enemy at the same time
-                    // TODO: sort them by distance or something like this
-                }
+                return; // damage only 1 enemy at the same time
+                // TODO: sort them by distance or something like this
             }
         }
     }

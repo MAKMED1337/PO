@@ -45,11 +45,10 @@ public final class LaserBeam extends Bullet {
         Polygon polygon = GeometryMisc.createRectangle(position, sprite);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
-            if (collidable instanceof Entity) {
-                if (this.tryDamage((Entity) collidable)) {
-                    ((Entity) collidable).takeDamage(3 * delta);
-                }
-            }
+            if (!(collidable instanceof Entity)) continue;
+            Entity enemy = (Entity) collidable;
+            if (this.canDamage(enemy))
+                enemy.takeDamage(3 * delta);
         }
     }
 }
