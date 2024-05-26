@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 public class CosmicBullet extends Bullet {
     {
         sprite = new Sprite(new Texture("bullet2.png"));
+        damage = 1;
     }
 
     CosmicBullet(Vector2 muzzle_position, Vector2 direction, int teamTag) {

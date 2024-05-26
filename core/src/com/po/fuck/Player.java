@@ -5,7 +5,6 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.collections.EntityCollection;
 import com.po.fuck.movement.BasicMovement;
 import com.po.fuck.movement.Boost;
 import com.po.fuck.weapons.LaserGun;

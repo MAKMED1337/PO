@@ -19,6 +19,7 @@ public abstract class Bullet implements Drawable, Updatable {
     protected Vector2 position;
     protected Vector2 velocity;
     protected int teamTag;
+    protected int damage;
 
     @Override
     public int get_z() {
@@ -45,7 +46,7 @@ public abstract class Bullet implements Drawable, Updatable {
         for (Collidable collidable : collidableList) {
             if (!(collidable instanceof Entity)) continue;
             Entity enemy = (Entity) collidable;
-            if (this.tryDamage(enemy, 1)) {
+            if (this.tryDamage(enemy, damage)) {
                 Manager.destroy_raw(this);
                 return; // damage only 1 enemy at the same time
                 // TODO: sort them by distance or something like this

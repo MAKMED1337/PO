@@ -22,6 +22,7 @@ public final class LaserBeam extends Bullet {
     private float timeElapsed = 0;
 
     {
+        damage = 3;
         this.sprite = new Sprite(animation.getKeyFrame(0));
     }
 
@@ -47,7 +48,7 @@ public final class LaserBeam extends Bullet {
         for (Collidable collidable : collidableList) {
             if (!(collidable instanceof Entity)) continue;
             Entity enemy = (Entity) collidable;
-            this.tryDamage(enemy, delta*3);
+            this.tryDamage(enemy, delta*damage);
         }
     }
 }
