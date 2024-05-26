@@ -37,37 +37,19 @@ public class GeometryMisc {
         return to.position.cpy().sub(from.position);
     }
 
-    public static <A extends Entity> Entity findClosest(A entity, List<A> list) {
-        if (list.isEmpty()) return null;
-        Entity target = list.get(0);
-        float dist = GeometryMisc.distance(entity, target);
-        for (Entity opponent : list) {
-            if (GeometryMisc.distance(entity, opponent) < dist) {
-                dist = GeometryMisc.distance(entity, opponent);
-                target = opponent;
-            }
-        }
-        return target;
-    }
     /**
      * Finds the closest entity to a given main entity from a list of other
      * entities.
-     *
-     * @param <A>  The type of the main entity, extending class C.
-     * @param <B>  The type of the other entities in the list, extending class C.
-     * @param <C>  The common base class for main entity and other entities,
-     *             extending class Entity.
      * @param main The main entity.
      * @param list The list of other entities.
      * @return The closest entity to the main entity from the list, or null if the
      *         list is empty.
      */
-    public static <A extends C, B extends C, C extends Entity> C closest(A main, ArrayList<B> list) {
-        C closestEntity = null;
-        for (B entity : list) {
-            if (closestEntity == null || distance(main, closestEntity) > distance(main, entity)) {
+    public static<A extends Entity> Entity closest(A main, List<A> list) {
+        Entity closestEntity = null;
+        for (Entity entity : list) {
+            if (closestEntity == null || distance(main, closestEntity) > distance(main, entity))
                 closestEntity = entity;
-            }
         }
         return closestEntity;
     }

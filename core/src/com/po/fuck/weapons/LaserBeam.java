@@ -47,8 +47,7 @@ public final class LaserBeam extends Bullet {
         for (Collidable collidable : collidableList) {
             if (!(collidable instanceof Entity)) continue;
             Entity enemy = (Entity) collidable;
-            if (this.canDamage(enemy))
-                enemy.takeDamage(3 * delta);
+            this.tryDamage(enemy, delta*3);
         }
     }
 }

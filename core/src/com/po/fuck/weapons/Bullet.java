@@ -19,6 +19,7 @@ public abstract class Bullet implements Drawable, Updatable {
     protected Vector2 position;
     protected Vector2 velocity;
     protected int teamTag;
+
     @Override
     public int get_z() {
         return 1;
@@ -29,8 +30,10 @@ public abstract class Bullet implements Drawable, Updatable {
         sprite.setRotation(-velocity.angleDeg());
         drawer.draw(sprite, position);
     }
-    protected boolean canDamage(Entity entity) {
-        return entity.getTeamTag() != this.teamTag;
+    protected boolean tryDamage(Entity entity, float damage) {
+        if (entity.getTeamTag() == this.teamTag) return false;
+        entity.takeDamage(damage);
+        return true;
     }
 
     @Override
@@ -42,10 +45,8 @@ public abstract class Bullet implements Drawable, Updatable {
         for (Collidable collidable : collidableList) {
             if (!(collidable instanceof Entity)) continue;
             Entity enemy = (Entity) collidable;
-            if (this.canDamage(enemy)) {
-                enemy.takeDamage(1);
+            if (this.tryDamage(enemy, 1)) {
                 Manager.destroy_raw(this);
-
                 return; // damage only 1 enemy at the same time
                 // TODO: sort them by distance or something like this
             }
