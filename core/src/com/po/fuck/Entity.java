@@ -9,11 +9,10 @@ import com.po.fuck.weapons.Weapon;
 public class Entity extends GameObject {
     protected Managed<Movement> movement = new Managed<>();
     protected Managed<Weapon> weapon = new Managed<>();
-
+    protected int teamTag;
     protected float health_points;
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
-
     public Managed<HealthBar> healthBar;
 
     public Entity(Vector2 position, float HP) {
@@ -21,6 +20,10 @@ public class Entity extends GameObject {
         this.MAX_HEALTH_POINTS = HP;
         this.health_points = HP;
         healthBar = Manager.create(new HealthBar(this));
+    }
+
+    public int getTeamTag() {
+        return teamTag;
     }
 
     public boolean isAlive() {

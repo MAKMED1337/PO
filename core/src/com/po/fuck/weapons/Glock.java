@@ -17,6 +17,6 @@ public class Glock extends Gun {
 
     @Override
     protected Bullet shoot(Vector2 muzzle_position, Vector2 direction) {
-        return new CosmicBullet(muzzle_position, direction);
+        return new CosmicBullet(muzzle_position, direction, owner.getTeamTag());
     }
 }
