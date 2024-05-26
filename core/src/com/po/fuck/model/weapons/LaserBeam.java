@@ -8,11 +8,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.GifDecoder;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.lifetime.Manager;
+import com.po.fuck.view.GifDecoder;
 import com.po.fuck.model.collections.All;
 
 public final class LaserBeam extends Bullet {

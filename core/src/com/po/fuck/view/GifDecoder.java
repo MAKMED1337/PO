@@ -1,4 +1,4 @@
-package com.po.fuck; //IDK
+package com.po.fuck.view; //IDK
 /* Copyright by Johannes Borchardt */
 /* LibGdx conversion 2014 by Anton Persson */
 /* Released under Apache 2.0 */

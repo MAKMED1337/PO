@@ -5,9 +5,9 @@ import static com.po.fuck.model.Constants.DEFAULT_SPEED;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.model.Core;
 import com.po.fuck.controller.movement.BasicMovement;
 import com.po.fuck.model.Entity;
-import com.po.fuck.model.FUCK;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
@@ -31,7 +31,7 @@ public final class BasicEnemy extends Entity implements Updatable {
 
     @Override
     public void update(float delta) {
-        Player player = FUCK.player.get();
+        Player player = Core.player.get();
         if (player == null)
             return;
 

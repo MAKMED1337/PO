@@ -3,35 +3,23 @@ package com.po.fuck.model;
 import static com.po.fuck.model.Constants.GAME_HEIGHT;
 import static com.po.fuck.model.Constants.GAME_WIDTH;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.model.collections.All;
+import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 
-public class FUCK extends ApplicationAdapter {
+public class Core implements Updatable{
     static {
        forceInit(Destructable.class);
        forceInit(All.class);
     }
+    
     public static Managed<Player> player;
 
-    SpriteBatch batch;
-    private OrthographicCamera camera;
-
-    @Override
-    public void create() {
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
-        batch = new SpriteBatch();
-
+    public void initialize() {
         player = Manager.create(new Player(new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2)));
 
         Manager.create(new BasicEnemy(new Vector2(100, 100)));
@@ -39,22 +27,12 @@ public class FUCK extends ApplicationAdapter {
     }
 
     @Override
-    public void render() {
-        ScreenUtils.clear(0, 0, 0, 1);
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
-
-        float delta = Gdx.graphics.getDeltaTime();
+    public void update(float delta) {
         All.updatableCollection.update(delta);
-
-        batch.begin();
-        All.drawableCollection.draw(new CenterDrawer(batch));
-        batch.end();
     }
 
-    @Override
-    public void dispose() {
-        batch.dispose();
+    public DrawableCollection getDrawableCollection(){
+        return All.drawableCollection;
     }
 
     // https://stackoverflow.com/questions/3560103/how-to-force-a-class-to-be-initialised
