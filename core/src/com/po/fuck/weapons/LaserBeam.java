@@ -46,7 +46,7 @@ public final class LaserBeam extends Bullet {
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
             if (collidable instanceof Entity) {
-                if (((Entity)collidable).teamTag != this.teamTag) {
+                if (this.tryDamage((Entity) collidable)) {
                     ((Entity) collidable).takeDamage(3 * delta);
                 }
             }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.collections.All;
 
 public class GeometryMisc {
 
@@ -35,7 +36,21 @@ public class GeometryMisc {
     public static <A extends Entity, B extends Entity> Vector2 direction(A from, B to) {
         return to.position.cpy().sub(from.position);
     }
-
+    public static <A extends Entity> Entity findClosestOpponent(A entity) {
+        ArrayList<Entity> opponents = All.entityCollection.getOpponents(entity.teamTag);
+        if (opponents.isEmpty()) {
+            return null;
+        }
+        Entity target = opponents.get(0);
+        float dist = GeometryMisc.distance(entity, target);
+        for (Entity opponent : opponents) {
+            if (GeometryMisc.distance(entity, opponent) < dist) {
+                dist = GeometryMisc.distance(entity, opponent);
+                target = opponent;
+            }
+        }
+        return target;
+    }
     /**
      * Finds the closest entity to a given main entity from a list of other
      * entities.

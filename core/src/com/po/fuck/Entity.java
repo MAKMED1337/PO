@@ -11,7 +11,7 @@ import com.po.fuck.weapons.Weapon;
 public class Entity extends GameObject {
     protected Managed<Movement> movement = new Managed<>();
     protected Managed<Weapon> weapon = new Managed<>();
-    public int teamTag;
+    protected int teamTag;
     protected float health_points;
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
@@ -22,8 +22,10 @@ public class Entity extends GameObject {
         this.MAX_HEALTH_POINTS = HP;
         this.health_points = HP;
         healthBar = Manager.create(new HealthBar(this));
+    }
 
-        All.entityCollection.add(this);
+    public int getTeamTag() {
+        return teamTag;
     }
 
     public boolean isAlive() {
@@ -45,7 +47,6 @@ public class Entity extends GameObject {
     public void destructor() {
         healthBar.destroy();
         weapon.destroy();
-        All.entityCollection.remove(this);
         super.destructor();
     }
 }

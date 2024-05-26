@@ -7,11 +7,9 @@ import com.po.fuck.lifetime.Manager;
 
 public abstract class Gun extends HandedWeapon implements Updatable {
     protected float cooldown;
-    protected int teamTag;
     private float cooldownLeft = 0;
     Gun(Entity owner) {
         super(owner);
-        this.teamTag = owner.teamTag;
     }
 
     // something like bullet factory

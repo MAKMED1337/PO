@@ -29,6 +29,9 @@ public abstract class Bullet implements Drawable, Updatable {
         sprite.setRotation(-velocity.angleDeg());
         drawer.draw(sprite, position);
     }
+    protected boolean tryDamage(Entity entity) {
+        return entity.getTeamTag() != this.teamTag;
+    }
 
     @Override
     public void update(float delta) {
@@ -38,12 +41,13 @@ public abstract class Bullet implements Drawable, Updatable {
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
             if (collidable instanceof Entity) {
-                if (((Entity) collidable).teamTag == this.teamTag) continue;
-                ((Entity) collidable).takeDamage(1);
-                Manager.destroy_raw(this);
+                if (this.tryDamage((Entity) collidable)) {
+                    ((Entity) collidable).takeDamage(1);
+                    Manager.destroy_raw(this);
 
-                return; // damage only 1 enemy at the same time
-                // TODO: sort them by distance or something like this
+                    return; // damage only 1 enemy at the same time
+                    // TODO: sort them by distance or something like this
+                }
             }
         }
     }

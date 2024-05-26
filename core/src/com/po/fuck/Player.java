@@ -26,6 +26,7 @@ public class Player extends Entity {
                 new Boost(
                         new BasicMovement(this, DEFAULT_SPEED),
                         Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN));
+        teamTag = Constants.PLAYER_TEAM_TAG;
     }
 
     // Controllers
@@ -34,7 +35,6 @@ public class Player extends Entity {
 
     Player(Vector2 position) {
         super(position, 10);
-        teamTag = Constants.PLAYER_TEAM_TAG;
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(keyboardController.get());
