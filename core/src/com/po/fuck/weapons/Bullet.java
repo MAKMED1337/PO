@@ -19,7 +19,7 @@ public abstract class Bullet implements Drawable, Updatable {
     protected Vector2 position;
     protected Vector2 velocity;
     protected int teamTag;
-    protected int damage;
+    protected float damage;
 
     @Override
     public int get_z() {
