@@ -4,8 +4,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.movement.Boost;
+import com.po.fuck.updates.Updatable;
 
-public class KeyboardController extends InputAdapter {
+public class KeyboardController extends InputAdapter implements Updatable {
     private final Player player;
 
     // Prevent the situation when the buttons were pressed before the game and did
@@ -50,7 +51,6 @@ public class KeyboardController extends InputAdapter {
                 break;
         }
 
-        player.movement.get().setDirection(getDirection());
         return true;
     }
 
@@ -71,7 +71,11 @@ public class KeyboardController extends InputAdapter {
                 break;
         }
 
-        player.movement.get().setDirection(getDirection());
         return true;
+    }
+
+    @Override
+    public void update(float delta) {
+        player.movement.get().setDirection(getDirection());
     }
 }
