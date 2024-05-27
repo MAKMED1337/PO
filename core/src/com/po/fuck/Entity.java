@@ -10,6 +10,8 @@ public class Entity extends GameObject {
     protected Managed<Movement> movement = new Managed<>();
     protected Managed<Weapon> weapon = new Managed<>();
     protected int teamTag;
+
+    protected int reward = 1;
     protected float health_points;
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
@@ -35,8 +37,10 @@ public class Entity extends GameObject {
             return false;
 
         health_points = Math.max(0, health_points - damage);
-        if (health_points == 0)
+        if (health_points == 0) {
+            CoinCenter.coins += reward;
             Manager.destroy_raw(this);
+        }
 
         return true;
     }

@@ -26,6 +26,7 @@ public final class BasicEnemy extends Entity implements Updatable {
         weapon = Manager.create(new Glock(this));
         movement = Manager.create(new BasicMovement(this, DEFAULT_SPEED / 10));
         teamTag = Constants.ENEMY_TEAM_TAG;
+        reward = 1;
     }
 
     public BasicEnemy(Vector2 position) {

@@ -1,5 +1,6 @@
 package com.po.fuck;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -20,5 +21,9 @@ public class CenterDrawer {
 
         sprite.setPosition(pos.x, pos.y);
         sprite.draw(batch);
+    }
+
+    public void drawText(String text, BitmapFont font, float x, float y) {
+        font.draw(batch, text, x, y);
     }
 }

@@ -35,6 +35,7 @@ public class FUCK extends ApplicationAdapter {
 
         Manager.create(new BasicEnemy(new Vector2(100, 100)));
         Manager.create(new BasicEnemy(new Vector2(GAME_WIDTH - 100, GAME_HEIGHT - 100)));
+        Manager.create(new CoinCenter());
     }
 
     @Override
