@@ -2,10 +2,7 @@ package com.po.fuck;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.enemies.BasicEnemy;
 import com.po.fuck.lifetime.Destructable;
 import com.po.fuck.lifetime.Managed;
@@ -17,20 +14,15 @@ import static com.po.fuck.Constants.GAME_WIDTH;
 
 public class FUCK extends ApplicationAdapter {
     static {
-       forceInit(Destructable.class);
-       forceInit(All.class);
+        forceInit(Destructable.class);
+        forceInit(All.class);
     }
     public static Managed<Player> player;
-
-    SpriteBatch batch;
-    private OrthographicCamera camera;
+    public static Managed<Camera> camera;
 
     @Override
     public void create() {
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
-        batch = new SpriteBatch();
-
+        camera = Manager.create(new Camera());
         player = Manager.create(new Player(new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2)));
 
         Manager.create(new BasicEnemy(new Vector2(100, 100)));
@@ -39,21 +31,15 @@ public class FUCK extends ApplicationAdapter {
 
     @Override
     public void render() {
-        ScreenUtils.clear(0, 0, 0, 1);
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
+        if (player.get() == null)
+            player = Manager.create(new Player(new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2)));
+
+        camera.get().setPosition(player.get().getPosition());
 
         float delta = Gdx.graphics.getDeltaTime();
         All.updatableCollection.update(delta);
 
-        batch.begin();
-        All.drawableCollection.draw(new CenterDrawer(batch));
-        batch.end();
-    }
-
-    @Override
-    public void dispose() {
-        batch.dispose();
+        camera.get().draw_all();
     }
 
     // https://stackoverflow.com/questions/3560103/how-to-force-a-class-to-be-initialised
@@ -61,7 +47,7 @@ public class FUCK extends ApplicationAdapter {
         try {
             Class.forName(klass.getName(), true, klass.getClassLoader());
         } catch (ClassNotFoundException e) {
-            throw new AssertionError(e);  // Can't happen
+            throw new AssertionError(e); // Can't happen
         }
         return klass;
     }

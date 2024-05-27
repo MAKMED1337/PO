@@ -11,6 +11,7 @@ import static com.po.fuck.Constants.GAME_WIDTH;
 
 public final class MouseController extends InputAdapter implements Updatable {
     private boolean pressed = false;
+    private Vector2 lastLocalPosition = new Vector2();
 
     Player player;
 
@@ -24,10 +25,8 @@ public final class MouseController extends InputAdapter implements Updatable {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        Weapon weapon = getWeapon();
-        if (weapon != null)
-            weapon.aim(new Vector2((float) (screenX * GAME_WIDTH) / Gdx.graphics.getWidth(),
-                    (float) (screenY * GAME_HEIGHT) / Gdx.graphics.getHeight()));
+        lastLocalPosition = new Vector2((float) (screenX * GAME_WIDTH) / Gdx.graphics.getWidth(),
+                (float) (screenY * GAME_HEIGHT) / Gdx.graphics.getHeight());
         return true;
     }
 
@@ -50,10 +49,15 @@ public final class MouseController extends InputAdapter implements Updatable {
 
     @Override
     public void update(float delta) {
-        if (pressed) {
-            Weapon weapon = getWeapon();
-            if (weapon != null)
-                weapon.attack();
-        }
+        Vector2 centerPosition = lastLocalPosition.cpy().sub(GAME_WIDTH / 2, GAME_HEIGHT / 2);
+        Vector2 actualPosition = centerPosition.cpy().add(FUCK.camera.get().getPosition());
+
+        Weapon weapon = getWeapon();
+        if (weapon == null)
+            return;
+
+        weapon.aim(actualPosition);
+        if (pressed)
+            weapon.attack();
     }
 }

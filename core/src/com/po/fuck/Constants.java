@@ -20,4 +20,7 @@ public final class Constants {
     public static float HEALTHBAR_OFFSET = 5;
     public static final int ENEMY_TEAM_TAG = 0;
     public static final int PLAYER_TEAM_TAG = 1;
+
+    /* camera */
+    public static final float CAMERA_SPEED = 10;
 }
