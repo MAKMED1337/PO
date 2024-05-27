@@ -1,6 +1,8 @@
 package com.po.fuck.view;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -9,20 +11,31 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.model.Constants;
 import com.po.fuck.model.collections.DrawableCollection;
-import com.po.fuck.model.weapons.Bullet;
-import com.po.fuck.model.weapons.HandedWeapon;
 
+/**
+ * Class responsible for rendering game objects.
+ */
 public class Renderer {
     SpriteBatch batch;
 
     private OrthographicCamera camera;
+
+    static Map<Class<?>, ClassDrawer<?> > drawers = new HashMap<>();
+
+    static {
+        ClassDrawer.initialize();
+    }
 
     public Renderer(){
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
         batch = new SpriteBatch();
     }
-
+    /**
+     * Renders the provided DrawableCollection.
+     *
+     * @param drawableCollection the collection of drawable objects to render
+     */
     public void render(DrawableCollection drawableCollection){
         ScreenUtils.clear(0, 0, 0, 1);
         camera.update();
@@ -33,29 +46,41 @@ public class Renderer {
         for(Drawable object : drawableCollection){
             List<Sprite> spriteList = object.getSpriteList();
             Vector2 position = object.getPosition();
-        
-            for(Sprite sprite : spriteList){
-
-                // make it more beatiful
-                if(object instanceof Bullet){
-                    Bullet bullet = (Bullet) object;
-                    sprite.setRotation(-bullet.getVelocity().angleDeg());
-                }
-                
-                if(object instanceof HandedWeapon){
-                    HandedWeapon weapon = (HandedWeapon) object;
-                    if (weapon.getAimPosition() == null)
-                        return;
-
-                    Vector2 direction = weapon.getDirection();
-                    float angle = direction.angleDeg();
-                    sprite.setRotation(-angle);
-                    sprite.setFlip(false, angle >= 90 && angle <= 270);
-                }
-
-                centerDrawer.draw(sprite, position);
-            }
+            
+            @SuppressWarnings("unchecked")
+            ClassDrawer<Drawable> classDrawer = (ClassDrawer<Drawable>) getDrawer(object.getClass());
+            classDrawer.draw(centerDrawer, spriteList, object.getClass().cast(object), position);
         }
         batch.end();
+    }
+
+    /**
+     * Retrieves the ClassDrawer instance for a specific class type. If there is no ClassDrawer instance for the provided
+     * class type, the method will attempt to find a ClassDrawer instance for a superclass of the provided class type.
+     *
+     * @param clazz the class type
+     * @param <T>   the type of the class
+     * @return the ClassDrawer instance
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> ClassDrawer<T> getDrawer(Class<T> clazz) {
+        ClassDrawer<T> drawer = (ClassDrawer<T>) drawers.get(clazz);
+        if(drawer == null){
+            for(Class<?> key : drawers.keySet()){
+                if(key.isAssignableFrom(clazz)){
+                    drawer = (ClassDrawer<T>) drawers.get(key);
+                    break;
+                }
+            }
+        }
+        return drawer;
+    }
+
+    public static <T> void addDrawer(Class<T> cls, ClassDrawer<T> classDrawer){
+        if(drawers.containsKey(cls)){
+            throw new RuntimeException("ClassDrawer was added twice for " + cls.toString());
+        }
+        drawers.put(cls,classDrawer);
+        return;
     }
 }
