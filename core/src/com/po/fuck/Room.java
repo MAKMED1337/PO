@@ -1,6 +1,7 @@
 package com.po.fuck;
 
 import static com.po.fuck.Constants.BACKGROUND_LAYER;
+import static com.po.fuck.Constants.ENEMY_TEAM_TAG;
 
 import java.util.List;
 
@@ -114,7 +115,7 @@ public final class Room implements Drawable, Updatable {
                 start();
             return;
         } else if (state == State.FIGHT) {
-            if (!inside.stream().anyMatch(x -> x instanceof BasicEnemy))
+            if (!inside.stream().anyMatch(x -> x instanceof Entity && ((Entity) x).getTeamTag() == ENEMY_TEAM_TAG))
                 clear();
             return;
         } else
