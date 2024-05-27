@@ -7,9 +7,7 @@ import com.po.fuck.model.lifetime.Manager;
 
 public abstract class Gun extends HandedWeapon implements Updatable {
     protected float cooldown;
-
     private float cooldownLeft = 0;
-
     Gun(Entity owner) {
         super(owner);
     }

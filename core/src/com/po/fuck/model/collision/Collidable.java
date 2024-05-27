@@ -12,6 +12,6 @@ public interface Collidable {
     Polygon getCollision();
 
     default boolean collide(Polygon other) {
-        return Intersector.intersectPolygons(getCollision(), other, null);
+        return Intersector.overlapConvexPolygons(getCollision(), other);
     }
 }

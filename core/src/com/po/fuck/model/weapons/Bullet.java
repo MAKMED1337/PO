@@ -18,20 +18,23 @@ public abstract class Bullet implements Drawable, Updatable {
     protected Sprite sprite;
     protected Vector2 position;
     protected Vector2 velocity;
+    protected int teamTag;
+    protected float damage;
 
     @Override
     public int get_z() {
         return 1;
     }
 
-    public Vector2 getSize() {
-        return new Vector2(sprite.getWidth(), sprite.getHeight());
-    }
-
     @Override
     public void draw(CenterDrawer drawer) {
         sprite.setRotation(-velocity.angleDeg());
         drawer.draw(sprite, position);
+    }
+    protected boolean tryDamage(Entity entity, float damage) {
+        if (entity.getTeamTag() == this.teamTag) return false;
+        entity.takeDamage(damage);
+        return true;
     }
 
     @Override
@@ -41,10 +44,10 @@ public abstract class Bullet implements Drawable, Updatable {
         Polygon polygon = GeometryMisc.createRectangle(position, sprite);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
-            if (collidable instanceof Entity) {
-                ((Entity) collidable).takeDamage(1);
+            if (!(collidable instanceof Entity)) continue;
+            Entity enemy = (Entity) collidable;
+            if (this.tryDamage(enemy, damage)) {
                 Manager.destroy_raw(this);
-
                 return; // damage only 1 enemy at the same time
                 // TODO: sort them by distance or something like this
             }

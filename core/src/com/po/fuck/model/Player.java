@@ -27,6 +27,7 @@ public class Player extends Entity {
                 new Boost(
                         new BasicMovement(this, DEFAULT_SPEED),
                         Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN));
+        teamTag = Constants.PLAYER_TEAM_TAG;
     }
 
     // Controllers
