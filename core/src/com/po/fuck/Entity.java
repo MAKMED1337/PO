@@ -11,7 +11,7 @@ public class Entity extends GameObject {
     protected Managed<Weapon> weapon = new Managed<>();
     protected int teamTag;
 
-    protected int reward = 1;
+    protected int reward = 0;
     protected float health_points;
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
