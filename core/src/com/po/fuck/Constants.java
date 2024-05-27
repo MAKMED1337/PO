@@ -28,4 +28,7 @@ public final class Constants {
     public static final int BACKGROUND_LAYER = 0;
     public static final int ENTITY_LAYER = 1;
     public static final int WEAPON_LAYER = 2;
+
+    /* borders */
+    public static final int GAME_BORDER = 20000;
 }

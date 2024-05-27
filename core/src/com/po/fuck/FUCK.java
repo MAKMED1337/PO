@@ -1,5 +1,7 @@
 package com.po.fuck;
 
+import static com.po.fuck.Constants.GAME_BORDER;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
@@ -23,6 +25,17 @@ public class FUCK extends ApplicationAdapter {
 
         Manager.create(new Room(new Vector2(0, 0)));
         Manager.create(new Room(new Vector2(1, 0)));
+
+        // Creating some game borders to destroy the bullets that went off the map.
+        // We can not use here VERTICAL/HORIZONTAL, because if something went off the
+        // map, then we want to catch with a thick wall, because it can be laggy or
+        // something else.
+        final int HUGE = 1000, HUGE2 = 2 * HUGE, SIZE = GAME_BORDER + HUGE2;
+        Manager.create(new InvisibleWall(new Vector2(-GAME_BORDER - HUGE, 0), new Vector2(HUGE2, SIZE)));
+        Manager.create(new InvisibleWall(new Vector2(-GAME_BORDER + HUGE, 0), new Vector2(HUGE2, SIZE)));
+
+        Manager.create(new InvisibleWall(new Vector2(0, -GAME_BORDER - HUGE), new Vector2(SIZE, HUGE2)));
+        Manager.create(new InvisibleWall(new Vector2(0, -GAME_BORDER + HUGE), new Vector2(SIZE, HUGE2)));
     }
 
     @Override
