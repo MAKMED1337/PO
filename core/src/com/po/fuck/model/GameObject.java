@@ -1,9 +1,10 @@
 package com.po.fuck.model;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Drawable;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.lifetime.Destructable;
@@ -16,13 +17,11 @@ public class GameObject implements Drawable, Collidable, Destructable {
         this.position = position;
     }
 
-    public Sprite getSprite(){
-        return new Sprite(this.sprite);
-    }
-
     @Override
-    public void draw(CenterDrawer drawer) {
-        drawer.draw(sprite, position);
+    public ArrayList<Sprite> getSpriteList(){
+        return new ArrayList<Sprite>(){{
+            add(sprite);
+        }};
     }
 
     @Override

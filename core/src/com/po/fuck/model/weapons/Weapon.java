@@ -1,5 +1,7 @@
 package com.po.fuck.model.weapons;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
@@ -8,7 +10,7 @@ import com.po.fuck.view.Drawable;
 public abstract class Weapon implements Drawable {
     protected final Entity owner;
     protected Sprite sprite;
-    protected Vector2 aiming;
+    protected Vector2 aiming = new Vector2();
 
     @Override
     public int get_z() {
@@ -17,6 +19,17 @@ public abstract class Weapon implements Drawable {
 
     Weapon(Entity owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public ArrayList<Sprite> getSpriteList(){
+        return new ArrayList<Sprite>(){{
+            add(sprite);
+        }};
+    }
+
+    public Vector2 getAimPosition(){
+        return aiming.cpy();
     }
 
     public void aim(Vector2 position) {

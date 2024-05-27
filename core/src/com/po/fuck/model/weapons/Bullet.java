@@ -3,7 +3,6 @@ package com.po.fuck.model.weapons;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Drawable;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.Entity;
@@ -12,6 +11,7 @@ import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.collections.All;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Bullet implements Drawable, Updatable {
@@ -25,12 +25,21 @@ public abstract class Bullet implements Drawable, Updatable {
     public int get_z() {
         return 1;
     }
-
     @Override
-    public void draw(CenterDrawer drawer) {
-        sprite.setRotation(-velocity.angleDeg());
-        drawer.draw(sprite, position);
+    public Vector2 getPosition() {
+        return position.cpy();
     }
+    @Override
+    public ArrayList<Sprite> getSpriteList(){
+        return new ArrayList<Sprite>(){{
+            add(sprite);
+        }};
+    }
+
+    public Vector2 getVelocity(){
+        return velocity.cpy();
+    }
+
     protected boolean tryDamage(Entity entity, float damage) {
         if (entity.getTeamTag() == this.teamTag) return false;
         entity.takeDamage(damage);

@@ -9,6 +9,8 @@ import com.po.fuck.model.Updatable;
 import static com.po.fuck.model.Constants.HEALTHBAR_OFFSET;
 import static com.po.fuck.view.DrawableMisc.createTexture;
 
+import java.util.ArrayList;
+
 public final class HealthBar implements Drawable, Updatable {
     private final Sprite healthBarSprite;
     private final Sprite backgroundSprite;
@@ -21,13 +23,13 @@ public final class HealthBar implements Drawable, Updatable {
         backgroundSprite = new Sprite(createTexture(100, 10, new Color(255, 0, 0, 10)));
     }
 
-	@Override
-	public void draw(CenterDrawer drawer) {
-        Vector2 drawingPosition = entity.getPosition().sub(0, entity.getSprite().getHeight() / 2 + HEALTHBAR_OFFSET);
+	// @Override
+	// public void draw(CenterDrawer drawer) {
+    //     Vector2 drawingPosition = entity.getPosition().sub(0, entity.getSprite().getHeight() / 2 + HEALTHBAR_OFFSET);
 
-        drawer.draw(backgroundSprite, drawingPosition);
-        drawer.draw(healthBarSprite, drawingPosition);
-	}
+    //     drawer.draw(backgroundSprite, drawingPosition);
+    //     drawer.draw(healthBarSprite, drawingPosition);
+	// }
 
 	@Override
 	public void update(float delta) {
@@ -35,5 +37,18 @@ public final class HealthBar implements Drawable, Updatable {
         int width = 100;
         int height = 10;
         healthBarSprite.setSize((float) Math.ceil(healthPercentage * width), height);
+    }
+
+    @Override
+    public Vector2 getPosition() {
+        return entity.getPosition().sub(0, entity.getSpriteList().get(0).getHeight() / 2 + HEALTHBAR_OFFSET);
+    }
+
+    @Override
+    public ArrayList<Sprite> getSpriteList() {
+        return new ArrayList<Sprite>() {{
+            add(backgroundSprite);
+            add(healthBarSprite);
+        }};
     }
 }

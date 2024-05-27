@@ -17,7 +17,7 @@ public class Core implements Updatable{
        forceInit(All.class);
     }
     
-    public static Managed<Player> player;
+    public Managed<Player> player;
 
     public void initialize() {
         player = Manager.create(new Player(new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2)));

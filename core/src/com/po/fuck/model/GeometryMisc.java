@@ -36,12 +36,15 @@ public class GeometryMisc {
     }
 
     /**
-     * Finds the closest entity to a given main entity from a list of other
-     * entities.
-     * @param main The main entity.
-     * @param list The list of other entities.
-     * @return The closest entity to the main entity from the list, or null if the
-     *         list is empty.
+     * Finds the closest {@link Entity} to the specified main entity from a list of entities.
+     *
+     * <p>This method iterates through the provided list of entities and determines
+     * which entity is closest to the main entity based on a distance calculation.</p>
+     *
+     * @param <A> the type of the main entity, extending {@link Entity}
+     * @param main the main entity from which distances are measured
+     * @param list a list of entities to compare against the main entity
+     * @return the {@link Entity} that is closest to the main entity, or {@code null} if the list is empty
      */
     public static<A extends Entity> Entity closest(A main, List<? extends Entity> list) {
         Entity closestEntity = null;
@@ -52,6 +55,17 @@ public class GeometryMisc {
         return closestEntity;
     }
 
+    /**
+     * Creates a rectangular {@link Polygon} based on the provided position and sprite.
+     *
+     * <p>The rectangle will be centered on the provided position, with its size
+     * determined by the width and height of the sprite. The rectangle is then rotated
+     * by the negative of the sprite's rotation angle.</p>
+     *
+     * @param position the center position of the rectangle, represented as a {@link Vector2}
+     * @param sprite the {@link Sprite} used to determine the size and rotation of the rectangle
+     * @return a {@link Polygon} representing the rectangle
+     */
     public static Polygon createRectangle(Vector2 position, Sprite sprite) {
         Vector2 size = new Vector2(sprite.getWidth(), sprite.getHeight());
         size.scl(0.5f);

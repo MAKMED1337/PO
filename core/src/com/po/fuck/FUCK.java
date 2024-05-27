@@ -7,8 +7,8 @@ import com.po.fuck.model.Core;
 
 public class FUCK extends ApplicationAdapter {
 
-    static Core core;
-    static Renderer renderer;
+    Core core;
+    Renderer renderer;
 
     @Override
     public void create() {
@@ -26,6 +26,6 @@ public class FUCK extends ApplicationAdapter {
 
     @Override
     public void dispose() {
-        renderer.dispose();
+        
     }
 }
