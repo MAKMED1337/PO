@@ -39,29 +39,48 @@ public final class Room implements Drawable, Updatable {
         return BACKGROUND_LAYER;
     }
 
+    protected void spawnEnemies() {
+        Vector2 center = getPosition();
+        Vector2 offset = new Vector2(sprite.getWidth() - 200, sprite.getHeight() - 300);
+
+        // top left
+        Manager.create(new BasicEnemy(center.cpy().mulAdd(offset, -0.5f)));
+
+        // bottom right
+        Manager.create(new BasicEnemy(center.cpy().mulAdd(offset, 0.5f)));
+    }
+
     protected Vector2 getPosition() {
         return new Vector2(sprite.getWidth() * tilling_position.x, sprite.getHeight() * tilling_position.y);
     }
 
-    void clear() {
+    protected void clear() {
         state = State.FINISHED;
+
         for (Managed<InvisibleWall> wall : walls)
             wall.destroy();
     }
 
-    void start() {
-        state = State.FIGHT;
+    // returns raw walls, simply for inner collisions check
+    protected InvisibleWall[] getWalls() {
         float h = sprite.getHeight(), w = sprite.getWidth();
+        return new InvisibleWall[] {
+                new InvisibleWall(getPosition().sub(0, h / 2), InvisibleWall.Type.HORIZONTAL, w),
+                new InvisibleWall(getPosition().add(w / 2, 0), InvisibleWall.Type.VERTICAL, h),
 
-        walls[0] = Manager.create(
-                new InvisibleWall(getPosition().sub(0, h / 2), InvisibleWall.Type.HORIZONTAL, w));
-        walls[2] = Manager.create(
-                new InvisibleWall(getPosition().add(0, h / 2), InvisibleWall.Type.HORIZONTAL, w));
+                new InvisibleWall(getPosition().add(0, h / 2), InvisibleWall.Type.HORIZONTAL, w),
+                new InvisibleWall(getPosition().sub(w / 2, 0), InvisibleWall.Type.VERTICAL, h),
+        };
+    }
 
-        walls[1] = Manager.create(
-                new InvisibleWall(getPosition().add(w / 2, 0), InvisibleWall.Type.VERTICAL, h));
-        walls[3] = Manager.create(
-                new InvisibleWall(getPosition().sub(w / 2, 0), InvisibleWall.Type.VERTICAL, h));
+    protected void start() {
+        state = State.FIGHT;
+
+        InvisibleWall[] rawWalls = getWalls();
+        for (int i = 0; i < 4; ++i)
+            walls[i] = Manager.create(rawWalls[i]);
+
+        spawnEnemies();
     }
 
     @Override
@@ -78,7 +97,20 @@ public final class Room implements Drawable, Updatable {
                 .collides(GeometryMisc.createRectangle(getPosition(), sprite));
 
         if (state == State.NOT_ENTERED) {
-            if (inside.stream().anyMatch(x -> x instanceof Player))
+            List<Collidable> players = inside.stream().filter(x -> x instanceof Player).toList();
+            if (players.isEmpty())
+                return;
+
+            if (players.size() != 1)
+                throw new AssertionError("Only one player should exist");
+
+            Player player = (Player) players.get(0);
+
+            boolean collide = false;
+            for (InvisibleWall wall : getWalls())
+                collide |= player.collide(wall.getCollision());
+
+            if (!collide)
                 start();
             return;
         } else if (state == State.FIGHT) {

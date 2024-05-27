@@ -3,14 +3,10 @@ package com.po.fuck;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.enemies.BasicEnemy;
 import com.po.fuck.lifetime.Destructable;
 import com.po.fuck.lifetime.Managed;
 import com.po.fuck.lifetime.Manager;
 import com.po.fuck.collections.All;
-
-import static com.po.fuck.Constants.GAME_HEIGHT;
-import static com.po.fuck.Constants.GAME_WIDTH;
 
 public class FUCK extends ApplicationAdapter {
     static {
@@ -24,9 +20,6 @@ public class FUCK extends ApplicationAdapter {
     public void create() {
         camera = Manager.create(new Camera());
         player = Manager.create(new Player(new Vector2()));
-
-        Manager.create(new BasicEnemy(new Vector2(-GAME_WIDTH / 2 + 150, -GAME_HEIGHT / 2 + 150)));
-        Manager.create(new BasicEnemy(new Vector2(GAME_WIDTH / 2 - 150, GAME_HEIGHT / 2 - 150)));
 
         Manager.create(new Room(new Vector2(0, 0)));
         Manager.create(new Room(new Vector2(1, 0)));
