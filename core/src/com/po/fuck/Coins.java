@@ -28,7 +28,7 @@ public class Coins implements Drawable {
         BitmapFont font = new BitmapFont();
         font.setColor(Color.YELLOW);
         font.getData().scale(1.5f);
-        String text = ((Integer)coins).toString();
+        String text = Integer.toString(coins);
         drawer.drawText(text, font, new Vector2(coinNumberPosX, coinNumberPosY));
         float len = text.length();
         drawer.draw(sprite, new Vector2(spriteCoinPositionX + widthOfCoinNumber * len, spriteCoinPositionY));
