@@ -20,4 +20,10 @@ public final class Constants {
     public static float HEALTHBAR_OFFSET = 5;
     public static final int ENEMY_TEAM_TAG = 0;
     public static final int PLAYER_TEAM_TAG = 1;
+
+    public static final float spriteCoinPositionX = 80;
+    public static final float spriteCoinPositionY = 45f;
+    public static final float coinNumberPosX = 35;
+    public static final float widthOfCoinNumber = 17;
+    public static final float coinNumberPosY = GAME_HEIGHT - 30;
 }

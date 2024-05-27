@@ -23,7 +23,7 @@ public class CenterDrawer {
         sprite.draw(batch);
     }
 
-    public void drawText(String text, BitmapFont font, float x, float y) {
-        font.draw(batch, text, x, y);
+    public void drawText(String text, BitmapFont font, Vector2 position) {
+        font.draw(batch, text, position.x, position.y);
     }
 }
