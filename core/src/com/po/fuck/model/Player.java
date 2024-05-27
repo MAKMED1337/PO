@@ -9,10 +9,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.controller.KeyboardController;
 import com.po.fuck.controller.MouseController;
-import com.po.fuck.controller.movement.BasicMovement;
-import com.po.fuck.controller.movement.Boost;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
+import com.po.fuck.model.movement.BasicMovement;
+import com.po.fuck.model.movement.Boost;
 import com.po.fuck.model.weapons.LaserGun;
 
 /**

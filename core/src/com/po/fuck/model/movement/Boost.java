@@ -1,4 +1,4 @@
-package com.po.fuck.controller.movement;
+package com.po.fuck.model.movement;
 
 import com.badlogic.gdx.math.Vector2;
 

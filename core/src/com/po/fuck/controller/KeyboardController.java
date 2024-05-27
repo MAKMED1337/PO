@@ -3,8 +3,8 @@ package com.po.fuck.controller;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.controller.movement.Boost;
 import com.po.fuck.model.Player;
+import com.po.fuck.model.movement.Boost;
 
 public class KeyboardController extends InputAdapter {
     private final Vector2 direction = new Vector2(0, 0);

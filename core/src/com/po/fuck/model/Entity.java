@@ -1,10 +1,10 @@
 package com.po.fuck.model;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.controller.movement.Movement;
 import com.po.fuck.view.HealthBar;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
+import com.po.fuck.model.movement.Movement;
 import com.po.fuck.model.weapons.Weapon;
 
 public class Entity extends GameObject {

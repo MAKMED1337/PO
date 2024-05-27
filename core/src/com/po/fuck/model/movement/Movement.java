@@ -1,4 +1,4 @@
-package com.po.fuck.controller.movement;
+package com.po.fuck.model.movement;
 
 import static com.po.fuck.model.Constants.COLLISION_ITERATIONS;
 
