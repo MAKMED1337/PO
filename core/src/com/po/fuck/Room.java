@@ -103,7 +103,7 @@ public final class Room implements Drawable, Updatable {
                 return;
 
             if (players.size() != 1)
-                throw new AssertionError("Only one player should exist");
+                throw new AssertionError("Only one player may exist");
 
             Player player = (Player) players.get(0);
 
@@ -119,6 +119,6 @@ public final class Room implements Drawable, Updatable {
                 clear();
             return;
         } else
-            throw new AssertionError("Unknow state");
+            throw new AssertionError("Unknown state");
     }
 }
