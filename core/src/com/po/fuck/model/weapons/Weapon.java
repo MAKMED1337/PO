@@ -1,7 +1,5 @@
 package com.po.fuck.model.weapons;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
@@ -19,13 +17,6 @@ public abstract class Weapon implements Drawable {
 
     Weapon(Entity owner) {
         this.owner = owner;
-    }
-
-    @Override
-    public ArrayList<Sprite> getSpriteList(){
-        return new ArrayList<Sprite>(){{
-            add(sprite);
-        }};
     }
 
     public Vector2 getAimPosition(){

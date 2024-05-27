@@ -11,7 +11,6 @@ import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.collections.All;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Bullet implements Drawable, Updatable {
@@ -28,12 +27,6 @@ public abstract class Bullet implements Drawable, Updatable {
     @Override
     public Vector2 getPosition() {
         return position.cpy();
-    }
-    @Override
-    public ArrayList<Sprite> getSpriteList(){
-        return new ArrayList<Sprite>(){{
-            add(sprite);
-        }};
     }
 
     public Vector2 getVelocity(){

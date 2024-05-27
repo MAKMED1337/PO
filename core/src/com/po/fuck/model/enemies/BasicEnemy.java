@@ -43,4 +43,5 @@ public final class BasicEnemy extends Entity implements Updatable {
         w.attack();
         movement.get().setDirection(targetPosition.sub(position));
     }
+
 }

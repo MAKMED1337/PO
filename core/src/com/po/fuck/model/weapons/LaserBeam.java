@@ -35,8 +35,8 @@ public final class LaserBeam extends Bullet {
     @Override
     public void update(float delta) {
         timeElapsed += delta;
-        this.sprite = new Sprite(animation.getKeyFrame(timeElapsed));
-        sprite.setRotation(-velocity.angleDeg());
+        
+        sprite.setRotation(-velocity.angleDeg()); // Currently needed for Collisions
 
         if (timeElapsed > LIVE_TIME) {
             Manager.destroy_raw(this);

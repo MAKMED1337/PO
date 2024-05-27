@@ -47,10 +47,12 @@ public class Renderer {
         camera.update();
         batch.setProjectionMatrix(camera.combined);
 
+        ClassDrawer.initializeLaserBeamSprites(timeElapsed);
+
         batch.begin();
         CenterDrawer centerDrawer = new CenterDrawer(batch);
         for(Drawable object : drawableCollection){
-            List<Sprite> spriteList = object.getSpriteList();
+            List<Sprite> spriteList = getSprite(object.getClass());
             
             @SuppressWarnings("unchecked")
             ClassDrawer<Drawable> classDrawer = (ClassDrawer<Drawable>) getDrawer(object.getClass());
@@ -72,11 +74,16 @@ public class Renderer {
     public static <T> ClassDrawer<T> getDrawer(Class<T> clazz) {
         ClassDrawer<T> drawer = (ClassDrawer<T>) drawers.get(clazz);
         if(drawer == null){
-            for(Class<?> key : drawers.keySet()){
-                if(key.isAssignableFrom(clazz)){
-                    drawer = (ClassDrawer<T>) drawers.get(key);
+            Class<?> superClass = clazz;
+            while(superClass != Object.class){
+                superClass = superClass.getSuperclass();
+                drawer = (ClassDrawer<T>) drawers.get(superClass);
+                if(drawer != null){
                     break;
                 }
+            }
+            if(drawer == null){
+                throw new RuntimeException("No ClassDrawer found for " + clazz.toString() + " or any of its superclasses.");
             }
         }
         return drawer;
@@ -104,6 +111,7 @@ public class Renderer {
     }
 
     public static <T> List<Sprite> getSprite(Class<T> cls){
+        System.err.println(cls.toString());
         return sprites.get(cls);
     }
 }

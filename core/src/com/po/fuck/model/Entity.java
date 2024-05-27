@@ -1,7 +1,6 @@
 package com.po.fuck.model;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.view.HealthBar;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.Movement;
@@ -14,13 +13,11 @@ public class Entity extends GameObject {
     protected float health_points;
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
-    public Managed<HealthBar> healthBar;
 
     public Entity(Vector2 position, float HP) {
         super(position);
         this.MAX_HEALTH_POINTS = HP;
         this.health_points = HP;
-        healthBar = Manager.create(new HealthBar(this));
     }
 
     public int getTeamTag() {
@@ -56,7 +53,6 @@ public class Entity extends GameObject {
 
     @Override
     public void destructor() {
-        healthBar.destroy();
         weapon.destroy();
         super.destructor();
     }

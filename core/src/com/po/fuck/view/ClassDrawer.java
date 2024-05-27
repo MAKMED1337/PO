@@ -10,10 +10,13 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.model.Constants;
 import com.po.fuck.model.GameObject;
+import com.po.fuck.model.Entity;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.weapons.Bullet;
+import com.po.fuck.model.weapons.CosmicBullet;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.HandedWeapon;
 import com.po.fuck.model.weapons.LaserBeam;
@@ -28,7 +31,7 @@ public abstract class ClassDrawer<T> {
         initializeBulletDrawer();
         initializeHandedWeaponDrawer();
         initializeGameObjectDrawer();
-        initializeHealthBarDrawer();
+        initializeEntityDrawer();
     }
 
     private static void initializeBulletDrawer() {
@@ -66,6 +69,27 @@ public abstract class ClassDrawer<T> {
         Renderer.addDrawer(HandedWeapon.class, handedWeaponDrawer);
     }
 
+    private static void initializeEntityDrawer(){
+        ClassDrawer<Entity> entityDrawer = new ClassDrawer<Entity>() {
+            @Override
+            public void draw(CenterDrawer centerDrawer, List<Sprite> sprites, Entity entity) {
+                Vector2 position = entity.getPosition();
+                float height = 0;
+                for(Sprite sprite : sprites){
+                    centerDrawer.draw(sprite, position);
+                    height = Math.max(height, sprite.getHeight());
+                }
+                Vector2 healthBarPosition = position.cpy().sub(0 , height / 2 + Constants.HEALTHBAR_OFFSET);
+                HealthBar healthBar = new HealthBar(entity);
+
+                centerDrawer.draw(healthBar.backgroundSprite, healthBarPosition);
+                centerDrawer.draw(healthBar.healthBarSprite, healthBarPosition);
+                return;
+            }
+        };
+        Renderer.addDrawer(Entity.class, entityDrawer);
+    }
+
     private static void initializeGameObjectDrawer(){
         ClassDrawer<GameObject> gameObjectDrawer = new ClassDrawer<GameObject>() {
             @Override
@@ -78,21 +102,6 @@ public abstract class ClassDrawer<T> {
             }
         };
         Renderer.addDrawer(GameObject.class, gameObjectDrawer);
-    }
-
-
-    private static void initializeHealthBarDrawer() {
-        ClassDrawer<HealthBar> healthBarDrawer = new ClassDrawer<HealthBar>() {
-            @Override
-            public void draw(CenterDrawer centerDrawer, List<Sprite> sprites, HealthBar healthBar) {
-                Vector2 position = healthBar.getPosition();
-                for(Sprite sprite : sprites){
-                    centerDrawer.draw(sprite, position);
-                }
-                return;
-            }
-        };
-        Renderer.addDrawer(HealthBar.class, healthBarDrawer);
     }
 
     public static void initializeSprites() {
@@ -134,7 +143,7 @@ public abstract class ClassDrawer<T> {
 
     private static void initializeGlockSprites() {
         List<Sprite> glockSprites = new ArrayList<>();
-        glockSprites.add(new Sprite(new Texture("glock.png")));
+        glockSprites.add(new Sprite(new Texture("glock3.png")));
 
         Renderer.addSprite(Glock.class, glockSprites);
     }
@@ -150,10 +159,10 @@ public abstract class ClassDrawer<T> {
         List<Sprite> cosmicBulletSprites = new ArrayList<>();
         cosmicBulletSprites.add(new Sprite(new Texture("bullet2.png")));
 
-        Renderer.addSprite(Bullet.class, cosmicBulletSprites);
+        Renderer.addSprite(CosmicBullet.class, cosmicBulletSprites);
     }
 
-    private static void initializeLaserBeamSprites(float elapsedTime) {
+    static void initializeLaserBeamSprites(float elapsedTime) {
         List<Sprite> laserBeamSprites = new ArrayList<>();
         Animation<TextureRegion> animation = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read());
         laserBeamSprites.add(new Sprite(animation.getKeyFrame(elapsedTime)));
