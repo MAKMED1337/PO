@@ -23,4 +23,9 @@ public final class Constants {
 
     /* camera */
     public static final float CAMERA_SPEED = 10;
+
+    /* layering */
+    public static final int BACKGROUND_LAYER = 0;
+    public static final int ENTITY_LAYER = 1;
+    public static final int WEAPON_LAYER = 2;
 }

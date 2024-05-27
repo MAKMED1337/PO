@@ -27,6 +27,9 @@ public class FUCK extends ApplicationAdapter {
 
         Manager.create(new BasicEnemy(new Vector2(-GAME_WIDTH / 2 + 150, -GAME_HEIGHT / 2 + 150)));
         Manager.create(new BasicEnemy(new Vector2(GAME_WIDTH / 2 - 150, GAME_HEIGHT / 2 - 150)));
+
+        Manager.create(new Room(new Vector2(0, 0)));
+        Manager.create(new Room(new Vector2(1, 0)));
     }
 
     @Override

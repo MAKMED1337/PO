@@ -12,6 +12,8 @@ import com.po.fuck.updates.Drawable;
 import com.po.fuck.updates.Updatable;
 import com.po.fuck.lifetime.Manager;
 
+import static com.po.fuck.Constants.WEAPON_LAYER;
+
 import java.util.List;
 
 public abstract class Bullet implements Drawable, Updatable {
@@ -23,7 +25,7 @@ public abstract class Bullet implements Drawable, Updatable {
 
     @Override
     public int get_z() {
-        return 1;
+        return WEAPON_LAYER;
     }
 
     @Override
