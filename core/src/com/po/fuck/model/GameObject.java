@@ -1,6 +1,7 @@
 package com.po.fuck.model;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Polygon;
@@ -18,10 +19,8 @@ public class GameObject implements Drawable, Collidable, Destructable {
     }
 
     @Override
-    public ArrayList<Sprite> getSpriteList(){
-        return new ArrayList<Sprite>(){{
-            add(sprite);
-        }};
+    public List<Sprite> getSpriteList(){
+        return Arrays.asList(sprite);
     }
 
     @Override

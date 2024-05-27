@@ -1,6 +1,6 @@
 package com.po.fuck.view;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
@@ -11,6 +11,6 @@ public interface Drawable {
     }
 
     public Vector2 getPosition();
-    public ArrayList<Sprite> getSpriteList(); // possibly replace with Map
+    public List<Sprite> getSpriteList(); // possibly replace with Map
 }
 

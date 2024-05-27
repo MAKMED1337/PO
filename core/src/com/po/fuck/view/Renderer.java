@@ -1,6 +1,7 @@
 package com.po.fuck.view;
 
-import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -30,7 +31,7 @@ public class Renderer {
         batch.begin();
         CenterDrawer centerDrawer = new CenterDrawer(batch);
         for(Drawable object : drawableCollection){
-            ArrayList<Sprite> spriteList = object.getSpriteList();
+            List<Sprite> spriteList = object.getSpriteList();
             Vector2 position = object.getPosition();
         
             for(Sprite sprite : spriteList){
