@@ -2,9 +2,10 @@ package com.po.fuck;
 
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.collision.Collidable;
 
-public final class InvisibleWall extends GameObject {
-    protected Vector2 size;
+public final class InvisibleWall implements Collidable {
+    protected Vector2 position, size;
 
     public enum Type {
         VERTICAL,
@@ -12,7 +13,7 @@ public final class InvisibleWall extends GameObject {
     }
 
     InvisibleWall(Vector2 position, Vector2 size) {
-        super(position);
+        this.position = position;
         this.size = size;
     }
 
@@ -32,6 +33,11 @@ public final class InvisibleWall extends GameObject {
     }
 
     @Override
-    public void draw(CenterDrawer drawer) {
+    public Vector2 getPosition() {
+        return position.cpy();
+    }
+
+    @Override
+    public void setPosition(Vector2 position) {
     }
 }
