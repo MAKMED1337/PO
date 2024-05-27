@@ -7,7 +7,6 @@ import java.util.Map;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.model.Constants;
 import com.po.fuck.model.collections.DrawableCollection;
@@ -21,9 +20,11 @@ public class Renderer {
     private OrthographicCamera camera;
 
     static Map<Class<?>, ClassDrawer<?> > drawers = new HashMap<>();
+    static Map<Class<?>, List<Sprite>> sprites = new HashMap<>();
 
     static {
-        ClassDrawer.initialize();
+        ClassDrawer.initializeDrawers();
+        ClassDrawer.initializeSprites();
     }
 
     public Renderer(){
@@ -31,12 +32,17 @@ public class Renderer {
         camera.setToOrtho(false, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
         batch = new SpriteBatch();
     }
+
+    float timeElapsed = 0;
+
     /**
      * Renders the provided DrawableCollection.
      *
      * @param drawableCollection the collection of drawable objects to render
      */
-    public void render(DrawableCollection drawableCollection){
+    public void render(float delta, DrawableCollection drawableCollection){
+        timeElapsed += delta;
+
         ScreenUtils.clear(0, 0, 0, 1);
         camera.update();
         batch.setProjectionMatrix(camera.combined);
@@ -45,11 +51,11 @@ public class Renderer {
         CenterDrawer centerDrawer = new CenterDrawer(batch);
         for(Drawable object : drawableCollection){
             List<Sprite> spriteList = object.getSpriteList();
-            Vector2 position = object.getPosition();
             
             @SuppressWarnings("unchecked")
             ClassDrawer<Drawable> classDrawer = (ClassDrawer<Drawable>) getDrawer(object.getClass());
-            classDrawer.draw(centerDrawer, spriteList, object.getClass().cast(object), position);
+
+            classDrawer.draw(centerDrawer, spriteList, object.getClass().cast(object));
         }
         batch.end();
     }
@@ -82,5 +88,22 @@ public class Renderer {
         }
         drawers.put(cls,classDrawer);
         return;
+    }
+
+    public static <T> void addSprite(Class<T> cls, List<Sprite> spriteList){
+        if(sprites.containsKey(cls)){
+            throw new RuntimeException("Sprite was added twice for " + cls.toString());
+        }
+        sprites.put(cls,spriteList);
+        return;
+    }
+
+    public static <T> void addOrUpdateSprite(Class<T> cls, List<Sprite> spriteList){
+        sprites.put(cls,spriteList);
+        return;
+    }
+
+    public static <T> List<Sprite> getSprite(Class<T> cls){
+        return sprites.get(cls);
     }
 }

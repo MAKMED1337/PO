@@ -21,7 +21,7 @@ public class FUCK extends ApplicationAdapter {
     public void render() {
         float delta = Gdx.graphics.getDeltaTime();
         core.update(delta);
-        renderer.render(core.getDrawableCollection());
+        renderer.render(delta, core.getDrawableCollection());
     }
 
     @Override
