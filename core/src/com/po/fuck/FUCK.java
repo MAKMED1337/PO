@@ -23,16 +23,16 @@ public class FUCK extends ApplicationAdapter {
     @Override
     public void create() {
         camera = Manager.create(new Camera());
-        player = Manager.create(new Player(new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2)));
+        player = Manager.create(new Player(new Vector2()));
 
-        Manager.create(new BasicEnemy(new Vector2(100, 100)));
-        Manager.create(new BasicEnemy(new Vector2(GAME_WIDTH - 100, GAME_HEIGHT - 100)));
+        Manager.create(new BasicEnemy(new Vector2(-GAME_WIDTH / 2 + 150, -GAME_HEIGHT / 2 + 150)));
+        Manager.create(new BasicEnemy(new Vector2(GAME_WIDTH / 2 - 150, GAME_HEIGHT / 2 - 150)));
     }
 
     @Override
     public void render() {
         if (player.get() == null)
-            player = Manager.create(new Player(new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2)));
+            player = Manager.create(new Player(new Vector2()));
 
         camera.get().setPosition(player.get().getPosition());
 
