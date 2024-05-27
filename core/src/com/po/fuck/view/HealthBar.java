@@ -23,14 +23,6 @@ public final class HealthBar implements Drawable, Updatable {
         backgroundSprite = new Sprite(createTexture(100, 10, new Color(255, 0, 0, 10)));
     }
 
-	// @Override
-	// public void draw(CenterDrawer drawer) {
-    //     Vector2 drawingPosition = entity.getPosition().sub(0, entity.getSprite().getHeight() / 2 + HEALTHBAR_OFFSET);
-
-    //     drawer.draw(backgroundSprite, drawingPosition);
-    //     drawer.draw(healthBarSprite, drawingPosition);
-	// }
-
 	@Override
 	public void update(float delta) {
         float healthPercentage = 1.0f * entity.getHP() / entity.MAX_HEALTH_POINTS;
