@@ -41,12 +41,12 @@ public final class Camera extends CenterDrawer implements Updatable {
     public void draw(Sprite sprite, Vector2 position) {
         super.draw(sprite, position.cpy().sub(this.position).add(GAME_WIDTH / 2, GAME_HEIGHT / 2));
     }
-
-    public void draw_global(Sprite sprite, Vector2 global_position) {
+    @Override
+    public void drawGlobal(Sprite sprite, Vector2 global_position) {
         super.draw(sprite, global_position);
     }
 
-    public void draw_all() {
+    public void drawAll() {
         ScreenUtils.clear(0, 0, 0, 1);
         camera.update();
         batch.setProjectionMatrix(camera.combined);

@@ -16,12 +16,14 @@ public class FUCK extends ApplicationAdapter {
         forceInit(All.class);
     }
     public static Managed<Player> player;
+    public static Managed<Coins> coinsCounter;
     public static Managed<Camera> camera;
 
     @Override
     public void create() {
         camera = Manager.create(new Camera());
         player = Manager.create(new Player(new Vector2()));
+        coinsCounter = Manager.create(new Coins());
 
         Manager.create(new Room(new Vector2(0, 0)));
         Manager.create(new Room(new Vector2(1, 0)));
@@ -48,7 +50,7 @@ public class FUCK extends ApplicationAdapter {
         float delta = Gdx.graphics.getDeltaTime();
         All.updatableCollection.update(delta);
 
-        camera.get().draw_all();
+        camera.get().drawAll();
     }
 
     // https://stackoverflow.com/questions/3560103/how-to-force-a-class-to-be-initialised

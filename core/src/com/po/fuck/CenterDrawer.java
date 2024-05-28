@@ -1,5 +1,6 @@
 package com.po.fuck;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -8,7 +9,6 @@ import static com.po.fuck.Constants.GAME_HEIGHT;
 
 public class CenterDrawer {
     protected final SpriteBatch batch;
-
     CenterDrawer(SpriteBatch batch) {
         this.batch = batch;
     }
@@ -20,5 +20,12 @@ public class CenterDrawer {
 
         sprite.setPosition(pos.x, pos.y);
         sprite.draw(batch);
+    }
+    public void drawGlobal(Sprite sprite, Vector2 global_position) {
+        draw(sprite, global_position);
+    }
+
+    public void drawText(String text, BitmapFont font, Vector2 position) {
+        font.draw(batch, text, position.x, position.y);
     }
 }
