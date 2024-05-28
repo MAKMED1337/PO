@@ -38,7 +38,7 @@ public class Entity extends GameObject {
 
         health_points = Math.max(0, health_points - damage);
         if (health_points == 0) {
-            FUCK.coinsManager.get().addCoins(reward);
+            FUCK.coinsCounter.get().addCoins(reward);
             Manager.destroy_raw(this);
         }
 

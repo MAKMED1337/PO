@@ -24,7 +24,7 @@ public class FUCK extends ApplicationAdapter {
 
     SpriteBatch batch;
     private OrthographicCamera camera;
-    public static Managed<Coins> coinsManager;
+    public static Managed<Coins> coinsCounter;
     @Override
     public void create() {
         camera = new OrthographicCamera();
@@ -32,7 +32,7 @@ public class FUCK extends ApplicationAdapter {
         batch = new SpriteBatch();
 
         player = Manager.create(new Player(new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2)));
-        coinsManager = Manager.create(new Coins());
+        coinsCounter = Manager.create(new Coins());
 
         Manager.create(new BasicEnemy(new Vector2(100, 100)));
         Manager.create(new BasicEnemy(new Vector2(GAME_WIDTH - 100, GAME_HEIGHT - 100)));
