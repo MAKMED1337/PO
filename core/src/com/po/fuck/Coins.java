@@ -8,13 +8,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.updates.Drawable;
 
-import static com.po.fuck.Constants.COIN_COUNTER_POSITION_X;
-import static com.po.fuck.Constants.COIN_COUNTER_POSITION_Y;
-import static com.po.fuck.Constants.SPRITE_COIN_POSITION_Y;
-import static com.po.fuck.Constants.SPRITE_COIN_POSITION_X;
-import static com.po.fuck.Constants.WIDTH_OF_COIN_COUNTER_DIGIT;
+import static com.po.fuck.Constants.COINS_COUNTER_POSITION;
+import static com.po.fuck.Constants.COIN_SPRITE_POSITION;
+import static com.po.fuck.Constants.WIDTH_OF_THE_COIN_COUNTER_DIGIT;
 import static com.po.fuck.Constants.COINS_COUNTER_TEXT_SCALE;
-
 
 public class Coins implements Drawable {
     private int coins = 0;
@@ -30,8 +27,8 @@ public class Coins implements Drawable {
         font.setColor(Color.YELLOW);
         font.getData().scale(COINS_COUNTER_TEXT_SCALE);
         String text = Integer.toString(coins);
-        drawer.drawText(text, font, new Vector2(COIN_COUNTER_POSITION_X, COIN_COUNTER_POSITION_Y));
+        drawer.drawText(text, font, new Vector2(COINS_COUNTER_POSITION.x, COINS_COUNTER_POSITION.y));
         float len = text.length();
-        drawer.draw(sprite, new Vector2(SPRITE_COIN_POSITION_X + WIDTH_OF_COIN_COUNTER_DIGIT * len, SPRITE_COIN_POSITION_Y));
+        drawer.draw(sprite, new Vector2(COIN_SPRITE_POSITION.x + WIDTH_OF_THE_COIN_COUNTER_DIGIT * len, COIN_SPRITE_POSITION.y));
     }
 }
