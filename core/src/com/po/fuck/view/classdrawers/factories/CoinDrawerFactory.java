@@ -26,7 +26,6 @@ public class CoinDrawerFactory {
             @Override
             public void draw(CenterDrawer centerDrawer, T object) {
                 Coins coins = (Coins) object;
-                Vector2 position = coins.getPosition();
                 
                 BitmapFont font = new BitmapFont();
 
@@ -34,10 +33,10 @@ public class CoinDrawerFactory {
                 font.getData().scale(COINS_COUNTER_TEXT_SCALE);
                 
                 String text = Integer.toString(coins.getCoins());
-                centerDrawer.drawText(text, font, position);
+                centerDrawer.drawText(text, font, coins.getCounterPosition());
                 
                 float len = text.length();
-                centerDrawer.drawGlobal(sprite, position.cpy().add(WIDTH_OF_THE_COIN_COUNTER_DIGIT* len, 0));
+                centerDrawer.drawGlobal(sprite, coins.getPosition().add(WIDTH_OF_THE_COIN_COUNTER_DIGIT * len, 0));
             }
         };
     }
