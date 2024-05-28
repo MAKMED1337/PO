@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.updates.Drawable;
 import com.po.fuck.updates.Updatable;
 
+import static com.po.fuck.Constants.ENTITY_LAYER;
 import static com.po.fuck.Constants.HEALTHBAR_OFFSET;
 import static com.po.fuck.DrawableMisc.createTexture;
 
@@ -19,6 +20,11 @@ public final class HealthBar implements Drawable, Updatable {
         this.entity = entity;
         healthBarSprite = new Sprite(createTexture(100, 10, new Color(0, 255, 0, 10)));
         backgroundSprite = new Sprite(createTexture(100, 10, new Color(255, 0, 0, 10)));
+    }
+
+    @Override
+    public int get_z() {
+        return ENTITY_LAYER;
     }
 
 	@Override

@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import static com.po.fuck.Constants.GAME_HEIGHT;
 
 public class CenterDrawer {
-    private final SpriteBatch batch;
+    protected final SpriteBatch batch;
 
     CenterDrawer(SpriteBatch batch) {
         this.batch = batch;

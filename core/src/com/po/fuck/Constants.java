@@ -20,4 +20,15 @@ public final class Constants {
     public static float HEALTHBAR_OFFSET = 5;
     public static final int ENEMY_TEAM_TAG = 0;
     public static final int PLAYER_TEAM_TAG = 1;
+
+    /* camera */
+    public static final float CAMERA_SPEED = 10;
+
+    /* layering */
+    public static final int BACKGROUND_LAYER = 0;
+    public static final int ENTITY_LAYER = 1;
+    public static final int WEAPON_LAYER = 2;
+
+    /* borders */
+    public static final int GAME_BORDER = 20000;
 }
