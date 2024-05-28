@@ -20,7 +20,10 @@ public class Coins implements Drawable {
     public void addCoins(int cnt) {
         coins += cnt;
     }
-
+    @Override
+    public int get_z() {
+        return 19;
+    }
     @Override
     public void draw(CenterDrawer drawer) {
         BitmapFont font = new BitmapFont();
@@ -29,6 +32,6 @@ public class Coins implements Drawable {
         String text = Integer.toString(coins);
         drawer.drawText(text, font, new Vector2(COINS_COUNTER_POSITION.x, COINS_COUNTER_POSITION.y));
         float len = text.length();
-        drawer.draw(sprite, new Vector2(COIN_SPRITE_POSITION.x + WIDTH_OF_THE_COIN_COUNTER_DIGIT * len, COIN_SPRITE_POSITION.y));
+        drawer.drawGlobal(sprite, new Vector2(COIN_SPRITE_POSITION.x + WIDTH_OF_THE_COIN_COUNTER_DIGIT * len, COIN_SPRITE_POSITION.y));
     }
 }

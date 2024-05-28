@@ -1,5 +1,7 @@
 package com.po.fuck;
 
+import static com.po.fuck.Constants.ENTITY_LAYER;
+
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.lifetime.Managed;
 import com.po.fuck.lifetime.Manager;
@@ -26,6 +28,11 @@ public class Entity extends GameObject {
 
     public int getTeamTag() {
         return teamTag;
+    }
+
+    @Override
+    public int get_z() {
+        return ENTITY_LAYER;
     }
 
     public boolean isAlive() {

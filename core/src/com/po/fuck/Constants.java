@@ -30,4 +30,15 @@ public final class Constants {
     public static final Vector2 COINS_COUNTER_POSITION = new Vector2(35, GAME_HEIGHT - 30);
     public static final float WIDTH_OF_THE_COIN_COUNTER_DIGIT = 17;
     public static final float COINS_COUNTER_TEXT_SCALE = 1.5f;
+
+    /* camera */
+    public static final float CAMERA_SPEED = 10;
+
+    /* layering */
+    public static final int BACKGROUND_LAYER = 0;
+    public static final int ENTITY_LAYER = 1;
+    public static final int WEAPON_LAYER = 2;
+
+    /* borders */
+    public static final int GAME_BORDER = 20000;
 }
