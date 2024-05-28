@@ -1,7 +1,6 @@
 package com.po.fuck.view;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -10,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.model.Constants;
 import com.po.fuck.model.collections.DrawableCollection;
+import com.po.fuck.view.classdrawers.ClassDrawer;
 
 /**
  * Class responsible for rendering game objects.
@@ -20,12 +20,7 @@ public class Renderer {
     private OrthographicCamera camera;
 
     static Map<Class<?>, ClassDrawer<?> > drawers = new HashMap<>();
-    static Map<Class<?>, List<Sprite>> sprites = new HashMap<>();
-
-    static {
-        ClassDrawer.initializeDrawers();
-        ClassDrawer.initializeSprites();
-    }
+    static Map<Class<?>, Sprite> sprites = new HashMap<>();
 
     public Renderer(){
         camera = new OrthographicCamera();
@@ -47,17 +42,14 @@ public class Renderer {
         camera.update();
         batch.setProjectionMatrix(camera.combined);
 
-        ClassDrawer.initializeLaserBeamSprites(timeElapsed);
-
         batch.begin();
         CenterDrawer centerDrawer = new CenterDrawer(batch);
         for(Drawable object : drawableCollection){
-            List<Sprite> spriteList = getSprite(object.getClass());
             
             @SuppressWarnings("unchecked")
             ClassDrawer<Drawable> classDrawer = (ClassDrawer<Drawable>) getDrawer(object.getClass());
 
-            classDrawer.draw(centerDrawer, spriteList, object.getClass().cast(object));
+            classDrawer.draw(centerDrawer, object.getClass().cast(object));
         }
         batch.end();
     }
@@ -72,19 +64,14 @@ public class Renderer {
      */
     @SuppressWarnings("unchecked")
     public static <T> ClassDrawer<T> getDrawer(Class<T> clazz) {
-        ClassDrawer<T> drawer = (ClassDrawer<T>) drawers.get(clazz);
+        ClassDrawer<T> drawer = null;
+        Class<?> superClass = clazz;
+        while(drawer == null && superClass != Object.class){
+            drawer = (ClassDrawer<T>) drawers.get(superClass);
+            superClass = superClass.getSuperclass();
+        }
         if(drawer == null){
-            Class<?> superClass = clazz;
-            while(superClass != Object.class){
-                superClass = superClass.getSuperclass();
-                drawer = (ClassDrawer<T>) drawers.get(superClass);
-                if(drawer != null){
-                    break;
-                }
-            }
-            if(drawer == null){
-                throw new RuntimeException("No ClassDrawer found for " + clazz.toString() + " or any of its superclasses.");
-            }
+            throw new RuntimeException("No ClassDrawer found for " + clazz.toString());
         }
         return drawer;
     }
@@ -94,24 +81,20 @@ public class Renderer {
             throw new RuntimeException("ClassDrawer was added twice for " + cls.toString());
         }
         drawers.put(cls,classDrawer);
-        return;
     }
 
-    public static <T> void addSprite(Class<T> cls, List<Sprite> spriteList){
+    public static <T> void addSprite(Class<T> cls, Sprite sprite){
         if(sprites.containsKey(cls)){
             throw new RuntimeException("Sprite was added twice for " + cls.toString());
         }
-        sprites.put(cls,spriteList);
-        return;
+        sprites.put(cls,sprite);
     }
 
-    public static <T> void addOrUpdateSprite(Class<T> cls, List<Sprite> spriteList){
-        sprites.put(cls,spriteList);
-        return;
+    public static <T> void addOrUpdateSprite(Class<T> cls, Sprite sprite){
+        sprites.put(cls,sprite);
     }
 
-    public static <T> List<Sprite> getSprite(Class<T> cls){
-        System.err.println(cls.toString());
+    public static <T> Sprite getSprite(Class<T> cls){
         return sprites.get(cls);
     }
 }

@@ -32,22 +32,27 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
     @Override
     public Iterator<Drawable> iterator() {
         return new Iterator<Drawable>() {
-            int cur_z = 0;
+            int current_z = 0;
             int ptr = 0;
 
             @Override
             public boolean hasNext() {
-                while(cur_z < MAX_Z && ptr == objects[cur_z].size()){
-                    cur_z++;
+                while(current_z < MAX_Z && ptr == objects[current_z].size()){
+                    current_z++;
                     ptr = 0;
                 }
-                if(cur_z == MAX_Z) return false;
+                if(current_z == MAX_Z) return false;
                 return true;
             }
 
             @Override
             public Drawable next() {
-                return objects[cur_z].get(ptr++);
+                Drawable drawable = objects[current_z].get(ptr++);
+                if(ptr == objects[current_z].size()){
+                    current_z++;
+                    ptr = 0;
+                }
+                return drawable;
             }
         };
     }

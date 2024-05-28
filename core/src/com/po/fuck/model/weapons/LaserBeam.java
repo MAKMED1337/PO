@@ -15,11 +15,11 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.view.GifDecoder;
 import com.po.fuck.model.collections.All;
 
-public final class LaserBeam extends Bullet {
+public final class LaserBeam extends Bullet  {
     // version is also good, but for some reason it renders with artifacts
     static private final Animation<TextureRegion> animation = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read());
     private final float LIVE_TIME = 1;
-    private float timeElapsed = 0;
+    public float timeElapsed = 0;
 
     {
         damage = 3;

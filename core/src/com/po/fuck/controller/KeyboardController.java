@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.movement.Boost;
+import com.po.fuck.model.movement.Movement;
 
 public class KeyboardController extends InputAdapter {
     private final Vector2 direction = new Vector2(0, 0);
@@ -12,6 +13,10 @@ public class KeyboardController extends InputAdapter {
 
     public KeyboardController(Player player) {
         this.player = player;
+    }
+
+    private Movement getMovement(){
+        return this.player.getMovement().get();
     }
 
     @Override
@@ -30,12 +35,12 @@ public class KeyboardController extends InputAdapter {
                 direction.x += 1;
                 break;
             case Input.Keys.CONTROL_LEFT:
-                if (player.getMovement().get() instanceof Boost)
-                    ((Boost) player.getMovement().get()).tryToUseBoost();
+                if (getMovement() instanceof Boost)
+                    ((Boost) getMovement()).tryToUseBoost();
                 break;
         }
 
-        player.getMovement().get().setDirection(direction);
+        getMovement().setDirection(direction);
         return true;
     }
 
@@ -56,7 +61,7 @@ public class KeyboardController extends InputAdapter {
                 break;
         }
 
-        player.getMovement().get().setDirection(direction);
+        getMovement().setDirection(direction);
         return true;
     }
 }
