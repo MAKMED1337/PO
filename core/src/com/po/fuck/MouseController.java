@@ -49,7 +49,13 @@ public final class MouseController extends InputAdapter implements Updatable {
 
     @Override
     public void update(float delta) {
+        // First, we need to calculate our aiming position relative to the center of the
+        // screen.
         Vector2 centerPosition = lastLocalPosition.cpy().sub(GAME_WIDTH / 2, GAME_HEIGHT / 2);
+
+        // Second, we need to add our relative position to the camera's position
+        // (because we are both centered in the center of the screen) to obtain global
+        // world's position.
         Vector2 actualPosition = centerPosition.cpy().add(FUCK.camera.get().getPosition());
 
         Weapon weapon = getWeapon();

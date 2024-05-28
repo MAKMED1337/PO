@@ -91,13 +91,18 @@ public final class Room implements Drawable, Updatable {
 
     @Override
     public void update(float delta) {
+        // If we have finished this room, nothing to update.
         if (state == State.FINISHED)
             return;
 
+        // List of all the entities inside this room.
         List<Collidable> inside = All.collidableCollection
                 .collides(GeometryMisc.createRectangle(getPosition(), sprite));
 
         if (state == State.NOT_ENTERED) {
+            // If the player has not entered before this time, we need to check if he has
+            // entered now, and change the state to `FIGHT` if so.
+
             List<Collidable> players = inside.stream().filter(x -> x instanceof Player).toList();
             if (players.isEmpty())
                 return;
@@ -107,6 +112,8 @@ public final class Room implements Drawable, Updatable {
 
             Player player = (Player) players.get(0);
 
+            // Check if the player collides with any of the walls, if so then we can not
+            // start a fight in this room, because he will be stuck.
             boolean collide = false;
             for (InvisibleWall wall : getWalls())
                 collide |= player.collide(wall.getCollision());
@@ -115,10 +122,16 @@ public final class Room implements Drawable, Updatable {
                 start();
             return;
         } else if (state == State.FIGHT) {
+            // If we are already fighting, we need to check if every enemy is dead to stop
+            // the fight.
+
             if (!inside.stream().anyMatch(x -> x instanceof Entity && ((Entity) x).getTeamTag() == ENEMY_TEAM_TAG))
                 clear();
             return;
-        } else
+        } else {
+            // Unreachable state (we only have 3 states for now), just in case if something
+            // change in the future.
             throw new AssertionError("Unknown state");
+        }
     }
 }
