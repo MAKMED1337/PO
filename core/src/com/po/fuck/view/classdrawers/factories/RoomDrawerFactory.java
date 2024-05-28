@@ -2,7 +2,6 @@ package com.po.fuck.view.classdrawers.factories;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.po.fuck.model.Coins;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ClassDrawer;
