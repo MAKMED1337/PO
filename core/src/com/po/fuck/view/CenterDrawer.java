@@ -2,14 +2,14 @@ package com.po.fuck.view;
 
 import static com.po.fuck.model.Constants.GAME_HEIGHT;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class CenterDrawer {
-    private final SpriteBatch batch;
-
-    public CenterDrawer(SpriteBatch batch) {
+    protected final SpriteBatch batch;
+    protected CenterDrawer(SpriteBatch batch) {
         this.batch = batch;
     }
 
@@ -20,5 +20,13 @@ public class CenterDrawer {
 
         sprite.setPosition(pos.x, pos.y);
         sprite.draw(batch);
+    }
+    
+    public void drawGlobal(Sprite sprite, Vector2 global_position) {
+        draw(sprite, global_position);
+    }
+
+    public void drawText(String text, BitmapFont font, Vector2 position) {
+        font.draw(batch, text, position.x, position.y);
     }
 }

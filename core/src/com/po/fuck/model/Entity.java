@@ -1,5 +1,7 @@
 package com.po.fuck.model;
 
+import static com.po.fuck.model.Constants.ENTITY_LAYER;
+
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
@@ -10,6 +12,8 @@ public class Entity extends GameObject {
     protected Managed<Movement> movement = new Managed<>();
     protected Managed<Weapon> weapon = new Managed<>();
     protected int teamTag;
+
+    protected int reward = 0;
     protected float health_points;
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
@@ -24,6 +28,11 @@ public class Entity extends GameObject {
         return teamTag;
     }
 
+    @Override
+    public int get_z() {
+        return ENTITY_LAYER;
+    }
+
     public boolean isAlive() {
         return immortal || health_points > 0;
     }
@@ -33,8 +42,10 @@ public class Entity extends GameObject {
             return false;
 
         health_points = Math.max(0, health_points - damage);
-        if (health_points == 0)
+        if (health_points == 0) {
+            Core.coinsCounter.get().addCoins(reward);
             Manager.destroy_raw(this);
+        }
 
         return true;
     }

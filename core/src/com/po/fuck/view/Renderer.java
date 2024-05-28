@@ -3,11 +3,10 @@ package com.po.fuck.view;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.po.fuck.model.Constants;
+import com.po.fuck.model.Camera;
 import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.view.classdrawers.ClassDrawer;
 
@@ -15,17 +14,13 @@ import com.po.fuck.view.classdrawers.ClassDrawer;
  * Class responsible for rendering game objects.
  */
 public class Renderer {
-    SpriteBatch batch;
-
-    private OrthographicCamera camera;
+    private Camera camera;
 
     static Map<Class<?>, ClassDrawer<?> > drawers = new HashMap<>();
     static Map<Class<?>, Sprite> sprites = new HashMap<>();
 
-    public Renderer(){
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
-        batch = new SpriteBatch();
+    public Renderer(Camera camera){
+        this.camera = camera;
     }
 
     float timeElapsed = 0;
@@ -39,19 +34,18 @@ public class Renderer {
         timeElapsed += delta;
 
         ScreenUtils.clear(0, 0, 0, 1);
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
+        camera.camera.update();
+        camera.batch.setProjectionMatrix(camera.camera.combined);
 
-        batch.begin();
-        CenterDrawer centerDrawer = new CenterDrawer(batch);
+        camera.batch.begin();
         for(Drawable object : drawableCollection){
             
             @SuppressWarnings("unchecked")
             ClassDrawer<Drawable> classDrawer = (ClassDrawer<Drawable>) getDrawer(object.getClass());
 
-            classDrawer.draw(centerDrawer, object.getClass().cast(object));
+            classDrawer.draw(camera, object.getClass().cast(object));
         }
-        batch.end();
+        camera.batch.end();
     }
 
     /**

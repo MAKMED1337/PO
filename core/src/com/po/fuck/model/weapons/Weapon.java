@@ -1,5 +1,7 @@
 package com.po.fuck.model.weapons;
 
+import static com.po.fuck.model.Constants.WEAPON_LAYER;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
@@ -12,7 +14,7 @@ public abstract class Weapon implements Drawable {
 
     @Override
     public int get_z() {
-        return 1;
+        return WEAPON_LAYER;
     }
 
     Weapon(Entity owner) {

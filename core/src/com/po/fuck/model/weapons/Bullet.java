@@ -11,6 +11,8 @@ import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.collections.All;
 
+import static com.po.fuck.model.Constants.WEAPON_LAYER;
+
 import java.util.List;
 
 public abstract class Bullet implements Drawable, Updatable {
@@ -22,7 +24,7 @@ public abstract class Bullet implements Drawable, Updatable {
 
     @Override
     public int get_z() {
-        return 1;
+        return WEAPON_LAYER;
     }
     @Override
     public Vector2 getPosition() {
@@ -34,7 +36,8 @@ public abstract class Bullet implements Drawable, Updatable {
     }
 
     protected boolean tryDamage(Entity entity, float damage) {
-        if (entity.getTeamTag() == this.teamTag) return false;
+        if (entity.getTeamTag() == this.teamTag)
+            return false;
         entity.takeDamage(damage);
         return true;
     }
@@ -46,7 +49,11 @@ public abstract class Bullet implements Drawable, Updatable {
         Polygon polygon = GeometryMisc.createRectangle(position, sprite);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
-            if (!(collidable instanceof Entity)) continue;
+            if (!(collidable instanceof Entity)) {
+                Manager.destroy_raw(this);
+                return;
+            }
+
             Entity enemy = (Entity) collidable;
             if (this.tryDamage(enemy, damage)) {
                 Manager.destroy_raw(this);

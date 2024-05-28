@@ -6,12 +6,14 @@ import static com.po.fuck.model.Constants.GAME_WIDTH;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.model.Core;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.weapons.Weapon;
 
 public final class MouseController extends InputAdapter implements Updatable {
     private boolean pressed = false;
+    private Vector2 lastLocalPosition = new Vector2();
 
     Player player;
 
@@ -25,10 +27,8 @@ public final class MouseController extends InputAdapter implements Updatable {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        Weapon weapon = getWeapon();
-        if (weapon != null)
-            weapon.aim(new Vector2((float) (screenX * GAME_WIDTH) / Gdx.graphics.getWidth(),
-                    (float) (screenY * GAME_HEIGHT) / Gdx.graphics.getHeight()));
+        lastLocalPosition = new Vector2((float) (screenX * GAME_WIDTH) / Gdx.graphics.getWidth(),
+                (float) (screenY * GAME_HEIGHT) / Gdx.graphics.getHeight());
         return true;
     }
 
@@ -51,10 +51,21 @@ public final class MouseController extends InputAdapter implements Updatable {
 
     @Override
     public void update(float delta) {
-        if (pressed) {
-            Weapon weapon = getWeapon();
-            if (weapon != null)
-                weapon.attack();
-        }
+        // First, we need to calculate our aiming position relative to the center of the
+        // screen.
+        Vector2 centerPosition = lastLocalPosition.cpy().sub(GAME_WIDTH / 2, GAME_HEIGHT / 2);
+
+        // Second, we need to add our relative position to the camera's position
+        // (because we are both centered in the center of the screen) to obtain global
+        // world's position.
+        Vector2 actualPosition = centerPosition.cpy().add(Core.camera.get().getPosition());
+
+        Weapon weapon = getWeapon();
+        if (weapon == null)
+            return;
+
+        weapon.aim(actualPosition);
+        if (pressed)
+            weapon.attack();
     }
 }
