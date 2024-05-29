@@ -13,7 +13,6 @@ public class RoomDrawerFactory {
         Renderer.addDrawer(Room.class, RoomDrawerFactory.get(Room.class, new Sprite(new Texture("island2.png"))));
     }
 
-    @SuppressWarnings("all")
     public static <T extends Room> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
         return new ClassDrawer<T>() {
             Sprite roomSprite = new Sprite(sprite);

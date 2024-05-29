@@ -15,18 +15,17 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.view.GifDecoder;
 import com.po.fuck.model.collections.All;
 
-public final class LaserBeam extends Bullet  {
+public final class LaserBeam extends AnimatedBullet  {
     // version is also good, but for some reason it renders with artifacts
-    static private final Animation<TextureRegion> animation = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read());
-    private final float LIVE_TIME = 1;
-    float timeElapsed = 0;
 
     {
+        AnimatedBullet.addAnimation(LaserBeam.class, GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read()));
         damage = 3;
-        this.sprite = new Sprite(animation.getKeyFrame(0));
+        this.sprite = new Sprite(getAnimation().getKeyFrame(0));
     }
 
     LaserBeam(Vector2 muzzle_position, Vector2 direction, int teamTag) {
+        super(1f);
         this.teamTag = teamTag;
         this.position = muzzle_position.cpy().add(direction.cpy().setLength(sprite.getWidth() / 2));
         this.velocity = direction.cpy().setLength(0.1f);
@@ -52,7 +51,7 @@ public final class LaserBeam extends Bullet  {
         }
     }
 
-    public float getTimeElapsed() {
-        return timeElapsed;
+    public Animation<TextureRegion> getAnimation() {
+        return AnimatedBullet.getAnimation(LaserBeam.class);
     }
 }

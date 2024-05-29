@@ -32,7 +32,9 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
     public Iterator<Drawable> iterator() {
         return new Iterator<Drawable>() {
             int current_z = 0; // Start at the first z-index
-            int ptr = 0; // Start at the first object in the first z-index
+            int ptr = 0; // Start at the first object in the z-index
+            // Represents the next object to be drew.
+            // If the current z-index has no more objects to draw, move to the next z-index
 
             @Override
             public boolean hasNext() {

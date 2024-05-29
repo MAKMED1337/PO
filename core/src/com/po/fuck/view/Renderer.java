@@ -12,12 +12,31 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.model.ObjectFollower;
 import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.view.classdrawers.ClassDrawer;
+import com.po.fuck.view.classdrawers.factories.AnimatedBulletDrawerFactory;
+import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
+import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
+import com.po.fuck.view.classdrawers.factories.EntityDrawerFactory;
+import com.po.fuck.view.classdrawers.factories.GameObjectDrawerFactory;
+import com.po.fuck.view.classdrawers.factories.HandedWeaponDrawerFactory;
+import com.po.fuck.view.classdrawers.factories.RoomDrawerFactory;
+
+import static com.po.fuck.model.Core.forceInit;
 
 /**
  * Class responsible for rendering game objects.
  */
 public class Renderer {
     static Map<Class<?>, ClassDrawer<?> > drawers = new HashMap<>();
+    
+    static {
+        forceInit(AnimatedBulletDrawerFactory.class);
+        forceInit(BulletDrawerFactory.class);
+        forceInit(EntityDrawerFactory.class);
+        forceInit(GameObjectDrawerFactory.class);
+        forceInit(HandedWeaponDrawerFactory.class);
+        forceInit(RoomDrawerFactory.class);
+        forceInit(CoinDrawerFactory.class);
+    }
 
     OrthographicCamera camera;
     FollowingDrawer followingDrawer;
@@ -45,6 +64,9 @@ public class Renderer {
             
             @SuppressWarnings("unchecked")
             ClassDrawer<Drawable> classDrawer = (ClassDrawer<Drawable>) getDrawer(object.getClass());
+            if(classDrawer == null){
+                throw new RuntimeException("No ClassDrawer found for " + object.getClass().toString());
+            }
             
             classDrawer.draw(followingDrawer, object.getClass().cast(object));
         }
@@ -61,17 +83,15 @@ public class Renderer {
      */
     @SuppressWarnings("unchecked")
     public static <T> ClassDrawer<T> getDrawer(Class<T> clazz) {
-        ClassDrawer<T> drawer = (ClassDrawer<T>) drawers.get(clazz);
-        if(drawer != null) return drawer;
-        Class<?> superClass = clazz.getSuperclass();
-        while(drawer == null && superClass != Object.class){
-            drawer = (ClassDrawer<T>) drawers.get(superClass);
-            superClass = superClass.getSuperclass();
+        Class<?> cls = clazz;
+        while (cls != null) {
+            ClassDrawer<T> drawer = (ClassDrawer<T>) drawers.get(cls);
+            if (drawer != null)
+                return drawer;
+
+            cls = cls.getSuperclass();
         }
-        if(drawer == null){
-            throw new RuntimeException("No ClassDrawer found for " + clazz.toString());
-        }
-        return drawer;
+        return null;
     }
 
     public static <T> void addDrawer(Class<T> cls, ClassDrawer<T> classDrawer){

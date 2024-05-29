@@ -7,25 +7,11 @@ import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
-import com.po.fuck.view.classdrawers.factories.AnimatedBulletDrawerFactory;
-import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
-import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
-import com.po.fuck.view.classdrawers.factories.EntityDrawerFactory;
-import com.po.fuck.view.classdrawers.factories.GameObjectDrawerFactory;
-import com.po.fuck.view.classdrawers.factories.HandedWeaponDrawerFactory;
-import com.po.fuck.view.classdrawers.factories.RoomDrawerFactory;
 
 public class Core implements Updatable{
     static {
         forceInit(Destructable.class);
         forceInit(All.class);
-        forceInit(AnimatedBulletDrawerFactory.class);
-        forceInit(BulletDrawerFactory.class);
-        forceInit(EntityDrawerFactory.class);
-        forceInit(GameObjectDrawerFactory.class);
-        forceInit(HandedWeaponDrawerFactory.class);
-        forceInit(RoomDrawerFactory.class);
-        forceInit(CoinDrawerFactory.class);
     }
     
     public static Managed<Player> player;

@@ -17,7 +17,7 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Drawable;
 import com.po.fuck.model.Updatable;
 
-public final class Room implements Drawable, Updatable {
+public class Room implements Drawable, Updatable {
     public Vector2 tilling_position;
     protected Sprite sprite = new Sprite(new Texture("island2.png"));
 

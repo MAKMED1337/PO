@@ -10,7 +10,7 @@ import com.po.fuck.model.ObjectFollower;
 
 public class FollowingDrawer extends CenterDrawer {
 
-    ObjectFollower objectFollowing;
+    private ObjectFollower objectFollowing;
 
     protected FollowingDrawer(SpriteBatch sprite, ObjectFollower objectFollowing){
         super(sprite);
