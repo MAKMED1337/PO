@@ -14,14 +14,14 @@ public class FUCK extends ApplicationAdapter {
     public void create() {
         core = new Core();
         Core.initialize();
-        renderer = new Renderer(Core.camera.get());
+        renderer = new Renderer(Core.objectFollower.get());
     }
 
     @Override
     public void render() {
         float delta = Gdx.graphics.getDeltaTime();
         core.update(delta);
-        renderer.render(delta, core.getDrawableCollection());
+        renderer.render(core.getDrawableCollection());
     }
 
     @Override

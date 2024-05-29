@@ -58,7 +58,7 @@ public final class MouseController extends InputAdapter implements Updatable {
         // Second, we need to add our relative position to the camera's position
         // (because we are both centered in the center of the screen) to obtain global
         // world's position.
-        Vector2 actualPosition = centerPosition.cpy().add(Core.camera.get().getPosition());
+        Vector2 actualPosition = centerPosition.cpy().add(Core.objectFollower.get().getPosition());
 
         Weapon weapon = getWeapon();
         if (weapon == null)

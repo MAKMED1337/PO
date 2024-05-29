@@ -23,7 +23,7 @@ public class AnimatedBulletDrawerFactory {
             Animation<TextureRegion> _animation = animation;
 
             @Override
-            public void draw(CenterDrawer centerDrawer, T object) {
+            public <Drawer extends CenterDrawer> void draw(Drawer centerDrawer, T object) {
                 LaserBeam laserBeam = (LaserBeam) object;
                 Sprite sprite = new Sprite(_animation.getKeyFrame(laserBeam.timeElapsed));
                 sprite.setRotation(-laserBeam.getVelocity().angleDeg());

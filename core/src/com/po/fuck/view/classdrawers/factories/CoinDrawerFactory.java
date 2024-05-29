@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Coins;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
@@ -24,7 +23,7 @@ public class CoinDrawerFactory {
             Sprite sprite = new Sprite(other_sprite);
 
             @Override
-            public void draw(CenterDrawer centerDrawer, T object) {
+            public <Drawer extends CenterDrawer> void draw(Drawer centerDrawer, T object) {
                 Coins coins = (Coins) object;
                 
                 BitmapFont font = new BitmapFont();

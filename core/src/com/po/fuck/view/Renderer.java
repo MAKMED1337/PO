@@ -1,11 +1,16 @@
 package com.po.fuck.view;
 
+import static com.po.fuck.model.Constants.GAME_HEIGHT;
+import static com.po.fuck.model.Constants.GAME_WIDTH;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.po.fuck.model.Camera;
+import com.po.fuck.model.ObjectFollower;
 import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.view.classdrawers.ClassDrawer;
 
@@ -13,38 +18,39 @@ import com.po.fuck.view.classdrawers.ClassDrawer;
  * Class responsible for rendering game objects.
  */
 public class Renderer {
-    private Camera camera;
-
     static Map<Class<?>, ClassDrawer<?> > drawers = new HashMap<>();
     static Map<Class<?>, Sprite> sprites = new HashMap<>();
 
-    public Renderer(Camera camera){
-        this.camera = camera;
+    OrthographicCamera camera;
+    FollowingDrawer followingDrawer;
+
+    public Renderer(ObjectFollower objectFollower){
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
+        followingDrawer = new FollowingDrawer(new SpriteBatch(), objectFollower);
     }
 
-    float timeElapsed = 0;
 
     /**
      * Renders the provided DrawableCollection.
      *
      * @param drawableCollection the collection of drawable objects to render
      */
-    public void render(float delta, DrawableCollection drawableCollection){
-        timeElapsed += delta;
+    public void render(DrawableCollection drawableCollection){
 
         ScreenUtils.clear(0, 0, 0, 1);
-        camera.camera.update();
-        camera.batch.setProjectionMatrix(camera.camera.combined);
+        camera.update();
+        followingDrawer.batch.setProjectionMatrix(camera.combined);
 
-        camera.batch.begin();
+        followingDrawer.batch.begin();
         for(Drawable object : drawableCollection){
             
             @SuppressWarnings("unchecked")
             ClassDrawer<Drawable> classDrawer = (ClassDrawer<Drawable>) getDrawer(object.getClass());
-
-            classDrawer.draw(camera, object.getClass().cast(object));
+            
+            classDrawer.draw(followingDrawer, object.getClass().cast(object));
         }
-        camera.batch.end();
+        followingDrawer.batch.end();
     }
 
     /**

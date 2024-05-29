@@ -30,10 +30,10 @@ public class Core implements Updatable{
     
     public static Managed<Player> player;
     public static Managed<Coins> coinsCounter;
-    public static Managed<Camera> camera;
+    public static Managed<ObjectFollower> objectFollower;
 
     public static void initialize() {
-        camera = Manager.create(new Camera());
+        objectFollower = Manager.create(new ObjectFollower());
         player = Manager.create(new Player(new Vector2()));
         coinsCounter = Manager.create(new Coins());
 
@@ -57,7 +57,7 @@ public class Core implements Updatable{
         if (player.get() == null)
             player = Manager.create(new Player(new Vector2()));
 
-        camera.get().setPosition(player.get().getPosition());
+        objectFollower.get().setCenter(player.get().getPosition());
 
         All.updatableCollection.update(delta);
     }

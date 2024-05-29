@@ -20,7 +20,7 @@ public class BulletDrawerFactory {
             Sprite sprite = new Sprite(other_sprite);
 
             @Override
-            public void draw(CenterDrawer centerDrawer, T object) {
+            public <Drawer extends CenterDrawer> void draw(Drawer centerDrawer, T object) {
                 Bullet bullet = (Bullet) object;
                 Vector2 position = bullet.getPosition();
                 sprite.setRotation(-bullet.getVelocity().angleDeg());

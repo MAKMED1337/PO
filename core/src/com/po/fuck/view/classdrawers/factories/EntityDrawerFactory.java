@@ -24,17 +24,17 @@ public class EntityDrawerFactory {
             Sprite sprite = new Sprite(other_sprite);
 
             @Override
-            public void draw(CenterDrawer centerDrawer, T object) {
+            public <Drawer extends CenterDrawer> void draw(Drawer drawer, T object) {
                 Entity entity = (Entity) object;
                 Vector2 position = entity.getPosition();
                 
-                centerDrawer.draw(sprite, position);
+                drawer.draw(sprite, position);
                 
                 Vector2 healthBarPosition = position.cpy().sub(0 , sprite.getHeight() / 2 + Constants.HEALTHBAR_OFFSET);
                 HealthBar healthBar = new HealthBar(entity);
 
-                centerDrawer.draw(healthBar.backgroundSprite, healthBarPosition);
-                centerDrawer.draw(healthBar.healthBarSprite, healthBarPosition);
+                drawer.draw(healthBar.backgroundSprite, healthBarPosition);
+                drawer.draw(healthBar.healthBarSprite, healthBarPosition);
             }
         };
     }
