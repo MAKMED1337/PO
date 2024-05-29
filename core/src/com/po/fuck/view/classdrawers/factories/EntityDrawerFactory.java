@@ -19,19 +19,18 @@ public class EntityDrawerFactory {
         Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class, new Sprite(new Texture("player2.png"))));
     }
 
-    public static <T extends Entity> ClassDrawer<T> get(Class<T> clz, Sprite other_sprite){
+    public static <T extends Entity> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
         return new ClassDrawer<T>() {
-            Sprite sprite = new Sprite(other_sprite);
+            Sprite entitySprite = new Sprite(sprite);
 
             @Override
             public <Drawer extends CenterDrawer> void draw(Drawer drawer, T object) {
-                Entity entity = (Entity) object;
-                Vector2 position = entity.getPosition();
+                Vector2 position = object.getPosition();
                 
-                drawer.draw(sprite, position);
+                drawer.draw(entitySprite, position);
                 
-                Vector2 healthBarPosition = position.cpy().sub(0 , sprite.getHeight() / 2 + Constants.HEALTHBAR_OFFSET);
-                HealthBar healthBar = new HealthBar(entity);
+                Vector2 healthBarPosition = position.cpy().sub(0 , entitySprite.getHeight() / 2 + Constants.HEALTHBAR_OFFSET);
+                HealthBar healthBar = new HealthBar(object);
 
                 drawer.draw(healthBar.backgroundSprite, healthBarPosition);
                 drawer.draw(healthBar.healthBarSprite, healthBarPosition);

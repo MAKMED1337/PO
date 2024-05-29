@@ -19,7 +19,7 @@ public final class LaserBeam extends Bullet  {
     // version is also good, but for some reason it renders with artifacts
     static private final Animation<TextureRegion> animation = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read());
     private final float LIVE_TIME = 1;
-    public float timeElapsed = 0;
+    float timeElapsed = 0;
 
     {
         damage = 3;
@@ -50,5 +50,9 @@ public final class LaserBeam extends Bullet  {
             Entity enemy = (Entity) collidable;
             this.tryDamage(enemy, delta*damage);
         }
+    }
+
+    public float getTimeElapsed() {
+        return timeElapsed;
     }
 }

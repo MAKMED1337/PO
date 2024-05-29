@@ -20,14 +20,11 @@ public class AnimatedBulletDrawerFactory {
     public static <T extends LaserBeam> ClassDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
         return new ClassDrawer<T>() {
 
-            Animation<TextureRegion> _animation = animation;
-
             @Override
             public <Drawer extends CenterDrawer> void draw(Drawer centerDrawer, T object) {
-                LaserBeam laserBeam = (LaserBeam) object;
-                Sprite sprite = new Sprite(_animation.getKeyFrame(laserBeam.timeElapsed));
-                sprite.setRotation(-laserBeam.getVelocity().angleDeg());
-                centerDrawer.draw(sprite, laserBeam.getPosition());
+                Sprite sprite = new Sprite(animation.getKeyFrame(object.getTimeElapsed()));
+                sprite.setRotation(-object.getVelocity().angleDeg());
+                centerDrawer.draw(sprite, object.getPosition());
             }
         };
     }

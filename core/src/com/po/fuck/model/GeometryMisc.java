@@ -54,6 +54,7 @@ public class GeometryMisc {
 
     /**
      * Creates a rectangular {@link Polygon} based on the provided position and sprite.
+     * Rotates the rectangle based on the rotation of the sprite.
      *
      * <p>The rectangle will be centered on the provided position, with its size
      * determined by the width and height of the sprite.</p>

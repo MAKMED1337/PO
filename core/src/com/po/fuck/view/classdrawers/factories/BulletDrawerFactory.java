@@ -15,16 +15,15 @@ public class BulletDrawerFactory {
         Renderer.addDrawer(CosmicBullet.class, BulletDrawerFactory.get(CosmicBullet.class, new Sprite(new Texture("bullet2.png"))));
     }
 
-    public static <T extends Bullet> ClassDrawer<T> get(Class<T> clz, Sprite other_sprite){
+    public static <T extends Bullet> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
         return new ClassDrawer<T>() {
-            Sprite sprite = new Sprite(other_sprite);
+            Sprite bulletSprite = new Sprite(sprite);
 
             @Override
             public <Drawer extends CenterDrawer> void draw(Drawer centerDrawer, T object) {
-                Bullet bullet = (Bullet) object;
-                Vector2 position = bullet.getPosition();
-                sprite.setRotation(-bullet.getVelocity().angleDeg());
-                centerDrawer.draw(sprite, position);
+                Vector2 position = object.getPosition();
+                bulletSprite.setRotation(-object.getVelocity().angleDeg());
+                centerDrawer.draw(bulletSprite, position);
             }
         };
     }

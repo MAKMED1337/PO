@@ -5,6 +5,7 @@ import com.po.fuck.view.Drawable;
 
 import static com.po.fuck.model.Constants.COINS_COUNTER_POSITION;
 import static com.po.fuck.model.Constants.COIN_SPRITE_POSITION;
+import static com.po.fuck.model.Constants.GUI_LAYER;
 
 public class Coins implements Drawable {
     private int coins = 0;
@@ -18,7 +19,7 @@ public class Coins implements Drawable {
     }
     @Override
     public int get_z() {
-        return 19;
+        return GUI_LAYER;
     }
 
     @Override

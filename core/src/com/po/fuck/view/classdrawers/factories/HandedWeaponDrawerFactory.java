@@ -17,22 +17,21 @@ public class HandedWeaponDrawerFactory {
         Renderer.addDrawer(LaserGun.class, HandedWeaponDrawerFactory.get(LaserGun.class, new Sprite(new Texture("laser_gun2.png"))));
     }
 
-    public static <T extends HandedWeapon> ClassDrawer<T> get(Class<T> clz, Sprite other_sprite){
+    public static <T extends HandedWeapon> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
         
         return new ClassDrawer<T>() {
-            Sprite sprite = new Sprite(other_sprite);
+            Sprite handedWeaponSprite = new Sprite(sprite);
             
             @Override
             public <Drawer extends CenterDrawer> void draw(Drawer centerDrawer, T object) {
-                HandedWeapon handedWeapon = (HandedWeapon) object;
-                Vector2 position = handedWeapon.getPosition();
-                if (handedWeapon.getAimPosition() != null){
-                    Vector2 direction = handedWeapon.getDirection();
+                Vector2 position = object.getPosition();
+                if (object.getAimPosition() != null){
+                    Vector2 direction = object.getDirection();
                     float angle = direction.angleDeg();
-                    sprite.setRotation(-angle);
-                    sprite.setFlip(false, angle >= 90 && angle <= 270);
+                    handedWeaponSprite.setRotation(-angle);
+                    handedWeaponSprite.setFlip(false, angle >= 90 && angle <= 270);
                 }
-                centerDrawer.draw(sprite, position);
+                centerDrawer.draw(handedWeaponSprite, position);
             }
         };
     }

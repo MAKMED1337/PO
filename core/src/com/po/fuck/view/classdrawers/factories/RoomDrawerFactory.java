@@ -14,14 +14,13 @@ public class RoomDrawerFactory {
     }
 
     @SuppressWarnings("all")
-    public static <T extends Room> ClassDrawer<T> get(Class<T> clz, Sprite other_sprite){
+    public static <T extends Room> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
         return new ClassDrawer<T>() {
-            Sprite sprite = new Sprite(other_sprite);
+            Sprite roomSprite = new Sprite(sprite);
 
             @Override
             public <Drawer extends CenterDrawer> void draw(Drawer centerDrawer, T object) {
-                Room room = (Room) object;
-                centerDrawer.draw(sprite, room.getPosition());
+                centerDrawer.draw(roomSprite, object.getPosition());
             }
         };
     }

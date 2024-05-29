@@ -4,5 +4,5 @@ import com.po.fuck.view.CenterDrawer;
 
 public abstract class ClassDrawer<T> {
     
-    public abstract <Drawer extends CenterDrawer> void draw(Drawer centerDrawerdrawer, T object);
+    public abstract <Drawer extends CenterDrawer> void draw(Drawer drawer, T object);
 }

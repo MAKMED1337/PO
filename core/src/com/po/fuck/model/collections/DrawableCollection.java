@@ -28,29 +28,29 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
     public void remove(Drawable drawable) {
         objects[drawable.get_z()].remove(drawable);
     }
-
     @Override
     public Iterator<Drawable> iterator() {
         return new Iterator<Drawable>() {
-            int current_z = 0;
-            int ptr = 0;
+            int current_z = 0; // Start at the first z-index
+            int ptr = 0; // Start at the first object in the first z-index
 
             @Override
             public boolean hasNext() {
+                // Skip z-indexes where there are no more objects to draw
                 while(current_z < MAX_Z && ptr == objects[current_z].size()){
-                    current_z++;
-                    ptr = 0;
+                    current_z++; // Move to the next z-index
+                    ptr = 0; // Reset the pointer
                 }
-                if(current_z == MAX_Z) return false;
+                if(current_z == MAX_Z) return false; // No more objects to draw
                 return true;
             }
 
             @Override
             public Drawable next() {
-                Drawable drawable = objects[current_z].get(ptr++);
-                if(ptr == objects[current_z].size()){
-                    current_z++;
-                    ptr = 0;
+                Drawable drawable = objects[current_z].get(ptr++); // Get the next object
+                if(ptr == objects[current_z].size()){ // If there are no more objects in the current z-index
+                    current_z++; // Move to the next z-index
+                    ptr = 0; // Reset the pointer
                 }
                 return drawable;
             }

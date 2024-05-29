@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.model.ObjectFollower;
@@ -19,7 +18,6 @@ import com.po.fuck.view.classdrawers.ClassDrawer;
  */
 public class Renderer {
     static Map<Class<?>, ClassDrawer<?> > drawers = new HashMap<>();
-    static Map<Class<?>, Sprite> sprites = new HashMap<>();
 
     OrthographicCamera camera;
     FollowingDrawer followingDrawer;
@@ -63,8 +61,9 @@ public class Renderer {
      */
     @SuppressWarnings("unchecked")
     public static <T> ClassDrawer<T> getDrawer(Class<T> clazz) {
-        ClassDrawer<T> drawer = null;
-        Class<?> superClass = clazz;
+        ClassDrawer<T> drawer = (ClassDrawer<T>) drawers.get(clazz);
+        if(drawer != null) return drawer;
+        Class<?> superClass = clazz.getSuperclass();
         while(drawer == null && superClass != Object.class){
             drawer = (ClassDrawer<T>) drawers.get(superClass);
             superClass = superClass.getSuperclass();
@@ -80,20 +79,5 @@ public class Renderer {
             throw new RuntimeException("ClassDrawer was added twice for " + cls.toString());
         }
         drawers.put(cls,classDrawer);
-    }
-
-    public static <T> void addSprite(Class<T> cls, Sprite sprite){
-        if(sprites.containsKey(cls)){
-            throw new RuntimeException("Sprite was added twice for " + cls.toString());
-        }
-        sprites.put(cls,sprite);
-    }
-
-    public static <T> void addOrUpdateSprite(Class<T> cls, Sprite sprite){
-        sprites.put(cls,sprite);
-    }
-
-    public static <T> Sprite getSprite(Class<T> cls){
-        return sprites.get(cls);
     }
 }

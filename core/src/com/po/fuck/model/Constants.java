@@ -20,6 +20,9 @@ public final class Constants {
 
     /* health bar */
     public static float HEALTHBAR_OFFSET = 5;
+    public static int HEALTHBAR_WIDTH = 100;
+    public static int HEALTHBAR_HEIGHT = 10;
+
     /* team tags */
     public static final int ENEMY_TEAM_TAG = 0;
     public static final int PLAYER_TEAM_TAG = 1;
@@ -37,6 +40,7 @@ public final class Constants {
     public static final int BACKGROUND_LAYER = 0;
     public static final int ENTITY_LAYER = 1;
     public static final int WEAPON_LAYER = 2;
+    public static final int GUI_LAYER = 19;
 
     /* borders */
     public static final int GAME_BORDER = 20000;
