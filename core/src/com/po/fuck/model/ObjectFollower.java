@@ -7,7 +7,7 @@ import static com.po.fuck.model.Constants.CAMERA_SPEED;
 public final class ObjectFollower implements Updatable {
     private Vector2 position = new Vector2();
     private Vector2 target = new Vector2();
-    
+
     @Override
     public void update(float delta) {
         // https://lisyarus.github.io/blog/posts/exponential-smoothing.html
@@ -19,7 +19,7 @@ public final class ObjectFollower implements Updatable {
         return position.cpy();
     }
 
-    public void setCenter(Vector2 position) {
+    public void setTargetPosition(Vector2 position) {
         target = position;
     }
 }

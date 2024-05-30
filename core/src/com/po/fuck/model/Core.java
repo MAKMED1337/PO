@@ -43,7 +43,7 @@ public class Core implements Updatable{
         if (player.get() == null)
             player = Manager.create(new Player(new Vector2()));
 
-        objectFollower.get().setCenter(player.get().getPosition());
+        objectFollower.get().setTargetPosition(player.get().getPosition());
 
         All.updatableCollection.update(delta);
     }
