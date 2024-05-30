@@ -21,8 +21,13 @@ public abstract class Bullet implements Drawable, Updatable {
     protected Vector2 velocity;
     protected int teamTag;
     protected float damage;
+    protected final float LIFE_TIME;
+    protected float timeElapsed = 0;
 
-    @Override
+    public Bullet(float life_time) {
+        LIFE_TIME = life_time;
+	}
+	@Override
     public int get_z() {
         return WEAPON_LAYER;
     }
@@ -46,6 +51,13 @@ public abstract class Bullet implements Drawable, Updatable {
     public void update(float delta) {
         position.mulAdd(velocity, delta);
 
+        timeElapsed += delta;
+
+        if(timeElapsed > LIFE_TIME){
+            Manager.destroy_raw(this);
+            return;
+        }
+
         Polygon polygon = GeometryMisc.createRectangle(position, sprite);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
@@ -61,5 +73,9 @@ public abstract class Bullet implements Drawable, Updatable {
                 // TODO: sort them by distance or something like this
             }
         }
+    }
+
+    public float getTimeElapsed() {
+        return timeElapsed;
     }
 }

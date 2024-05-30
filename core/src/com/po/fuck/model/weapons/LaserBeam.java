@@ -15,17 +15,20 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.view.GifDecoder;
 import com.po.fuck.model.collections.All;
 
+import static com.po.fuck.model.Constants.LASER_BEAM_DAMAGE;
+import static com.po.fuck.model.Constants.LASER_BEAM_LIFE_TIME;
+
 public final class LaserBeam extends AnimatedBullet  {
     // version is also good, but for some reason it renders with artifacts
 
     {
         AnimatedBullet.addAnimation(LaserBeam.class, GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read()));
-        damage = 3;
+        damage = LASER_BEAM_DAMAGE;
         this.sprite = new Sprite(getAnimation().getKeyFrame(0));
     }
 
     LaserBeam(Vector2 muzzle_position, Vector2 direction, int teamTag) {
-        super(1f);
+        super(LASER_BEAM_LIFE_TIME);
         this.teamTag = teamTag;
         this.position = muzzle_position.cpy().add(direction.cpy().setLength(sprite.getWidth() / 2));
         this.velocity = direction.cpy().setLength(0.1f);
@@ -34,13 +37,13 @@ public final class LaserBeam extends AnimatedBullet  {
     @Override
     public void update(float delta) {
         timeElapsed += delta;
-        
-        sprite.setRotation(-velocity.angleDeg()); // Currently needed for Collisions
 
-        if (timeElapsed > LIVE_TIME) {
+        if (timeElapsed > LIFE_TIME) {
             Manager.destroy_raw(this);
             return;
         }
+
+        sprite.setRotation(-velocity.angleDeg()); // Currently needed for Collisions
 
         Polygon polygon = GeometryMisc.createRectangle(position, sprite);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);

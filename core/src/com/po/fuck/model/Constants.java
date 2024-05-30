@@ -28,4 +28,10 @@ public final class Constants {
 
     /* borders */
     public static final int GAME_BORDER = 20000;
+
+    /* bullets */ /* TODO: move to .properties */
+	public static final float COSMIC_BULLET_LIFE_TIME = 10f;
+    public static final float COSMIC_BULLET_DAMAGE = 1f;
+    public static final float LASER_BEAM_DAMAGE = 3f; 
+    public static final float LASER_BEAM_LIFE_TIME = 1f;
 }
