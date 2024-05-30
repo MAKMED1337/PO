@@ -11,8 +11,6 @@ import com.po.fuck.view.HealthBar;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ClassDrawer;
 
-import static com.po.fuck.view.Constants.HEALTHBAR_OFFSET;
-
 public class EntityDrawerFactory {
     
     static {
@@ -30,9 +28,8 @@ public class EntityDrawerFactory {
                 
                 drawer.draw(entitySprite, position);
                 
-                Vector2 healthBarPosition = position.cpy().sub(0 , entitySprite.getHeight() / 2 + HEALTHBAR_OFFSET);
                 HealthBar healthBar = new HealthBar(object);
-                healthBar.draw(drawer, healthBarPosition);
+                healthBar.draw(drawer, entitySprite.getHeight());
             }
         };
     }
