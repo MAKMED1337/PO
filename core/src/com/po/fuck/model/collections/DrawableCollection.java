@@ -32,16 +32,16 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
     public Iterator<Drawable> iterator() {
         return new Iterator<Drawable>() {
             int current_z = 0; // Start at the first z-index
-            int ptr = 0; // Start at the first object in the z-index
+            Iterator<Drawable> it = objects[current_z].iterator(); // Start at the first object in the z-index
             // Represents the next object to be drew.
             // If the current z-index has no more objects to draw, move to the next z-index
 
             @Override
             public boolean hasNext() {
                 // Skip z-indexes where there are no more objects to draw
-                while(current_z < MAX_Z && ptr == objects[current_z].size()){
+                while(current_z < MAX_Z && !it.hasNext()){
                     current_z++; // Move to the next z-index
-                    ptr = 0; // Reset the pointer
+                    it = objects[current_z].iterator();
                 }
                 if(current_z == MAX_Z) return false; // No more objects to draw
                 return true;
@@ -49,10 +49,11 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
 
             @Override
             public Drawable next() {
-                Drawable drawable = objects[current_z].get(ptr++); // Get the next object
-                if(ptr == objects[current_z].size()){ // If there are no more objects in the current z-index
+                Drawable drawable = it.next(); // Get the next object
+                if(!it.hasNext()){ // If there are no more objects in the current z-index
                     current_z++; // Move to the next z-index
-                    ptr = 0; // Reset the pointer
+                    if(current_z < MAX_Z)
+                        it = objects[current_z].iterator();
                 }
                 return drawable;
             }
