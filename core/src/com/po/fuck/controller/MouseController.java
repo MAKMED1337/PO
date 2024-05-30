@@ -1,7 +1,7 @@
 package com.po.fuck.controller;
 
-import static com.po.fuck.model.Constants.GAME_HEIGHT;
-import static com.po.fuck.model.Constants.GAME_WIDTH;
+import static com.po.fuck.view.Constants.GAME_HEIGHT;
+import static com.po.fuck.view.Constants.GAME_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;

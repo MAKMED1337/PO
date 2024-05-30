@@ -1,6 +1,6 @@
 package com.po.fuck.view;
 
-import static com.po.fuck.model.Constants.GAME_HEIGHT;
+import static com.po.fuck.view.Constants.GAME_HEIGHT;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;

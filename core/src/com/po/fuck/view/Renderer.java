@@ -1,8 +1,5 @@
 package com.po.fuck.view;
 
-import static com.po.fuck.model.Constants.GAME_HEIGHT;
-import static com.po.fuck.model.Constants.GAME_WIDTH;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +18,8 @@ import com.po.fuck.view.classdrawers.factories.HandedWeaponDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.RoomDrawerFactory;
 
 import static com.po.fuck.model.Core.forceInit;
+import static com.po.fuck.view.Constants.GAME_HEIGHT;
+import static com.po.fuck.view.Constants.GAME_WIDTH;
 
 /**
  * Class responsible for rendering game objects.

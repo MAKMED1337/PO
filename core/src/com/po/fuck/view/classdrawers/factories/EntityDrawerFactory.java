@@ -11,7 +11,7 @@ import com.po.fuck.view.HealthBar;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ClassDrawer;
 
-import static com.po.fuck.view.ViewConstants.HEALTHBAR_OFFSET;
+import static com.po.fuck.view.Constants.HEALTHBAR_OFFSET;
 
 public class EntityDrawerFactory {
     

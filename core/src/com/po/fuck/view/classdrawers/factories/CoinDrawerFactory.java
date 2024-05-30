@@ -1,7 +1,7 @@
 package com.po.fuck.view.classdrawers.factories;
 
-import static com.po.fuck.model.Constants.WIDTH_OF_THE_COIN_COUNTER_DIGIT;
-import static com.po.fuck.model.Constants.COINS_COUNTER_TEXT_SCALE;
+import static com.po.fuck.view.Constants.WIDTH_OF_THE_COIN_COUNTER_DIGIT;
+import static com.po.fuck.view.Constants.COINS_COUNTER_TEXT_SCALE;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;

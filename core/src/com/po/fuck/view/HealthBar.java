@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
 
-import static com.po.fuck.view.ViewConstants.HEALTHBAR_HEIGHT;
-import static com.po.fuck.view.ViewConstants.HEALTHBAR_WIDTH;
+import static com.po.fuck.view.Constants.HEALTHBAR_HEIGHT;
+import static com.po.fuck.view.Constants.HEALTHBAR_WIDTH;
 import static com.po.fuck.view.DrawableMisc.createTexture;
 
 public final class HealthBar {
