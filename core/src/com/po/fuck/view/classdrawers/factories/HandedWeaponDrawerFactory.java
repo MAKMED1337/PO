@@ -23,10 +23,10 @@ public class HandedWeaponDrawerFactory {
             Sprite handedWeaponSprite = new Sprite(sprite);
             
             @Override
-            public <Drawer extends CenterDrawer> void draw(Drawer drawer, T object) {
-                Vector2 position = object.getPosition();
-                if (object.getAimPosition() != null){
-                    Vector2 direction = object.getDirection();
+            public <Drawer extends CenterDrawer> void draw(Drawer drawer, T weapon) {
+                Vector2 position = weapon.getPosition();
+                if (weapon.getAimPosition() != null){
+                    Vector2 direction = weapon.getDirection();
                     float angle = direction.angleDeg();
                     handedWeaponSprite.setRotation(-angle);
                     handedWeaponSprite.setFlip(false, angle >= 90 && angle <= 270);

@@ -1,7 +1,5 @@
 package com.po.fuck.model;
 
-import com.badlogic.gdx.math.Vector2;
-
 public final class Constants {
     public static final int SCREEN_WIDTH = 1280;
     public static final int SCREEN_HEIGHT = 720;
