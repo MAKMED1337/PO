@@ -23,7 +23,7 @@ public class HandedWeaponDrawerFactory {
             Sprite handedWeaponSprite = new Sprite(sprite);
             
             @Override
-            public <Drawer extends CenterDrawer> void draw(Drawer drawer, T weapon) {
+            public void draw(CenterDrawer drawer, T weapon) {
                 Vector2 position = weapon.getPosition();
                 if (weapon.getAimPosition() != null){
                     Vector2 direction = weapon.getDirection();

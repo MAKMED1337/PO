@@ -13,7 +13,7 @@ public class GameObjectDrawerFactory {
             Sprite gameObjectSprite = new Sprite(sprite);
 
             @Override
-            public <Drawer extends CenterDrawer> void draw(Drawer drawer, T object) {
+            public void draw(CenterDrawer drawer, T object) {
                 Vector2 position = object.getPosition();
                 drawer.draw(gameObjectSprite, position);
             }

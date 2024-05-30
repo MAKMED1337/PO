@@ -18,7 +18,7 @@ public class RoomDrawerFactory {
             Sprite roomSprite = new Sprite(sprite);
 
             @Override
-            public <Drawer extends CenterDrawer> void draw(Drawer drawer, T object) {
+            public void draw(CenterDrawer drawer, T object) {
                 drawer.draw(roomSprite, object.getPosition());
             }
         };

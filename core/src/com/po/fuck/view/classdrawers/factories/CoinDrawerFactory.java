@@ -23,7 +23,7 @@ public class CoinDrawerFactory {
             Sprite coinSprite = new Sprite(sprite);
 
             @Override
-            public <Drawer extends CenterDrawer> void draw(Drawer drawer, T object) {
+            public void draw(CenterDrawer drawer, T object) {
                 BitmapFont font = new BitmapFont();
 
                 font.setColor(Color.YELLOW);

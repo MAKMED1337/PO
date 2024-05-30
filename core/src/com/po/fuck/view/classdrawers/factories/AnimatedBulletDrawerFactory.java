@@ -21,7 +21,7 @@ public class AnimatedBulletDrawerFactory {
         return new ClassDrawer<T>() {
 
             @Override
-            public <Drawer extends CenterDrawer> void draw(Drawer drawer, T object) {
+            public void draw(CenterDrawer drawer, T object) {
                 Sprite sprite = new Sprite(animation.getKeyFrame(object.getTimeElapsed()));
                 sprite.setRotation(-object.getVelocity().angleDeg());
                 drawer.draw(sprite, object.getPosition());
