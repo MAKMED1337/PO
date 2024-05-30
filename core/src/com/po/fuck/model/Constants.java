@@ -18,11 +18,6 @@ public final class Constants {
     /* physics */
     public static final int COLLISION_ITERATIONS = 3;
 
-    /* health bar */
-    public static float HEALTHBAR_OFFSET = 5;
-    public static int HEALTHBAR_WIDTH = 100;
-    public static int HEALTHBAR_HEIGHT = 10;
-
     /* team tags */
     public static final int ENEMY_TEAM_TAG = 0;
     public static final int PLAYER_TEAM_TAG = 1;

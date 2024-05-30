@@ -26,7 +26,7 @@ import static com.po.fuck.model.Core.forceInit;
  * Class responsible for rendering game objects.
  */
 public class Renderer {
-    static Map<Class<?>, ClassDrawer<?> > drawers = new HashMap<>();
+    static private Map<Class<?>, ClassDrawer<?> > drawers = new HashMap<>();
     
     static {
         forceInit(AnimatedBulletDrawerFactory.class);
@@ -38,8 +38,8 @@ public class Renderer {
         forceInit(CoinDrawerFactory.class);
     }
 
-    OrthographicCamera camera;
-    FollowingDrawer followingDrawer;
+    private OrthographicCamera camera;
+    private FollowingDrawer followingDrawer;
 
     public Renderer(ObjectFollower objectFollower){
         camera = new OrthographicCamera();
