@@ -4,6 +4,7 @@ import com.po.fuck.view.Drawable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class DrawableCollection extends SimpleCollection<Drawable> implements Iterable<Drawable> {
     public static final int MAX_Z = 20;
@@ -41,7 +42,8 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
                 // Skip z-indexes where there are no more objects to draw
                 while(current_z < MAX_Z && !it.hasNext()){
                     current_z++; // Move to the next z-index
-                    it = objects[current_z].iterator();
+                    if(current_z < MAX_Z)
+                        it = objects[current_z].iterator();
                 }
                 if(current_z == MAX_Z) return false; // No more objects to draw
                 return true;
@@ -49,6 +51,7 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
 
             @Override
             public Drawable next() {
+                if(!hasNext()) throw new NoSuchElementException();
                 Drawable drawable = it.next(); // Get the next object
                 if(!it.hasNext()){ // If there are no more objects in the current z-index
                     current_z++; // Move to the next z-index
