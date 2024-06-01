@@ -19,11 +19,19 @@ public class SimplePosition {
         this.position = newPosition.cpy();
     }
 
-    public float getRotation(){
+    public float getRotationRad(){
         return rotation;
     }
 
-    public void setRotation(float angle){
+    public void setRotationRad(float angle){
         rotation = angle;
+    }
+
+    public float getRotationDeg(){
+        return (float) (rotation * 180 / Math.PI);
+    }
+
+    public void setRotationDeg(float angle){
+        rotation = (float) (angle * Math.PI / 180f);
     }
 }
