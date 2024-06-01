@@ -1,7 +1,8 @@
 package com.po.fuck.view.classdrawers.factories;
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.HandedWeapon;
@@ -10,20 +11,22 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
+import static com.po.fuck.view.classdrawers.Misc.getAnimation;
+
 public class HandedWeaponDrawerFactory {
     
     static {
-        Renderer.addDrawer(Glock.class, HandedWeaponDrawerFactory.get(Glock.class, new Sprite(new Texture("glock3.png"))));
-        Renderer.addDrawer(LaserGun.class, HandedWeaponDrawerFactory.get(LaserGun.class, new Sprite(new Texture("laser_gun2.png"))));
+        Renderer.addDrawer(Glock.class, HandedWeaponDrawerFactory.get(Glock.class, getAnimation("glock3.png")));
+        Renderer.addDrawer(LaserGun.class, HandedWeaponDrawerFactory.get(LaserGun.class, getAnimation("laser_gun2.png")));
     }
 
-    public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz, Sprite sprite){
+    public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
         
         return new ObjectDrawer<T>() {
-            Sprite handedWeaponSprite = new Sprite(sprite);
             
             @Override
             public void draw(CenterDrawer drawer, T weapon) {
+                Sprite handedWeaponSprite = new Sprite(animation.getKeyFrame(weapon.getElapsedTime()));
                 Vector2 position = weapon.getPosition();
                 if (weapon.getAimPosition() != null){
                     Vector2 direction = weapon.getDirection();

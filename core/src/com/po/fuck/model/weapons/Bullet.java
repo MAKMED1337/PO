@@ -1,6 +1,5 @@
 package com.po.fuck.model.weapons;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Drawable;
@@ -16,7 +15,8 @@ import static com.po.fuck.model.Constants.WEAPON_LAYER;
 import java.util.List;
 
 public abstract class Bullet implements Drawable, Updatable {
-    protected Sprite sprite;
+    protected float width;
+    protected float height;
     protected Vector2 position;
     protected Vector2 velocity;
     protected int teamTag;
@@ -56,7 +56,7 @@ public abstract class Bullet implements Drawable, Updatable {
             return;
         }
 
-        Polygon polygon = GeometryMisc.createRectangle(position, sprite);
+        Polygon polygon = GeometryMisc.createRectangle(position, width, height, velocity.angleDeg());
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
             if (!(collidable instanceof Entity)) {

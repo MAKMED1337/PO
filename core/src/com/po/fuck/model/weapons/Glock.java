@@ -7,7 +7,8 @@ import com.po.fuck.model.Entity;
 
 public final class Glock extends Gun {
     {
-        sprite = new Sprite(new Texture("glock3.png"));
+        width = new Sprite(new Texture("glock3.png")).getWidth();
+        height = new Sprite(new Texture("glock3.png")).getHeight();
         cooldown = 0.5f;
     }
 

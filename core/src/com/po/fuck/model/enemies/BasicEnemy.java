@@ -10,7 +10,6 @@ import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.movement.BasicMovement;
-import com.po.fuck.model.Updatable;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.Weapon;
 import com.po.fuck.model.lifetime.Manager;
@@ -19,13 +18,14 @@ import com.po.fuck.model.lifetime.Manager;
  * Class representing an enemy entity in the game.
  * Inherits from the Entity class and adds functionality specific to enemies.
  */
-public final class BasicEnemy extends Entity implements Updatable {
+public final class BasicEnemy extends Entity {
     {
-        sprite = new Sprite(new Texture("player2.png"));
         weapon = Manager.create(new Glock(this));
         movement = Manager.create(new BasicMovement(this, DEFAULT_SPEED / 10));
         teamTag = Constants.ENEMY_TEAM_TAG;
         reward = 1;
+        width = new Sprite(new Texture("player2.png")).getWidth();
+        height = new Sprite(new Texture("player2.png")).getHeight();
     }
 
     public BasicEnemy(Vector2 position) {
@@ -34,6 +34,7 @@ public final class BasicEnemy extends Entity implements Updatable {
 
     @Override
     public void update(float delta) {
+        super.update(delta);
         Entity target = GeometryMisc.closest(this, All.entityCollection.getOpponents(this.teamTag));
         if (target == null) return;
         Vector2 targetPosition = target.getPosition();

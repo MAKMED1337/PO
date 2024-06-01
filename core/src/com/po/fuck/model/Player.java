@@ -21,13 +21,14 @@ import com.po.fuck.model.weapons.LaserGun;
  */
 public class Player extends Entity {
     {
-        sprite = new Sprite(new Texture("FUCKerWithoutHands2.png"));
         weapon = Manager.create(new LaserGun(this));
         movement = Manager.create(
                 new Boost(
                         new BasicMovement(this, DEFAULT_SPEED),
                         Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN));
         teamTag = Constants.PLAYER_TEAM_TAG;
+        width = new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth();
+        height = new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight();
     }
 
     // Controllers

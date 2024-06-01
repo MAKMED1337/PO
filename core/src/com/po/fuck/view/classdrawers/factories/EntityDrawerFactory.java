@@ -1,7 +1,10 @@
 package com.po.fuck.view.classdrawers.factories;
 
-import com.badlogic.gdx.graphics.Texture;
+import static com.po.fuck.view.classdrawers.Misc.getAnimation;
+
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.Player;
@@ -14,17 +17,16 @@ import com.po.fuck.view.classdrawers.ObjectDrawer;
 public class EntityDrawerFactory {
     
     static {
-        Renderer.addDrawer(Player.class, EntityDrawerFactory.get(Player.class, new Sprite(new Texture("FUCKerWithoutHands2.png"))));
-        Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class, new Sprite(new Texture("player2.png"))));
+        Renderer.addDrawer(Player.class, EntityDrawerFactory.get(Player.class, getAnimation("FUCKerWithoutHands2.png")));
+        Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class, getAnimation("player2.png")));
     }
 
-    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz, Sprite sprite){
+    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
         return new ObjectDrawer<T>() {
-            Sprite entitySprite = new Sprite(sprite);
-
             @Override
             public void draw(CenterDrawer drawer, T object) {
                 Vector2 position = object.getPosition();
+                Sprite entitySprite = new Sprite(animation.getKeyFrame(object.getElapsedTime()));
                 
                 drawer.draw(entitySprite, position);
                 

@@ -2,10 +2,9 @@ package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
-import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
 
-public abstract class Gun extends HandedWeapon implements Updatable {
+public abstract class Gun extends HandedWeapon {
     protected float cooldown;
     private float cooldownLeft = 0;
     Gun(Entity owner) {
@@ -26,7 +25,7 @@ public abstract class Gun extends HandedWeapon implements Updatable {
 
         Vector2 direction = getDirection(), gunPosition = getPosition();
 
-        gunPosition.add(new Vector2(sprite.getWidth() / 2, 0).rotateRad(direction.angleRad()));
+        gunPosition.add(new Vector2(width / 2, 0).rotateRad(direction.angleRad()));
         Manager.create(shoot(gunPosition, getDirection()));
 
         cooldownLeft = cooldown;
@@ -35,6 +34,7 @@ public abstract class Gun extends HandedWeapon implements Updatable {
 
     @Override
     public void update(float delta) {
+        super.update(delta);
         cooldownLeft = Math.max(0, cooldownLeft - delta);
     }
 }

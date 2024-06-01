@@ -6,8 +6,9 @@ import static com.po.fuck.view.Constants.COINS_COUNTER_POSITION;
 import static com.po.fuck.view.Constants.COIN_SPRITE_POSITION;
 import static com.po.fuck.model.Constants.GUI_LAYER;
 
-public class Coins implements Drawable {
+public class Coins implements Drawable, Updatable {
     private int coins = 0;
+    private float elapsedTime;
 
     public int getCoins(){
         return coins;
@@ -28,5 +29,14 @@ public class Coins implements Drawable {
 
     public Vector2 getCounterPosition(){
         return new Vector2(COINS_COUNTER_POSITION.x, COINS_COUNTER_POSITION.y);
+    }
+
+    @Override
+    public void update(float delta) {
+        elapsedTime += delta;
+    }
+
+    public float getElapsedTime(){
+        return elapsedTime;
     }
 }

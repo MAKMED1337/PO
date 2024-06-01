@@ -19,7 +19,9 @@ import com.po.fuck.model.Updatable;
 
 public class Room implements Drawable, Updatable {
     public Vector2 tilling_position;
-    protected Sprite sprite = new Sprite(new Texture("island2.png"));
+    protected float width;
+    protected float height;
+    protected float elapsedTime = 0;
 
     private enum State {
         NOT_ENTERED,
@@ -32,6 +34,11 @@ public class Room implements Drawable, Updatable {
     @SuppressWarnings("unchecked")
     protected Managed<InvisibleWall> walls[] = new Managed[4];
 
+    {
+        width = new Sprite(new Texture("island2.png")).getWidth();
+        height = new Sprite(new Texture("island2.png")).getHeight();
+    }
+
     Room(Vector2 tilling_position) {
         this.tilling_position = tilling_position;
     }
@@ -43,7 +50,7 @@ public class Room implements Drawable, Updatable {
 
     protected void spawnEnemies() {
         Vector2 center = getPosition();
-        Vector2 offset = new Vector2(sprite.getWidth() - 200, sprite.getHeight() - 300);
+        Vector2 offset = new Vector2(width - 200, height - 300);
 
         // top left
         Manager.create(new BasicEnemy(center.cpy().mulAdd(offset, -0.5f)));
@@ -53,7 +60,7 @@ public class Room implements Drawable, Updatable {
     }
 
     public Vector2 getPosition() {
-        return new Vector2(sprite.getWidth() * tilling_position.x, sprite.getHeight() * tilling_position.y);
+        return new Vector2(width * tilling_position.x, height * tilling_position.y);
     }
 
     protected void clear() {
@@ -65,13 +72,12 @@ public class Room implements Drawable, Updatable {
 
     // returns raw walls, simply for inner collisions check
     protected InvisibleWall[] getWalls() {
-        float h = sprite.getHeight(), w = sprite.getWidth();
         return new InvisibleWall[] {
-                new InvisibleWall(getPosition().sub(0, h / 2), InvisibleWall.Type.HORIZONTAL, w),
-                new InvisibleWall(getPosition().add(w / 2, 0), InvisibleWall.Type.VERTICAL, h),
+                new InvisibleWall(getPosition().sub(0, height / 2), InvisibleWall.Type.HORIZONTAL, width),
+                new InvisibleWall(getPosition().add(width / 2, 0), InvisibleWall.Type.VERTICAL, height),
 
-                new InvisibleWall(getPosition().add(0, h / 2), InvisibleWall.Type.HORIZONTAL, w),
-                new InvisibleWall(getPosition().sub(w / 2, 0), InvisibleWall.Type.VERTICAL, h),
+                new InvisibleWall(getPosition().add(0, height / 2), InvisibleWall.Type.HORIZONTAL, width),
+                new InvisibleWall(getPosition().sub(width / 2, 0), InvisibleWall.Type.VERTICAL, height),
         };
     }
 
@@ -87,13 +93,14 @@ public class Room implements Drawable, Updatable {
 
     @Override
     public void update(float delta) {
+        elapsedTime += delta;
         // If we have finished this room, nothing to update.
         if (state == State.FINISHED)
             return;
 
         // List of all the entities inside this room.
         List<Collidable> inside = All.collidableCollection
-                .collides(GeometryMisc.createRectangle(getPosition(), sprite));
+                .collides(GeometryMisc.createRectangle(getPosition(), width, height, 0));
 
         if (state == State.NOT_ENTERED) {
             // If the player has not entered before this time, we need to check if he has
@@ -129,5 +136,9 @@ public class Room implements Drawable, Updatable {
             // change in the future.
             throw new AssertionError("Unknown state");
         }
+    }
+
+    public float getElapsedTime() {
+        return elapsedTime;
     }
 }

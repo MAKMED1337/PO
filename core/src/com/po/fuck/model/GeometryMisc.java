@@ -1,7 +1,6 @@
 package com.po.fuck.model;
 
 import java.util.List;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 
@@ -54,22 +53,24 @@ public class GeometryMisc {
 
     /**
      * Creates a rectangular {@link Polygon} based on the provided position and sprite.
-     * Rotates the rectangle based on the rotation of the sprite.
+     * Rotates the rectangle based on the given rotation.
      *
      * <p>The rectangle will be centered on the provided position, with its size
-     * determined by the width and height of the sprite.</p>
+     * determined by the given width and height.</p>
      *
      * @param position the center position of the rectangle, represented as a {@link Vector2}
-     * @param sprite the {@link Sprite} used to determine the size and rotation of the rectangle
+     * @param width the width of the rectangle
+     * @param height the height of the rectangle
+     * @param rotation the rotation of the rectangle
      * @return a {@link Polygon} representing the rectangle
      */
-    public static Polygon createRectangle(Vector2 position, Sprite sprite) {
-        Vector2 size = new Vector2(sprite.getWidth(), sprite.getHeight());
+    public static Polygon createRectangle(Vector2 position, float width, float height, float rotation){
+        Vector2 size = new Vector2(width, height);
         size.scl(0.5f);
 
         Polygon polygon = new Polygon();
         polygon.setPosition(position.x, position.y);
-        polygon.setRotation(-sprite.getRotation());
+        polygon.setRotation(-rotation);
         polygon.setVertices(new float[] {
                 size.x, size.y,
                 -size.x, size.y,

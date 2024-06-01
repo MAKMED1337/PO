@@ -7,7 +7,8 @@ import com.po.fuck.model.Entity;
 
 public final class LaserGun extends Gun {
     {
-        sprite = new Sprite(new Texture("laser_gun2.png"));
+        width = new Sprite(new Texture("laser_gun2.png")).getWidth();
+        height = new Sprite(new Texture("laser_gun2.png")).getHeight();
         cooldown = 1;
     }
 

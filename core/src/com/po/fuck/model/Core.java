@@ -9,7 +9,7 @@ import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 
 public class Core implements Updatable{
-    static {
+    static { // TODO: remove
         forceInit(Destructable.class);
         forceInit(All.class);
     }

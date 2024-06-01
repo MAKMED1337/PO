@@ -6,10 +6,10 @@ import java.util.Map;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.po.fuck.model.Drawable;
 import com.po.fuck.model.ObjectFollower;
 import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
-import com.po.fuck.view.classdrawers.factories.AnimatedBulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.EntityDrawerFactory;
@@ -27,8 +27,7 @@ import static com.po.fuck.view.Constants.GAME_WIDTH;
 public class Renderer {
     static private Map<Class<?>, ObjectDrawer<?> > drawers = new HashMap<>();
     
-    static {
-        forceInit(AnimatedBulletDrawerFactory.class);
+    static { // TODO: remove this
         forceInit(BulletDrawerFactory.class);
         forceInit(EntityDrawerFactory.class);
         forceInit(GameObjectDrawerFactory.class);

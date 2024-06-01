@@ -27,7 +27,7 @@ public final class HealthBar {
         float healthPercentage = 1.0f * entity.getHP() / entity.MAX_HEALTH_POINTS;
         healthBarSprite.setSize((float) Math.ceil(healthPercentage * HEALTHBAR_WIDTH), HEALTHBAR_HEIGHT);
 
-        Vector2 position = entity.getPosition().sub(0 , spriteHeight / 2 + HEALTHBAR_OFFSET);
+        Vector2 position = entity.getPosition().sub(0 , entityHeight / 2 + HEALTHBAR_OFFSET);
 
         drawer.draw(backgroundSprite, position);
         drawer.draw(healthBarSprite, position);

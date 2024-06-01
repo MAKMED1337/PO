@@ -4,27 +4,30 @@ import static com.po.fuck.view.Constants.WIDTH_OF_THE_COIN_COUNTER_DIGIT;
 import static com.po.fuck.view.Constants.COINS_COUNTER_TEXT_SCALE;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.po.fuck.model.Coins;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
+import static com.po.fuck.view.classdrawers.Misc.getAnimation;
+
 public class CoinDrawerFactory {
     
     static {
-        Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class, new Sprite(new Texture("coin3.png"))));
+        Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class, getAnimation("coin3.png")));
     }
 
-    public static <T extends Coins> ObjectDrawer<T> get(Class<T> clz, Sprite sprite){
+    public static <T extends Coins> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
         return new ObjectDrawer<T>() {
-            Sprite coinSprite = new Sprite(sprite);
 
             @Override
             public void draw(CenterDrawer drawer, T object) {
                 BitmapFont font = new BitmapFont();
+                Sprite coinSprite = new Sprite(animation.getKeyFrame(object.getElapsedTime()));
 
                 font.setColor(Color.YELLOW);
                 font.getData().scale(COINS_COUNTER_TEXT_SCALE);
