@@ -7,7 +7,7 @@ import com.po.fuck.model.weapons.Bullet;
 import com.po.fuck.model.weapons.CosmicBullet;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
-import com.po.fuck.view.classdrawers.ClassDrawer;
+import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class BulletDrawerFactory {
 
@@ -15,8 +15,8 @@ public class BulletDrawerFactory {
         Renderer.addDrawer(CosmicBullet.class, BulletDrawerFactory.get(CosmicBullet.class, new Sprite(new Texture("bullet2.png"))));
     }
 
-    public static <T extends Bullet> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
-        return new ClassDrawer<T>() {
+    public static <T extends Bullet> ObjectDrawer<T> get(Class<T> clz, Sprite sprite){
+        return new ObjectDrawer<T>() {
             Sprite bulletSprite = new Sprite(sprite);
 
             @Override

@@ -8,7 +8,7 @@ import com.po.fuck.model.weapons.HandedWeapon;
 import com.po.fuck.model.weapons.LaserGun;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
-import com.po.fuck.view.classdrawers.ClassDrawer;
+import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class HandedWeaponDrawerFactory {
     
@@ -17,9 +17,9 @@ public class HandedWeaponDrawerFactory {
         Renderer.addDrawer(LaserGun.class, HandedWeaponDrawerFactory.get(LaserGun.class, new Sprite(new Texture("laser_gun2.png"))));
     }
 
-    public static <T extends HandedWeapon> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
+    public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz, Sprite sprite){
         
-        return new ClassDrawer<T>() {
+        return new ObjectDrawer<T>() {
             Sprite handedWeaponSprite = new Sprite(sprite);
             
             @Override

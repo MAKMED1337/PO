@@ -21,16 +21,14 @@ public abstract class Bullet implements Drawable, Updatable {
     protected Vector2 velocity;
     protected int teamTag;
     protected float damage;
-    protected final float LIFE_TIME;
+    protected float lifeTime = 60; // default lifetime is set to 60 seconds
     protected float timeElapsed = 0;
 
-    public Bullet(float life_time) {
-        LIFE_TIME = life_time;
-	}
 	@Override
     public int get_z() {
         return WEAPON_LAYER;
     }
+    
     @Override
     public Vector2 getPosition() {
         return position.cpy();
@@ -53,7 +51,7 @@ public abstract class Bullet implements Drawable, Updatable {
 
         timeElapsed += delta;
 
-        if(timeElapsed > LIFE_TIME){
+        if(timeElapsed > lifeTime){
             Manager.destroy_raw(this);
             return;
         }

@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class CenterDrawer {
     protected final SpriteBatch batch;
-    protected CenterDrawer(SpriteBatch batch) {
+    public CenterDrawer(SpriteBatch batch) {
         this.batch = batch;
     }
 
@@ -22,8 +22,8 @@ public class CenterDrawer {
         sprite.draw(batch);
     }
     
-    public void drawGlobal(Sprite sprite, Vector2 global_position) {
-        draw(sprite, global_position);
+    public void drawGlobal(Sprite sprite, Vector2 globalPosition) {
+        draw(sprite, globalPosition);
     }
 
     public void drawText(String text, BitmapFont font, Vector2 position) {

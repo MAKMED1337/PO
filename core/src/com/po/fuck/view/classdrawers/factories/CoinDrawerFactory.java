@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.po.fuck.model.Coins;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
-import com.po.fuck.view.classdrawers.ClassDrawer;
+import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class CoinDrawerFactory {
     
@@ -18,8 +18,8 @@ public class CoinDrawerFactory {
         Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class, new Sprite(new Texture("coin3.png"))));
     }
 
-    public static <T extends Coins> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
-        return new ClassDrawer<T>() {
+    public static <T extends Coins> ObjectDrawer<T> get(Class<T> clz, Sprite sprite){
+        return new ObjectDrawer<T>() {
             Sprite coinSprite = new Sprite(sprite);
 
             @Override

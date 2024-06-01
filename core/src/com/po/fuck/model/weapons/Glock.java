@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
 
-public class Glock extends Gun {
+public final class Glock extends Gun {
     {
         sprite = new Sprite(new Texture("glock3.png"));
         cooldown = 0.5f;

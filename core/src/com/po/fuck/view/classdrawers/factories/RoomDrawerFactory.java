@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
-import com.po.fuck.view.classdrawers.ClassDrawer;
+import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.model.Room;
 
 public class RoomDrawerFactory {
@@ -13,8 +13,8 @@ public class RoomDrawerFactory {
         Renderer.addDrawer(Room.class, RoomDrawerFactory.get(Room.class, new Sprite(new Texture("island2.png"))));
     }
 
-    public static <T extends Room> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
-        return new ClassDrawer<T>() {
+    public static <T extends Room> ObjectDrawer<T> get(Class<T> clz, Sprite sprite){
+        return new ObjectDrawer<T>() {
             Sprite roomSprite = new Sprite(sprite);
 
             @Override

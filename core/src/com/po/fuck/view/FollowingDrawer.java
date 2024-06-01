@@ -12,8 +12,8 @@ public class FollowingDrawer extends CenterDrawer {
 
     private ObjectFollower objectFollowing;
 
-    protected FollowingDrawer(SpriteBatch sprite, ObjectFollower objectFollowing){
-        super(sprite);
+    public FollowingDrawer(SpriteBatch batch, ObjectFollower objectFollowing){
+        super(batch);
         this.objectFollowing = objectFollowing;
     }
 
@@ -23,7 +23,7 @@ public class FollowingDrawer extends CenterDrawer {
     }
     
     @Override
-    public void drawGlobal(Sprite sprite, Vector2 global_position) {
-        super.draw(sprite, global_position);
+    public void drawGlobal(Sprite sprite, Vector2 globalPosition) {
+        super.draw(sprite, globalPosition);
     }
 }

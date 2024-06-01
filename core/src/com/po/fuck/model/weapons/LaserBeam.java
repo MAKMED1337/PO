@@ -24,11 +24,11 @@ public final class LaserBeam extends AnimatedBullet  {
     {
         AnimatedBullet.addAnimation(LaserBeam.class, GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read()));
         damage = LASER_BEAM_DAMAGE;
-        this.sprite = new Sprite(getAnimation().getKeyFrame(0));
+        sprite = new Sprite(getAnimation().getKeyFrame(0));
+        lifeTime = LASER_BEAM_LIFE_TIME;
     }
 
     LaserBeam(Vector2 muzzle_position, Vector2 direction, int teamTag) {
-        super(LASER_BEAM_LIFE_TIME);
         this.teamTag = teamTag;
         this.position = muzzle_position.cpy().add(direction.cpy().setLength(sprite.getWidth() / 2));
         this.velocity = direction.cpy().setLength(0.1f);
@@ -38,7 +38,7 @@ public final class LaserBeam extends AnimatedBullet  {
     public void update(float delta) {
         timeElapsed += delta;
 
-        if (timeElapsed > LIFE_TIME) {
+        if (timeElapsed > lifeTime) {
             Manager.destroy_raw(this);
             return;
         }

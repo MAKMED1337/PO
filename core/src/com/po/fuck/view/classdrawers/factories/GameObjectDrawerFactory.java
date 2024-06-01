@@ -4,12 +4,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.GameObject;
 import com.po.fuck.view.CenterDrawer;
-import com.po.fuck.view.classdrawers.ClassDrawer;
+import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class GameObjectDrawerFactory {
 
-    public static <T extends GameObject> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
-        return new ClassDrawer<T>() {
+    public static <T extends GameObject> ObjectDrawer<T> get(Class<T> clz, Sprite sprite){
+        return new ObjectDrawer<T>() {
             Sprite gameObjectSprite = new Sprite(sprite);
 
             @Override

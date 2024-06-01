@@ -9,7 +9,7 @@ import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.HealthBar;
 import com.po.fuck.view.Renderer;
-import com.po.fuck.view.classdrawers.ClassDrawer;
+import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class EntityDrawerFactory {
     
@@ -18,8 +18,8 @@ public class EntityDrawerFactory {
         Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class, new Sprite(new Texture("player2.png"))));
     }
 
-    public static <T extends Entity> ClassDrawer<T> get(Class<T> clz, Sprite sprite){
-        return new ClassDrawer<T>() {
+    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz, Sprite sprite){
+        return new ObjectDrawer<T>() {
             Sprite entitySprite = new Sprite(sprite);
 
             @Override

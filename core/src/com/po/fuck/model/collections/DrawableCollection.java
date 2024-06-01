@@ -32,19 +32,23 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
     @Override
     public Iterator<Drawable> iterator() {
         return new Iterator<Drawable>() {
-            int current_z = 0; // Start at the first z-index
-            Iterator<Drawable> it = objects[current_z].iterator(); // Start at the first object in the z-index
-            // Represents the next object to be drew.
+            private int current_z = 0; // Start at the first z-index
+            private Iterator<Drawable> it = objects[current_z].iterator(); // Start at the first object in the z-index
+            // Represents the next object to be drawn.
             // If the current z-index has no more objects to draw, move to the next z-index
 
-            @Override
-            public boolean hasNext() {
-                // Skip z-indexes where there are no more objects to draw
+            private void moveIterator(){
                 while(current_z < MAX_Z && !it.hasNext()){
                     current_z++; // Move to the next z-index
                     if(current_z < MAX_Z)
                         it = objects[current_z].iterator();
                 }
+            }
+
+            @Override
+            public boolean hasNext() {
+                // Skip z-indexes where there are no more objects to draw
+                moveIterator();
                 if(current_z == MAX_Z) return false; // No more objects to draw
                 return true;
             }
@@ -54,9 +58,7 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
                 if(!hasNext()) throw new NoSuchElementException();
                 Drawable drawable = it.next(); // Get the next object
                 if(!it.hasNext()){ // If there are no more objects in the current z-index
-                    current_z++; // Move to the next z-index
-                    if(current_z < MAX_Z)
-                        it = objects[current_z].iterator();
+                    moveIterator();
                 }
                 return drawable;
             }

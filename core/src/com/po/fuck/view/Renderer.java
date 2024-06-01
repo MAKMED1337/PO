@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.model.ObjectFollower;
 import com.po.fuck.model.collections.DrawableCollection;
-import com.po.fuck.view.classdrawers.ClassDrawer;
+import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.view.classdrawers.factories.AnimatedBulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
@@ -25,7 +25,7 @@ import static com.po.fuck.view.Constants.GAME_WIDTH;
  * Class responsible for rendering game objects.
  */
 public class Renderer {
-    static private Map<Class<?>, ClassDrawer<?> > drawers = new HashMap<>();
+    static private Map<Class<?>, ObjectDrawer<?> > drawers = new HashMap<>();
     
     static {
         forceInit(AnimatedBulletDrawerFactory.class);
@@ -62,7 +62,7 @@ public class Renderer {
         for(Drawable object : drawableCollection){
             
             @SuppressWarnings("unchecked")
-            ClassDrawer<Drawable> classDrawer = (ClassDrawer<Drawable>) getDrawer(object.getClass());
+            ObjectDrawer<Drawable> classDrawer = (ObjectDrawer<Drawable>) getDrawer(object.getClass());
             if(classDrawer == null){
                 throw new RuntimeException("No ClassDrawer found for " + object.getClass().toString());
             }
@@ -81,10 +81,10 @@ public class Renderer {
      * @return the ClassDrawer instance
      */
     @SuppressWarnings("unchecked")
-    public static <T> ClassDrawer<T> getDrawer(Class<T> clazz) {
+    public static <T> ObjectDrawer<T> getDrawer(Class<T> clazz) {
         Class<?> cls = clazz;
         while (cls != null) {
-            ClassDrawer<T> drawer = (ClassDrawer<T>) drawers.get(cls);
+            ObjectDrawer<T> drawer = (ObjectDrawer<T>) drawers.get(cls);
             if (drawer != null)
                 return drawer;
 
@@ -93,7 +93,7 @@ public class Renderer {
         return null;
     }
 
-    public static <T> void addDrawer(Class<T> cls, ClassDrawer<T> classDrawer){
+    public static <T> void addDrawer(Class<T> cls, ObjectDrawer<T> classDrawer){
         if(drawers.containsKey(cls)){
             throw new RuntimeException("ClassDrawer was added twice for " + cls.toString());
         }
