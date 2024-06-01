@@ -14,7 +14,7 @@ import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.view.CenterDrawer;
-import com.po.fuck.view.Drawable;
+import com.po.fuck.model.Drawable;
 import com.po.fuck.model.Updatable;
 
 public class Room implements Drawable, Updatable {

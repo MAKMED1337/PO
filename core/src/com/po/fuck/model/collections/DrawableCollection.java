@@ -1,6 +1,6 @@
 package com.po.fuck.model.collections;
 
-import com.po.fuck.view.Drawable;
+import com.po.fuck.model.Drawable;
 
 import java.util.ArrayList;
 import java.util.Iterator;

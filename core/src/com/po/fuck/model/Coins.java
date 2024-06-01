@@ -1,7 +1,6 @@
 package com.po.fuck.model;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.view.Drawable;
 
 import static com.po.fuck.view.Constants.COINS_COUNTER_POSITION;
 import static com.po.fuck.view.Constants.COIN_SPRITE_POSITION;

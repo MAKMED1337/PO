@@ -5,7 +5,7 @@ import static com.po.fuck.model.Constants.WEAPON_LAYER;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
-import com.po.fuck.view.Drawable;
+import com.po.fuck.model.Drawable;
 
 public abstract class Weapon implements Drawable {
     protected final Entity owner;

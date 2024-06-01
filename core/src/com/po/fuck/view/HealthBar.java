@@ -20,7 +20,7 @@ public final class HealthBar {
         this.entity = entity;
     }
 
-    public <Drawer extends CenterDrawer> void draw(Drawer drawer, float spriteHeight){
+    public <Drawer extends CenterDrawer> void draw(Drawer drawer, float entityHeight){
         healthBarSprite = new Sprite(createTexture(HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT, Color.GREEN));
         backgroundSprite = new Sprite(createTexture(HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT, Color.RED));
         
