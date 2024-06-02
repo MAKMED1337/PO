@@ -1,6 +1,9 @@
 package com.po.fuck.model;
 
 import static com.po.fuck.model.Constants.GAME_BORDER;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
@@ -8,7 +11,7 @@ import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 
-public class Core implements Updatable{
+public class Core implements Updatable {
     static { // TODO: remove
         forceInit(Destructable.class);
         forceInit(All.class);
@@ -20,11 +23,17 @@ public class Core implements Updatable{
 
     public static void initialize() {
         objectFollower = Manager.create(new ObjectFollower());
-        player = Manager.create(new Player(new Vector2()));
+        player = Manager.create(new Player(new Vector2(),
+                                new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth(),
+                                new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight()));
         coinsCounter = Manager.create(new Coins());
 
-        Manager.create(new Room(new Vector2(0, 0)));
-        Manager.create(new Room(new Vector2(1, 0)));
+        Manager.create(new Room(new Vector2(0, 0), 
+                        new Sprite(new Texture("island2.png")).getWidth(),
+                        new Sprite(new Texture("island2.png")).getHeight()));
+        Manager.create(new Room(new Vector2(1, 0),
+                        new Sprite(new Texture("island2.png")).getWidth(),
+                        new Sprite(new Texture("island2.png")).getHeight()));
 
         // Creating some game borders to destroy the bullets that went off the map.
         // We can not use here VERTICAL/HORIZONTAL, because if something went off the
@@ -41,7 +50,9 @@ public class Core implements Updatable{
     @Override
     public void update(float delta) {
         if (player.get() == null)
-            player = Manager.create(new Player(new Vector2()));
+                player = Manager.create(new Player(new Vector2(),
+                        new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth(),
+                        new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight()));
 
         objectFollower.get().setTargetPosition(player.get().getPosition());
 

@@ -13,14 +13,14 @@ import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
+import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.model.Drawable;
 import com.po.fuck.model.Updatable;
 
 public class Room implements Drawable, Updatable {
     public Vector2 tilling_position;
-    protected float width;
-    protected float height;
+    protected GeometryData geometryData;
     protected float elapsedTime = 0;
 
     private enum State {
@@ -35,12 +35,15 @@ public class Room implements Drawable, Updatable {
     protected Managed<InvisibleWall> walls[] = new Managed[4];
 
     {
-        width = new Sprite(new Texture("island2.png")).getWidth();
-        height = new Sprite(new Texture("island2.png")).getHeight();
+        // width = new Sprite(new Texture("island2.png")).getWidth();
+        // height = new Sprite(new Texture("island2.png")).getHeight();
     }
 
-    Room(Vector2 tilling_position) {
+    Room(Vector2 tilling_position, float width, float height) {
         this.tilling_position = tilling_position;
+        this.geometryData = new GeometryData();
+        geometryData.setHeight(height);
+        geometryData.setWidth(width);
     }
 
     @Override
@@ -50,17 +53,21 @@ public class Room implements Drawable, Updatable {
 
     protected void spawnEnemies() {
         Vector2 center = getPosition();
-        Vector2 offset = new Vector2(width - 200, height - 300);
+        Vector2 offset = new Vector2(geometryData.getWidth() - 200, geometryData.getHeight() - 300);
 
         // top left
-        Manager.create(new BasicEnemy(center.cpy().mulAdd(offset, -0.5f)));
+        Manager.create(new BasicEnemy(center.cpy().mulAdd(offset, -0.5f), 
+                                    new Sprite(new Texture("player2.png")).getWidth(),
+                                    new Sprite(new Texture("player2.png")).getHeight()));
 
         // bottom right
-        Manager.create(new BasicEnemy(center.cpy().mulAdd(offset, 0.5f)));
+        Manager.create(new BasicEnemy(center.cpy().mulAdd(offset, 0.5f), 
+                                    new Sprite(new Texture("player2.png")).getWidth(),
+                                    new Sprite(new Texture("player2.png")).getHeight()));
     }
 
     public Vector2 getPosition() {
-        return new Vector2(width * tilling_position.x, height * tilling_position.y);
+        return new Vector2(geometryData.getWidth() * tilling_position.x, geometryData.getHeight() * tilling_position.y);
     }
 
     protected void clear() {
@@ -72,6 +79,8 @@ public class Room implements Drawable, Updatable {
 
     // returns raw walls, simply for inner collisions check
     protected InvisibleWall[] getWalls() {
+        float height = geometryData.getHeight();
+        float width = geometryData.getWidth();
         return new InvisibleWall[] {
                 new InvisibleWall(getPosition().sub(0, height / 2), InvisibleWall.Type.HORIZONTAL, width),
                 new InvisibleWall(getPosition().add(width / 2, 0), InvisibleWall.Type.VERTICAL, height),
@@ -100,7 +109,7 @@ public class Room implements Drawable, Updatable {
 
         // List of all the entities inside this room.
         List<Collidable> inside = All.collidableCollection
-                .collides(GeometryMisc.createRectangle(getPosition(), width, height, 0));
+                .collides(GeometryMisc.createRectangle(getPosition(), geometryData.getWidth(), geometryData.getHeight(), 0));
 
         if (state == State.NOT_ENTERED) {
             // If the player has not entered before this time, we need to check if he has
@@ -140,5 +149,10 @@ public class Room implements Drawable, Updatable {
 
     public float getElapsedTime() {
         return elapsedTime;
+    }
+
+    @Override
+    public GeometryData getGeometryData() {
+        return new GeometryData(geometryData);
     }
 }

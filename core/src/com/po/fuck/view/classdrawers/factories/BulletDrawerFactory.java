@@ -1,7 +1,6 @@
 package com.po.fuck.view.classdrawers.factories;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -31,7 +30,7 @@ public class BulletDrawerFactory {
             @Override
             public void draw(CenterDrawer drawer, T object) {
                 Vector2 position = object.getPosition();
-                Sprite bulletSprite = new Sprite(animation.getKeyFrame(object.getTimeElapsed()));
+                Sprite bulletSprite = new Sprite(animation.getKeyFrame(object.getElapsedTime()));
                 bulletSprite.setRotation(-object.getVelocity().angleDeg());
                 drawer.draw(bulletSprite, position);
             }

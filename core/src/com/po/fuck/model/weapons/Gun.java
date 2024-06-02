@@ -25,7 +25,7 @@ public abstract class Gun extends HandedWeapon {
 
         Vector2 direction = getDirection(), gunPosition = getPosition();
 
-        gunPosition.add(new Vector2(width / 2, 0).rotateRad(direction.angleRad()));
+        gunPosition.add(new Vector2(geometryData.getWidth() / 2, 0).rotateRad(direction.angleRad()));
         Manager.create(shoot(gunPosition, getDirection()));
 
         cooldownLeft = cooldown;

@@ -18,8 +18,8 @@ public class Entity extends GameObject {
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
 
-    public Entity(Vector2 position, float HP) {
-        super(position);
+    public Entity(Vector2 position, float width, float height, float HP) {
+        super(position,width,height);
         this.MAX_HEALTH_POINTS = HP;
         this.health_points = HP;
     }

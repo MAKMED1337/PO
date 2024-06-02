@@ -31,7 +31,7 @@ public class GeometryMisc {
      * @return The direction vector from the 'from' entity to the 'to' entity.
      */
     public static <A extends Entity, B extends Entity> Vector2 direction(A from, B to) {
-        return to.position.cpy().sub(from.position);
+        return to.getPosition().sub(from.getPosition());
     }
 
     /**
@@ -70,7 +70,7 @@ public class GeometryMisc {
 
         Polygon polygon = new Polygon();
         polygon.setPosition(position.x, position.y);
-        polygon.setRotation(-rotation);
+        polygon.setRotation(rotation);
         polygon.setVertices(new float[] {
                 size.x, size.y,
                 -size.x, size.y,

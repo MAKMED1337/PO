@@ -10,16 +10,20 @@ import com.po.fuck.model.ObjectFollower;
 
 public class FollowingDrawer extends CenterDrawer {
 
-    private ObjectFollower objectFollowing;
+    private ObjectFollower objectFollower;
 
     public FollowingDrawer(SpriteBatch batch, ObjectFollower objectFollowing){
         super(batch);
-        this.objectFollowing = objectFollowing;
+        this.objectFollower = objectFollowing;
     }
 
     @Override
     public void draw(Sprite sprite, Vector2 position) {
-        super.draw(sprite, position.cpy().sub(this.objectFollowing.getPosition()).add(GAME_WIDTH / 2, GAME_HEIGHT / 2));
+        super.draw(sprite, position.cpy()
+            // Subtract the position of the object being followed from the copied position
+            .sub(this.objectFollower.getPosition())
+            // Add half the game width and height to center the sprite on the screen
+            .add(GAME_WIDTH / 2, GAME_HEIGHT / 2));
     }
     
     @Override

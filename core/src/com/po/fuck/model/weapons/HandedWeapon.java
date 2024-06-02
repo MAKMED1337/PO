@@ -13,6 +13,6 @@ public abstract class HandedWeapon extends Weapon {
     public Vector2 getPosition() {
         Vector2 direction = getDirection();
         direction.setLength(Math.min(direction.len() / DISTANCE_FACTOR, MAX_DISTANCE_FROM_BODY));
-        return owner.position.cpy().add(direction);
+        return owner.getPosition().add(direction);
     }
 }

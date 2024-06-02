@@ -8,6 +8,7 @@ import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
+import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.collections.All;
 
 import static com.po.fuck.model.Constants.WEAPON_LAYER;
@@ -15,14 +16,12 @@ import static com.po.fuck.model.Constants.WEAPON_LAYER;
 import java.util.List;
 
 public abstract class Bullet implements Drawable, Updatable {
-    protected float width;
-    protected float height;
-    protected Vector2 position;
+    protected GeometryData geometryData;
     protected Vector2 velocity;
     protected int teamTag;
     protected float damage;
     protected float lifeTime = 60; // default lifetime is set to 60 seconds
-    protected float timeElapsed = 0;
+    protected float elapsedTime = 0;
 
 	@Override
     public int get_z() {
@@ -31,7 +30,7 @@ public abstract class Bullet implements Drawable, Updatable {
     
     @Override
     public Vector2 getPosition() {
-        return position.cpy();
+        return geometryData.getPosition();
     }
 
     public Vector2 getVelocity(){
@@ -47,16 +46,16 @@ public abstract class Bullet implements Drawable, Updatable {
 
     @Override
     public void update(float delta) {
-        position.mulAdd(velocity, delta);
+        geometryData.setPosition(getPosition().mulAdd(velocity, delta));
 
-        timeElapsed += delta;
+        elapsedTime += delta;
 
-        if(timeElapsed > lifeTime){
+        if(elapsedTime > lifeTime){
             Manager.destroy_raw(this);
             return;
         }
 
-        Polygon polygon = GeometryMisc.createRectangle(position, width, height, velocity.angleDeg());
+        Polygon polygon = GeometryMisc.createRectangle(getPosition(), geometryData.getWidth(), geometryData.getHeight(), velocity.angleDeg());
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
             if (!(collidable instanceof Entity)) {
@@ -73,7 +72,12 @@ public abstract class Bullet implements Drawable, Updatable {
         }
     }
 
-    public float getTimeElapsed() {
-        return timeElapsed;
+    public float getElapsedTime() {
+        return elapsedTime;
+    }
+
+    @Override
+    public GeometryData getGeometryData() {
+        return new GeometryData(geometryData);
     }
 }

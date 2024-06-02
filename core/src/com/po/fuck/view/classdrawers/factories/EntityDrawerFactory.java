@@ -31,7 +31,7 @@ public class EntityDrawerFactory {
                 drawer.draw(entitySprite, position);
                 
                 HealthBar healthBar = new HealthBar(object);
-                healthBar.draw(drawer, entitySprite.getHeight());
+                healthBar.draw(drawer);
             }
         };
     }

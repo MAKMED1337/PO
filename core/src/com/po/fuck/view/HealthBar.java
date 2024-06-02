@@ -20,14 +20,14 @@ public final class HealthBar {
         this.entity = entity;
     }
 
-    public <Drawer extends CenterDrawer> void draw(Drawer drawer, float entityHeight){
+    public void draw(CenterDrawer drawer){
         healthBarSprite = new Sprite(createTexture(HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT, Color.GREEN));
         backgroundSprite = new Sprite(createTexture(HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT, Color.RED));
         
         float healthPercentage = 1.0f * entity.getHP() / entity.MAX_HEALTH_POINTS;
         healthBarSprite.setSize((float) Math.ceil(healthPercentage * HEALTHBAR_WIDTH), HEALTHBAR_HEIGHT);
 
-        Vector2 position = entity.getPosition().sub(0 , entityHeight / 2 + HEALTHBAR_OFFSET);
+        Vector2 position = entity.getPosition().sub(0 , entity.getGeometryData().getHeight() / 2 + HEALTHBAR_OFFSET);
 
         drawer.draw(backgroundSprite, position);
         drawer.draw(healthBarSprite, position);

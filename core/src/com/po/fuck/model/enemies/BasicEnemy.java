@@ -2,8 +2,6 @@ package com.po.fuck.model.enemies;
 
 import static com.po.fuck.model.Constants.DEFAULT_SPEED;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Constants;
 import com.po.fuck.model.GeometryMisc;
@@ -24,12 +22,12 @@ public final class BasicEnemy extends Entity {
         movement = Manager.create(new BasicMovement(this, DEFAULT_SPEED / 10));
         teamTag = Constants.ENEMY_TEAM_TAG;
         reward = 1;
-        width = new Sprite(new Texture("player2.png")).getWidth();
-        height = new Sprite(new Texture("player2.png")).getHeight();
+        // width = new Sprite(new Texture("player2.png")).getWidth();
+        // height = new Sprite(new Texture("player2.png")).getHeight();
     }
 
-    public BasicEnemy(Vector2 position) {
-        super(position, 5);
+    public BasicEnemy(Vector2 position, float width, float height) {
+        super(position, width, height, 5);
     }
 
     @Override
@@ -43,7 +41,7 @@ public final class BasicEnemy extends Entity {
 
         w.aim(targetPosition);
         w.attack();
-        movement.get().setDirection(targetPosition.sub(position));
+        movement.get().setDirection(targetPosition.sub(getPosition()));
     }
 
 }

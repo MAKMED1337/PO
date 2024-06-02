@@ -4,8 +4,6 @@ import static com.po.fuck.model.Constants.DEFAULT_SPEED;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.controller.KeyboardController;
 import com.po.fuck.controller.MouseController;
@@ -27,16 +25,16 @@ public class Player extends Entity {
                         new BasicMovement(this, DEFAULT_SPEED),
                         Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN));
         teamTag = Constants.PLAYER_TEAM_TAG;
-        width = new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth();
-        height = new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight();
+        // geometryData.setWidth(new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth());
+        // geometryData.setHeight(new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight());
     }
 
     // Controllers
     private final Managed<KeyboardController> keyboardController = Manager.create(new KeyboardController(this));
     private final Managed<MouseController> mouseController = Manager.create(new MouseController(this));
 
-    Player(Vector2 position) {
-        super(position, 100);
+    Player(Vector2 position, float width, float height) {
+        super(position, width, height, 100);
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(keyboardController.get());

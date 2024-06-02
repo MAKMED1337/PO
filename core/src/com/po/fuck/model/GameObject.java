@@ -4,31 +4,35 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.lifetime.Destructable;
+import com.po.fuck.model.position.GeometryData;
 
 public class GameObject implements Drawable, Collidable, Destructable, Updatable {
-    public Vector2 position;
-    protected float width;
-    protected float height;
-    protected float rotation;
+    protected GeometryData geometryData = null;
     protected float elapsedTime;
 
-    GameObject(Vector2 position) {
-        this.position = position;
+    GameObject(Vector2 position, float width, float height) {
+        if(geometryData == null)
+            geometryData = new GeometryData();
+        geometryData.setPosition(position);
+        geometryData.setHeight(height);
+        geometryData.setWidth(width);
+        geometryData.setRotationDeg(0);
     }
 
     @Override
     public Vector2 getPosition() {
-        return position.cpy();
+        return geometryData.getPosition();
     }
 
     @Override
     public void setPosition(Vector2 position) {
-        this.position = position;
+        geometryData.setPosition(position);
     }
 
     @Override
     public Polygon getCollision() {
-        return GeometryMisc.createRectangle(position, width, height, rotation);
+        return GeometryMisc.createRectangle(geometryData.getPosition(), geometryData.getWidth(), 
+                                            geometryData.getHeight(), geometryData.getRotationRad());
     }
 
     @Override
@@ -43,5 +47,10 @@ public class GameObject implements Drawable, Collidable, Destructable, Updatable
 
     public float getElapsedTime(){
         return elapsedTime;
+    }
+
+    @Override
+    public GeometryData getGeometryData() {
+        return new GeometryData(geometryData);
     }
 }
