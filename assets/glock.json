@@ -1,5 +1,7 @@
 {
   "name": "glock",
-  "muzzlePositionX": 0,
-  "muzzlePositionY": 20
+  "muzzlePositionX": 100,
+  "muzzlePositionY": 54,
+  "holdingPositionX": 25,
+  "holdingPositionY": 24
 }

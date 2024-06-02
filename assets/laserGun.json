@@ -1,5 +1,7 @@
 {
   "name": "laserGun",
-  "muzzlePositionX": 0,
-  "muzzlePositionY": 5
+  "muzzlePositionX": 200,
+  "muzzlePositionY": 39,
+  "holdingPositionX": 70,
+  "holdingPositionY": 29
 }
