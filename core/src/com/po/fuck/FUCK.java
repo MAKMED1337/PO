@@ -1,54 +1,37 @@
 package com.po.fuck;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.po.fuck.enemies.BasicEnemy;
-import com.po.fuck.updates.Initializer;
-
-import static com.po.fuck.Constants.GAME_HEIGHT;
-import static com.po.fuck.Constants.GAME_WIDTH;
+import com.po.fuck.view.Renderer;
+import com.po.fuck.model.Core;
 
 public class FUCK extends ApplicationAdapter {
-    public static Initializer initializer = new Initializer();
-    public static Player player;
+    Core core;
+    Renderer renderer;
 
-    SpriteBatch batch;
-    private OrthographicCamera camera;
-    public static Assets assets = new Assets();
     @Override
     public void create() {
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
-        batch = new SpriteBatch();
-        assets.load();
-        assets.manager.finishLoading();
-        player = new Player(new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2));
-
-        new BasicEnemy(new Vector2(100, 100));
-        new BasicEnemy(new Vector2(GAME_WIDTH - 100, GAME_HEIGHT - 100));
+        core = new Core();
+        Core.initialize();
+        renderer = new Renderer(Core.objectFollower.get());
     }
 
     @Override
     public void render() {
-        ScreenUtils.clear(0, 0, 0, 1);
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
-
         float delta = Gdx.graphics.getDeltaTime();
-        initializer.updatableCollection.update(delta);
-
-        batch.begin();
-        initializer.drawableCollection.draw(new CenterDrawer(batch));
-        batch.end();
+        core.update(delta);
+        ArrayList<Object> drawables = new ArrayList<>();
+        for(Object obj : core.getDrawableCollection()){
+            drawables.add(obj);
+        }
+        drawables.add(Core.coinsCounter.get());
+        renderer.render(drawables);
     }
 
     @Override
     public void dispose() {
-        batch.dispose();
-        assets.dispose();
+
     }
 }
