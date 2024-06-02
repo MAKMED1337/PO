@@ -72,13 +72,13 @@ public class GeometryMisc {
     }
 
     public static Vector2 getPointPositionOnFlippedSprite(Vector2 spritePosition, Vector2 spriteDirection, Vector2 point, boolean flipped) {
-        Vector2 Z = new Vector2(point);
-        Z.rotateDeg(spriteDirection.angleDeg());
+        Vector2 pointRealPosition = new Vector2(point);
+        pointRealPosition.rotateDeg(spriteDirection.angleDeg());
         Vector2 finalPosition = new Vector2(spritePosition);
         if (flipped) {
-            finalPosition.add(Z);
+            finalPosition.add(pointRealPosition);
         } else {
-            finalPosition.sub(Z);
+            finalPosition.sub(pointRealPosition);
         }
         return finalPosition;
     }
