@@ -11,6 +11,7 @@ import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.BasicMovement;
 import com.po.fuck.model.movement.Boost;
+import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.weapons.LaserGun;
 
 /**
@@ -33,8 +34,8 @@ public class Player extends Entity {
     private final Managed<KeyboardController> keyboardController = Manager.create(new KeyboardController(this));
     private final Managed<MouseController> mouseController = Manager.create(new MouseController(this));
 
-    Player(Vector2 position, float width, float height) {
-        super(position, width, height, 100);
+    Player(GeometryData geometryData) {
+        super(geometryData, 100);
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(keyboardController.get());

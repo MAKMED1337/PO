@@ -10,6 +10,7 @@ import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
+import com.po.fuck.model.position.GeometryData;
 
 public class Core implements Updatable {
     static { // TODO: remove
@@ -23,9 +24,9 @@ public class Core implements Updatable {
 
     public static void initialize() {
         objectFollower = Manager.create(new ObjectFollower());
-        player = Manager.create(new Player(new Vector2(),
+        player = Manager.create(new Player(new GeometryData(new Vector2(),
                                 new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth(),
-                                new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight()));
+                                new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight(),0)));
         coinsCounter = Manager.create(new Coins());
 
         Manager.create(new Room(new Vector2(0, 0), 
@@ -50,9 +51,9 @@ public class Core implements Updatable {
     @Override
     public void update(float delta) {
         if (player.get() == null)
-                player = Manager.create(new Player(new Vector2(),
+                player = Manager.create(new Player(new GeometryData(new Vector2(),
                         new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth(),
-                        new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight()));
+                        new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight(),0)));
 
         objectFollower.get().setTargetPosition(player.get().getPosition());
 

@@ -2,10 +2,10 @@ package com.po.fuck.model;
 
 import static com.po.fuck.model.Constants.ENTITY_LAYER;
 
-import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.Movement;
+import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.weapons.Weapon;
 
 public class Entity extends GameObject {
@@ -18,8 +18,8 @@ public class Entity extends GameObject {
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
 
-    public Entity(Vector2 position, float width, float height, float HP) {
-        super(position,width,height);
+    public Entity(GeometryData geometryData, float HP) {
+        super(geometryData);
         this.MAX_HEALTH_POINTS = HP;
         this.health_points = HP;
     }

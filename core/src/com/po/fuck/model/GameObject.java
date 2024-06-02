@@ -7,16 +7,11 @@ import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.position.GeometryData;
 
 public class GameObject implements Drawable, Collidable, Destructable, Updatable {
-    protected GeometryData geometryData = null;
+    protected GeometryData geometryData;
     protected float elapsedTime;
 
-    GameObject(Vector2 position, float width, float height) {
-        if(geometryData == null)
-            geometryData = new GeometryData();
-        geometryData.setPosition(position);
-        geometryData.setHeight(height);
-        geometryData.setWidth(width);
-        geometryData.setRotationDeg(0);
+    GameObject(GeometryData geometryData) {
+        this.geometryData = geometryData;
     }
 
     @Override

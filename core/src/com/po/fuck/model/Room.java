@@ -56,14 +56,14 @@ public class Room implements Drawable, Updatable {
         Vector2 offset = new Vector2(geometryData.getWidth() - 200, geometryData.getHeight() - 300);
 
         // top left
-        Manager.create(new BasicEnemy(center.cpy().mulAdd(offset, -0.5f), 
+        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f), 
                                     new Sprite(new Texture("player2.png")).getWidth(),
-                                    new Sprite(new Texture("player2.png")).getHeight()));
+                                    new Sprite(new Texture("player2.png")).getHeight(),0)));
 
         // bottom right
-        Manager.create(new BasicEnemy(center.cpy().mulAdd(offset, 0.5f), 
+        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f), 
                                     new Sprite(new Texture("player2.png")).getWidth(),
-                                    new Sprite(new Texture("player2.png")).getHeight()));
+                                    new Sprite(new Texture("player2.png")).getHeight(),0)));
     }
 
     public Vector2 getPosition() {

@@ -8,6 +8,7 @@ import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.movement.BasicMovement;
+import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.Weapon;
 import com.po.fuck.model.lifetime.Manager;
@@ -26,8 +27,8 @@ public final class BasicEnemy extends Entity {
         // height = new Sprite(new Texture("player2.png")).getHeight();
     }
 
-    public BasicEnemy(Vector2 position, float width, float height) {
-        super(position, width, height, 5);
+    public BasicEnemy(GeometryData geometryData) {
+        super(geometryData, 5);
     }
 
     @Override
