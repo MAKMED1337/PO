@@ -6,9 +6,8 @@ import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.position.GeometryData;
 
-public class GameObject implements Drawable, Collidable, Destructable, Updatable {
+public class GameObject implements Drawable, Collidable, Destructable {
     protected GeometryData geometryData;
-    protected float elapsedTime;
 
     GameObject(GeometryData geometryData) {
         this.geometryData = geometryData;
@@ -33,15 +32,6 @@ public class GameObject implements Drawable, Collidable, Destructable, Updatable
     @Override
     public void destructor() {
 
-    }
-
-    @Override
-    public void update(float delta) {
-        elapsedTime += delta;
-    }
-
-    public float getElapsedTime(){
-        return elapsedTime;
     }
 
     @Override

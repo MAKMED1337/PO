@@ -2,9 +2,10 @@ package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
+import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
 
-public abstract class Gun extends HandedWeapon {
+public abstract class Gun extends HandedWeapon implements Updatable {
     protected float cooldown;
     private float cooldownLeft = 0;
     Gun(Entity owner) {
@@ -34,7 +35,6 @@ public abstract class Gun extends HandedWeapon {
 
     @Override
     public void update(float delta) {
-        super.update(delta);
         cooldownLeft = Math.max(0, cooldownLeft - delta);
     }
 }

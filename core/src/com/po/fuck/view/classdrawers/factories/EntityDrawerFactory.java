@@ -26,7 +26,7 @@ public class EntityDrawerFactory {
             @Override
             public void draw(CenterDrawer drawer, T object) {
                 Vector2 position = object.getPosition();
-                Sprite entitySprite = new Sprite(animation.getKeyFrame(object.getElapsedTime()));
+                Sprite entitySprite = new Sprite(animation.getKeyFrame(0));
                 
                 drawer.draw(entitySprite, position);
                 

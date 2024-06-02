@@ -15,7 +15,7 @@ public class GameObjectDrawerFactory {
 
             @Override
             public void draw(CenterDrawer drawer, T object) {
-                Sprite gameObjectSprite = new Sprite(animation.getKeyFrame(object.getElapsedTime()));
+                Sprite gameObjectSprite = new Sprite(animation.getKeyFrame(0));
                 Vector2 position = object.getPosition();
                 drawer.draw(gameObjectSprite, position);
             }

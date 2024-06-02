@@ -4,7 +4,6 @@ import static com.po.fuck.model.Constants.DEFAULT_SPEED;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.controller.KeyboardController;
 import com.po.fuck.controller.MouseController;
 import com.po.fuck.model.lifetime.Managed;

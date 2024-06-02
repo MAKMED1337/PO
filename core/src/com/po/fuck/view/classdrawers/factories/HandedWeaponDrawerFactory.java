@@ -26,7 +26,7 @@ public class HandedWeaponDrawerFactory {
             
             @Override
             public void draw(CenterDrawer drawer, T weapon) {
-                Sprite handedWeaponSprite = new Sprite(animation.getKeyFrame(weapon.getElapsedTime()));
+                Sprite handedWeaponSprite = new Sprite(animation.getKeyFrame(0));
                 Vector2 position = weapon.getPosition();
                 if (weapon.getAimPosition() != null){
                     Vector2 direction = weapon.getDirection();
