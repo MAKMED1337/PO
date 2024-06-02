@@ -28,7 +28,16 @@ public abstract class Gun extends HandedWeapon implements Updatable {
         Vector2 direction = getDirection(), gunPosition = calcWeaponPosition().cpy();
 
         gunPosition.add(new Vector2(sprite.getWidth() / 2, 0).rotateRad(direction.angleRad()));
-        shoot(gunPosition, getDirection());
+
+        Vector2 Z = new Vector2(muzzlePosition);
+        Z.rotateDeg(getDirection().angleDeg());
+        Vector2 finalPosition = new Vector2(gunPosition);
+        if (getDirection().angleDeg() <= 270 && getDirection().angleDeg() >= 90) {
+            finalPosition.add(Z);
+        } else {
+            finalPosition.sub(Z);
+        }
+        shoot(finalPosition, getDirection());
 
         cooldownLeft = cooldown;
         return true;

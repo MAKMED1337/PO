@@ -3,12 +3,11 @@ package com.po.fuck.weapons;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.CenterDrawer;
 import com.po.fuck.Entity;
-import com.po.fuck.GeometryMisc;
 
 public abstract class HandedWeapon extends Weapon {
     protected float DISTANCE_FACTOR = 2, MAX_DISTANCE_FROM_BODY = 100;
 
-    protected float muzzleShift;
+    protected Vector2 muzzlePosition;
 
     HandedWeapon(Entity owner) {
         super(owner);
@@ -30,12 +29,6 @@ public abstract class HandedWeapon extends Weapon {
         sprite.setRotation(-angle);
         sprite.setFlip(false, angle >= 90 && angle <= 270);
 
-        Vector2 dirToMove;
-        if (angle >= 90 && angle <= 270) dirToMove = direction.rotate90(-1);
-        else dirToMove = direction.rotate90(1);
-
-        Vector2 pos = GeometryMisc.movePointInDirection(calcWeaponPosition(), dirToMove, muzzleShift);
-
-        drawer.draw(sprite, pos);
+        drawer.draw(sprite, calcWeaponPosition());
     }
 }

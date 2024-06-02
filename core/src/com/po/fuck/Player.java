@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.movement.BasicMovement;
 import com.po.fuck.movement.Boost;
 import com.po.fuck.weapons.Glock;
+import com.po.fuck.weapons.LaserGun;
 
 import static com.po.fuck.Constants.DEFAULT_SPEED;
 
@@ -18,7 +19,7 @@ import static com.po.fuck.Constants.DEFAULT_SPEED;
 public class Player extends Entity {
     {
         sprite = new Sprite(FUCK.assets.manager.get(Assets.playerTexture));
-        weapon = new Glock(this);
+        weapon = new LaserGun(this);
         health_points = 10;
         movement = new Boost(
                 new BasicMovement(this, DEFAULT_SPEED),

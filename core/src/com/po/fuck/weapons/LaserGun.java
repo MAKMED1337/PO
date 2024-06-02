@@ -11,7 +11,7 @@ public final class LaserGun extends Gun {
     {
         sprite = new Sprite(FUCK.assets.manager.get(Assets.laserGunTexture));
         cooldown = 1;
-        muzzleShift = 10;
+        muzzlePosition = new Vector2(0,5);
     }
 
     public LaserGun(Player owner) {
