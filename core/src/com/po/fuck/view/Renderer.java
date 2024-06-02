@@ -1,14 +1,13 @@
 package com.po.fuck.view;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.po.fuck.model.Drawable;
 import com.po.fuck.model.ObjectFollower;
-import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
@@ -51,17 +50,17 @@ public class Renderer {
      *
      * @param drawableCollection the collection of drawable objects to render
      */
-    public void render(DrawableCollection drawableCollection){
+    public void render(List<Object> drawableCollection){
 
         ScreenUtils.clear(0, 0, 0, 1);
         camera.update();
         followingDrawer.batch.setProjectionMatrix(camera.combined);
 
         followingDrawer.batch.begin();
-        for(Drawable object : drawableCollection){
+        for(Object object : drawableCollection){
             
             @SuppressWarnings("unchecked")
-            ObjectDrawer<Drawable> classDrawer = (ObjectDrawer<Drawable>) getDrawer(object.getClass());
+            ObjectDrawer<Object> classDrawer = (ObjectDrawer<Object>) getDrawer(object.getClass());
             if(classDrawer == null){
                 throw new RuntimeException("No ClassDrawer found for " + object.getClass().toString());
             }
@@ -98,4 +97,5 @@ public class Renderer {
         }
         drawers.put(cls,classDrawer);
     }
+
 }
