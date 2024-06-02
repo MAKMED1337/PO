@@ -2,6 +2,7 @@ package com.po.fuck.weapons;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.Entity;
+import com.po.fuck.GeometryMisc;
 import com.po.fuck.updates.Updatable;
 
 public abstract class Gun extends HandedWeapon implements Updatable {
@@ -28,16 +29,9 @@ public abstract class Gun extends HandedWeapon implements Updatable {
         Vector2 direction = getDirection(), gunPosition = calcWeaponPosition().cpy();
 
         gunPosition.add(new Vector2(sprite.getWidth() / 2, 0).rotateRad(direction.angleRad()));
-
-        Vector2 Z = new Vector2(muzzlePosition);
-        Z.rotateDeg(getDirection().angleDeg());
-        Vector2 finalPosition = new Vector2(gunPosition);
-        if (getDirection().angleDeg() <= 270 && getDirection().angleDeg() >= 90) {
-            finalPosition.add(Z);
-        } else {
-            finalPosition.sub(Z);
-        }
-        shoot(finalPosition, getDirection());
+        Vector2 finalPosition = GeometryMisc.getPointPositionOnFlippedSprite(gunPosition, direction, muzzlePosition,
+                direction.angleDeg() <= 270 && direction.angleDeg() >= 90);
+        shoot(finalPosition, direction);
 
         cooldownLeft = cooldown;
         return true;

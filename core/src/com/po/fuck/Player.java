@@ -19,7 +19,7 @@ import static com.po.fuck.Constants.DEFAULT_SPEED;
 public class Player extends Entity {
     {
         sprite = new Sprite(FUCK.assets.manager.get(Assets.playerTexture));
-        weapon = new LaserGun(this);
+        weapon = new Glock(this);
         health_points = 10;
         movement = new Boost(
                 new BasicMovement(this, DEFAULT_SPEED),
