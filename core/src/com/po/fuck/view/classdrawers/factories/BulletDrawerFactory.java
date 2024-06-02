@@ -14,14 +14,15 @@ import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
+import static com.po.fuck.view.classdrawers.Misc.getComplixAnimation;
 
 public class BulletDrawerFactory {
 
     static {
         Renderer.addDrawer(CosmicBullet.class, BulletDrawerFactory.get(CosmicBullet.class, getAnimation("bullet2.png")));
         Renderer.addDrawer(LaserBeam.class, BulletDrawerFactory.get(LaserBeam.class,
-            GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read()
-        )));
+                getComplixAnimation("laserBeam")
+        ));
     }
 
     public static <T extends Bullet> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

@@ -1,0 +1,29 @@
+{
+  "glock":
+    {
+      "path": "glock2.png",
+      "muzzlePositionX": 100,
+      "muzzlePositionY": 54,
+      "holdingPositionX": 25,
+      "holdingPositionY": 24,
+      "width": 100,
+      "height": 64
+    },
+  "laserGun":
+    {
+      "path": "laserGun2.png",
+      "muzzlePositionX": 200,
+      "muzzlePositionY": 39,
+      "holdingPositionX": 70,
+      "holdingPositionY": 29,
+      "width": 200,
+      "height": 59
+    },
+  "laserBeam": {
+    "path": "laserBeamFrames.png",
+    "frameWidth": 1036,
+    "frameHeight": 130,
+    "totalWidth": 1036,
+    "totalHeight": 520
+  }
+}

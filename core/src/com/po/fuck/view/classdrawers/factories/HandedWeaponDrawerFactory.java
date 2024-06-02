@@ -17,7 +17,7 @@ public class HandedWeaponDrawerFactory {
     
     static {
         Renderer.addDrawer(Glock.class, HandedWeaponDrawerFactory.get(Glock.class, getAnimation("glock2.png")));
-        Renderer.addDrawer(LaserGun.class, HandedWeaponDrawerFactory.get(LaserGun.class, getAnimation("laser_gun2.png")));
+        Renderer.addDrawer(LaserGun.class, HandedWeaponDrawerFactory.get(LaserGun.class, getAnimation("laserGun2.png")));
     }
 
     public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

@@ -1,22 +1,18 @@
 package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Vector2;
-//<<<<<<< HEAD:core/src/com/po/fuck/weapons/Gun.java
-//import com.po.fuck.Entity;
-//import com.po.fuck.GeometryMisc;
-//import com.po.fuck.updates.Updatable;
-//=======
+import com.badlogic.gdx.utils.JsonValue;
+import com.po.fuck.Assets;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.GeometryMisc;
-//>>>>>>> 10-mvc:core/src/com/po/fuck/model/weapons/Gun.java
 
 public abstract class Gun extends HandedWeapon implements Updatable {
     protected float cooldown;
     private float cooldownLeft = 0;
 
-    protected Vector2 muzzlePosition;
+    protected String name;
     Gun(Entity owner) {
         super(owner);
     }
@@ -34,19 +30,21 @@ public abstract class Gun extends HandedWeapon implements Updatable {
             return false;
 
         Vector2 direction = getDirection(), gunPosition = getPosition();
-
-//<<<<<<< HEAD:core/src/com/po/fuck/weapons/Gun.java
         gunPosition.add(new Vector2(geometryData.getWidth() / 2, 0).rotateRad(direction.angleRad()));
-        Vector2 realMuzzlePosition = new Vector2(muzzlePosition);
+
+        JsonValue info = Assets.getInfo(name);
+        Vector2 realMuzzlePosition = new Vector2((float) info.getDouble("muzzlePositionX"),
+                (float) info.getDouble("muzzlePositionY"));
+
         realMuzzlePosition.x -= geometryData.getWidth();
         realMuzzlePosition.y -= geometryData.getHeight()/2;
-        Vector2 finalPosition = GeometryMisc.getPointPositionOnFlippedSprite(gunPosition.cpy(), direction,
-                realMuzzlePosition, direction.angleDeg() >= 90 && direction.angleDeg() <= 270);
+
+        boolean flipped = direction.angleDeg() >= 90 && direction.angleDeg() <= 270;
+
+        Vector2 finalPosition = GeometryMisc.getPointPositionOnFlippedSprite(gunPosition.cpy(), direction.cpy(),
+                realMuzzlePosition, flipped);
+
         Manager.create(shoot(finalPosition, direction));
-//=======
-//        gunPosition.add(new Vector2(geometryData.getWidth() / 2, 0).rotateRad(direction.angleRad()));
-//        Manager.create(shoot(gunPosition, getDirection()));
-//>>>>>>> 10-mvc:core/src/com/po/fuck/model/weapons/Gun.java
 
         cooldownLeft = cooldown;
         return true;

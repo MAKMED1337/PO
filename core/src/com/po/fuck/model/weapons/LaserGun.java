@@ -4,25 +4,23 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import com.po.fuck.Assets;
 import com.po.fuck.model.Entity;
 import com.po.fuck.view.GifDecoder;
 
 public final class LaserGun extends Gun {
     {
         cooldown = 1;
-
-        JsonReader json = new JsonReader();
-        JsonValue base = json.parse(Gdx.files.internal("laserGun.json"));
-        muzzlePosition = new Vector2((float)base.getDouble("muzzlePositionX"), (float)base.getDouble("muzzlePositionY"));
-
-        geometryData.setHeight(59);
-        geometryData.setWidth(200);
     }
 
     public LaserGun(Entity owner) {
         super(owner);
+        name = "laserGun";
+
+        JsonValue info = Assets.getInfo(name);
+        geometryData.setHeight(info.getInt("height"));
+        geometryData.setWidth(info.getInt("width"));
     }
 
     @Override

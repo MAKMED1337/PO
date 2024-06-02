@@ -20,7 +20,7 @@ import com.po.fuck.model.weapons.LaserGun;
  */
 public class Player extends Entity {
     {
-        weapon = Manager.create(new Glock(this));
+        weapon = Manager.create(new LaserGun(this));
         movement = Manager.create(
                 new Boost(
                         new BasicMovement(this, DEFAULT_SPEED),
