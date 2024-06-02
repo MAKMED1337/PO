@@ -23,8 +23,6 @@ public final class BasicEnemy extends Entity {
         movement = Manager.create(new BasicMovement(this, DEFAULT_SPEED / 10));
         teamTag = Constants.ENEMY_TEAM_TAG;
         reward = 1;
-        // width = new Sprite(new Texture("player2.png")).getWidth();
-        // height = new Sprite(new Texture("player2.png")).getHeight();
     }
 
     public BasicEnemy(GeometryData geometryData) {

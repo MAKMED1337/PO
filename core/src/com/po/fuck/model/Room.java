@@ -34,11 +34,6 @@ public class Room implements Drawable, Updatable {
     @SuppressWarnings("unchecked")
     protected Managed<InvisibleWall> walls[] = new Managed[4];
 
-    {
-        // width = new Sprite(new Texture("island2.png")).getWidth();
-        // height = new Sprite(new Texture("island2.png")).getHeight();
-    }
-
     Room(Vector2 tilling_position, float width, float height) {
         this.tilling_position = tilling_position;
         this.geometryData = new GeometryData();

@@ -9,8 +9,6 @@ import com.po.fuck.view.GifDecoder;
 
 public final class LaserGun extends Gun {
     {
-        // width = new Sprite(new Texture("laser_gun2.png")).getWidth();
-        // height = new Sprite(new Texture("laser_gun2.png")).getHeight();
         cooldown = 1;
     }
 

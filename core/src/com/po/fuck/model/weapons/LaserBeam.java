@@ -15,16 +15,10 @@ import static com.po.fuck.model.Constants.LASER_BEAM_DAMAGE;
 import static com.po.fuck.model.Constants.LASER_BEAM_LIFE_TIME;
 
 public final class LaserBeam extends Bullet {
-    // version is also good, but for some reason it renders with artifacts
 
     {
         damage = LASER_BEAM_DAMAGE;
         lifeTime = LASER_BEAM_LIFE_TIME;
-        /* Temp solution, afterwards use AssetManager or .properties later */
-        // width = new Sprite(GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read())
-        //                         .getKeyFrame(0)).getWidth();
-        // height = new Sprite(GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read())
-        //                         .getKeyFrame(0)).getHeight();
     }
 
     LaserBeam(Vector2 muzzle_position, float width, float height, Vector2 direction, int teamTag) {

@@ -10,9 +10,6 @@ public final class CosmicBullet extends Bullet {
     {
         damage = COSMIC_BULLET_DAMAGE;
         lifeTime = COSMIC_BULLET_LIFE_TIME;
-        /* Temp solution, afterwards use AssetManager or .properties later */
-        // width = new Sprite(new Texture("bullet2.png")).getWidth();
-        // height = new Sprite(new Texture("bullet2.png")).getHeight();
     }
 
     CosmicBullet(Vector2 muzzle_position, float width, float height, Vector2 direction, int teamTag) {
