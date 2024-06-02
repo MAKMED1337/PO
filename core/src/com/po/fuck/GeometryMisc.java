@@ -1,6 +1,7 @@
 package com.po.fuck;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Polygon;
@@ -68,5 +69,10 @@ public class GeometryMisc {
             position.cpy().mulAdd(size, 0.5f).x,
             position.cpy().mulAdd(size, -0.5f).y
         });
+    }
+
+    public static Vector2 movePointInDirection(Vector2 point, Vector2 direction, float dist) {
+        return new Vector2((float) (point.x + dist * Math.cos(direction.angleDeg() * Math.PI / 180)),
+                (float) (point.y + dist * Math.sin(direction.angleDeg() * Math.PI / 180)));
     }
 }
