@@ -34,4 +34,5 @@ public final class Constants {
     public static final float COSMIC_BULLET_DAMAGE = 1f;
     public static final float LASER_BEAM_DAMAGE = 3f; 
     public static final float LASER_BEAM_LIFE_TIME = 1f;
+    public static final float DEFAULT_BULLET_LIFE_TIME = 60f;
 }

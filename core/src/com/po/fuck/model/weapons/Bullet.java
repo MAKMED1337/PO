@@ -11,6 +11,7 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.collections.All;
 
+import static com.po.fuck.model.Constants.DEFAULT_BULLET_LIFE_TIME;
 import static com.po.fuck.model.Constants.WEAPON_LAYER;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public abstract class Bullet implements Drawable, Updatable {
     protected Vector2 velocity;
     protected int teamTag;
     protected float damage;
-    protected float lifeTime = 60; // default lifetime is set to 60 seconds
+    protected float lifeTime = DEFAULT_BULLET_LIFE_TIME; // default lifetime is set to 60 seconds
     protected float elapsedTime = 0;
 
 	@Override
