@@ -36,16 +36,20 @@ public class GeometryData {
         return width;
     }
 
-    public void setWidth(float width){
+    public boolean setWidth(float width){
+        if(width <= 0) return false;
         this.width = width;
+        return true;
     }
 
     public float getHeight(){
         return height;
     }
 
-    public void setHeight(float height){
+    public boolean setHeight(float height){
+        if(height <= 0) return false;
         this.height = height;
+        return true;
     }
 
     public float getRotationRad(){
