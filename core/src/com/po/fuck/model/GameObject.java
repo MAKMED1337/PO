@@ -25,8 +25,7 @@ public class GameObject implements Drawable, Collidable, Destructable {
 
     @Override
     public Polygon getCollision() {
-        return GeometryMisc.createRectangle(geometryData.getPosition(), geometryData.getWidth(), 
-                                            geometryData.getHeight(), geometryData.getRotationRad());
+        return GeometryMisc.createRectangle(geometryData);
     }
 
     @Override

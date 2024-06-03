@@ -104,7 +104,8 @@ public class Room implements Drawable, Updatable {
 
         // List of all the entities inside this room.
         List<Collidable> inside = All.collidableCollection
-                .collides(GeometryMisc.createRectangle(getPosition(), geometryData.getWidth(), geometryData.getHeight(), 0));
+                .collides(GeometryMisc.createRectangle(
+                    new GeometryData(getPosition(), geometryData.getWidth(), geometryData.getHeight(), 0)));
 
         if (state == State.NOT_ENTERED) {
             // If the player has not entered before this time, we need to check if he has

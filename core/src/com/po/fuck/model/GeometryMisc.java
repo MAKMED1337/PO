@@ -3,6 +3,7 @@ package com.po.fuck.model;
 import java.util.List;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.model.position.GeometryData;
 
 public class GeometryMisc {
 
@@ -61,16 +62,16 @@ public class GeometryMisc {
      * @param position the center position of the rectangle, represented as a {@link Vector2}
      * @param width the width of the rectangle
      * @param height the height of the rectangle
-     * @param rotation the rotation of the rectangle
+     * @param rotation the rotation of the rectangle (in radians); 0 is facing right
      * @return a {@link Polygon} representing the rectangle
      */
-    public static Polygon createRectangle(Vector2 position, float width, float height, float rotation){
-        Vector2 size = new Vector2(width, height);
+    public static Polygon createRectangle(GeometryData geometryData){
+        Vector2 size = new Vector2(geometryData.getWidth(), geometryData.getHeight());
         size.scl(0.5f);
 
         Polygon polygon = new Polygon();
-        polygon.setPosition(position.x, position.y);
-        polygon.setRotation(rotation);
+        polygon.setPosition(geometryData.getPosition().x, geometryData.getPosition().y);
+        polygon.setRotation(geometryData.getRotationRad());
         polygon.setVertices(new float[] {
                 size.x, size.y,
                 -size.x, size.y,
