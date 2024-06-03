@@ -14,31 +14,31 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 
 public class Core implements Updatable {
+
     static { // TODO: remove
         forceInit(Destructable.class);
         forceInit(All.class);
     }
-    
+
     public static Managed<Player> player;
     public static Managed<Coins> coinsCounter;
     public static Managed<ObjectFollower> objectFollower;
-    public static Assets assets;
+    public static Assets assets = new Assets();
     public static void initialize() {
-
-        objectFollower = Manager.create(new ObjectFollower());
-        assets = new Assets();
         assets.load();
         assets.manager.finishLoading();
+
+        objectFollower = Manager.create(new ObjectFollower());
         player = Manager.create(new Player(new GeometryData(new Vector2(),
-                                new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth(),
-                                new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight(),0)));
+                                Assets.getInfo("player").getInt("width"),
+                                Assets.getInfo("player").getInt("height"),0)));
         coinsCounter = Manager.create(new Coins());
         Manager.create(new Room(new Vector2(0, 0),
-                        new Sprite(new Texture("island2.png")).getWidth(),
-                        new Sprite(new Texture("island2.png")).getHeight()));
+                        Assets.getInfo("island").getInt("width"),
+                        Assets.getInfo("island").getInt("height")));
         Manager.create(new Room(new Vector2(1, 0),
-                        new Sprite(new Texture("island2.png")).getWidth(),
-                        new Sprite(new Texture("island2.png")).getHeight()));
+                Assets.getInfo("island").getInt("width"),
+                Assets.getInfo("island").getInt("height")));
         // Creating some game borders to destroy the bullets that went off the map.
         // We can not use here VERTICAL/HORIZONTAL, because if something went off the
         // map, then we want to catch with a thick wall, because it can be laggy or
@@ -55,8 +55,8 @@ public class Core implements Updatable {
     public void update(float delta) {
         if (player.get() == null)
                 player = Manager.create(new Player(new GeometryData(new Vector2(),
-                        new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth(),
-                        new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight(),0)));
+                        Assets.getInfo("player").getInt("width"),
+                        Assets.getInfo("player").getInt("height"),0)));
 
         objectFollower.get().setTargetPosition(player.get().getPosition());
 

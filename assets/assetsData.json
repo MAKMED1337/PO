@@ -23,7 +23,32 @@
     "path": "laserBeamFrames.png",
     "frameWidth": 1036,
     "frameHeight": 130,
-    "totalWidth": 1036,
-    "totalHeight": 520
+    "width": 1036,
+    "height": 520
+  },
+  "player": {
+    "path": "FUCKerWithoutHands2.png",
+    "width": 90,
+    "height": 141
+  },
+  "island": {
+    "path": "island2.png",
+    "width": 1728,
+    "height": 920
+  },
+  "coin": {
+    "path": "coin3.png",
+    "width": 40,
+    "height": 40
+  },
+  "bullet": {
+    "path": "bullet2.png",
+    "width": 100,
+    "height": 36
+  },
+  "enemy": {
+    "path": "player2.png",
+    "width": 150,
+    "height": 150
   }
 }

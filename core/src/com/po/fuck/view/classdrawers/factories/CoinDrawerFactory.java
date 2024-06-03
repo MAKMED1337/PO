@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.Assets;
 import com.po.fuck.model.Coins;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
@@ -21,7 +22,8 @@ import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 public class CoinDrawerFactory {
     
     static {
-        Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class, getAnimation("coin3.png")));
+        Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class,
+                getAnimation(Assets.getInfo("coin").getString("path"))));
     }
 
     public static <T extends Coins> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

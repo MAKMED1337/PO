@@ -10,14 +10,14 @@ import com.po.fuck.model.Core;
 
 public class Misc {
     public static Animation<TextureRegion> getAnimation(String internalPath){
-        return new Animation<TextureRegion>(1f, new Sprite(new Texture(internalPath)));
+        return new Animation<>(1f, new Sprite((Texture) Core.assets.manager.get(internalPath)));
     }
 
     public static Animation<TextureRegion> getComplixAnimation(String name) {
         JsonValue info = Assets.getInfo(name);
         Texture animatedTexture = Core.assets.manager.get(info.getString("path"));
-        int totalWidth = info.getInt("totalWidth");
-        int totalHeight = info.getInt("totalHeight");
+        int totalWidth = info.getInt("width");
+        int totalHeight = info.getInt("height");
         int frameWidth = info.getInt("frameWidth");
         int frameHeight = info.getInt("frameHeight");
         TextureRegion[][] frames = TextureRegion.split(animatedTexture, frameWidth, frameHeight);
