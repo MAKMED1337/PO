@@ -9,8 +9,8 @@ import com.po.fuck.model.Core;
 
 public class FUCK extends ApplicationAdapter {
 
-    Core core;
-    Renderer renderer;
+    private Core core;
+    private Renderer renderer;
 
     @Override
     public void create() {
@@ -29,10 +29,5 @@ public class FUCK extends ApplicationAdapter {
         }
         drawables.add(Core.coinsCounter.get());
         renderer.render(drawables);
-    }
-
-    @Override
-    public void dispose() {
-        
     }
 }

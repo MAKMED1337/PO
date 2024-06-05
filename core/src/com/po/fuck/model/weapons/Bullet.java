@@ -21,7 +21,7 @@ public abstract class Bullet implements Drawable, Updatable {
     protected Vector2 velocity;
     protected int teamTag;
     protected float damage;
-    protected float lifeTime = DEFAULT_BULLET_LIFE_TIME; // default lifetime is set to 60 seconds
+    protected float lifeTime = DEFAULT_BULLET_LIFE_TIME;
     protected float elapsedTime = 0;
 
 	@Override
@@ -56,7 +56,9 @@ public abstract class Bullet implements Drawable, Updatable {
             return;
         }
 
-        Polygon polygon = GeometryMisc.createRectangle(new GeometryData(getPosition(), geometryData.getWidth(), geometryData.getHeight(), velocity.angleDeg()));
+        geometryData.setRotationRad(velocity.angleRad());
+
+        Polygon polygon = GeometryMisc.createRectangle(geometryData);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
             if (!(collidable instanceof Entity)) {

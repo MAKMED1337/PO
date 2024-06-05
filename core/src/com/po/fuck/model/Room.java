@@ -21,7 +21,6 @@ import com.po.fuck.model.Updatable;
 public class Room implements Drawable, Updatable {
     public Vector2 tilling_position;
     protected GeometryData geometryData;
-    protected float elapsedTime = 0;
 
     private enum State {
         NOT_ENTERED,
@@ -97,7 +96,6 @@ public class Room implements Drawable, Updatable {
 
     @Override
     public void update(float delta) {
-        elapsedTime += delta;
         // If we have finished this room, nothing to update.
         if (state == State.FINISHED)
             return;
@@ -141,10 +139,6 @@ public class Room implements Drawable, Updatable {
             // change in the future.
             throw new AssertionError("Unknown state");
         }
-    }
-
-    public float getElapsedTime() {
-        return elapsedTime;
     }
 
     @Override

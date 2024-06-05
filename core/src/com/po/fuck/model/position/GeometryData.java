@@ -36,20 +36,24 @@ public class GeometryData {
         return width;
     }
 
-    public boolean setWidth(float width){
-        if(width <= 0) return false;
+    public void setWidth(float width){
+        if(width <= 0){
+            throw new RuntimeException("Width must be positive");
+        }
         this.width = width;
-        return true;
+        return;
     }
 
     public float getHeight(){
         return height;
     }
 
-    public boolean setHeight(float height){
-        if(height <= 0) return false;
+    public void setHeight(float height){
+        if(height <= 0){
+            throw new RuntimeException("Height must be positive");
+        }
         this.height = height;
-        return true;
+        return;
     }
 
     public float getRotationRad(){
@@ -66,5 +70,9 @@ public class GeometryData {
 
     public void setRotationDeg(float angle){
         rotation = (float) (angle * Math.PI / 180f);
+    }
+
+    public Vector2 getSize(){
+        return new Vector2(width, height);
     }
 }

@@ -39,7 +39,9 @@ public final class LaserBeam extends Bullet {
             return;
         }
 
-        Polygon polygon = GeometryMisc.createRectangle(new GeometryData(getPosition(), geometryData.getWidth(), geometryData.getHeight(), velocity.angleDeg()));
+        geometryData.setRotationRad(velocity.angleRad());
+
+        Polygon polygon = GeometryMisc.createRectangle(geometryData);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
             if (!(collidable instanceof Entity)) continue;

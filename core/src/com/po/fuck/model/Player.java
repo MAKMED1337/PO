@@ -25,8 +25,6 @@ public class Player extends Entity {
                         new BasicMovement(this, DEFAULT_SPEED),
                         Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN));
         teamTag = Constants.PLAYER_TEAM_TAG;
-        // geometryData.setWidth(new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth());
-        // geometryData.setHeight(new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight());
     }
 
     // Controllers
