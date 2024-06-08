@@ -80,8 +80,8 @@ public class GeometryMisc {
         return polygon;
     }
 
-    public static Vector2 getPointPositionOnFlippedSprite(Vector2 spritePosition, Vector2 spriteDirection, Vector2 point, boolean flipped) {
-        point.rotateDeg(spriteDirection.angleDeg());
+    public static Vector2 getPointPositionOnFlippedSprite(Vector2 spritePosition, Vector2 spriteRotation, Vector2 point, boolean flipped) {
+        point.rotateDeg(spriteRotation.angleDeg());
         Vector2 finalPosition = new Vector2(spritePosition);
         return (flipped ? finalPosition.add(point) : finalPosition.sub(point));
     }

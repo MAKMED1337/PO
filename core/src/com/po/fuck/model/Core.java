@@ -23,10 +23,10 @@ public class Core implements Updatable {
     public static Managed<Player> player;
     public static Managed<Coins> coinsCounter;
     public static Managed<ObjectFollower> objectFollower;
-    public static Assets assets = new Assets();
+
     public static void initialize() {
-        assets.load();
-        assets.manager.finishLoading();
+        Assets.load();
+        Assets.manager.finishLoading();
 
         objectFollower = Manager.create(new ObjectFollower());
         player = Manager.create(new Player(new GeometryData(new Vector2(),

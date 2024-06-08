@@ -36,8 +36,7 @@ public abstract class Gun extends HandedWeapon implements Updatable {
         Vector2 realMuzzlePosition = new Vector2((float) info.getDouble("muzzlePositionX"),
                 (float) info.getDouble("muzzlePositionY"));
 
-        realMuzzlePosition.x -= geometryData.getWidth();
-        realMuzzlePosition.y -= geometryData.getHeight()/2;
+        realMuzzlePosition.sub(new Vector2(geometryData.getWidth(), geometryData.getHeight()/2));
 
         boolean flipped = direction.angleDeg() >= 90 && direction.angleDeg() <= 270;
 

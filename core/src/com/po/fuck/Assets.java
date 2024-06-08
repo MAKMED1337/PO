@@ -10,13 +10,13 @@ import com.badlogic.gdx.utils.JsonValue;
 public class Assets {
     private static JsonReader jsonReader = new JsonReader();
 
-    public AssetManager manager = new AssetManager();
+    public static AssetManager manager = new AssetManager();
 
     public static JsonValue getInfo(String name) {
         return jsonReader.parse(Gdx.files.internal("assetsData.json")).get(name);
     }
 
-    public void load() {
+    public static void load() {
         JsonReader json = new JsonReader();
         for (JsonValue element : json.parse(Gdx.files.internal("assetsData.json"))) {
             System.out.println(element.getString("path"));
