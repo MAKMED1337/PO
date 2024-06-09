@@ -11,6 +11,8 @@ public class GeometryData {
     public GeometryData(){}
 
     public GeometryData(Vector2 position, float width, float height, float rotation){
+        if(width <= 0 || height <= 0)
+            throw new RuntimeException("Height and width have to be positive");
         this.position = position.cpy();
         this.rotation = rotation;
         this.width = width;
@@ -40,8 +42,7 @@ public class GeometryData {
         if(width <= 0){
             throw new RuntimeException("Width must be positive");
         }
-        this.width = width;
-        return;
+        this.width = width; 
     }
 
     public float getHeight(){
@@ -53,7 +54,6 @@ public class GeometryData {
             throw new RuntimeException("Height must be positive");
         }
         this.height = height;
-        return;
     }
 
     public float getRotationRad(){

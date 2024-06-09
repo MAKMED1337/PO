@@ -24,7 +24,7 @@ public abstract class Gun extends HandedWeapon implements Updatable {
         if (cooldownLeft > 0)
             return false;
 
-        Vector2 direction = getDirection(), gunPosition = getPosition();
+        Vector2 direction = getDirection(), gunPosition = getGeometryData().getPosition();
 
         gunPosition.add(new Vector2(geometryData.getWidth() / 2, 0).rotateRad(direction.angleRad()));
         Manager.create(shoot(gunPosition, getDirection()));

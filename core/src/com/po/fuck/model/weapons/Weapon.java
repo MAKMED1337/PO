@@ -36,9 +36,4 @@ public abstract class Weapon implements Drawable {
             return new Vector2();
         return aiming.cpy().sub(owner.getPosition());
     }
-
-    @Override
-    public GeometryData getGeometryData(){
-        return new GeometryData(geometryData);
-    }
 }

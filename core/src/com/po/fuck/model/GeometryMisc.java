@@ -63,7 +63,7 @@ public class GeometryMisc {
      * @param geometryData.position the center position of the rectangle, represented as a {@link Vector2}
      * @param geometryData.width the width of the rectangle
      * @param geometryData.height the height of the rectangle
-     * @param geometryData.rotation the rotation of the rectangle (in degress); 0 is facing right
+     * @param geometryData.rotation the rotation of the rectangle; 0 is facing right
      * @return a {@link Polygon} representing the rectangle
      */
     public static Polygon createRectangle(GeometryData geometryData){
@@ -72,7 +72,7 @@ public class GeometryMisc {
 
         Polygon polygon = new Polygon();
         polygon.setPosition(geometryData.getPosition().x, geometryData.getPosition().y);
-        polygon.setRotation(geometryData.getRotationRad());
+        polygon.setRotation(geometryData.getRotationDeg());
         polygon.setVertices(new float[] {
                 size.x, size.y,
                 -size.x, size.y,
