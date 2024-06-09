@@ -2,8 +2,8 @@ package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.model.Drawable;
 import com.po.fuck.model.collision.Collidable;
+import com.po.fuck.model.drawables.Drawable;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;

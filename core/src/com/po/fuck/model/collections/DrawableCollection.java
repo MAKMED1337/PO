@@ -1,15 +1,15 @@
 package com.po.fuck.model.collections;
 
-import com.po.fuck.model.Drawable;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class DrawableCollection extends SimpleCollection<Drawable> implements Iterable<Drawable> {
+import com.po.fuck.model.drawables.BasicDrawable;
+
+public class DrawableCollection extends SimpleCollection<BasicDrawable> implements Iterable<BasicDrawable> {
     public static final int MAX_Z = 20;
     @SuppressWarnings("unchecked")
-    private final ArrayList<Drawable>[] objects = new ArrayList[MAX_Z];
+    private final ArrayList<BasicDrawable>[] objects = new ArrayList[MAX_Z];
 
     {
         for (int i = 0; i < MAX_Z; ++i)
@@ -17,23 +17,23 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
     }
 
     DrawableCollection() {
-        super(Drawable.class);
+        super(BasicDrawable.class);
     }
 
     @Override
-    public void add(Drawable drawable) {
+    public void add(BasicDrawable drawable) {
         objects[drawable.get_z()].add(drawable);
     }
 
     @Override
-    public void remove(Drawable drawable) {
+    public void remove(BasicDrawable drawable) {
         objects[drawable.get_z()].remove(drawable);
     }
     @Override
-    public Iterator<Drawable> iterator() {
-        return new Iterator<Drawable>() {
+    public Iterator<BasicDrawable> iterator() {
+        return new Iterator<BasicDrawable>() {
             private int current_z = 0; // Start at the first z-index
-            private Iterator<Drawable> it = objects[current_z].iterator(); // Start at the first object in the z-index
+            private Iterator<BasicDrawable> it = objects[current_z].iterator(); // Start at the first object in the z-index
             // Represents the next object to be drawn.
             // If the current z-index has no more objects to draw, move to the next z-index
 
@@ -54,9 +54,9 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
             }
 
             @Override
-            public Drawable next() {
+            public BasicDrawable next() {
                 if(!hasNext()) throw new NoSuchElementException();
-                Drawable drawable = it.next(); // Get the next object
+                BasicDrawable drawable = it.next(); // Get the next object
                 if(!it.hasNext()){ // If there are no more objects in the current z-index
                     moveIterator();
                 }

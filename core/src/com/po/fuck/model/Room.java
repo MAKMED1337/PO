@@ -10,12 +10,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collision.Collidable;
+import com.po.fuck.model.drawables.Drawable;
 import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.view.CenterDrawer;
-import com.po.fuck.model.Drawable;
 import com.po.fuck.model.Updatable;
 
 public class Room implements Drawable, Updatable {

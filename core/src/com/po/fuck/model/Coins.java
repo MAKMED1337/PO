@@ -1,6 +1,10 @@
 package com.po.fuck.model;
 
-public class Coins {
+import static com.po.fuck.model.Constants.GUI_LAYER;
+
+import com.po.fuck.model.drawables.BasicDrawable;
+
+public class Coins implements BasicDrawable {
     private int coins = 0;
 
     public int getCoins(){
@@ -9,5 +13,10 @@ public class Coins {
 
     public void addCoins(int cnt) {
         coins += cnt;
+    }
+
+    @Override
+    public int get_z(){
+        return GUI_LAYER;
     }
 }
