@@ -2,8 +2,6 @@ package com.po.fuck.model;
 
 import static com.po.fuck.model.Constants.GAME_BORDER;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.Assets;
 import com.po.fuck.model.collections.All;
@@ -30,15 +28,15 @@ public class Core implements Updatable {
 
         objectFollower = Manager.create(new ObjectFollower());
         player = Manager.create(new Player(new GeometryData(new Vector2(),
-                                Assets.getInfo("player").getInt("width"),
-                                Assets.getInfo("player").getInt("height"),0)));
+                Assets.getAssetInfo("player").width,
+                Assets.getAssetInfo("player").height,0)));
         coinsCounter = Manager.create(new Coins());
         Manager.create(new Room(new Vector2(0, 0),
-                        Assets.getInfo("island").getInt("width"),
-                        Assets.getInfo("island").getInt("height")));
+                        Assets.getAssetInfo("island").width,
+                        Assets.getAssetInfo("island").height));
         Manager.create(new Room(new Vector2(1, 0),
-                Assets.getInfo("island").getInt("width"),
-                Assets.getInfo("island").getInt("height")));
+                Assets.getAssetInfo("island").width,
+                Assets.getAssetInfo("island").height));
         // Creating some game borders to destroy the bullets that went off the map.
         // We can not use here VERTICAL/HORIZONTAL, because if something went off the
         // map, then we want to catch with a thick wall, because it can be laggy or
@@ -55,8 +53,8 @@ public class Core implements Updatable {
     public void update(float delta) {
         if (player.get() == null)
                 player = Manager.create(new Player(new GeometryData(new Vector2(),
-                        Assets.getInfo("player").getInt("width"),
-                        Assets.getInfo("player").getInt("height"),0)));
+                        Assets.getAssetInfo("player").width,
+                        Assets.getAssetInfo("player").height,0)));
 
         objectFollower.get().setTargetPosition(player.get().getPosition());
 

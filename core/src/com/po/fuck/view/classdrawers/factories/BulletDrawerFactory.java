@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.Assets;
+
 import com.po.fuck.model.weapons.Bullet;
 import com.po.fuck.model.weapons.CosmicBullet;
 import com.po.fuck.model.weapons.LaserBeam;
@@ -12,16 +12,15 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
-import static com.po.fuck.view.classdrawers.Misc.getAnimation;
-import static com.po.fuck.view.classdrawers.Misc.getComplixAnimation;
+import static com.po.fuck.view.classdrawers.Misc.getComplexAnimation;
 
 public class BulletDrawerFactory {
 
     static {
         Renderer.addDrawer(CosmicBullet.class, BulletDrawerFactory.get(CosmicBullet.class,
-                getAnimation(Assets.getInfo("bullet").getString("path"))));
+                getComplexAnimation("bullet")));
         Renderer.addDrawer(LaserBeam.class, BulletDrawerFactory.get(LaserBeam.class,
-                getComplixAnimation("laserBeam")
+                getComplexAnimation("laserBeam")
         ));
     }
 

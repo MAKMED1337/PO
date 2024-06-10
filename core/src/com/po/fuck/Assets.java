@@ -6,22 +6,34 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 
+import java.util.HashMap;
+import java.util.Map;
 
 public class Assets {
-    private static JsonReader jsonReader = new JsonReader();
 
     public static AssetManager manager = new AssetManager();
 
-    public static JsonValue getInfo(String name) {
-        return jsonReader.parse(Gdx.files.internal("assetsData.json")).get(name);
+    private static final String[] basicAssetsNames = new String[]{"laserBeam", "player", "island",
+            "coin", "bullet", "enemy"};
+    private static final String[] weaponAssetsNames = new String[]{"glock", "laserGun"};
+
+    public static Map<String, BasicSpriteInfo> information = new HashMap<>();
+
+    static final JsonValue jsonData = (new JsonReader()).parse(Gdx.files.internal("assetsData.json"));
+
+    public static BasicSpriteInfo getAssetInfo(String name) {
+        return information.get(name);
     }
 
     public static void load() {
         JsonReader json = new JsonReader();
-        for (JsonValue element : json.parse(Gdx.files.internal("assetsData.json"))) {
-            System.out.println(element.getString("path"));
-                        manager.load(element.getString("path"), Texture.class);
-        }
+        for (JsonValue element : json.parse(Gdx.files.internal("assetsData.json")))
+            manager.load(element.getString("path"), Texture.class);
+
+        for (String name : basicAssetsNames)
+            information.put(name, new BasicSpriteInfo(name));
+        for (String name : weaponAssetsNames)
+            information.put(name, new WeaponSpriteInfo(name));
     }
 
     public void dispose() {

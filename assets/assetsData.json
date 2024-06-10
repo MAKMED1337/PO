@@ -6,6 +6,9 @@
       "muzzlePositionY": 54,
       "holdingPositionX": 25,
       "holdingPositionY": 24,
+      "frameWidth": 100,
+      "frameHeight": 64,
+      "frameDuration": 1.0,
       "width": 100,
       "height": 64
     },
@@ -16,6 +19,9 @@
       "muzzlePositionY": 39,
       "holdingPositionX": 70,
       "holdingPositionY": 29,
+      "frameDuration": 1.0,
+      "frameWidth": 200,
+      "frameHeight": 59,
       "width": 200,
       "height": 59
     },
@@ -23,31 +29,47 @@
     "path": "laserBeamFrames.png",
     "frameWidth": 1036,
     "frameHeight": 130,
+    "frameDuration": 0.025,
     "width": 1036,
     "height": 520
   },
   "player": {
     "path": "FUCKerWithoutHands2.png",
+    "frameWidth": 90,
+    "frameHeight": 141,
+    "frameDuration": 1.0,
     "width": 90,
     "height": 141
   },
   "island": {
     "path": "island2.png",
+    "frameWidth": 1728,
+    "frameHeight": 920,
+    "frameDuration": 1.0,
     "width": 1728,
     "height": 920
   },
   "coin": {
     "path": "coin3.png",
     "width": 40,
-    "height": 40
+    "height": 40,
+    "frameDuration": 1.0,
+    "frameWidth": 40,
+    "frameHeight": 40
   },
   "bullet": {
     "path": "bullet2.png",
+    "frameWidth": 100,
+    "frameHeight": 36,
+    "frameDuration": 1.0,
     "width": 100,
     "height": 36
   },
   "enemy": {
     "path": "player2.png",
+    "frameWidth": 150,
+    "frameHeight": 150,
+    "frameDuration": 1.0,
     "width": 150,
     "height": 150
   }
