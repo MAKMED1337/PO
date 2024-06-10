@@ -14,14 +14,14 @@ public class Entity extends GameObject {
     protected int teamTag;
 
     protected int reward = 0;
-    protected float health_points;
+    protected float healthPoints;
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
 
     public Entity(GeometryData geometryData, float HP) {
         super(geometryData);
         this.MAX_HEALTH_POINTS = HP;
-        this.health_points = HP;
+        this.healthPoints = HP;
     }
 
     public int getTeamTag() {
@@ -29,29 +29,29 @@ public class Entity extends GameObject {
     }
 
     @Override
-    public int get_z() {
+    public int getZ() {
         return ENTITY_LAYER;
     }
 
     public boolean isAlive() {
-        return immortal || health_points > 0;
+        return immortal || healthPoints > 0;
     }
 
     public boolean takeDamage(float damage) {
         if (immortal)
             return false;
 
-        health_points = Math.max(0, health_points - damage);
-        if (health_points == 0) {
+        healthPoints = Math.max(0, healthPoints - damage);
+        if (healthPoints == 0) {
             Core.coinsCounter.get().addCoins(reward);
-            Manager.destroy_raw(this);
+            Manager.destroyRaw(this);
         }
 
         return true;
     }
 
     public float getHP(){
-        return health_points;
+        return healthPoints;
     }
 
     public Managed<Movement> getMovement(){

@@ -3,10 +3,11 @@ package com.po.fuck.model;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.collision.Collidable;
+import com.po.fuck.model.drawables.PositionDrawable;
 import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.position.GeometryData;
 
-public class GameObject implements Drawable, Collidable, Destructable {
+public class GameObject implements PositionDrawable, Collidable, Destructable {
     protected GeometryData geometryData;
 
     GameObject(GeometryData geometryData) {
@@ -25,8 +26,7 @@ public class GameObject implements Drawable, Collidable, Destructable {
 
     @Override
     public Polygon getCollision() {
-        return GeometryMisc.createRectangle(geometryData.getPosition(), geometryData.getWidth(), 
-                                            geometryData.getHeight(), geometryData.getRotationRad());
+        return GeometryMisc.createRectangle(geometryData);
     }
 
     @Override

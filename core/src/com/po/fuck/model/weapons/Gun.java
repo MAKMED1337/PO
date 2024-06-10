@@ -19,7 +19,7 @@ public abstract class Gun extends HandedWeapon implements Updatable {
 
     // something like bullet factory
     // should not perform any checks
-    protected abstract Bullet shoot(Vector2 muzzle_position, Vector2 direction);
+    protected abstract Bullet shoot(Vector2 muzzlePosition, Vector2 direction);
 
     @Override
     public boolean attack() {

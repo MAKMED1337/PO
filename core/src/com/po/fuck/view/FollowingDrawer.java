@@ -18,13 +18,16 @@ public class FollowingDrawer extends CenterDrawer {
     }
 
     @Override
-    public void draw(Sprite sprite, Vector2 position) {
-        super.draw(sprite, position.cpy()
-            // Subtract the position of the object being followed from the copied position
+public void draw(Sprite sprite, Vector2 position) {
+    super.draw(sprite,
+        position.cpy()
+            // Calculating relative position by subtracting the position of the object being followed
             .sub(this.objectFollower.getPosition())
-            // Add half the game width and height to center the sprite on the screen
-            .add(GAME_WIDTH / 2, GAME_HEIGHT / 2));
-    }
+            // Centering the sprite on the screen by adding half the game width and height
+            .add(GAME_WIDTH / 2, GAME_HEIGHT / 2)
+    );
+}
+
     
     @Override
     public void drawGlobal(Sprite sprite, Vector2 globalPosition) {

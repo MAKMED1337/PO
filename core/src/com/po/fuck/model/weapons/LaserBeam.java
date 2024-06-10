@@ -4,12 +4,13 @@ import java.util.List;
 
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.Assets;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.lifetime.Manager;
-import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.collections.All;
+import com.po.fuck.model.position.GeometryData;
 
 import static com.po.fuck.model.Constants.LASER_BEAM_DAMAGE;
 import static com.po.fuck.model.Constants.LASER_BEAM_LIFE_TIME;
@@ -19,15 +20,15 @@ public final class LaserBeam extends Bullet {
     {
         damage = LASER_BEAM_DAMAGE;
         lifeTime = LASER_BEAM_LIFE_TIME;
+        geometryData = new GeometryData();
+        geometryData.setWidth(Assets.getBasicAssetInfo("laserBeam").width);
+        geometryData.setHeight(Assets.getBasicAssetInfo("laserBeam").height);
     }
 
-    LaserBeam(Vector2 muzzle_position, float width, float height, Vector2 direction, int teamTag) {
-        this.geometryData = new GeometryData();
-        this.geometryData.setHeight(height);
-        this.geometryData.setWidth(width);
-        this.geometryData.setPosition(muzzle_position.cpy().add(direction.cpy().setLength(width / 2)));
+    LaserBeam(Vector2 muzzlePosition, Vector2 direction, int teamTag) {
+        geometryData.setPosition(muzzlePosition.cpy().add(direction.cpy().setLength(geometryData.getWidth() / 2)));
         this.teamTag = teamTag;
-        this.velocity = direction.cpy().setLength(0.1f);
+        velocity = direction.cpy().setLength(0.1f);
     }
 
     @Override
@@ -35,16 +36,17 @@ public final class LaserBeam extends Bullet {
         elapsedTime += delta;
 
         if (elapsedTime > lifeTime) {
-            Manager.destroy_raw(this);
+            Manager.destroyRaw(this);
             return;
         }
 
-        Polygon polygon = GeometryMisc.createRectangle(getPosition(), geometryData.getWidth(), geometryData.getHeight(), velocity.angleDeg());
+        geometryData.setRotationRad(velocity.angleRad());
+
+        Polygon polygon = GeometryMisc.createRectangle(geometryData);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
-            if (!(collidable instanceof Entity)) continue;
-            Entity enemy = (Entity) collidable;
-            this.tryDamage(enemy, delta*damage);
+            if (!(collidable instanceof Entity enemy)) continue;
+            tryDamage(enemy, delta * damage);
         }
     }
 }

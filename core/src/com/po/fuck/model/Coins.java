@@ -1,6 +1,10 @@
 package com.po.fuck.model;
 
-public class Coins {
+import static com.po.fuck.model.Constants.GUI_LAYER;
+
+import com.po.fuck.model.drawables.Drawable;
+
+public class Coins implements Drawable {
     private int coins = 0;
 
     public int getCoins(){
@@ -11,22 +15,8 @@ public class Coins {
         coins += cnt;
     }
 
-    // @Override
-    // public int get_z() {
-    //     return GUI_LAYER;
-    // }
-
-    // @Override
-    // public Vector2 getPosition(){
-    //     return new Vector2(COIN_SPRITE_POSITION.x, COIN_SPRITE_POSITION.y);
-    // }
-
-    // public Vector2 getCounterPosition(){
-    //     return new Vector2(COINS_COUNTER_POSITION.x, COINS_COUNTER_POSITION.y);
-    // }
-
-    // @Override
-    // public GeometryData getGeometryData() {
-    //     return new GeometryData(geometryData);
-    // }
+    @Override
+    public int getZ(){
+        return GUI_LAYER;
+    }
 }

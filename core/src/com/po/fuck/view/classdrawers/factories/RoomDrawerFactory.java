@@ -21,7 +21,7 @@ public class RoomDrawerFactory {
         return new ObjectDrawer<T>() {
             @Override
             public void draw(CenterDrawer drawer, T object) {
-                drawer.draw(new Sprite(animation.getKeyFrame(object.getElapsedTime())), object.getPosition());
+                drawer.draw(new Sprite(animation.getKeyFrame(0)), object.getPosition());
             }
         };
     }

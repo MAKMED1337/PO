@@ -11,7 +11,7 @@ public final class Managed<T> {
     // convenient way to destroy shared object
     public void destroy() {
         if (object != null)
-            Manager.destroy_raw(object);
+            Manager.destroyRaw(object);
         object = null;
     }
 }

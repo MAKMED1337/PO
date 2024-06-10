@@ -1,13 +1,13 @@
 package com.po.fuck.view;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.model.ObjectFollower;
+import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
@@ -50,7 +50,7 @@ public class Renderer {
      *
      * @param drawableCollection the collection of drawable objects to render
      */
-    public void render(List<Object> drawableCollection){
+    public void render(DrawableCollection drawableCollection){
 
         ScreenUtils.clear(0, 0, 0, 1);
         camera.update();

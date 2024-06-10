@@ -4,16 +4,16 @@ import static com.po.fuck.model.Constants.WEAPON_LAYER;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
+import com.po.fuck.model.drawables.PositionDrawable;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.model.Drawable;
 
-public abstract class Weapon implements Drawable {
+public abstract class Weapon implements PositionDrawable {
     protected final Entity owner;
     protected Vector2 aiming = new Vector2();
     protected GeometryData geometryData = new GeometryData();
 
     @Override
-    public int get_z() {
+    public int getZ() {
         return WEAPON_LAYER;
     }
 
@@ -35,10 +35,5 @@ public abstract class Weapon implements Drawable {
         if (aiming == null)
             return new Vector2();
         return aiming.cpy().sub(owner.getPosition());
-    }
-
-    @Override
-    public GeometryData getGeometryData(){
-        return new GeometryData(geometryData);
     }
 }

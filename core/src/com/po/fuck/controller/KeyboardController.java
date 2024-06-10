@@ -52,8 +52,8 @@ public class KeyboardController extends InputAdapter implements Updatable {
                 D = true;
                 break;
             case Input.Keys.CONTROL_LEFT:
-                if (getMovement() instanceof Boost)
-                    ((Boost) getMovement()).tryToUseBoost();
+                if (getMovement() instanceof Boost boost)
+                    boost.tryToUseBoost();
                 break;
         }
 

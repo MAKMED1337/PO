@@ -1,5 +1,9 @@
 package com.po.fuck.model.weapons;
 
+import static com.po.fuck.model.Constants.LASERGUN_COOLDOWN;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.Assets;
 import com.po.fuck.WeaponSpriteInfo;
@@ -7,7 +11,7 @@ import com.po.fuck.model.Entity;
 
 public final class LaserGun extends Gun {
     {
-        cooldown = 1;
+        cooldown = LASERGUN_COOLDOWN;
     }
 
     public LaserGun(Entity owner) {
@@ -20,8 +24,7 @@ public final class LaserGun extends Gun {
     }
 
     @Override
-    protected Bullet shoot(Vector2 muzzle_position, Vector2 direction) {
-        return new LaserBeam(muzzle_position, Assets.getBasicAssetInfo("laserBeam").frameWidth,
-                Assets.getBasicAssetInfo("laserBeam").frameHeight, direction, owner.getTeamTag());
+    protected Bullet shoot(Vector2 muzzlePosition, Vector2 direction) {
+        return new LaserBeam(muzzlePosition, direction, owner.getTeamTag());
     }
 }

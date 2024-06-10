@@ -5,7 +5,7 @@ public final class Constants {
     public static final int SCREEN_HEIGHT = 720;
 
     /* movement */
-    public static final int DEFAULT_SPEED = 500;
+    public static final float DEFAULT_SPEED = 500;
     public static final int BOOST_DISTANCE = 700;
     public static final float BOOST_DURATION = 0.3f;
     public static final float BOOST_COOLDOWN = 1f;
@@ -32,6 +32,20 @@ public final class Constants {
     /* bullets */ /* TODO: move to .properties */
 	public static final float COSMIC_BULLET_LIFE_TIME = 10f;
     public static final float COSMIC_BULLET_DAMAGE = 1f;
-    public static final float LASER_BEAM_DAMAGE = 3f; 
+    public static final float COSMIC_BULLET_SPEED = 600f;
+    public static final float LASER_BEAM_DAMAGE = 3f;
     public static final float LASER_BEAM_LIFE_TIME = 1f;
+    public static final float DEFAULT_BULLET_LIFE_TIME = 60f;
+
+    public static final float GLOCK_COOLDOWN = 0.5f;
+    public static final float LASERGUN_COOLDOWN = 1f;
+
+    public static final float PLAYERS_HEALTH = 10;
+
+    public static final float DEFAULT_DISTANCE_FACTOR = 2;
+    public static final float DEFAULT_MAX_DISTANCE_FROM_BODY = 100;
+
+    public static final float BASIC_ENEMY_SPEED = 250;
+    public static final float BASIC_ENEMY_HEALTH = 5;
+    public static final int BASIC_ENEMY_REWARD = 1;
 }

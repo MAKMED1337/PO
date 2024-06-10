@@ -2,8 +2,8 @@ package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.model.Drawable;
 import com.po.fuck.model.collision.Collidable;
+import com.po.fuck.model.drawables.PositionDrawable;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;
@@ -11,23 +11,24 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.collections.All;
 
+import static com.po.fuck.model.Constants.DEFAULT_BULLET_LIFE_TIME;
 import static com.po.fuck.model.Constants.WEAPON_LAYER;
 
 import java.util.List;
 
-public abstract class Bullet implements Drawable, Updatable {
+public abstract class Bullet implements PositionDrawable, Updatable {
     protected GeometryData geometryData;
     protected Vector2 velocity;
     protected int teamTag;
     protected float damage;
-    protected float lifeTime = 60; // default lifetime is set to 60 seconds
+    protected float lifeTime = DEFAULT_BULLET_LIFE_TIME;
     protected float elapsedTime = 0;
 
 	@Override
-    public int get_z() {
+    public int getZ() {
         return WEAPON_LAYER;
     }
-    
+
     @Override
     public Vector2 getPosition() {
         return geometryData.getPosition();
@@ -51,21 +52,22 @@ public abstract class Bullet implements Drawable, Updatable {
         elapsedTime += delta;
 
         if(elapsedTime > lifeTime){
-            Manager.destroy_raw(this);
+            Manager.destroyRaw(this);
             return;
         }
 
-        Polygon polygon = GeometryMisc.createRectangle(getPosition(), geometryData.getWidth(), geometryData.getHeight(), velocity.angleDeg());
+        geometryData.setRotationRad(velocity.angleRad());
+
+        Polygon polygon = GeometryMisc.createRectangle(geometryData);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
-            if (!(collidable instanceof Entity)) {
-                Manager.destroy_raw(this);
+            if (!(collidable instanceof Entity enemy)) {
+                Manager.destroyRaw(this);
                 return;
             }
 
-            Entity enemy = (Entity) collidable;
             if (this.tryDamage(enemy, damage)) {
-                Manager.destroy_raw(this);
+                Manager.destroyRaw(this);
                 return; // damage only 1 enemy at the same time
                 // TODO: sort them by distance or something like this
             }
