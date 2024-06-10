@@ -16,6 +16,7 @@ public class Core implements Updatable {
     static { // TODO: remove
         forceInit(Destructable.class);
         forceInit(All.class);
+        // Constants.saveToProperties();
     }
     
     public static Managed<Player> player;
