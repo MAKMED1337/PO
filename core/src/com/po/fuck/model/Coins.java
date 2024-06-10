@@ -2,9 +2,9 @@ package com.po.fuck.model;
 
 import static com.po.fuck.model.Constants.GUI_LAYER;
 
-import com.po.fuck.model.drawables.BasicDrawable;
+import com.po.fuck.model.drawables.Drawable;
 
-public class Coins implements BasicDrawable {
+public class Coins implements Drawable {
     private int coins = 0;
 
     public int getCoins(){

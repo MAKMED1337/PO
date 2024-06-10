@@ -3,7 +3,7 @@ package com.po.fuck.model.weapons;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.collision.Collidable;
-import com.po.fuck.model.drawables.Drawable;
+import com.po.fuck.model.drawables.PositionDrawable;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;
@@ -16,7 +16,7 @@ import static com.po.fuck.model.Constants.WEAPON_LAYER;
 
 import java.util.List;
 
-public abstract class Bullet implements Drawable, Updatable {
+public abstract class Bullet implements PositionDrawable, Updatable {
     protected GeometryData geometryData;
     protected Vector2 velocity;
     protected int teamTag;
