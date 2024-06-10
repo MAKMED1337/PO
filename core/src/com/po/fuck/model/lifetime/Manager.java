@@ -8,7 +8,7 @@ public final class Manager {
     private static final ArrayList<ClassData<?>> classes = new ArrayList<>();
     private static HashMap<Object, Managed<? extends Object>> objects = new HashMap<>();
 
-    public static <T> void register_class(ClassData<T> data) {
+    public static <T> void registerClass(ClassData<T> data) {
         classes.add(data);
     }
 
@@ -22,7 +22,7 @@ public final class Manager {
 
     // Try to avoid, destroys the actual object, not the managed one
     @SuppressWarnings("unchecked")
-    public static void destroy_raw(Object object) {
+    public static void destroyRaw(Object object) {
         if (!objects.containsKey(object))
             throw new RuntimeException("Object " + object + " was not initialized before destroy");
         objects.remove(object).object = null;

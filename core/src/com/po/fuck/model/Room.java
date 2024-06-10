@@ -19,7 +19,7 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.model.Updatable;
 
 public class Room implements PositionDrawable, Updatable {
-    public Vector2 tilling_position;
+    public Vector2 tillingPosition;
     protected GeometryData geometryData;
 
     private enum State {
@@ -33,35 +33,37 @@ public class Room implements PositionDrawable, Updatable {
     @SuppressWarnings("unchecked")
     protected Managed<InvisibleWall> walls[] = new Managed[4];
 
-    Room(Vector2 tilling_position, float width, float height) {
-        this.tilling_position = tilling_position;
+    Room(Vector2 tillingPosition, float width, float height) {
+        this.tillingPosition = tillingPosition;
         this.geometryData = new GeometryData();
         geometryData.setHeight(height);
         geometryData.setWidth(width);
     }
 
     @Override
-    public int get_z() {
+    public int getZ() {
         return BACKGROUND_LAYER;
     }
 
     protected void spawnEnemies() {
         Vector2 center = getPosition();
+
+        // Magic numbers are here, because this room is an example
         Vector2 offset = new Vector2(geometryData.getWidth() - 200, geometryData.getHeight() - 300);
 
         // top left
-        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f), 
+        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f),
                                     new Sprite(new Texture("player2.png")).getWidth(),
                                     new Sprite(new Texture("player2.png")).getHeight(),0)));
 
         // bottom right
-        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f), 
+        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f),
                                     new Sprite(new Texture("player2.png")).getWidth(),
                                     new Sprite(new Texture("player2.png")).getHeight(),0)));
     }
 
     public Vector2 getPosition() {
-        return new Vector2(geometryData.getWidth() * tilling_position.x, geometryData.getHeight() * tilling_position.y);
+        return new Vector2(geometryData.getWidth() * tillingPosition.x, geometryData.getHeight() * tillingPosition.y);
     }
 
     protected void clear() {
@@ -131,7 +133,7 @@ public class Room implements PositionDrawable, Updatable {
             // If we are already fighting, we need to check if every enemy is dead to stop
             // the fight.
 
-            if (!inside.stream().anyMatch(x -> x instanceof Entity && ((Entity) x).getTeamTag() == ENEMY_TEAM_TAG))
+            if (!inside.stream().anyMatch(x -> x instanceof Entity entity && entity.getTeamTag() == ENEMY_TEAM_TAG))
                 clear();
             return;
         } else {

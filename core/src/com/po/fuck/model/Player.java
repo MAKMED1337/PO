@@ -1,6 +1,7 @@
 package com.po.fuck.model;
 
 import static com.po.fuck.model.Constants.DEFAULT_SPEED;
+import static com.po.fuck.model.Constants.PLAYERS_HEALTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -32,7 +33,7 @@ public class Player extends Entity {
     private final Managed<MouseController> mouseController = Manager.create(new MouseController(this));
 
     Player(GeometryData geometryData) {
-        super(geometryData, 100);
+        super(geometryData, PLAYERS_HEALTH);
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(keyboardController.get());

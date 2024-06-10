@@ -16,7 +16,7 @@ public class Coins implements Drawable {
     }
 
     @Override
-    public int get_z(){
+    public int getZ(){
         return GUI_LAYER;
     }
 }

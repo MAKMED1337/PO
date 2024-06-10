@@ -30,10 +30,10 @@ public final class LaserBeam extends Bullet {
                                 .getKeyFrame(0)).getHeight());
     }
 
-    LaserBeam(Vector2 muzzle_position, Vector2 direction, int teamTag) {
-        this.geometryData.setPosition(muzzle_position.cpy().add(direction.cpy().setLength(this.geometryData.getWidth() / 2)));
+    LaserBeam(Vector2 muzzlePosition, Vector2 direction, int teamTag) {
+        geometryData.setPosition(muzzlePosition.cpy().add(direction.cpy().setLength(geometryData.getWidth() / 2)));
         this.teamTag = teamTag;
-        this.velocity = direction.cpy().setLength(0.1f);
+        velocity = direction.cpy().setLength(0.1f);
     }
 
     @Override
@@ -41,7 +41,7 @@ public final class LaserBeam extends Bullet {
         elapsedTime += delta;
 
         if (elapsedTime > lifeTime) {
-            Manager.destroy_raw(this);
+            Manager.destroyRaw(this);
             return;
         }
 
@@ -50,9 +50,8 @@ public final class LaserBeam extends Bullet {
         Polygon polygon = GeometryMisc.createRectangle(geometryData);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
-            if (!(collidable instanceof Entity)) continue;
-            Entity enemy = (Entity) collidable;
-            this.tryDamage(enemy, delta*damage);
+            if (!(collidable instanceof Entity enemy)) continue;
+            tryDamage(enemy, delta * damage);
         }
     }
 }

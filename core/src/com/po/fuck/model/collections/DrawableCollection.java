@@ -22,14 +22,14 @@ public class DrawableCollection extends SimpleCollection<Drawable> implements It
 
     @Override
     public void add(Drawable drawable) {
-        objects[drawable.get_z()].add(drawable);
+        objects[drawable.getZ()].add(drawable);
     }
 
     @Override
     public void remove(Drawable drawable) {
-        objects[drawable.get_z()].remove(drawable);
+        objects[drawable.getZ()].remove(drawable);
     }
-    
+
     @Override
     public Iterator<Drawable> iterator() {
         return new DrawableCollectionIterator();

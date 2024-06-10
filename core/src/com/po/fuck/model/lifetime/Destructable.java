@@ -7,7 +7,7 @@ public interface Destructable {
 
     public static class Lifetime {
         static {
-            Manager.register_class(
+            Manager.registerClass(
                     new ClassData<Destructable>(Destructable.class, null, object -> object.destructor()));
         }
     }

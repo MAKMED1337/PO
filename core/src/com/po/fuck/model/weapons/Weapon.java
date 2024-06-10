@@ -13,7 +13,7 @@ public abstract class Weapon implements PositionDrawable {
     protected GeometryData geometryData = new GeometryData();
 
     @Override
-    public int get_z() {
+    public int getZ() {
         return WEAPON_LAYER;
     }
 

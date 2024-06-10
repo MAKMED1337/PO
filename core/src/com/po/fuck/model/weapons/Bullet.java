@@ -25,10 +25,10 @@ public abstract class Bullet implements PositionDrawable, Updatable {
     protected float elapsedTime = 0;
 
 	@Override
-    public int get_z() {
+    public int getZ() {
         return WEAPON_LAYER;
     }
-    
+
     @Override
     public Vector2 getPosition() {
         return geometryData.getPosition();
@@ -52,7 +52,7 @@ public abstract class Bullet implements PositionDrawable, Updatable {
         elapsedTime += delta;
 
         if(elapsedTime > lifeTime){
-            Manager.destroy_raw(this);
+            Manager.destroyRaw(this);
             return;
         }
 
@@ -61,14 +61,13 @@ public abstract class Bullet implements PositionDrawable, Updatable {
         Polygon polygon = GeometryMisc.createRectangle(geometryData);
         List<Collidable> collidableList = All.collidableCollection.collides(polygon);
         for (Collidable collidable : collidableList) {
-            if (!(collidable instanceof Entity)) {
-                Manager.destroy_raw(this);
+            if (!(collidable instanceof Entity enemy)) {
+                Manager.destroyRaw(this);
                 return;
             }
 
-            Entity enemy = (Entity) collidable;
             if (this.tryDamage(enemy, damage)) {
-                Manager.destroy_raw(this);
+                Manager.destroyRaw(this);
                 return; // damage only 1 enemy at the same time
                 // TODO: sort them by distance or something like this
             }

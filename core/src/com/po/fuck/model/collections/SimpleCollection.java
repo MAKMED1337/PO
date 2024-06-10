@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import com.po.fuck.model.lifetime.ClassData;
 import com.po.fuck.model.lifetime.Manager;
 
-public class SimpleCollection<T> {
+public abstract class SimpleCollection<T> {
     protected SimpleCollection(Class<T> cls) {
-        Manager.register_class(new ClassData<T>(
+        Manager.registerClass(new ClassData<T>(
                 cls,
-                object -> this.add(object),
-                object -> this.remove(object)));
+                this::add,
+                this::remove));
     }
 
     protected final ArrayList<T> objects = new ArrayList<>();
