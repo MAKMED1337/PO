@@ -14,14 +14,14 @@ public final class Glock extends Gun {
         super(owner);
         name = "glock";
 
-        geometryData.setHeight(Assets.getAssetInfo(name).height);
-        geometryData.setWidth(Assets.getAssetInfo(name).width);
+        geometryData.setHeight(Assets.getBasicAssetInfo(name).height);
+        geometryData.setWidth(Assets.getBasicAssetInfo(name).width);
     }
 
     @Override
     protected Bullet shoot(Vector2 muzzle_position, Vector2 direction) {
-        return new CosmicBullet(muzzle_position, Assets.getAssetInfo(name).width,
-                                                Assets.getAssetInfo(name).height,
+        return new CosmicBullet(muzzle_position, Assets.getBasicAssetInfo(name).width,
+                                                Assets.getBasicAssetInfo(name).height,
                                                 direction, owner.getTeamTag());
     }
 }

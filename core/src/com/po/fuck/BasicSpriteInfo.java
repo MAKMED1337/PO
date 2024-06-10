@@ -1,13 +1,14 @@
 package com.po.fuck;
 
 public class BasicSpriteInfo {
+    public String path;
+    public int frameWidth;
+    public int frameHeight;
+    public double frameDuration;
+
     public int width;
 
     public int height;
-    public String path;
-    public int frameHeight;
-    public int frameWidth;
-    public double frameDuration;
 
     public BasicSpriteInfo(String name) {
         width = Assets.jsonData.get(name).getInt("width");

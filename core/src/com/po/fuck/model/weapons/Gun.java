@@ -32,9 +32,8 @@ public abstract class Gun extends HandedWeapon implements Updatable {
         Vector2 direction = getDirection(), gunPosition = getPosition();
         gunPosition.add(new Vector2(geometryData.getWidth() / 2, 0).rotateRad(direction.angleRad()));
 
-        WeaponSpriteInfo info = (WeaponSpriteInfo) Assets.getAssetInfo(name);
-        Vector2 realMuzzlePosition = new Vector2((float) info.muzzlePositionX,
-                (float) info.muzzlePositionY);
+        WeaponSpriteInfo info = Assets.getWeaponAssetInfo(name);
+        Vector2 realMuzzlePosition = new Vector2((float) info.muzzlePositionX, (float) info.muzzlePositionY);
 
         realMuzzlePosition.sub(new Vector2(geometryData.getWidth(), geometryData.getHeight()/2));
 

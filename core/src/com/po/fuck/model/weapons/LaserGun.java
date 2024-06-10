@@ -14,14 +14,14 @@ public final class LaserGun extends Gun {
         super(owner);
         name = "laserGun";
 
-        WeaponSpriteInfo info = (WeaponSpriteInfo) Assets.getAssetInfo(name);
+        WeaponSpriteInfo info = Assets.getWeaponAssetInfo(name);
         geometryData.setHeight(info.height);
         geometryData.setWidth(info.width);
     }
 
     @Override
     protected Bullet shoot(Vector2 muzzle_position, Vector2 direction) {
-        return new LaserBeam(muzzle_position, Assets.getAssetInfo("laserBeam").frameWidth,
-                Assets.getAssetInfo("laserBeam").frameHeight, direction, owner.getTeamTag());
+        return new LaserBeam(muzzle_position, Assets.getBasicAssetInfo("laserBeam").frameWidth,
+                Assets.getBasicAssetInfo("laserBeam").frameHeight, direction, owner.getTeamTag());
     }
 }

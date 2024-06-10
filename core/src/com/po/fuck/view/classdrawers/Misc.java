@@ -9,22 +9,23 @@ import com.po.fuck.BasicSpriteInfo;
 public class Misc {
 
     public static Animation<TextureRegion> getComplexAnimation(String name) {
-        BasicSpriteInfo info =Assets.getAssetInfo(name);
+        BasicSpriteInfo info =Assets.getBasicAssetInfo(name);
         Texture animatedTexture = Assets.manager.get(info.path);
 
         TextureRegion[][] frames = TextureRegion.split(animatedTexture, info.frameWidth, info.frameHeight);
         if (info.width%info.frameWidth != 0 || info.height%info.frameHeight != 0) {
-            throw new RuntimeException("info.width modulo info.frameWidth is not 0 or info.height" +
-                    " modulo info.frameHeight is not 0");
+            throw new RuntimeException("Frames count is not integer");
         }
-        TextureRegion[] frames1 = new TextureRegion[(info.width / info.frameWidth) * (info.height / info.frameHeight)];
+        int frameRowsCount = info.height / info.frameHeight;
+        int frameColumnsCount = info.width / info.frameWidth;
+        TextureRegion[] framesOneDimension = new TextureRegion[frameRowsCount * frameColumnsCount];
 
         int id = 0;
-        for (int i = 0; i < info.height/info.frameHeight; i++) {
-            for (int j = 0; j < info.width/info.frameWidth; j++) frames1[id++] = frames[i][j];
+        for (int i = 0; i < frameRowsCount; i++) {
+            for (int j = 0; j < frameColumnsCount; j++) framesOneDimension[id++] = frames[i][j];
         }
 
-        Animation<TextureRegion> animation = new Animation<>((float) info.frameDuration, frames1);
+        Animation<TextureRegion> animation = new Animation<>((float) info.frameDuration, framesOneDimension);
         animation.setPlayMode(Animation.PlayMode.LOOP);
         return animation;
     }
