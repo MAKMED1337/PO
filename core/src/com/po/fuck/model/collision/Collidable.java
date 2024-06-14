@@ -11,6 +11,8 @@ public interface Collidable {
 
     Polygon getCollision();
 
+    boolean isInvisible();
+
     default boolean collide(Polygon other) {
         return Intersector.overlapConvexPolygons(getCollision(), other);
     }

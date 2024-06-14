@@ -32,7 +32,7 @@ public abstract class Movement implements Updatable {
             for (Collidable object : All.collidableCollection.collides(collidable.getCollision()))
                 selfOnly &= object.equals(collidable);
 
-            if (!selfOnly) // if this object collides with something (other than self)
+            if (!selfOnly && !collidable.isInvisible()) // if this object collides with something (other than self)
                 collidable.setPosition(position); // then rollback
         }
     }

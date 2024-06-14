@@ -18,6 +18,7 @@ public class Entity extends GameObject {
 
     public Entity(GeometryData geometryData, float HP) {
         super(geometryData);
+        System.out.println("Creating an enemy");
         this.MAX_HEALTH_POINTS = HP;
         this.healthPoints = HP;
     }
@@ -57,6 +58,7 @@ public class Entity extends GameObject {
 
     @Override
     public void destructor() {
+        System.out.println("Entity destroyed");
         weapon.destroy();
         super.destructor();
     }
