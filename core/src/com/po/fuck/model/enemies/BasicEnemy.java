@@ -30,9 +30,7 @@ public final class BasicEnemy extends Entity implements Updatable {
         teamTag = ENEMY_TEAM_TAG;
         reward = BASIC_ENEMY_REWARD;
     }
-    static {
-        Assets.loadClassInfo("enemy", new BasicSpriteInfo("enemy"));
-    }
+
     public BasicEnemy(GeometryData geometryData) {
         super(geometryData, BASIC_ENEMY_HEALTH);
     }
