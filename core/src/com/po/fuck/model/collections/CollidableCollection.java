@@ -1,5 +1,6 @@
 package com.po.fuck.model.collections;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +14,11 @@ public class CollidableCollection extends SimpleCollection<Collidable> {
     }
 
     public List<Collidable> collides(Polygon other) {
+        if(other == null) return Collections.emptyList();
+        return objects.stream().filter(x -> !x.isInvisible() && x.collide(other)).collect(Collectors.toList());
+    }
+
+    public List<Collidable> collidesWithInvisible(Polygon other){
         return objects.stream().filter(x -> x.collide(other)).collect(Collectors.toList());
     }
 }

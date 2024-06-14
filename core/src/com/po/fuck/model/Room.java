@@ -104,8 +104,11 @@ public class Room implements PositionDrawable, Updatable {
 
         // List of all the entities inside this room.
         List<Collidable> inside = All.collidableCollection
-                .collides(GeometryMisc.createRectangle(
+                .collidesWithInvisible(GeometryMisc.createRectangle(
                     new GeometryData(getPosition(), geometryData.getWidth(), geometryData.getHeight(), 0)));
+        
+        // TODO: this is a temporary solution, we need to add a way to check if the enemies are dead
+        // without relying on collidable collection.
 
         if (state == State.NOT_ENTERED) {
             // If the player has not entered before this time, we need to check if he has
