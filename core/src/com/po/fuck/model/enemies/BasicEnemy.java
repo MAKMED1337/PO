@@ -5,11 +5,8 @@ import static com.po.fuck.model.Constants.BASIC_ENEMY_HEALTH;
 import static com.po.fuck.model.Constants.BASIC_ENEMY_REWARD;
 import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
 
-import com.po.fuck.Assets;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
-import com.po.fuck.model.Loaders.AssetsLoader;
-import com.po.fuck.model.Loaders.BasicSpriteInfo;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.lifetime.Manager;

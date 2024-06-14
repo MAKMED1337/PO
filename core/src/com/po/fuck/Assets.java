@@ -5,9 +5,8 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.po.fuck.model.Loaders.AssetsLoader;
-import com.po.fuck.model.Loaders.BasicSpriteInfo;
-import com.po.fuck.model.Loaders.WeaponSpriteInfo;
+import com.po.fuck.model.loadersAssets.BasicSpriteInfo;
+import com.po.fuck.model.loadersAssets.WeaponSpriteInfo;
 
 import java.util.HashMap;
 import java.util.Map;

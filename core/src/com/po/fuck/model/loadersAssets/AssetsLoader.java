@@ -1,7 +1,8 @@
-package com.po.fuck.model.Loaders;
+package com.po.fuck.model.loadersAssets;
 
 
-import com.po.fuck.model.Loaders.Loaders.*;
+import com.po.fuck.model.loadersAssets.assetsDataFactory.WeaponLoader;
+import com.po.fuck.model.loadersAssets.assetsDataFactory.BasicLoader;
 
 import static com.po.fuck.model.Core.forceInit;
 

@@ -2,8 +2,6 @@ package com.po.fuck.model;
 
 import static com.po.fuck.model.Constants.GUI_LAYER;
 
-import com.po.fuck.model.Loaders.AssetsLoader;
-import com.po.fuck.model.Loaders.BasicSpriteInfo;
 import com.po.fuck.model.drawables.Drawable;
 
 public class Coins implements Drawable {

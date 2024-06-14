@@ -1,7 +1,7 @@
-package com.po.fuck.model.Loaders.Loaders;
+package com.po.fuck.model.loadersAssets.assetsDataFactory;
 
 import com.po.fuck.Assets;
-import com.po.fuck.model.Loaders.BasicSpriteInfo;
+import com.po.fuck.model.loadersAssets.BasicSpriteInfo;
 
 public class BasicLoader {
     static {

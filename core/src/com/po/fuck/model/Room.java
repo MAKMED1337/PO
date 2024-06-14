@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.Assets;
-import com.po.fuck.model.Loaders.AssetsLoader;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.drawables.PositionDrawable;

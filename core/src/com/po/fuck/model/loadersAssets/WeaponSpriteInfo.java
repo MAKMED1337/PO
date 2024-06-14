@@ -1,9 +1,8 @@
-package com.po.fuck.model.Loaders;
+package com.po.fuck.model.loadersAssets;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonValue;
 import com.po.fuck.Assets;
-import com.po.fuck.model.Loaders.BasicSpriteInfo;
 
 public class WeaponSpriteInfo extends BasicSpriteInfo {
     public Vector2 muzzlePosition;

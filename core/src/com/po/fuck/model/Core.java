@@ -4,7 +4,7 @@ import static com.po.fuck.model.Constants.GAME_BORDER;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.Assets;
-import com.po.fuck.model.Loaders.AssetsLoader;
+import com.po.fuck.model.loadersAssets.AssetsLoader;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.model.lifetime.Destructable;

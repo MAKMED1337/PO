@@ -1,4 +1,4 @@
-package com.po.fuck.model.Loaders;
+package com.po.fuck.model.loadersAssets;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonValue;
