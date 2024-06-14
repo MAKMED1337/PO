@@ -12,7 +12,6 @@ import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.collections.All;
 
 import static com.po.fuck.model.Constants.DEFAULT_BULLET_LIFE_TIME;
-import static com.po.fuck.model.Constants.WEAPON_LAYER;
 
 import java.util.List;
 
@@ -24,17 +23,12 @@ public abstract class Bullet implements PositionDrawable, Updatable {
     protected float lifeTime = DEFAULT_BULLET_LIFE_TIME;
     protected float elapsedTime = 0;
 
-	@Override
-    public int getZ() {
-        return WEAPON_LAYER;
-    }
-
     @Override
     public Vector2 getPosition() {
         return geometryData.getPosition();
     }
 
-    public Vector2 getVelocity(){
+    public Vector2 getVelocity() {
         return velocity.cpy();
     }
 
@@ -51,7 +45,7 @@ public abstract class Bullet implements PositionDrawable, Updatable {
 
         elapsedTime += delta;
 
-        if(elapsedTime > lifeTime){
+        if (elapsedTime > lifeTime) {
             Manager.destroyRaw(this);
             return;
         }

@@ -10,13 +10,12 @@ import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.model.Room;
 
 public class RoomDrawerFactory {
-    
     static {
-        Renderer.addDrawer(Room.class, 
-        RoomDrawerFactory.get(Room.class, Misc.getAnimation("island2.png")));
+        Renderer.addDrawer(Room.class,
+                RoomDrawerFactory.get(Room.class, Misc.getAnimation("island2.png")));
     }
 
-    public static <T extends Room> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
+    public static <T extends Room> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation) {
         return new ObjectDrawer<T>() {
             @Override
             public void draw(CenterDrawer drawer, T object) {
@@ -24,5 +23,4 @@ public class RoomDrawerFactory {
             }
         };
     }
-    
 }

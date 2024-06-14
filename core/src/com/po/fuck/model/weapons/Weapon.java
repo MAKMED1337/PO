@@ -1,7 +1,5 @@
 package com.po.fuck.model.weapons;
 
-import static com.po.fuck.model.Constants.WEAPON_LAYER;
-
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.drawables.PositionDrawable;
@@ -11,11 +9,6 @@ public abstract class Weapon implements PositionDrawable {
     protected final Entity owner;
     protected Vector2 aiming = new Vector2();
     protected GeometryData geometryData = new GeometryData();
-
-    @Override
-    public int getZ() {
-        return WEAPON_LAYER;
-    }
 
     Weapon(Entity owner) {
         this.owner = owner;
