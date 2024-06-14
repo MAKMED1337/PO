@@ -1,9 +1,8 @@
 package com.po.fuck.model.weapons;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.Assets;
+import com.po.fuck.model.Loaders.AssetsLoader;
 import com.po.fuck.model.position.GeometryData;
 
 import static com.po.fuck.model.Constants.COSMIC_BULLET_DAMAGE;

@@ -5,14 +5,16 @@ import static com.po.fuck.model.Constants.PLAYERS_HEALTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.controller.KeyboardController;
 import com.po.fuck.controller.MouseController;
+import com.po.fuck.model.Loaders.AssetsLoader;
+import com.po.fuck.model.Loaders.BasicSpriteInfo;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.BasicMovement;
 import com.po.fuck.model.movement.Boost;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.LaserGun;
 
 /**

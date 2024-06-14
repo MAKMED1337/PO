@@ -2,7 +2,8 @@ package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.Assets;
-import com.po.fuck.WeaponSpriteInfo;
+import com.po.fuck.model.Loaders.WeaponSpriteInfo;
+import com.po.fuck.model.Loaders.AssetsLoader;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
@@ -32,8 +33,8 @@ public abstract class Gun extends HandedWeapon implements Updatable {
         Vector2 direction = getDirection(), gunPosition = getPosition();
         gunPosition.add(new Vector2(geometryData.getWidth() / 2, 0).rotateRad(direction.angleRad()));
 
-        WeaponSpriteInfo info = Assets.getWeaponAssetInfo(name);
-        Vector2 realMuzzlePosition = new Vector2((float) info.muzzlePositionX, (float) info.muzzlePositionY);
+        WeaponSpriteInfo info =  Assets.getWeaponAssetInfo(name);
+        Vector2 realMuzzlePosition = info.muzzlePosition.cpy();
 
         realMuzzlePosition.sub(new Vector2(geometryData.getWidth(), geometryData.getHeight()/2));
 

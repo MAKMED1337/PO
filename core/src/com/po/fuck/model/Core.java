@@ -4,6 +4,7 @@ import static com.po.fuck.model.Constants.GAME_BORDER;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.Assets;
+import com.po.fuck.model.Loaders.AssetsLoader;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.model.lifetime.Destructable;
@@ -25,6 +26,7 @@ public class Core implements Updatable {
     public static void initialize() {
         Assets.load();
         Assets.manager.finishLoading();
+        AssetsLoader.loadAssets();
 
         objectFollower = Manager.create(new ObjectFollower());
         player = Manager.create(new Player(new GeometryData(new Vector2(),

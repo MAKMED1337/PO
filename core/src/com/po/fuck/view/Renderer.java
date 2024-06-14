@@ -6,8 +6,15 @@ import java.util.Map;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.po.fuck.model.Coins;
 import com.po.fuck.model.ObjectFollower;
+import com.po.fuck.model.Player;
 import com.po.fuck.model.collections.DrawableCollection;
+import com.po.fuck.model.enemies.BasicEnemy;
+import com.po.fuck.model.weapons.CosmicBullet;
+import com.po.fuck.model.weapons.Glock;
+import com.po.fuck.model.weapons.LaserBeam;
+import com.po.fuck.model.weapons.LaserGun;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
@@ -95,7 +102,7 @@ public class Renderer {
         if(drawers.containsKey(cls)){
             throw new RuntimeException("ClassDrawer was added twice for " + cls.toString());
         }
-        drawers.put(cls,classDrawer);
+        drawers.put(cls, classDrawer);
     }
 
 }

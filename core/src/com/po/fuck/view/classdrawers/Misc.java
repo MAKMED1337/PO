@@ -4,17 +4,18 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.po.fuck.Assets;
-import com.po.fuck.BasicSpriteInfo;
+import com.po.fuck.model.Loaders.BasicSpriteInfo;
+import com.po.fuck.model.Loaders.AssetsLoader;
 
 public class Misc {
 
     public static Animation<TextureRegion> getComplexAnimation(String name) {
-        BasicSpriteInfo info =Assets.getBasicAssetInfo(name);
+        BasicSpriteInfo info = Assets.getBasicAssetInfo(name);
         Texture animatedTexture = Assets.manager.get(info.path);
 
         TextureRegion[][] frames = TextureRegion.split(animatedTexture, info.frameWidth, info.frameHeight);
         if (info.width%info.frameWidth != 0 || info.height%info.frameHeight != 0) {
-            throw new RuntimeException("Frames count is not integer");
+            throw new RuntimeException(info.path + "has wrong frames configuration");
         }
         int frameRowsCount = info.height / info.frameHeight;
         int frameColumnsCount = info.width / info.frameWidth;

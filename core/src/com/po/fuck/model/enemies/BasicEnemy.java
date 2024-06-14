@@ -5,8 +5,11 @@ import static com.po.fuck.model.Constants.BASIC_ENEMY_HEALTH;
 import static com.po.fuck.model.Constants.BASIC_ENEMY_REWARD;
 import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
 
+import com.po.fuck.Assets;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
+import com.po.fuck.model.Loaders.AssetsLoader;
+import com.po.fuck.model.Loaders.BasicSpriteInfo;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.lifetime.Manager;
@@ -27,7 +30,9 @@ public final class BasicEnemy extends Entity implements Updatable {
         teamTag = ENEMY_TEAM_TAG;
         reward = BASIC_ENEMY_REWARD;
     }
-
+    static {
+        Assets.loadClassInfo("enemy", new BasicSpriteInfo("enemy"));
+    }
     public BasicEnemy(GeometryData geometryData) {
         super(geometryData, BASIC_ENEMY_HEALTH);
     }

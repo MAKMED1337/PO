@@ -1,10 +1,9 @@
 package com.po.fuck.model.weapons;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.Assets;
 import com.po.fuck.model.Entity;
+
 import static com.po.fuck.model.Constants.GLOCK_COOLDOWN;
 
 public final class Glock extends Gun {
@@ -14,7 +13,6 @@ public final class Glock extends Gun {
         geometryData.setHeight(Assets.getBasicAssetInfo(name).height);
         geometryData.setWidth(Assets.getBasicAssetInfo(name).width);
     }
-
     public Glock(Entity owner) {
         super(owner);
     }
