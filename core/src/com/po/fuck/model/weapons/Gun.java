@@ -39,7 +39,7 @@ public abstract class Gun extends HandedWeapon implements Updatable {
 
         boolean flipped = direction.angleDeg() >= 90 && direction.angleDeg() <= 270;
 
-        Vector2 finalPosition = GeometryMisc.getPointPositionOnFlippedSprite(gunPosition.cpy(), direction.angleDeg(),
+        Vector2 finalPosition = GeometryMisc.getPointPositionOnFlippedFigure(gunPosition.cpy(), direction.angleDeg(),
                 realMuzzlePosition, flipped);
 
         Manager.create(shoot(finalPosition, direction));

@@ -10,15 +10,15 @@ import com.po.fuck.model.Entity;
 public final class LaserGun extends Gun {
     {
         cooldown = LASERGUN_COOLDOWN;
+        name = "laserGun";
+
+        WeaponSpriteInfo info = Assets.getWeaponAssetInfo(name);
+        geometryData.setHeight(info.size().x);
+        geometryData.setWidth(info.size().y);
     }
 
     public LaserGun(Entity owner) {
         super(owner);
-        name = "laserGun";
-
-        WeaponSpriteInfo info = Assets.getWeaponAssetInfo(name);
-        geometryData.setHeight(info.height);
-        geometryData.setWidth(info.width);
     }
 
     @Override

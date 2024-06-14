@@ -13,11 +13,13 @@ public class Misc {
         Texture animatedTexture = Assets.manager.get(info.path);
 
         TextureRegion[][] frames = TextureRegion.split(animatedTexture, info.frameWidth, info.frameHeight);
-        if (info.width%info.frameWidth != 0 || info.height%info.frameHeight != 0) {
+        int height = (int) info.size().x;
+        int width = (int) info.size().y;
+        if (width % info.frameWidth != 0 || height%info.frameHeight != 0) {
             throw new RuntimeException(info.path + "has wrong frames configuration");
         }
-        int frameRowsCount = info.height / info.frameHeight;
-        int frameColumnsCount = info.width / info.frameWidth;
+        int frameRowsCount = height / info.frameHeight;
+        int frameColumnsCount = width / info.frameWidth;
         TextureRegion[] framesOneDimension = new TextureRegion[frameRowsCount * frameColumnsCount];
 
         int id = 0;

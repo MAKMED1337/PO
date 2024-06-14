@@ -21,8 +21,8 @@ public final class LaserBeam extends Bullet {
         damage = LASER_BEAM_DAMAGE;
         lifeTime = LASER_BEAM_LIFE_TIME;
         geometryData = new GeometryData();
-        geometryData.setWidth(Assets.getBasicAssetInfo("laserBeam").width);
-        geometryData.setHeight(Assets.getBasicAssetInfo("laserBeam").height);
+        geometryData.setWidth(Assets.getBasicAssetInfo("laserBeam").size().y);
+        geometryData.setHeight(Assets.getBasicAssetInfo("laserBeam").size().x);
     }
 
     LaserBeam(Vector2 muzzlePosition, Vector2 direction, int teamTag) {

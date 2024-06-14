@@ -11,20 +11,6 @@ import com.po.fuck.model.loadersAssets.WeaponSpriteInfo;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
-* assetsData.json description
-* all textures have:
-* each .png stores some table of frames for the object
-* path - path to texture
-* frameWidth - the width of single frame
-* frameHeight - the height of single frame
-* width - the total width of this texture
-* height - the total height of this texture
-* frameDuration - the time between frames in seconds
-* Only weapons have:
-* muzzlePositionX/Y - the X/Y coordinate on the frame of the muzzle
-* holdingPositionX/Y - the X/Y coordinate on the frame of the holding position (the position of hands)
-*/
 
 public class Assets {
 
@@ -45,7 +31,7 @@ public class Assets {
     }
 
     public static WeaponSpriteInfo getWeaponAssetInfo(String name) {
-        return (WeaponSpriteInfo) spriteData.get(name);
+        return WeaponSpriteInfo.class.cast(spriteData.get(name));
     }
 
     public static void loadClassInfo(String name, BasicSpriteInfo data) {

@@ -8,6 +8,10 @@ public class WeaponSpriteInfo extends BasicSpriteInfo {
     public Vector2 muzzlePosition;
 
     public Vector2 holdingPosition;
+/*
+    * muzzlePositionX/Y - the X/Y coordinate on the frame of the muzzle
+    * holdingPositionX/Y - the X/Y coordinate on the frame of the holding position (the position of hands)
+*/
     public WeaponSpriteInfo(String name) {
         super(name);
         JsonValue jsonValue = Assets.jsonData.get(name);

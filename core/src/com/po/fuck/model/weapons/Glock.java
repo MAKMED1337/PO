@@ -10,8 +10,8 @@ public final class Glock extends Gun {
     {
         cooldown = GLOCK_COOLDOWN;
         name = "glock";
-        geometryData.setHeight(Assets.getBasicAssetInfo(name).height);
-        geometryData.setWidth(Assets.getBasicAssetInfo(name).width);
+        geometryData.setHeight(Assets.getBasicAssetInfo(name).size().x);
+        geometryData.setWidth(Assets.getBasicAssetInfo(name).size().y);
     }
     public Glock(Entity owner) {
         super(owner);

@@ -30,15 +30,15 @@ public class Core implements Updatable {
 
         objectFollower = Manager.create(new ObjectFollower());
         player = Manager.create(new Player(new GeometryData(new Vector2(),
-                Assets.getBasicAssetInfo("player").width,
-                Assets.getBasicAssetInfo("player").height,0)));
+                Assets.getBasicAssetInfo("player").size().y,
+                Assets.getBasicAssetInfo("player").size().x,0)));
         coinsCounter = Manager.create(new Coins());
         Manager.create(new Room(new Vector2(0, 0),
-                        Assets.getBasicAssetInfo("island").width,
-                        Assets.getBasicAssetInfo("island").height));
+                        Assets.getBasicAssetInfo("island").size().y,
+                        Assets.getBasicAssetInfo("island").size().x));
         Manager.create(new Room(new Vector2(1, 0),
-                Assets.getBasicAssetInfo("island").width,
-                Assets.getBasicAssetInfo("island").height));
+                Assets.getBasicAssetInfo("island").size().y,
+                Assets.getBasicAssetInfo("island").size().x));
         // Creating some game borders to destroy the bullets that went off the map.
         // We can not use here VERTICAL/HORIZONTAL, because if something went off the
         // map, then we want to catch with a thick wall, because it can be laggy or
@@ -55,8 +55,8 @@ public class Core implements Updatable {
     public void update(float delta) {
         if (player.get() == null)
                 player = Manager.create(new Player(new GeometryData(new Vector2(),
-                        Assets.getBasicAssetInfo("player").width,
-                        Assets.getBasicAssetInfo("player").height,0)));
+                        Assets.getBasicAssetInfo("player").size().y,
+                        Assets.getBasicAssetInfo("player").size().x,0)));
 
         objectFollower.get().setTargetPosition(player.get().getPosition());
 
