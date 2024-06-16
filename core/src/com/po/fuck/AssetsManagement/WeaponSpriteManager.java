@@ -1,13 +1,12 @@
 package com.po.fuck.AssetsManagement;
 
 
-import com.po.fuck.view.Sprites.BasicSpriteInfo;
 import com.po.fuck.view.Sprites.WeaponSpriteInfo;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class WeaponSpriteData {
+public class WeaponSpriteManager {
 
     static Map<Class<?>, WeaponSpriteInfo> spriteData = new HashMap<>();
 

@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
-import com.po.fuck.AssetsManagement.BasicSpriteData;
+import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.weapons.Bullet;
 import com.po.fuck.model.weapons.CosmicBullet;
 import com.po.fuck.model.weapons.LaserBeam;
@@ -19,9 +19,9 @@ public class BulletDrawerFactory {
 
     static {
         Renderer.addDrawer(CosmicBullet.class, BulletDrawerFactory.get(CosmicBullet.class,
-                getAnimation(BasicSpriteData.getBasicSpriteInfo(CosmicBullet.class))));
+                getAnimation(BasicSpriteManager.getBasicSpriteInfo(CosmicBullet.class))));
         Renderer.addDrawer(LaserBeam.class, BulletDrawerFactory.get(LaserBeam.class,
-                getAnimation(BasicSpriteData.getBasicSpriteInfo(LaserBeam.class))
+                getAnimation(BasicSpriteManager.getBasicSpriteInfo(LaserBeam.class))
         ));
     }
 

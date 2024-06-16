@@ -1,7 +1,7 @@
 package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.BasicSpriteData;
+import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
@@ -14,7 +14,7 @@ public final class CosmicBullet extends Bullet {
         damage = COSMIC_BULLET_DAMAGE;
         lifeTime = COSMIC_BULLET_LIFE_TIME;
         geometryData = new GeometryData();
-        BasicSpriteInfo thisInfo = BasicSpriteData.getBasicSpriteInfo(this.getClass());
+        BasicSpriteInfo thisInfo = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
         geometryData.setHeight(thisInfo.getFrameHeight());
         geometryData.setWidth(thisInfo.getFrameWidth());
     }

@@ -6,7 +6,7 @@ import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
 import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.BasicSpriteData;
+import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.drawables.PositionDrawable;
@@ -34,7 +34,7 @@ public class Room implements PositionDrawable, Updatable {
     Room (Vector2 tillingPosition) {
         this.tillingPosition = tillingPosition;
         this.geometryData = new GeometryData();
-        BasicSpriteInfo info = BasicSpriteData.getBasicSpriteInfo(this.getClass());
+        BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
         geometryData.setHeight(info.getFrameHeight());
         geometryData.setWidth(info.getFrameWidth());
     }

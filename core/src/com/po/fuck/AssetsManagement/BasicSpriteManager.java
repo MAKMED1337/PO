@@ -5,7 +5,7 @@ import com.po.fuck.view.Sprites.BasicSpriteInfo;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BasicSpriteData {
+public class BasicSpriteManager {
 
     static Map<Class<?>, BasicSpriteInfo> spriteData = new HashMap<>();
 

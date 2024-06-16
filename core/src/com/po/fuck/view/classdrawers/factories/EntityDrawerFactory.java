@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.BasicSpriteData;
+import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.enemies.BasicEnemy;
@@ -19,9 +19,9 @@ public class EntityDrawerFactory {
     
     static {
         Renderer.addDrawer(Player.class, EntityDrawerFactory.get(Player.class,
-                getAnimation(BasicSpriteData.getBasicSpriteInfo(Player.class))));
+                getAnimation(BasicSpriteManager.getBasicSpriteInfo(Player.class))));
         Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class,
-                getAnimation(BasicSpriteData.getBasicSpriteInfo(BasicEnemy.class))));
+                getAnimation(BasicSpriteManager.getBasicSpriteInfo(BasicEnemy.class))));
     }
 
     public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

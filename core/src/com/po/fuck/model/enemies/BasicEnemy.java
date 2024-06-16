@@ -5,7 +5,7 @@ import static com.po.fuck.model.Constants.BASIC_ENEMY_HEALTH;
 import static com.po.fuck.model.Constants.BASIC_ENEMY_REWARD;
 import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
 
-import com.po.fuck.AssetsManagement.BasicSpriteData;
+import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;
@@ -28,7 +28,7 @@ public final class BasicEnemy extends Entity implements Updatable {
         movement = Manager.create(new BasicMovement(this, BASIC_ENEMY_SPEED));
         teamTag = ENEMY_TEAM_TAG;
         reward = BASIC_ENEMY_REWARD;
-        BasicSpriteInfo info = BasicSpriteData.getBasicSpriteInfo(this.getClass());
+        BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
         geometryData.setHeight(info.getFrameHeight());
         geometryData.setWidth(info.getFrameWidth());
     }

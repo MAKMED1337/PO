@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.BasicSpriteData;
+import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
@@ -21,8 +21,8 @@ public final class LaserBeam extends Bullet {
         damage = LASER_BEAM_DAMAGE;
         lifeTime = LASER_BEAM_LIFE_TIME;
         geometryData = new GeometryData();
-        geometryData.setWidth(BasicSpriteData.getBasicSpriteInfo(this.getClass()).getFrameWidth());
-        geometryData.setHeight(BasicSpriteData.getBasicSpriteInfo(this.getClass()).getFrameHeight());
+        geometryData.setWidth(BasicSpriteManager.getBasicSpriteInfo(this.getClass()).getFrameWidth());
+        geometryData.setHeight(BasicSpriteManager.getBasicSpriteInfo(this.getClass()).getFrameHeight());
     }
 
     LaserBeam(Vector2 muzzlePosition, Vector2 direction, int teamTag) {

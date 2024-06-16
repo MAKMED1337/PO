@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.po.fuck.AssetsManagement.Assets;
-import com.po.fuck.AssetsManagement.BasicSpriteData;
 import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 public class Misc {

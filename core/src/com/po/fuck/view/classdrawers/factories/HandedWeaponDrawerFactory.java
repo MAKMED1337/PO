@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
-import com.po.fuck.AssetsManagement.WeaponSpriteData;
+import com.po.fuck.AssetsManagement.WeaponSpriteManager;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.HandedWeapon;
 import com.po.fuck.model.weapons.LaserGun;
@@ -19,9 +19,9 @@ public class HandedWeaponDrawerFactory {
     
     static {
         Renderer.addDrawer(Glock.class, HandedWeaponDrawerFactory.get(Glock.class,
-                getAnimation(WeaponSpriteData.getWeaponSpriteInfo(Glock.class))));
+                getAnimation(WeaponSpriteManager.getWeaponSpriteInfo(Glock.class))));
         Renderer.addDrawer(LaserGun.class, HandedWeaponDrawerFactory.get(LaserGun.class,
-                getAnimation(WeaponSpriteData.getWeaponSpriteInfo(LaserGun.class))));
+                getAnimation(WeaponSpriteManager.getWeaponSpriteInfo(LaserGun.class))));
     }
 
     public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
