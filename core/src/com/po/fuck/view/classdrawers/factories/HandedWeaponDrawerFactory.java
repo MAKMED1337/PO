@@ -15,7 +15,7 @@ import static com.po.fuck.model.Constants.WEAPON_LAYER;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class HandedWeaponDrawerFactory {
-    static {
+    public static void initialize() {
         Renderer.addDrawer(Glock.class, HandedWeaponDrawerFactory.get(Glock.class, getAnimation("glock3.png")));
         Renderer.addDrawer(LaserGun.class,
                 HandedWeaponDrawerFactory.get(LaserGun.class, getAnimation("laser_gun2.png")));

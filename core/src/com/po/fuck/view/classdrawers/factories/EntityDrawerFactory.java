@@ -16,7 +16,7 @@ import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class EntityDrawerFactory {
-    static {
+    public static void initialize() {
         Renderer.addDrawer(Player.class,
                 EntityDrawerFactory.get(Player.class, getAnimation("FUCKerWithoutHands2.png")));
         Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class, getAnimation("player2.png")));

@@ -10,7 +10,7 @@ import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.model.Room;
 
 public class RoomDrawerFactory {
-    static {
+    public static void initialize() {
         Renderer.addDrawer(Room.class,
                 RoomDrawerFactory.get(Room.class, Misc.getAnimation("island2.png")));
     }

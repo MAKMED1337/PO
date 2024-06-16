@@ -20,7 +20,7 @@ import com.po.fuck.view.classdrawers.ObjectDrawer;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class CoinDrawerFactory {
-    static {
+    public static void initialize() {
         Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class, getAnimation("coin3.png")));
     }
 

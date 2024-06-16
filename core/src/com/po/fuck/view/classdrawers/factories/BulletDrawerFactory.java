@@ -17,7 +17,7 @@ import static com.po.fuck.model.Constants.WEAPON_LAYER;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class BulletDrawerFactory {
-    static {
+    public static void initialize() {
         Renderer.addDrawer(CosmicBullet.class,
                 BulletDrawerFactory.get(CosmicBullet.class, getAnimation("bullet2.png")));
         Renderer.addDrawer(LaserBeam.class, BulletDrawerFactory.get(LaserBeam.class,

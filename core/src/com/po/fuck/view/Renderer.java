@@ -15,11 +15,9 @@ import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.EntityDrawerFactory;
-import com.po.fuck.view.classdrawers.factories.GameObjectDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.HandedWeaponDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.RoomDrawerFactory;
 
-import static com.po.fuck.model.Core.forceInit;
 import static com.po.fuck.view.Constants.GAME_HEIGHT;
 import static com.po.fuck.view.Constants.GAME_WIDTH;
 
@@ -29,13 +27,12 @@ import static com.po.fuck.view.Constants.GAME_WIDTH;
 public class Renderer {
     static private Map<Class<?>, ObjectDrawer<?>> drawers = new HashMap<>();
 
-    static { // TODO: remove this
-        forceInit(BulletDrawerFactory.class);
-        forceInit(EntityDrawerFactory.class);
-        forceInit(GameObjectDrawerFactory.class);
-        forceInit(HandedWeaponDrawerFactory.class);
-        forceInit(RoomDrawerFactory.class);
-        forceInit(CoinDrawerFactory.class);
+    public static void initialize() {
+        BulletDrawerFactory.initialize();
+        EntityDrawerFactory.initialize();
+        HandedWeaponDrawerFactory.initialize();
+        RoomDrawerFactory.initialize();
+        CoinDrawerFactory.initialize();
     }
 
     private OrthographicCamera camera;

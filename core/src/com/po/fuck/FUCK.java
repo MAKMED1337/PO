@@ -3,10 +3,10 @@ package com.po.fuck;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.po.fuck.view.Renderer;
+
 import com.po.fuck.model.Core;
 
 public class FUCK extends ApplicationAdapter {
-
     private Core core;
     private Renderer renderer;
 
@@ -14,6 +14,7 @@ public class FUCK extends ApplicationAdapter {
     public void create() {
         core = new Core();
         Core.initialize();
+        Renderer.initialize();
         renderer = new Renderer(Core.objectFollower.get());
     }
 
