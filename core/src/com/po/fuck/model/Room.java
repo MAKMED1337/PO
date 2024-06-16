@@ -33,10 +33,8 @@ public class Room implements PositionDrawable, Updatable {
 
     Room (Vector2 tillingPosition) {
         this.tillingPosition = tillingPosition;
-        this.geometryData = new GeometryData();
         BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
-        geometryData.setHeight(info.getFrameHeight());
-        geometryData.setWidth(info.getFrameWidth());
+        this.geometryData = new GeometryData(new Vector2(), info.getWidth(), info.getHeight(), 0);
     }
 
     Room(Vector2 tillingPosition, float width, float height) {

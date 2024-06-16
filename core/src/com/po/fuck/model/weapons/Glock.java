@@ -11,8 +11,8 @@ public final class Glock extends Gun {
     {
         cooldown = GLOCK_COOLDOWN;
         WeaponSpriteInfo thisInfo = WeaponSpriteManager.getWeaponSpriteInfo(this.getClass());
-        geometryData.setHeight(thisInfo.getFrameHeight());
-        geometryData.setWidth(thisInfo.getFrameWidth());
+        geometryData.setHeight(thisInfo.getHeight());
+        geometryData.setWidth(thisInfo.getWidth());
     }
     public Glock(Entity owner) {
         super(owner);

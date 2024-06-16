@@ -22,11 +22,11 @@ import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 public class CoinDrawerFactory {
     
     static {
-        Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class,
-                getAnimation(BasicSpriteManager.getBasicSpriteInfo(Coins.class))));
+        Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class));
     }
 
-    public static <T extends Coins> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
+    public static <T extends Coins> ObjectDrawer<T> get(Class<T> clz){
+        Animation<TextureRegion> animation = getAnimation(BasicSpriteManager.getBasicSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             
             @Override

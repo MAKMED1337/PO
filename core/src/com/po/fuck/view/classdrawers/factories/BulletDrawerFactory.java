@@ -18,14 +18,12 @@ import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 public class BulletDrawerFactory {
 
     static {
-        Renderer.addDrawer(CosmicBullet.class, BulletDrawerFactory.get(CosmicBullet.class,
-                getAnimation(BasicSpriteManager.getBasicSpriteInfo(CosmicBullet.class))));
-        Renderer.addDrawer(LaserBeam.class, BulletDrawerFactory.get(LaserBeam.class,
-                getAnimation(BasicSpriteManager.getBasicSpriteInfo(LaserBeam.class))
-        ));
+        Renderer.addDrawer(CosmicBullet.class, BulletDrawerFactory.get(CosmicBullet.class));
+        Renderer.addDrawer(LaserBeam.class, BulletDrawerFactory.get(LaserBeam.class));
     }
 
-    public static <T extends Bullet> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
+    public static <T extends Bullet> ObjectDrawer<T> get(Class<T> clz){
+        Animation<TextureRegion> animation = getAnimation(BasicSpriteManager.getBasicSpriteInfo(clz));
         return new ObjectDrawer<T>() {
 
             @Override

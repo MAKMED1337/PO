@@ -3,8 +3,8 @@ package com.po.fuck.model;
 import static com.po.fuck.model.Constants.GAME_BORDER;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.Assets;
-import com.po.fuck.model.AssetsLoader.AssetsLoader;
+import com.po.fuck.AssetsManagement.AssetsTextureLoader;
+import com.po.fuck.AssetsManagement.AssetsDataLoader;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.model.lifetime.Destructable;
@@ -24,9 +24,8 @@ public class Core implements Updatable {
     public static Managed<ObjectFollower> objectFollower;
 
     public static void initialize() {
-        Assets.load();
-        Assets.manager.finishLoading();
-        AssetsLoader.loadAssets();
+        AssetsTextureLoader.preLoadTextures();
+        AssetsDataLoader.loadAssets();
 
         objectFollower = Manager.create(new ObjectFollower());
         player = Manager.create(new Player(new GeometryData(new Vector2(),0)));

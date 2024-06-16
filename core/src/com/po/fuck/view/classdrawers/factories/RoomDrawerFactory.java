@@ -11,14 +11,17 @@ import com.po.fuck.view.classdrawers.Misc;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.model.Room;
 
+import static com.po.fuck.view.classdrawers.Misc.getAnimation;
+
 public class RoomDrawerFactory {
     
     static {
         Renderer.addDrawer(Room.class, 
-        RoomDrawerFactory.get(Room.class, Misc.getAnimation(BasicSpriteManager.getBasicSpriteInfo(Room.class))));
+        RoomDrawerFactory.get(Room.class));
     }
 
-    public static <T extends Room> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
+    public static <T extends Room> ObjectDrawer<T> get(Class<T> clz){
+        Animation<TextureRegion> animation = getAnimation(BasicSpriteManager.getBasicSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public void draw(CenterDrawer drawer, T object) {

@@ -29,8 +29,8 @@ public final class BasicEnemy extends Entity implements Updatable {
         teamTag = ENEMY_TEAM_TAG;
         reward = BASIC_ENEMY_REWARD;
         BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
-        geometryData.setHeight(info.getFrameHeight());
-        geometryData.setWidth(info.getFrameWidth());
+        geometryData.setHeight(info.getHeight());
+        geometryData.setWidth(info.getWidth());
     }
 
     public BasicEnemy(GeometryData geometryData) {

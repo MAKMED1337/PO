@@ -10,21 +10,23 @@ import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.enemies.BasicEnemy;
+import com.po.fuck.model.weapons.Glock;
+import com.po.fuck.model.weapons.Gun;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.HealthBar;
 import com.po.fuck.view.Renderer;
+import com.po.fuck.view.Sprites.BasicSpriteInfo;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class EntityDrawerFactory {
     
     static {
-        Renderer.addDrawer(Player.class, EntityDrawerFactory.get(Player.class,
-                getAnimation(BasicSpriteManager.getBasicSpriteInfo(Player.class))));
-        Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class,
-                getAnimation(BasicSpriteManager.getBasicSpriteInfo(BasicEnemy.class))));
+        Renderer.addDrawer(Player.class, EntityDrawerFactory.get(Player.class));
+        Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class));
     }
 
-    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
+    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz){
+        Animation<TextureRegion> animation = getAnimation(BasicSpriteManager.getBasicSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public void draw(CenterDrawer drawer, T object) {

@@ -6,15 +6,21 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 
-public class Assets {
+public class AssetsTextureLoader {
 
-    public static AssetManager manager = new AssetManager();
+    private static AssetManager manager = new AssetManager();
     public static final JsonValue jsonData = (new JsonReader()).parse(Gdx.files.internal("assetsData.json"));
-    public static void load() {
+    public static void preLoadTextures() {
         for (JsonValue element : jsonData) {
             manager.load(element.getString("path"), Texture.class);
         }
+        manager.finishLoading();
     }
+
+    public static Texture getTexture(String path) {
+        return manager.get(path);
+    }
+
     public void dispose() {
         manager.dispose();
     }

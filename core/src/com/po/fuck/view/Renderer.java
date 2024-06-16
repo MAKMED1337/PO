@@ -19,7 +19,6 @@ import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.EntityDrawerFactory;
-import com.po.fuck.view.classdrawers.factories.GameObjectDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.HandedWeaponDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.RoomDrawerFactory;
 
@@ -36,7 +35,6 @@ public class Renderer {
     static { // TODO: remove this
         forceInit(BulletDrawerFactory.class);
         forceInit(EntityDrawerFactory.class);
-        forceInit(GameObjectDrawerFactory.class);
         forceInit(HandedWeaponDrawerFactory.class);
         forceInit(RoomDrawerFactory.class);
         forceInit(CoinDrawerFactory.class);

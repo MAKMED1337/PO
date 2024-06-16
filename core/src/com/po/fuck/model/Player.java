@@ -5,6 +5,7 @@ import static com.po.fuck.model.Constants.PLAYERS_HEALTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.controller.KeyboardController;
 import com.po.fuck.controller.MouseController;
@@ -29,8 +30,8 @@ public class Player extends Entity {
                         Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN));
         teamTag = Constants.PLAYER_TEAM_TAG;
         BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
-        geometryData.setHeight(info.getFrameHeight());
-        geometryData.setWidth(info.getFrameWidth());
+        geometryData.setHeight(info.getHeight());
+        geometryData.setWidth(info.getWidth());
     }
 
     // Controllers

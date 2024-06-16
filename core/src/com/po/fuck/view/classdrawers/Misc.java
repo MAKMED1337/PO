@@ -3,21 +3,21 @@ package com.po.fuck.view.classdrawers;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.po.fuck.AssetsManagement.Assets;
+import com.po.fuck.AssetsManagement.AssetsTextureLoader;
 import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 public class Misc {
 
     public static  Animation<TextureRegion> getAnimation(BasicSpriteInfo info) {
-        Texture animatedTexture = Assets.manager.get(info.path);
+        Texture animatedTexture = AssetsTextureLoader.getTexture(info.path);
         int frameWidth = (int) info.getFrameSize().y;
         int frameHeight = (int) info.getFrameSize().x;
-        TextureRegion[][] frames = TextureRegion.split(animatedTexture, frameWidth, frameHeight);
-        int height = (int) info.getHeight();
-        int width = (int) info.getWidth();
+        int height = AssetsTextureLoader.getTexture(info.path).getHeight();
+        int width = AssetsTextureLoader.getTexture(info.path).getWidth();
         if (width % frameWidth != 0 || height % frameHeight != 0) {
             throw new RuntimeException(info.path + " has wrong frames configuration");
         }
+        TextureRegion[][] frames = TextureRegion.split(animatedTexture, frameWidth, frameHeight);
         int frameRowsCount = height / frameHeight;
         int frameColumnsCount = width / frameWidth;
         TextureRegion[] framesOneDimension = new TextureRegion[frameRowsCount * frameColumnsCount];

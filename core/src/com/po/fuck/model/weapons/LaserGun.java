@@ -13,8 +13,8 @@ public final class LaserGun extends Gun {
 
 
         WeaponSpriteInfo info = WeaponSpriteManager.getWeaponSpriteInfo(this.getClass());
-        geometryData.setHeight(info.getFrameHeight());
-        geometryData.setWidth(info.getFrameWidth());
+        geometryData.setHeight(info.getHeight());
+        geometryData.setWidth(info.getWidth());
     }
 
     public LaserGun(Entity owner) {
