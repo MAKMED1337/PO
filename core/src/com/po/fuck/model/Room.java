@@ -13,7 +13,7 @@ import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.AssetsManagement.SpriteInfo;
+import com.po.fuck.AssetsManagement.SpriteInfoManager;
 import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 public class Room implements PositionDrawable, Updatable {
@@ -34,7 +34,7 @@ public class Room implements PositionDrawable, Updatable {
     Room (Vector2 tillingPosition) {
         this.tillingPosition = tillingPosition;
         this.geometryData = new GeometryData();
-        BasicSpriteInfo info = SpriteInfo.getBasicSpriteInfo(this.getClass());
+        BasicSpriteInfo info = SpriteInfoManager.getBasicSpriteInfo(this.getClass());
         geometryData.setHeight(info.getFrameHeight());
         geometryData.setWidth(info.getFrameWidth());
     }

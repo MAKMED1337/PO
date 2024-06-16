@@ -6,7 +6,7 @@ import com.po.fuck.view.Sprites.WeaponSpriteInfo;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SpriteInfo {
+public class SpriteInfoManager {
     static Map<Class<?>, BasicSpriteInfo> spriteData = new HashMap<>();
 
     public static <T> BasicSpriteInfo getBasicSpriteInfo(Class<T> cls) {

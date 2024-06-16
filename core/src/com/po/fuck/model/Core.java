@@ -11,8 +11,6 @@ import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.AssetsManagement.SpriteInfo;
-import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 public class Core implements Updatable {
 
