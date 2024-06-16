@@ -14,8 +14,8 @@ public class Entity extends GameObject implements Updatable {
     protected Managed<Movement> movement = new Managed<>();
     protected Managed<Weapon> weapon = new Managed<>();
     protected int teamTag;
+    protected boolean ingoreInitialCollsion = true;
     
-
     protected int reward = 0;
     protected float healthPoints;
     public final float MAX_HEALTH_POINTS;
@@ -26,7 +26,11 @@ public class Entity extends GameObject implements Updatable {
         System.out.println("Creating an enemy");
         this.MAX_HEALTH_POINTS = HP;
         this.healthPoints = HP;
-        this.ingoreInitialCollsion = true;
+    }
+
+    @Override
+    public boolean isInvisible() {
+        return ingoreInitialCollsion;
     }
 
     public int getTeamTag() {
