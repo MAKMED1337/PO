@@ -1,6 +1,6 @@
 package com.po.fuck.view.classdrawers.factories;
 
-import static com.po.fuck.model.constants.LayeringConstants.ENTITY_LAYER;
+import static com.po.fuck.model.constants.LayeringConstants.ENTITY;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -26,7 +26,7 @@ public class EntityDrawerFactory {
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {
-                return ENTITY_LAYER;
+                return ENTITY;
             }
 
             @Override

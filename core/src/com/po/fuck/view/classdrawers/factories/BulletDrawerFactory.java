@@ -13,7 +13,7 @@ import com.po.fuck.view.GifDecoder;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
-import static com.po.fuck.model.constants.LayeringConstants.WEAPON_LAYER;
+import static com.po.fuck.model.constants.LayeringConstants.WEAPON;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class BulletDrawerFactory {
@@ -28,7 +28,7 @@ public class BulletDrawerFactory {
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {
-                return WEAPON_LAYER;
+                return WEAPON;
             }
 
             @Override
