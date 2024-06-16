@@ -1,6 +1,6 @@
 package com.po.fuck.model.weapons;
 
-import static com.po.fuck.model.Constants.WEAPON_LAYER;
+import static com.po.fuck.model.constants.LayeringConstants.WEAPON_LAYER;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;

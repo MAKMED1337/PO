@@ -1,6 +1,6 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.model.Constants.ENTITY_LAYER;
+import static com.po.fuck.model.constants.LayeringConstants.ENTITY_LAYER;
 
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;

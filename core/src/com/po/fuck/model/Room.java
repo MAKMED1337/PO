@@ -1,7 +1,7 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.model.Constants.BACKGROUND_LAYER;
-import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
+import static com.po.fuck.model.constants.LayeringConstants.BACKGROUND_LAYER;
+import static com.po.fuck.model.constants.TagsConstants.ENEMY_TEAM_TAG;
 
 import java.util.List;
 

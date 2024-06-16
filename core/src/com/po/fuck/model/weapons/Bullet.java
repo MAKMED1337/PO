@@ -11,8 +11,8 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.collections.All;
 
-import static com.po.fuck.model.Constants.DEFAULT_BULLET_LIFE_TIME;
-import static com.po.fuck.model.Constants.WEAPON_LAYER;
+import static com.po.fuck.model.constants.BulletsConstants.DEFAULT_BULLET_LIFE_TIME;
+import static com.po.fuck.model.constants.LayeringConstants.WEAPON_LAYER;
 
 import java.util.List;
 

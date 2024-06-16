@@ -1,10 +1,5 @@
 package com.po.fuck.model.enemies;
 
-import static com.po.fuck.model.Constants.BASIC_ENEMY_SPEED;
-import static com.po.fuck.model.Constants.BASIC_ENEMY_HEALTH;
-import static com.po.fuck.model.Constants.BASIC_ENEMY_REWARD;
-import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
-
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;
@@ -14,6 +9,12 @@ import com.po.fuck.model.movement.BasicMovement;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.Weapon;
+
+import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_HEALTH;
+import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_REWARD;
+import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_SPEED;
+import static com.po.fuck.model.constants.TagsConstants.ENEMY_TEAM_TAG;
+
 import com.badlogic.gdx.math.Vector2;
 
 /**

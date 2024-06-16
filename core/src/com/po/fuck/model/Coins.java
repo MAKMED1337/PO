@@ -1,6 +1,6 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.model.Constants.GUI_LAYER;
+import static com.po.fuck.model.constants.LayeringConstants.GUI_LAYER;
 
 import com.po.fuck.model.drawables.Drawable;
 

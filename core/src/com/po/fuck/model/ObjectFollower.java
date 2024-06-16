@@ -1,8 +1,8 @@
 package com.po.fuck.model;
 
-import com.badlogic.gdx.math.Vector2;
+import static com.po.fuck.model.constants.CameraConstants.CAMERA_SPEED;
 
-import static com.po.fuck.model.Constants.CAMERA_SPEED;
+import com.badlogic.gdx.math.Vector2;
 
 public final class ObjectFollower implements Updatable {
     private Vector2 position = new Vector2();
