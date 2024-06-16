@@ -12,15 +12,15 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
-import static com.po.fuck.view.classdrawers.Misc.getComplexAnimation;
+import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class HandedWeaponDrawerFactory {
     
     static {
         Renderer.addDrawer(Glock.class, HandedWeaponDrawerFactory.get(Glock.class,
-                getComplexAnimation(Glock.class)));
+                getAnimation(Glock.class)));
         Renderer.addDrawer(LaserGun.class, HandedWeaponDrawerFactory.get(LaserGun.class,
-                getComplexAnimation(LaserGun.class)));
+                getAnimation(LaserGun.class)));
     }
 
     public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

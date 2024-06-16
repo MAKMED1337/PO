@@ -18,12 +18,11 @@ import com.po.fuck.AssetsManagment.Assets;
 
 public class BasicSpriteInfo {
     public String path;
-    public int frameWidth;
-    public int frameHeight;
+    public Vector2 frameSize;
+
     public double frameDuration;
 
-
-    Vector2 size;
+    private Vector2 size;
     public Vector2 size() {
         return size.cpy();
     }
@@ -36,12 +35,14 @@ public class BasicSpriteInfo {
         return size.y;
     }
 
-    public BasicSpriteInfo(String name) {
-        JsonValue jsonValue = Assets.jsonData.get(name);
-        size = new Vector2(jsonValue.getInt("height"), jsonValue.getInt("width"));
-        path = jsonValue.getString("path");
-        frameHeight = jsonValue.getInt("frameHeight");
-        frameWidth = jsonValue.getInt("frameWidth");
-        frameDuration = jsonValue.getDouble("frameDuration");
+    public Vector2 getFrameSize() {
+        return frameSize.cpy();
+    }
+
+    public BasicSpriteInfo(JsonValue info) {
+        size = new Vector2(info.getInt("height"), info.getInt("width"));
+        path = info.getString("path");
+        frameSize = new Vector2(info.getInt("frameHeight"), info.getInt("frameWidth"));
+        frameDuration = info.getDouble("frameDuration");
     }
 }

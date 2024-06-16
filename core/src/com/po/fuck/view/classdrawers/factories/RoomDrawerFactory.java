@@ -14,7 +14,7 @@ public class RoomDrawerFactory {
     
     static {
         Renderer.addDrawer(Room.class, 
-        RoomDrawerFactory.get(Room.class, Misc.getComplexAnimation(Room.class)));
+        RoomDrawerFactory.get(Room.class, Misc.getAnimation(Room.class)));
     }
 
     public static <T extends Room> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

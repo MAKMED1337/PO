@@ -12,15 +12,15 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
-import static com.po.fuck.view.classdrawers.Misc.getComplexAnimation;
+import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class BulletDrawerFactory {
 
     static {
         Renderer.addDrawer(CosmicBullet.class, BulletDrawerFactory.get(CosmicBullet.class,
-                getComplexAnimation(CosmicBullet.class)));
+                getAnimation(CosmicBullet.class)));
         Renderer.addDrawer(LaserBeam.class, BulletDrawerFactory.get(LaserBeam.class,
-                getComplexAnimation(LaserBeam.class)
+                getAnimation(LaserBeam.class)
         ));
     }
 

@@ -14,6 +14,7 @@ import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.AssetsManagment.SpriteInfo;
+import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 public class Room implements PositionDrawable, Updatable {
     public Vector2 tillingPosition;
@@ -44,19 +45,19 @@ public class Room implements PositionDrawable, Updatable {
 
     protected void spawnEnemies() {
         Vector2 center = getPosition();
-
+        BasicSpriteInfo roomInfo = SpriteInfo.getBasicAssetInfo(BasicEnemy.class);
         // Magic numbers are here, because this room is an example
         Vector2 offset = new Vector2(geometryData.getWidth() - 200, geometryData.getHeight() - 300);
 
         // top left
         Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f),
-                SpriteInfo.getBasicAssetInfo(BasicEnemy.class).getWidth(),
-                SpriteInfo.getBasicAssetInfo(BasicEnemy.class).getHeight(),0)));
+                roomInfo.getWidth(),
+                roomInfo.getHeight(),0)));
 
         // bottom right
         Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f),
-                SpriteInfo.getBasicAssetInfo(BasicEnemy.class).getWidth(),
-                SpriteInfo.getBasicAssetInfo(BasicEnemy.class).getHeight(),0)));
+                roomInfo.getWidth(),
+                roomInfo.getHeight(),0)));
     }
 
     public Vector2 getPosition() {

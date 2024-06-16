@@ -16,13 +16,13 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
-import static com.po.fuck.view.classdrawers.Misc.getComplexAnimation;
+import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class CoinDrawerFactory {
     
     static {
         Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class,
-                getComplexAnimation(Coins.class)));
+                getAnimation(Coins.class)));
     }
 
     public static <T extends Coins> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

@@ -1,6 +1,6 @@
 package com.po.fuck.view.classdrawers.factories;
 
-import static com.po.fuck.view.classdrawers.Misc.getComplexAnimation;
+import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -18,9 +18,9 @@ public class EntityDrawerFactory {
     
     static {
         Renderer.addDrawer(Player.class, EntityDrawerFactory.get(Player.class,
-                getComplexAnimation(Player.class)));
+                getAnimation(Player.class)));
         Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class,
-                getComplexAnimation(BasicEnemy.class)));
+                getAnimation(BasicEnemy.class)));
     }
 
     public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

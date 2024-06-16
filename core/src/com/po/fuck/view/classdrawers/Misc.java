@@ -9,18 +9,19 @@ import com.po.fuck.AssetsManagment.SpriteInfo;
 
 public class Misc {
 
-    public static <T> Animation<TextureRegion> getComplexAnimation(Class<T> clz) {
+    public static <T> Animation<TextureRegion> getAnimation(Class<T> clz) {
         BasicSpriteInfo info = SpriteInfo.getBasicAssetInfo(clz);
         Texture animatedTexture = Assets.manager.get(info.path);
-
-        TextureRegion[][] frames = TextureRegion.split(animatedTexture, info.frameWidth, info.frameHeight);
+        int frameWidth = (int) info.getFrameSize().y;
+        int frameHeight = (int) info.getFrameSize().x;
+        TextureRegion[][] frames = TextureRegion.split(animatedTexture, frameWidth, frameHeight);
         int height = (int) info.getHeight();
         int width = (int) info.getWidth();
-        if (width % info.frameWidth != 0 || height%info.frameHeight != 0) {
+        if (width % frameWidth != 0 || height % frameHeight != 0) {
             throw new RuntimeException(info.path + " has wrong frames configuration");
         }
-        int frameRowsCount = height / info.frameHeight;
-        int frameColumnsCount = width / info.frameWidth;
+        int frameRowsCount = height / frameHeight;
+        int frameColumnsCount = width / frameWidth;
         TextureRegion[] framesOneDimension = new TextureRegion[frameRowsCount * frameColumnsCount];
 
         int id = 0;

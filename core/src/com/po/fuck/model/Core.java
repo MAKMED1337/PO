@@ -12,6 +12,7 @@ import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.AssetsManagment.SpriteInfo;
+import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 public class Core implements Updatable {
 
@@ -28,18 +29,19 @@ public class Core implements Updatable {
         Assets.load();
         Assets.manager.finishLoading();
         AssetsLoader.loadAssets();
-
+        BasicSpriteInfo playerInfo = SpriteInfo.getBasicAssetInfo(Player.class);
+        BasicSpriteInfo roomInfo = SpriteInfo.getBasicAssetInfo(Room.class);
         objectFollower = Manager.create(new ObjectFollower());
         player = Manager.create(new Player(new GeometryData(new Vector2(),
-                SpriteInfo.getBasicAssetInfo(Player.class).getWidth(),
-                SpriteInfo.getBasicAssetInfo(Player.class).getHeight(),0)));
+                playerInfo.getWidth(),
+                playerInfo.getHeight(),0)));
         coinsCounter = Manager.create(new Coins());
         Manager.create(new Room(new Vector2(0, 0),
-                        SpriteInfo.getBasicAssetInfo(Room.class).getWidth(),
-                        SpriteInfo.getBasicAssetInfo(Room.class).getHeight()));
+                        roomInfo.getWidth(),
+                        roomInfo.getHeight()));
         Manager.create(new Room(new Vector2(1, 0),
-                SpriteInfo.getBasicAssetInfo(Room.class).getWidth(),
-                SpriteInfo.getBasicAssetInfo(Room.class).getHeight()));
+                roomInfo.getWidth(),
+                roomInfo.getHeight()));
         // Creating some game borders to destroy the bullets that went off the map.
         // We can not use here VERTICAL/HORIZONTAL, because if something went off the
         // map, then we want to catch with a thick wall, because it can be laggy or
