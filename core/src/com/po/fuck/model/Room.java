@@ -6,7 +6,6 @@ import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
 import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.Assets;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.drawables.PositionDrawable;
@@ -14,6 +13,7 @@ import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
+import com.po.fuck.AssetsManagment.SpriteInfo;
 
 public class Room implements PositionDrawable, Updatable {
     public Vector2 tillingPosition;
@@ -50,13 +50,13 @@ public class Room implements PositionDrawable, Updatable {
 
         // top left
         Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f),
-                Assets.getBasicAssetInfo(BasicEnemy.class).getWidth(),
-                Assets.getBasicAssetInfo(BasicEnemy.class).getHeight(),0)));
+                SpriteInfo.getBasicAssetInfo(BasicEnemy.class).getWidth(),
+                SpriteInfo.getBasicAssetInfo(BasicEnemy.class).getHeight(),0)));
 
         // bottom right
         Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f),
-                Assets.getBasicAssetInfo(BasicEnemy.class).getWidth(),
-                Assets.getBasicAssetInfo(BasicEnemy.class).getHeight(),0)));
+                SpriteInfo.getBasicAssetInfo(BasicEnemy.class).getWidth(),
+                SpriteInfo.getBasicAssetInfo(BasicEnemy.class).getHeight(),0)));
     }
 
     public Vector2 getPosition() {

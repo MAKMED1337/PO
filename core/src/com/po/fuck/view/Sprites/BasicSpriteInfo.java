@@ -1,8 +1,8 @@
-package com.po.fuck.model.loadersAssets;
+package com.po.fuck.view.Sprites;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonValue;
-import com.po.fuck.Assets;
+import com.po.fuck.AssetsManagment.Assets;
 
 /*
  * assetsData.json description

@@ -3,13 +3,14 @@ package com.po.fuck.view.classdrawers;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.po.fuck.Assets;
-import com.po.fuck.model.loadersAssets.BasicSpriteInfo;
+import com.po.fuck.AssetsManagment.Assets;
+import com.po.fuck.view.Sprites.BasicSpriteInfo;
+import com.po.fuck.AssetsManagment.SpriteInfo;
 
 public class Misc {
 
     public static <T> Animation<TextureRegion> getComplexAnimation(Class<T> clz) {
-        BasicSpriteInfo info = Assets.getBasicAssetInfo(clz);
+        BasicSpriteInfo info = SpriteInfo.getBasicAssetInfo(clz);
         Texture animatedTexture = Assets.manager.get(info.path);
 
         TextureRegion[][] frames = TextureRegion.split(animatedTexture, info.frameWidth, info.frameHeight);
