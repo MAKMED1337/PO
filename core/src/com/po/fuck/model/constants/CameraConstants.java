@@ -3,13 +3,13 @@ package com.po.fuck.model.constants;
 import java.util.Properties;
 
 import static com.po.fuck.model.constants.ConstantsLoader.loadProperties;
-import static com.po.fuck.model.constants.ConstantsLoader.loadConstant;
+import static com.po.fuck.model.constants.ConstantsLoader.loadFloat;;
 
 public final class CameraConstants extends BaseConstants {
     static final String CAMERA_PROPERTIES_PATH = "../core/src/com/po/fuck/model/properties/camera.properties";
     static final Properties CAMERA_PROPERTIES = loadProperties(CAMERA_PROPERTIES_PATH);
 
-    public static final float CAMERA_SPEED = loadConstant("CAMERA_SPEED", Float.class, CAMERA_PROPERTIES);
+    public static final float CAMERA_SPEED = loadFloat("CAMERA_SPEED", CAMERA_PROPERTIES);
 
     public static Properties getProperties() {
         Properties properties = new Properties();
