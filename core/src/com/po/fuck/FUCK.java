@@ -12,9 +12,10 @@ public class FUCK extends ApplicationAdapter {
 
     @Override
     public void create() {
-        core = new Core();
         Core.initialize();
         Renderer.initialize();
+
+        core = new Core();
         renderer = new Renderer(Core.objectFollower.get());
     }
 

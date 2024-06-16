@@ -13,7 +13,7 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 
 public class Core implements Updatable {
-    public static Managed<Player> player;
+    public Managed<Player> player;
     public static Managed<Coins> coinsCounter;
     public static Managed<ObjectFollower> objectFollower;
 
@@ -22,10 +22,13 @@ public class Core implements Updatable {
         All.initialize();
 
         objectFollower = Manager.create(new ObjectFollower());
+        coinsCounter = Manager.create(new Coins());
+    }
+
+    public Core() {
         player = Manager.create(new Player(new GeometryData(new Vector2(),
                 new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth(),
                 new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight(), 0)));
-        coinsCounter = Manager.create(new Coins());
 
         Manager.create(new Room(new Vector2(0, 0),
                 new Sprite(new Texture("island2.png")).getWidth(),
