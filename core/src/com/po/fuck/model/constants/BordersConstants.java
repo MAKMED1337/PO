@@ -11,10 +11,4 @@ public final class BordersConstants extends BaseConstants {
     static final Properties BORDERS_PROPERTIES = loadProperties(BORDERS_PROPERTIES_PATH);
 
     public static final int GAME_BORDER = loadInt("GAME_BORDER", BORDERS_PROPERTIES);
-
-    public static Properties getProperties() {
-        Properties properties = new Properties();
-        addProperty(properties, "GAME_BORDER", GAME_BORDER);
-        return properties;
-    }
 }

@@ -14,13 +14,4 @@ public final class LayeringConstants extends BaseConstants {
     public static final int ENTITY_LAYER = loadInt("ENTITY_LAYER", LAYERING_PROPERTIES);
     public static final int WEAPON_LAYER = loadInt("WEAPON_LAYER", LAYERING_PROPERTIES);
     public static final int GUI_LAYER = loadInt("GUI_LAYER", LAYERING_PROPERTIES);
-
-    public static Properties getProperties() {
-        Properties properties = new Properties();
-        addProperty(properties, "BACKGROUND_LAYER", BACKGROUND_LAYER);
-        addProperty(properties, "ENTITY_LAYER", ENTITY_LAYER);
-        addProperty(properties, "WEAPON_LAYER", WEAPON_LAYER);
-        addProperty(properties, "GUI_LAYER", GUI_LAYER);
-        return properties;
-    }
 }

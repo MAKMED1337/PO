@@ -11,10 +11,4 @@ public final class PhysicsConstants extends BaseConstants {
     static final Properties PHYSICS_PROPERTIES = loadProperties(PHYSICS_PROPERTIES_PATH);
 
     public static final int COLLISION_ITERATIONS = loadInt("COLLISION_ITERATIONS", PHYSICS_PROPERTIES);
-
-    public static Properties getProperties() {
-        Properties properties = new Properties();
-        addProperty(properties, "COLLISION_ITERATIONS", COLLISION_ITERATIONS);
-        return properties;
-    }
 }

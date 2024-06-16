@@ -12,11 +12,4 @@ public final class TagsConstants extends BaseConstants {
 
     public static final int ENEMY_TEAM_TAG = loadInt("ENEMY_TEAM_TAG", TAGS_PROPERTIES);
     public static final int PLAYER_TEAM_TAG = loadInt("PLAYER_TEAM_TAG", TAGS_PROPERTIES);
-
-    public static Properties getProperties() {
-        Properties properties = new Properties();
-        addProperty(properties, "ENEMY_TEAM_TAG", ENEMY_TEAM_TAG);
-        addProperty(properties, "PLAYER_TEAM_TAG", PLAYER_TEAM_TAG);
-        return properties;
-    }
 }

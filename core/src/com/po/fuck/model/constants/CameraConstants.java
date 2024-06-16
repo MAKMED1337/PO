@@ -11,10 +11,4 @@ public final class CameraConstants extends BaseConstants {
     static final Properties CAMERA_PROPERTIES = loadProperties(CAMERA_PROPERTIES_PATH);
 
     public static final float CAMERA_SPEED = loadFloat("CAMERA_SPEED", CAMERA_PROPERTIES);
-
-    public static Properties getProperties() {
-        Properties properties = new Properties();
-        addProperty(properties, "CAMERA_SPEED", CAMERA_SPEED);
-        return properties;
-    }
 }
