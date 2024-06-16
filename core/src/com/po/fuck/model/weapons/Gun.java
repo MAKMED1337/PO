@@ -29,7 +29,6 @@ public abstract class Gun extends HandedWeapon implements Updatable {
             return false;
 
         Vector2 direction = getDirection(), gunPosition = getPosition();
-
         gunPosition.add(new Vector2(geometryData.getWidth() / 2, 0).rotateRad(direction.angleRad()));
 
         WeaponSpriteInfo info = WeaponSpriteManager.getWeaponSpriteInfo(this.getClass());

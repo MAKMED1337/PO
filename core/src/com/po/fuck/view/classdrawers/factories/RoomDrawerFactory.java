@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
-import com.po.fuck.view.classdrawers.Misc;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.model.Room;
 

@@ -3,7 +3,6 @@ package com.po.fuck.model.position;
 import com.badlogic.gdx.math.Vector2;
 
 public class GeometryData extends PositionData {
-//    protected float rotation; /* in rads */
     protected float width;
     protected float height;
 
