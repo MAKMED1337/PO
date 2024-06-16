@@ -1,5 +1,6 @@
 package com.po.fuck.model.constants;
 
+import java.nio.file.Paths;
 import java.util.Properties;
 
 import static com.po.fuck.model.constants.ConstantsLoader.loadProperties;
@@ -7,7 +8,7 @@ import static com.po.fuck.model.constants.ConstantsLoader.loadInt;
 import static com.po.fuck.model.constants.ConstantsLoader.loadFloat;
 
 public final class MovementConstants extends BaseConstants {
-    static final String MOVEMENT_PROPERTIES_PATH = "../core/src/com/po/fuck/model/properties/movement.properties";
+    static final String MOVEMENT_PROPERTIES_PATH = Paths.get(PROPERTIES_FOLDER, "/movement.properties").toString();
     static final Properties MOVEMENT_PROPERTIES = loadProperties(MOVEMENT_PROPERTIES_PATH);
 
     public static final float DEFAULT_SPEED = loadFloat("DEFAULT_SPEED", MOVEMENT_PROPERTIES);

@@ -1,5 +1,6 @@
 package com.po.fuck.model.constants;
 
+import java.nio.file.Paths;
 import java.util.Properties;
 
 import static com.po.fuck.model.constants.ConstantsLoader.loadProperties;
@@ -7,7 +8,7 @@ import static com.po.fuck.model.constants.ConstantsLoader.loadFloat;
 import static com.po.fuck.model.constants.ConstantsLoader.loadInt;
 
 public final class BalanceConstants extends BaseConstants {
-    static final String BALANCE_PROPERTIES_PATH = "../core/src/com/po/fuck/model/properties/balance.properties";
+    static final String BALANCE_PROPERTIES_PATH = Paths.get(PROPERTIES_FOLDER, "/balance.properties").toString();
     static final Properties BALANCE_PROPERTIES = loadProperties(BALANCE_PROPERTIES_PATH);
 
     public static final float BASIC_ENEMY_SPEED = loadFloat("BASIC_ENEMY_SPEED", BALANCE_PROPERTIES);
