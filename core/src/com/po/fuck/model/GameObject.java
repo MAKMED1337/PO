@@ -30,6 +30,11 @@ public class GameObject implements PositionDrawable, Collidable, Destructable {
     }
 
     @Override
+    public boolean isInvisible(){
+        return false;
+    }
+
+    @Override
     public void destructor() {
 
     }

@@ -33,6 +33,11 @@ public final class InvisibleWall implements Collidable {
     }
 
     @Override
+    public boolean isInvisible(){
+        return false;
+    }
+
+    @Override
     public Vector2 getPosition() {
         return position.cpy();
     }

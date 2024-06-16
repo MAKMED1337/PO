@@ -1,16 +1,21 @@
 package com.po.fuck.model;
 
+import java.util.List;
+
+import com.po.fuck.model.collections.All;
+import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.Movement;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.weapons.Weapon;
 
-public class Entity extends GameObject {
+public class Entity extends GameObject implements Updatable {
     protected Managed<Movement> movement = new Managed<>();
     protected Managed<Weapon> weapon = new Managed<>();
     protected int teamTag;
-
+    protected boolean ingoreInitialCollsion = true;
+    
     protected int reward = 0;
     protected float healthPoints;
     public final float MAX_HEALTH_POINTS;
@@ -20,6 +25,11 @@ public class Entity extends GameObject {
         super(geometryData);
         this.MAX_HEALTH_POINTS = HP;
         this.healthPoints = HP;
+    }
+
+    @Override
+    public boolean isInvisible() {
+        return ingoreInitialCollsion;
     }
 
     public int getTeamTag() {
@@ -59,5 +69,16 @@ public class Entity extends GameObject {
     public void destructor() {
         weapon.destroy();
         super.destructor();
+    }
+
+    @Override
+    public void update(float delta) {
+        if(!ingoreInitialCollsion) return;
+
+        ingoreInitialCollsion = false;
+        List<Collidable> collides = All.collidableCollection.collidesIncludingInvisible(getCollision());
+
+        if(collides.size() > 1 || !collides.get(0).equals(this))
+            ingoreInitialCollsion = true;
     }
 }
