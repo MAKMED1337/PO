@@ -9,7 +9,6 @@ import com.po.fuck.model.position.GeometryData;
 
 public class GameObject implements PositionDrawable, Collidable, Destructable {
     protected GeometryData geometryData;
-    protected boolean ingoreInitialCollsion = false;
 
     GameObject(GeometryData geometryData) {
         this.geometryData = geometryData;
@@ -32,7 +31,7 @@ public class GameObject implements PositionDrawable, Collidable, Destructable {
 
     @Override
     public boolean isInvisible(){
-        return ingoreInitialCollsion;
+        return false;
     }
 
     @Override
