@@ -1,4 +1,4 @@
-package com.po.fuck.view.Sprites;
+package com.po.fuck.model.Sprites;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonValue;
@@ -7,20 +7,28 @@ import com.badlogic.gdx.utils.JsonValue;
  * assetsData.json description
  * all textures have:
  * each .png stores some table of frames for the object
- * path - path to texture
+ * path - path to the texture
  * width - the frame width
  * height - the frame height
  * frameDuration - the time between frames in seconds
  */
 
 public class BasicSpriteInfo {
-    public String path;
-    private Vector2 size;
+    private final String path;
+    private final Vector2 size;
 
-    public double frameDuration;
+    private final double frameDuration;
 
-    public Vector2 getFrameSize() {
+    public Vector2 getSize() {
         return size.cpy();
+    }
+
+    public float getFrameDur() {
+        return (float) frameDuration;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     public float getHeight() {

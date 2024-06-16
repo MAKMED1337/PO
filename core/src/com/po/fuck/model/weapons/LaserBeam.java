@@ -11,7 +11,7 @@ import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.view.Sprites.BasicSpriteInfo;
+import com.po.fuck.model.Sprites.BasicSpriteInfo;
 
 import static com.po.fuck.model.Constants.LASER_BEAM_DAMAGE;
 import static com.po.fuck.model.Constants.LASER_BEAM_LIFE_TIME;

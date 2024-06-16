@@ -3,7 +3,7 @@ package com.po.fuck.model.weapons;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.view.Sprites.BasicSpriteInfo;
+import com.po.fuck.model.Sprites.BasicSpriteInfo;
 
 import static com.po.fuck.model.Constants.COSMIC_BULLET_DAMAGE;
 import static com.po.fuck.model.Constants.COSMIC_BULLET_LIFE_TIME;
@@ -14,9 +14,9 @@ public final class CosmicBullet extends Bullet {
         damage = COSMIC_BULLET_DAMAGE;
         lifeTime = COSMIC_BULLET_LIFE_TIME;
         geometryData = new GeometryData();
-        BasicSpriteInfo thisInfo = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
-        geometryData.setHeight(thisInfo.getHeight());
-        geometryData.setWidth(thisInfo.getWidth());
+        BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
+        geometryData.setHeight(info.getHeight());
+        geometryData.setWidth(info.getWidth());
     }
 
     CosmicBullet(Vector2 muzzlePosition, Vector2 direction, int teamTag) {

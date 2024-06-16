@@ -30,9 +30,9 @@ public final class BasicEnemy extends Entity implements Updatable {
         reward = BASIC_ENEMY_REWARD;
     }
 
-    public BasicEnemy(PositionData positionData) {
-        super(new GeometryData(positionData,
-        BasicSpriteManager.getBasicSpriteInfo(BasicEnemy.class).getFrameSize()),
+    public BasicEnemy(PositionData position) {
+        super(new GeometryData(position,
+        BasicSpriteManager.getBasicSpriteInfo(BasicEnemy.class).getSize()),
         BASIC_ENEMY_HEALTH);
     }
 

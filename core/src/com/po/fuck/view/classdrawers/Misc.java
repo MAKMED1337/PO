@@ -4,18 +4,19 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.po.fuck.AssetsManagement.AssetsTextureLoader;
-import com.po.fuck.view.Sprites.BasicSpriteInfo;
+import com.po.fuck.model.Sprites.BasicSpriteInfo;
 
 public class Misc {
 
     public static  Animation<TextureRegion> getAnimation(BasicSpriteInfo info) {
-        Texture animatedTexture = AssetsTextureLoader.getTexture(info.path);
-        int frameWidth = (int) info.getFrameSize().y;
-        int frameHeight = (int) info.getFrameSize().x;
-        int height = AssetsTextureLoader.getTexture(info.path).getHeight();
-        int width = AssetsTextureLoader.getTexture(info.path).getWidth();
+
+        Texture animatedTexture = AssetsTextureLoader.getTexture(info.getPath());
+        int frameWidth = (int) info.getSize().y;
+        int frameHeight = (int) info.getSize().x;
+        int height = animatedTexture.getHeight();
+        int width = animatedTexture.getWidth();
         if (width % frameWidth != 0 || height % frameHeight != 0) {
-            throw new RuntimeException(info.path + " has wrong frames configuration");
+            throw new RuntimeException(info.getPath() + " has wrong frames configuration");
         }
         TextureRegion[][] frames = TextureRegion.split(animatedTexture, frameWidth, frameHeight);
         int frameRowsCount = height / frameHeight;
@@ -27,7 +28,7 @@ public class Misc {
             for (int j = 0; j < frameColumnsCount; j++) framesOneDimension[id++] = frames[i][j];
         }
 
-        Animation<TextureRegion> animation = new Animation<>((float) info.frameDuration, framesOneDimension);
+        Animation<TextureRegion> animation = new Animation<>(info.getFrameDur(), framesOneDimension);
         animation.setPlayMode(Animation.PlayMode.LOOP);
         return animation;
     }

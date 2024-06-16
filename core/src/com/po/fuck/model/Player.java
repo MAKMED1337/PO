@@ -36,7 +36,7 @@ public class Player extends Entity {
 
     Player(PositionData positionData) {
         super(new GeometryData(positionData,
-                BasicSpriteManager.getBasicSpriteInfo(Player.class).getFrameSize()),
+                BasicSpriteManager.getBasicSpriteInfo(Player.class).getSize()),
                 PLAYERS_HEALTH);
 
         InputMultiplexer multiplexer = new InputMultiplexer();

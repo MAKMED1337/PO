@@ -24,7 +24,7 @@ public class Core implements Updatable {
     public static Managed<ObjectFollower> objectFollower;
 
     public static void initialize() {
-        AssetsTextureLoader.preLoadTextures();
+        AssetsTextureLoader.preloadTextures();
         AssetsDataLoader.loadAssets();
 
         objectFollower = Manager.create(new ObjectFollower());

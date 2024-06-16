@@ -10,12 +10,9 @@ import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.enemies.BasicEnemy;
-import com.po.fuck.model.weapons.Glock;
-import com.po.fuck.model.weapons.Gun;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.HealthBar;
 import com.po.fuck.view.Renderer;
-import com.po.fuck.view.Sprites.BasicSpriteInfo;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class EntityDrawerFactory {

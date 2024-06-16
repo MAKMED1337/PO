@@ -15,7 +15,7 @@ import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.position.PositionData;
-import com.po.fuck.view.Sprites.BasicSpriteInfo;
+import com.po.fuck.model.Sprites.BasicSpriteInfo;
 
 public class Room implements PositionDrawable, Updatable {
     public Vector2 tillingPosition;
@@ -32,17 +32,10 @@ public class Room implements PositionDrawable, Updatable {
     @SuppressWarnings("unchecked")
     protected Managed<InvisibleWall> walls[] = new Managed[4];
 
-    Room (Vector2 tillingPosition) {
+    public Room (Vector2 tillingPosition) {
         this.tillingPosition = tillingPosition;
         BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
-        this.geometryData = new GeometryData(new PositionData(new Vector2(), 0), info.getFrameSize());
-    }
-
-    Room(Vector2 tillingPosition, float width, float height) {
-        this.tillingPosition = tillingPosition;
-        this.geometryData = new GeometryData();
-        geometryData.setHeight(height);
-        geometryData.setWidth(width);
+        this.geometryData = new GeometryData(new PositionData(), info.getSize());
     }
 
     @Override

@@ -2,10 +2,11 @@ package com.po.fuck.model.position;
 
 import com.badlogic.gdx.math.Vector2;
 
-import java.awt.dnd.DropTarget;
 
 public class PositionData {
     protected Vector2 position;
+
+    /// Geometry object rotation in radians
     protected float rotation;
     public PositionData() {
         this.position = new Vector2();
@@ -18,5 +19,27 @@ public class PositionData {
         this.position = positionData.position.cpy();
         this.rotation = positionData.rotation;
     }
+    public Vector2 getPosition(){
+        return position.cpy();
+    }
 
+    public void setPosition(Vector2 newPosition){
+        this.position = newPosition.cpy();
+    }
+
+    public float getRotationRad(){
+        return rotation;
+    }
+
+    public void setRotationRad(float angle){
+        rotation = angle;
+    }
+
+    public float getRotationDeg(){
+        return (float) (rotation * 180 / Math.PI);
+    }
+
+    public void setRotationDeg(float angle){
+        rotation = (float) (angle * Math.PI / 180f);
+    }
 }

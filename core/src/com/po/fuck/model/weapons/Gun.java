@@ -2,7 +2,7 @@ package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.AssetsManagement.WeaponSpriteManager;
-import com.po.fuck.view.Sprites.WeaponSpriteInfo;
+import com.po.fuck.model.Sprites.WeaponSpriteInfo;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
@@ -33,8 +33,6 @@ public abstract class Gun extends HandedWeapon implements Updatable {
 
         WeaponSpriteInfo info = WeaponSpriteManager.getWeaponSpriteInfo(this.getClass());
         Vector2 realMuzzlePosition = info.muzzlePosition.cpy();
-
-        realMuzzlePosition.sub(new Vector2(geometryData.getWidth(), geometryData.getHeight()/2));
 
         boolean flipped = direction.angleDeg() >= 90 && direction.angleDeg() <= 270;
 
