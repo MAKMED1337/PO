@@ -1,16 +1,16 @@
 package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.AssetsManagement.WeaponSpriteData;
 import com.po.fuck.model.Entity;
-import com.po.fuck.AssetsManagement.SpriteInfoManager;
-import com.po.fuck.view.Sprites.BasicSpriteInfo;
+import com.po.fuck.view.Sprites.WeaponSpriteInfo;
 
 import static com.po.fuck.model.Constants.GLOCK_COOLDOWN;
 
 public final class Glock extends Gun {
     {
         cooldown = GLOCK_COOLDOWN;
-        BasicSpriteInfo thisInfo = SpriteInfoManager.getBasicSpriteInfo(this.getClass());
+        WeaponSpriteInfo thisInfo = WeaponSpriteData.getWeaponSpriteInfo(this.getClass());
         geometryData.setHeight(thisInfo.getFrameHeight());
         geometryData.setWidth(thisInfo.getFrameWidth());
     }

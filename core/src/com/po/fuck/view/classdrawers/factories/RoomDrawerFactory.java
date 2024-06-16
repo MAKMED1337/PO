@@ -4,8 +4,10 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import com.po.fuck.AssetsManagement.BasicSpriteData;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
+import com.po.fuck.view.Sprites.BasicSpriteInfo;
 import com.po.fuck.view.classdrawers.Misc;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.model.Room;
@@ -14,7 +16,7 @@ public class RoomDrawerFactory {
     
     static {
         Renderer.addDrawer(Room.class, 
-        RoomDrawerFactory.get(Room.class, Misc.getAnimation(Room.class)));
+        RoomDrawerFactory.get(Room.class, Misc.getAnimation(BasicSpriteData.getBasicSpriteInfo(Room.class))));
     }
 
     public static <T extends Room> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

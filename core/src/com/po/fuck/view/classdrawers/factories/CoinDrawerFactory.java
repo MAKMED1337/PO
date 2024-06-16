@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.AssetsManagement.BasicSpriteData;
 import com.po.fuck.model.Coins;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
@@ -22,7 +23,7 @@ public class CoinDrawerFactory {
     
     static {
         Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class,
-                getAnimation(Coins.class)));
+                getAnimation(BasicSpriteData.getBasicSpriteInfo(Coins.class))));
     }
 
     public static <T extends Coins> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
