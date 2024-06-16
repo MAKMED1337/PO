@@ -1,18 +1,15 @@
 package com.po.fuck.model;
 
-import java.util.List;
-
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.drawables.PositionDrawable;
 import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.position.GeometryData;
 
-public class GameObject implements PositionDrawable, Collidable, Destructable, Updatable {
+public class GameObject implements PositionDrawable, Collidable, Destructable {
     protected GeometryData geometryData;
-    protected boolean initialCollisionIgnored = true;
+    protected boolean ingoreInitialCollsion = false;
 
     GameObject(GeometryData geometryData) {
         this.geometryData = geometryData;
@@ -35,7 +32,7 @@ public class GameObject implements PositionDrawable, Collidable, Destructable, U
 
     @Override
     public boolean isInvisible(){
-        return initialCollisionIgnored;
+        return ingoreInitialCollsion;
     }
 
     @Override
@@ -46,17 +43,5 @@ public class GameObject implements PositionDrawable, Collidable, Destructable, U
     @Override
     public GeometryData getGeometryData() {
         return new GeometryData(geometryData);
-    }
-
-    @Override
-    public void update(float delta){
-        System.out.println(this.getClass().getName() + " update, initialCollisionIgnored: " + initialCollisionIgnored);
-        if(initialCollisionIgnored){
-            initialCollisionIgnored = false;
-            List<Collidable> collides = All.collidableCollection.collidesWithInvisible(getCollision());
-
-            if(collides.size() > 1 || !collides.get(0).equals(this))
-                initialCollisionIgnored = true;
-        }
     }
 }
