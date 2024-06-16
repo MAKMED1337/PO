@@ -11,7 +11,7 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
-import static com.po.fuck.model.Constants.WEAPON_LAYER;
+import static com.po.fuck.model.constants.LayeringConstants.WEAPON_LAYER;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class HandedWeaponDrawerFactory {

@@ -1,10 +1,11 @@
 package com.po.fuck.model.weapons;
 
+import static com.po.fuck.model.constants.BulletsConstants.GLOCK_COOLDOWN;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
-import static com.po.fuck.model.Constants.GLOCK_COOLDOWN;
 
 public final class Glock extends Gun {
     {

@@ -1,12 +1,14 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.model.Constants.DEFAULT_SPEED;
-import static com.po.fuck.model.Constants.PLAYERS_HEALTH;
+import static com.po.fuck.model.constants.MovementConstants.DEFAULT_SPEED;
+import static com.po.fuck.model.constants.BalanceConstants.PLAYERS_HEALTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.po.fuck.controller.KeyboardController;
 import com.po.fuck.controller.MouseController;
+import com.po.fuck.model.constants.MovementConstants;
+import com.po.fuck.model.constants.TagsConstants;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.BasicMovement;
@@ -24,8 +26,8 @@ public class Player extends Entity {
         movement = Manager.create(
                 new Boost(
                         new BasicMovement(this, DEFAULT_SPEED),
-                        Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN));
-        teamTag = Constants.PLAYER_TEAM_TAG;
+                        MovementConstants.BOOST_DISTANCE, MovementConstants.BOOST_DURATION, MovementConstants.BOOST_COOLDOWN));
+        teamTag = TagsConstants.PLAYER_TEAM_TAG;
     }
 
     // Controllers

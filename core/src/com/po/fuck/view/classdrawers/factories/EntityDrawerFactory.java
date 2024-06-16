@@ -1,6 +1,6 @@
 package com.po.fuck.view.classdrawers.factories;
 
-import static com.po.fuck.model.Constants.ENTITY_LAYER;
+import static com.po.fuck.model.constants.LayeringConstants.ENTITY_LAYER;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 import com.badlogic.gdx.graphics.g2d.Animation;

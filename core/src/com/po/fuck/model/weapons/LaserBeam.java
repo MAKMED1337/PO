@@ -1,5 +1,8 @@
 package com.po.fuck.model.weapons;
 
+import static com.po.fuck.model.constants.BulletsConstants.LASER_BEAM_DAMAGE;
+import static com.po.fuck.model.constants.BulletsConstants.LASER_BEAM_LIFE_TIME;
+
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
@@ -14,9 +17,6 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.view.GifDecoder;
 import com.po.fuck.model.collections.All;
-
-import static com.po.fuck.model.Constants.LASER_BEAM_DAMAGE;
-import static com.po.fuck.model.Constants.LASER_BEAM_LIFE_TIME;
 
 public final class LaserBeam extends Bullet {
 

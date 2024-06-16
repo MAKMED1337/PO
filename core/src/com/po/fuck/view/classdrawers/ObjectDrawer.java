@@ -1,6 +1,6 @@
 package com.po.fuck.view.classdrawers;
 
-import static com.po.fuck.model.Constants.BACKGROUND_LAYER;
+import static com.po.fuck.model.constants.LayeringConstants.BACKGROUND_LAYER;
 
 import com.po.fuck.view.CenterDrawer;
 
