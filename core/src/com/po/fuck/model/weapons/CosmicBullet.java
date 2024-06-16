@@ -13,8 +13,8 @@ public final class CosmicBullet extends Bullet {
         damage = COSMIC_BULLET_DAMAGE;
         lifeTime = COSMIC_BULLET_LIFE_TIME;
         geometryData = new GeometryData();
-        geometryData.setWidth(Assets.getBasicAssetInfo("bullet").size().y);
-        geometryData.setHeight(Assets.getBasicAssetInfo("bullet").size().x);
+        geometryData.setWidth(Assets.getBasicAssetInfo(this.getClass()).getWidth());
+        geometryData.setHeight(Assets.getBasicAssetInfo(this.getClass()).getHeight());
     }
 
     CosmicBullet(Vector2 muzzlePosition, Vector2 direction, int teamTag) {

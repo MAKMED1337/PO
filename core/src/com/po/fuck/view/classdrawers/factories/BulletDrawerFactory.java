@@ -18,9 +18,9 @@ public class BulletDrawerFactory {
 
     static {
         Renderer.addDrawer(CosmicBullet.class, BulletDrawerFactory.get(CosmicBullet.class,
-                getComplexAnimation("bullet")));
+                getComplexAnimation(CosmicBullet.class)));
         Renderer.addDrawer(LaserBeam.class, BulletDrawerFactory.get(LaserBeam.class,
-                getComplexAnimation("laserBeam")
+                getComplexAnimation(LaserBeam.class)
         ));
     }
 

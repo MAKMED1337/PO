@@ -9,9 +9,8 @@ import static com.po.fuck.model.Constants.GLOCK_COOLDOWN;
 public final class Glock extends Gun {
     {
         cooldown = GLOCK_COOLDOWN;
-        name = "glock";
-        geometryData.setHeight(Assets.getBasicAssetInfo(name).size().x);
-        geometryData.setWidth(Assets.getBasicAssetInfo(name).size().y);
+        geometryData.setHeight(Assets.getBasicAssetInfo(this.getClass()).getHeight());
+        geometryData.setWidth(Assets.getBasicAssetInfo(this.getClass()).getWidth());
     }
     public Glock(Entity owner) {
         super(owner);

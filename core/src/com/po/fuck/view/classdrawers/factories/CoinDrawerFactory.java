@@ -22,7 +22,7 @@ public class CoinDrawerFactory {
     
     static {
         Renderer.addDrawer(Coins.class, CoinDrawerFactory.get(Coins.class,
-                getComplexAnimation("coin")));
+                getComplexAnimation(Coins.class)));
     }
 
     public static <T extends Coins> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

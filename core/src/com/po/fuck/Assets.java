@@ -24,18 +24,18 @@ public class Assets {
         }
     }
 
-    static Map<String, BasicSpriteInfo> spriteData = new HashMap<>();
+    static Map<Class<?>, BasicSpriteInfo> spriteData = new HashMap<>();
 
-    public static BasicSpriteInfo getBasicAssetInfo(String name) {
-        return spriteData.get(name);
+    public static <T> BasicSpriteInfo getBasicAssetInfo(Class<T> cls) {
+        return spriteData.get(cls);
     }
 
-    public static WeaponSpriteInfo getWeaponAssetInfo(String name) {
-        return WeaponSpriteInfo.class.cast(spriteData.get(name));
+    public static<T> WeaponSpriteInfo getWeaponAssetInfo(Class<T> name) {
+        return (WeaponSpriteInfo) spriteData.get(name);
     }
 
-    public static void loadClassInfo(String name, BasicSpriteInfo data) {
-        spriteData.put(name, data);
+    public static<T> void loadClassInfo(Class<T> clz, BasicSpriteInfo data) {
+        spriteData.put(clz, data);
     }
 
     public void dispose() {

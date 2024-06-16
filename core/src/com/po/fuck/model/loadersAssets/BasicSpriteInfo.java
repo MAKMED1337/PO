@@ -22,20 +22,23 @@ public class BasicSpriteInfo {
     public int frameHeight;
     public double frameDuration;
 
-//    public int width;
-//
-//    public int height;
 
     Vector2 size;
     public Vector2 size() {
         return size.cpy();
     }
 
+    public float getHeight() {
+        return size.x;
+    }
+
+    public float getWidth() {
+        return size.y;
+    }
+
     public BasicSpriteInfo(String name) {
         JsonValue jsonValue = Assets.jsonData.get(name);
-        size = new Vector2();
-        size.y = jsonValue.getInt("width");
-        size.x = jsonValue.getInt("height");
+        size = new Vector2(jsonValue.getInt("height"), jsonValue.getInt("width"));
         path = jsonValue.getString("path");
         frameHeight = jsonValue.getInt("frameHeight");
         frameWidth = jsonValue.getInt("frameWidth");

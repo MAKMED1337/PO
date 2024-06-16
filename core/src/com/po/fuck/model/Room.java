@@ -50,13 +50,13 @@ public class Room implements PositionDrawable, Updatable {
 
         // top left
         Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f),
-                Assets.getBasicAssetInfo("enemy").size().y,
-                Assets.getBasicAssetInfo("enemy").size().x,0)));
+                Assets.getBasicAssetInfo(BasicEnemy.class).getWidth(),
+                Assets.getBasicAssetInfo(BasicEnemy.class).getHeight(),0)));
 
         // bottom right
         Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f),
-                Assets.getBasicAssetInfo("enemy").size().y,
-                Assets.getBasicAssetInfo("enemy").size().x,0)));
+                Assets.getBasicAssetInfo(BasicEnemy.class).getWidth(),
+                Assets.getBasicAssetInfo(BasicEnemy.class).getHeight(),0)));
     }
 
     public Vector2 getPosition() {

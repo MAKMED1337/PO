@@ -18,9 +18,9 @@ public class EntityDrawerFactory {
     
     static {
         Renderer.addDrawer(Player.class, EntityDrawerFactory.get(Player.class,
-                getComplexAnimation("player")));
+                getComplexAnimation(Player.class)));
         Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class,
-                getComplexAnimation("enemy")));
+                getComplexAnimation(BasicEnemy.class)));
     }
 
     public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){

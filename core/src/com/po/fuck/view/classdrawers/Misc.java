@@ -8,15 +8,15 @@ import com.po.fuck.model.loadersAssets.BasicSpriteInfo;
 
 public class Misc {
 
-    public static Animation<TextureRegion> getComplexAnimation(String name) {
-        BasicSpriteInfo info = Assets.getBasicAssetInfo(name);
+    public static <T> Animation<TextureRegion> getComplexAnimation(Class<T> clz) {
+        BasicSpriteInfo info = Assets.getBasicAssetInfo(clz);
         Texture animatedTexture = Assets.manager.get(info.path);
 
         TextureRegion[][] frames = TextureRegion.split(animatedTexture, info.frameWidth, info.frameHeight);
-        int height = (int) info.size().x;
-        int width = (int) info.size().y;
+        int height = (int) info.getHeight();
+        int width = (int) info.getWidth();
         if (width % info.frameWidth != 0 || height%info.frameHeight != 0) {
-            throw new RuntimeException(info.path + "has wrong frames configuration");
+            throw new RuntimeException(info.path + " has wrong frames configuration");
         }
         int frameRowsCount = height / info.frameHeight;
         int frameColumnsCount = width / info.frameWidth;
