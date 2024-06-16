@@ -7,8 +7,8 @@ import static com.po.fuck.model.constants.ConstantsLoader.loadProperties;
 import static com.po.fuck.model.constants.ConstantsLoader.loadInt;
 
 public final class PhysicsConstants extends BaseConstants {
-    private static final String PHYSICS_PROPERTIES_PATH = Paths.get(PROPERTIES_FOLDER, "/physics.properties").toString();
-    private static final Properties PHYSICS_PROPERTIES = loadProperties(PHYSICS_PROPERTIES_PATH);
+    private static final String PATH = Paths.get(PROPERTIES_FOLDER, "/physics.properties").toString();
+    private static final Properties PROPERTIES = loadProperties(PATH);
 
-    public static final int COLLISION_ITERATIONS = loadInt(PHYSICS_PROPERTIES, "COLLISION_ITERATIONS");
+    public static final int COLLISION_ITERATIONS = loadInt(PROPERTIES, "COLLISION_ITERATIONS");
 }

@@ -1,6 +1,6 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.model.constants.BordersConstants.GAME_BORDER;
+import static com.po.fuck.model.constants.PositionConstants.GAME_BORDER;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
