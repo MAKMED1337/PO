@@ -14,7 +14,6 @@ public class CollidableCollection extends SimpleCollection<Collidable> {
     }
 
     public List<Collidable> collides(Polygon other) {
-        if(other == null) return Collections.emptyList();
         return objects.stream().filter(x -> !x.isInvisible() && x.collide(other)).collect(Collectors.toList());
     }
 
