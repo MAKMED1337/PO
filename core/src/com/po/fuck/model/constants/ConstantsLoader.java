@@ -14,16 +14,19 @@ public class ConstantsLoader {
             throw new RuntimeException("Unable to load properties file: " + filePath + " - " + io.getMessage());
         }
     }
-    protected static <T> T loadConstant(String name, Class<T> cls, Properties properties) {
+
+    protected static String loadConstant(String name, Properties properties) {
         String value = properties.getProperty(name);
         if(value == null)
-            throw new RuntimeException(cls.toString() + name + " is null");
-        if (cls == Integer.class) {
-            return cls.cast(Integer.valueOf(value));
-        } else if (cls == Float.class) {
-            return cls.cast(Float.valueOf(value));
-        } else {
-            throw new IllegalArgumentException("Unsupported property type");
-        }
+            throw new RuntimeException(name + " is null");
+        return value;
+    }
+
+    protected static int loadInt(String name, Properties properties){
+        return Integer.valueOf(loadConstant(name, properties));
+    }
+
+    protected static float loadFloat(String name, Properties properties){
+        return Float.valueOf(loadConstant(name, properties));
     }
 }

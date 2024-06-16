@@ -3,14 +3,14 @@ package com.po.fuck.model.constants;
 import java.util.Properties;
 
 import static com.po.fuck.model.constants.ConstantsLoader.loadProperties;
-import static com.po.fuck.model.constants.ConstantsLoader.loadConstant;
+import static com.po.fuck.model.constants.ConstantsLoader.loadInt;
 
 public final class TagsConstants extends BaseConstants {
     static final String TAGS_PROPERTIES_PATH = "../core/src/com/po/fuck/model/properties/tags.properties";
     static final Properties TAGS_PROPERTIES = loadProperties(TAGS_PROPERTIES_PATH);
 
-    public static final int ENEMY_TEAM_TAG = loadConstant("ENEMY_TEAM_TAG", Integer.class, TAGS_PROPERTIES);
-    public static final int PLAYER_TEAM_TAG = loadConstant("PLAYER_TEAM_TAG", Integer.class, TAGS_PROPERTIES);
+    public static final int ENEMY_TEAM_TAG = loadInt("ENEMY_TEAM_TAG", TAGS_PROPERTIES);
+    public static final int PLAYER_TEAM_TAG = loadInt("PLAYER_TEAM_TAG", TAGS_PROPERTIES);
 
     public static Properties getProperties() {
         Properties properties = new Properties();
