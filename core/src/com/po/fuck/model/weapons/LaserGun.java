@@ -1,6 +1,6 @@
 package com.po.fuck.model.weapons;
 
-import static com.po.fuck.model.Constants.LASERGUN_COOLDOWN;
+import static com.po.fuck.model.constants.BalanceConstants.LASERGUN_COOLDOWN;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;

@@ -1,7 +1,7 @@
 package com.po.fuck.view.classdrawers.factories;
 
 import static com.po.fuck.view.Constants.WIDTH_OF_THE_COIN_COUNTER_DIGIT;
-import static com.po.fuck.model.Constants.GUI_LAYER;
+import static com.po.fuck.model.constants.LayeringConstants.GUI;
 import static com.po.fuck.view.Constants.COINS_COUNTER_POSITION;
 import static com.po.fuck.view.Constants.COINS_COUNTER_TEXT_SCALE;
 import static com.po.fuck.view.Constants.COIN_SPRITE_POSITION;
@@ -28,7 +28,7 @@ public class CoinDrawerFactory {
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {
-                return GUI_LAYER;
+                return GUI;
             }
 
             @Override
