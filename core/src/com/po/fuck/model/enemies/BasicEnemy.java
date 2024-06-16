@@ -5,6 +5,7 @@ import static com.po.fuck.model.Constants.BASIC_ENEMY_HEALTH;
 import static com.po.fuck.model.Constants.BASIC_ENEMY_REWARD;
 import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
 
+import com.po.fuck.AssetsManagement.SpriteInfo;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;
@@ -15,6 +16,7 @@ import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.Weapon;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 /**
  * Class representing an enemy entity in the game.
@@ -26,6 +28,9 @@ public final class BasicEnemy extends Entity implements Updatable {
         movement = Manager.create(new BasicMovement(this, BASIC_ENEMY_SPEED));
         teamTag = ENEMY_TEAM_TAG;
         reward = BASIC_ENEMY_REWARD;
+        BasicSpriteInfo info = SpriteInfo.getBasicSpriteInfo(this.getClass());
+        geometryData.setHeight(info.getFrameHeight());
+        geometryData.setWidth(info.getFrameWidth());
     }
 
     public BasicEnemy(GeometryData geometryData) {

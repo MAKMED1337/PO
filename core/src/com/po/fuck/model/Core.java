@@ -3,7 +3,7 @@ package com.po.fuck.model;
 import static com.po.fuck.model.Constants.GAME_BORDER;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagment.Assets;
+import com.po.fuck.AssetsManagement.Assets;
 import com.po.fuck.model.AssetsLoader.AssetsLoader;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
@@ -11,7 +11,7 @@ import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.AssetsManagment.SpriteInfo;
+import com.po.fuck.AssetsManagement.SpriteInfo;
 import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 public class Core implements Updatable {
@@ -29,19 +29,13 @@ public class Core implements Updatable {
         Assets.load();
         Assets.manager.finishLoading();
         AssetsLoader.loadAssets();
-        BasicSpriteInfo playerInfo = SpriteInfo.getBasicAssetInfo(Player.class);
-        BasicSpriteInfo roomInfo = SpriteInfo.getBasicAssetInfo(Room.class);
+
         objectFollower = Manager.create(new ObjectFollower());
-        player = Manager.create(new Player(new GeometryData(new Vector2(),
-                playerInfo.getWidth(),
-                playerInfo.getHeight(),0)));
+        player = Manager.create(new Player(new GeometryData(new Vector2(),0)));
         coinsCounter = Manager.create(new Coins());
-        Manager.create(new Room(new Vector2(0, 0),
-                        roomInfo.getWidth(),
-                        roomInfo.getHeight()));
-        Manager.create(new Room(new Vector2(1, 0),
-                roomInfo.getWidth(),
-                roomInfo.getHeight()));
+
+        Manager.create(new Room(new Vector2(0, 0)));
+        Manager.create(new Room(new Vector2(1, 0)));
         // Creating some game borders to destroy the bullets that went off the map.
         // We can not use here VERTICAL/HORIZONTAL, because if something went off the
         // map, then we want to catch with a thick wall, because it can be laggy or
@@ -57,9 +51,7 @@ public class Core implements Updatable {
     @Override
     public void update(float delta) {
         if (player.get() == null)
-                player = Manager.create(new Player(new GeometryData(new Vector2(),
-                        SpriteInfo.getBasicAssetInfo(Player.class).getWidth(),
-                        SpriteInfo.getBasicAssetInfo(Player.class).getHeight(),0)));
+                player = Manager.create(new Player(new GeometryData(new Vector2(), 0)));
 
         objectFollower.get().setTargetPosition(player.get().getPosition());
 

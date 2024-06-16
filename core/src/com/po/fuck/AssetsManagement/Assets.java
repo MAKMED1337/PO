@@ -1,4 +1,4 @@
-package com.po.fuck.AssetsManagment;
+package com.po.fuck.AssetsManagement;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;

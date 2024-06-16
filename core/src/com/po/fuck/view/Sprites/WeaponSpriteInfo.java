@@ -2,7 +2,6 @@ package com.po.fuck.view.Sprites;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonValue;
-import com.po.fuck.AssetsManagment.Assets;
 
 public class WeaponSpriteInfo extends BasicSpriteInfo {
     public Vector2 muzzlePosition;

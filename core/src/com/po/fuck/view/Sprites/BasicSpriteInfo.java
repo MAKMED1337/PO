@@ -2,7 +2,6 @@ package com.po.fuck.view.Sprites;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonValue;
-import com.po.fuck.AssetsManagment.Assets;
 
 /*
  * assetsData.json description
@@ -37,6 +36,13 @@ public class BasicSpriteInfo {
 
     public Vector2 getFrameSize() {
         return frameSize.cpy();
+    }
+
+    public float getFrameHeight() {
+        return frameSize.x;
+    }
+    public float getFrameWidth() {
+        return frameSize.y;
     }
 
     public BasicSpriteInfo(JsonValue info) {

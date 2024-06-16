@@ -10,7 +10,7 @@ import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.AssetsManagment.SpriteInfo;
+import com.po.fuck.AssetsManagement.SpriteInfo;
 
 import static com.po.fuck.model.Constants.LASER_BEAM_DAMAGE;
 import static com.po.fuck.model.Constants.LASER_BEAM_LIFE_TIME;
@@ -21,8 +21,8 @@ public final class LaserBeam extends Bullet {
         damage = LASER_BEAM_DAMAGE;
         lifeTime = LASER_BEAM_LIFE_TIME;
         geometryData = new GeometryData();
-        geometryData.setWidth(SpriteInfo.getBasicAssetInfo(this.getClass()).getWidth());
-        geometryData.setHeight(SpriteInfo.getBasicAssetInfo(this.getClass()).getHeight());
+        geometryData.setWidth(SpriteInfo.getBasicSpriteInfo(this.getClass()).getFrameWidth());
+        geometryData.setHeight(SpriteInfo.getBasicSpriteInfo(this.getClass()).getFrameHeight());
     }
 
     LaserBeam(Vector2 muzzlePosition, Vector2 direction, int teamTag) {

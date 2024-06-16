@@ -13,7 +13,7 @@ import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.AssetsManagment.SpriteInfo;
+import com.po.fuck.AssetsManagement.SpriteInfo;
 import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 public class Room implements PositionDrawable, Updatable {
@@ -31,6 +31,14 @@ public class Room implements PositionDrawable, Updatable {
     @SuppressWarnings("unchecked")
     protected Managed<InvisibleWall> walls[] = new Managed[4];
 
+    Room (Vector2 tillingPosition) {
+        this.tillingPosition = tillingPosition;
+        this.geometryData = new GeometryData();
+        BasicSpriteInfo info = SpriteInfo.getBasicSpriteInfo(this.getClass());
+        geometryData.setHeight(info.getFrameHeight());
+        geometryData.setWidth(info.getFrameWidth());
+    }
+
     Room(Vector2 tillingPosition, float width, float height) {
         this.tillingPosition = tillingPosition;
         this.geometryData = new GeometryData();
@@ -45,19 +53,14 @@ public class Room implements PositionDrawable, Updatable {
 
     protected void spawnEnemies() {
         Vector2 center = getPosition();
-        BasicSpriteInfo roomInfo = SpriteInfo.getBasicAssetInfo(BasicEnemy.class);
         // Magic numbers are here, because this room is an example
         Vector2 offset = new Vector2(geometryData.getWidth() - 200, geometryData.getHeight() - 300);
 
         // top left
-        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f),
-                roomInfo.getWidth(),
-                roomInfo.getHeight(),0)));
+        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f), 0)));
 
         // bottom right
-        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f),
-                roomInfo.getWidth(),
-                roomInfo.getHeight(),0)));
+        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f),0)));
     }
 
     public Vector2 getPosition() {
