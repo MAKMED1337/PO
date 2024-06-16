@@ -23,7 +23,6 @@ public class Entity extends GameObject implements Updatable {
 
     public Entity(GeometryData geometryData, float HP) {
         super(geometryData);
-        System.out.println("Creating an enemy");
         this.MAX_HEALTH_POINTS = HP;
         this.healthPoints = HP;
     }
@@ -68,7 +67,6 @@ public class Entity extends GameObject implements Updatable {
 
     @Override
     public void destructor() {
-        System.out.println("Entity destroyed");
         weapon.destroy();
         super.destructor();
     }
