@@ -15,8 +15,8 @@ public final class CosmicBullet extends Bullet {
         lifeTime = COSMIC_BULLET_LIFE_TIME;
         geometryData = new GeometryData();
         BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
-        geometryData.setHeight(info.getHeight());
-        geometryData.setWidth(info.getWidth());
+        geometryData.setSize(new Vector2(info.getWidth(), info.getHeight()));
+
     }
 
     CosmicBullet(Vector2 muzzlePosition, Vector2 direction, int teamTag) {

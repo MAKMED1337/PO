@@ -6,8 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 public class PositionData {
     protected Vector2 position;
 
-    /// Geometry object rotation in radians
-    protected float rotation;
+    protected float rotation; /* in rads */
     public PositionData() {
         this.position = new Vector2();
     }
@@ -15,6 +14,12 @@ public class PositionData {
         this.position = new Vector2(position);
         this.rotation = rotation;
     }
+
+    public PositionData(Vector2 position) {
+        this.position = new Vector2(position);
+        rotation = 0;
+    }
+
     public PositionData (PositionData positionData) {
         this.position = positionData.position.cpy();
         this.rotation = positionData.rotation;

@@ -1,7 +1,7 @@
 package com.po.fuck.model;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.AssetsTextureLoader;
+import com.po.fuck.AssetsManagement.TextureLoader;
 import com.po.fuck.AssetsManagement.AssetsDataLoader;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
@@ -22,11 +22,11 @@ public class Core implements Updatable {
     public static Managed<ObjectFollower> objectFollower;
 
     public static void initialize() {
-        AssetsTextureLoader.preloadTextures();
-        AssetsDataLoader.loadAssets();
+        TextureLoader.preloadTextures();
+        AssetsDataLoader.preloadAssets();
 
         objectFollower = Manager.create(new ObjectFollower());
-        player = Manager.create(new Player(new PositionData(new Vector2(), 0)));
+        player = Manager.create(new Player(new PositionData()));
         coinsCounter = Manager.create(new Coins());
 
         Manager.create(new Room(new Vector2(0, 0)));

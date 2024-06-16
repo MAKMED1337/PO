@@ -14,10 +14,9 @@ public class GeometryData extends PositionData {
         super(positionData);
         if(size.x <= 0 || size.y <= 0)
             throw new RuntimeException("Height and width have to be positive");
-        height = size.x;
-        width = size.y;
+        height = size.y;
+        width = size.x;
     }
-
 
     public GeometryData(Vector2 position, float width, float height, float rotation){
         if(width <= 0 || height <= 0)
@@ -57,7 +56,9 @@ public class GeometryData extends PositionData {
         }
         this.height = height;
     }
-
+    public void setSize(Vector2 size) {
+        width = size.x; height = size.y;
+    }
     public Vector2 getSize(){
         return new Vector2(width, height);
     }

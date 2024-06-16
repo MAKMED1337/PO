@@ -14,16 +14,16 @@ import com.badlogic.gdx.utils.JsonValue;
  */
 
 public class BasicSpriteInfo {
-    private final String path;
-    private final Vector2 size;
+    protected final String path;
+    protected final Vector2 size;
 
-    private final double frameDuration;
+    protected final double frameDuration;
 
     public Vector2 getSize() {
         return size.cpy();
     }
 
-    public float getFrameDur() {
+    public float getFrameDuration() {
         return (float) frameDuration;
     }
 
@@ -32,15 +32,15 @@ public class BasicSpriteInfo {
     }
 
     public float getHeight() {
-        return size.x;
+        return size.y;
     }
     public float getWidth() {
-        return size.y;
+        return size.x;
     }
 
     public BasicSpriteInfo(JsonValue info) {
         path = info.getString("path");
-        size = new Vector2(info.getInt("frameHeight"), info.getInt("frameWidth"));
+        size = new Vector2(info.getInt("frameWidth"), info.getInt("frameHeight"));
         frameDuration = info.getDouble("frameDuration");
     }
 }

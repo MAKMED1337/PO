@@ -16,19 +16,19 @@ import com.po.fuck.model.Sprites.WeaponSpriteInfo;
 public class AssetsDataLoader {
 
     private static void preloadWeaponsData() {
-        WeaponSpriteManager.storeSpriteData(LaserGun.class, new WeaponSpriteInfo(AssetsTextureLoader.jsonData.get("laserGun")));
-        WeaponSpriteManager.storeSpriteData(Glock.class, new WeaponSpriteInfo(AssetsTextureLoader.jsonData.get("glock")));
+        WeaponSpriteManager.storeSpriteData(LaserGun.class, new WeaponSpriteInfo(TextureLoader.jsonData.get("laserGun")));
+        WeaponSpriteManager.storeSpriteData(Glock.class, new WeaponSpriteInfo(TextureLoader.jsonData.get("glock")));
     }
 
     private static void preloadBasicData() {
-        BasicSpriteManager.storeSpriteData(BasicEnemy.class, new BasicSpriteInfo(AssetsTextureLoader.jsonData.get("enemy")));
-        BasicSpriteManager.storeSpriteData(Coins.class, new BasicSpriteInfo(AssetsTextureLoader.jsonData.get("coin")));
-        BasicSpriteManager.storeSpriteData(CosmicBullet.class, new BasicSpriteInfo(AssetsTextureLoader.jsonData.get("bullet")));
-        BasicSpriteManager.storeSpriteData(Room.class, new BasicSpriteInfo(AssetsTextureLoader.jsonData.get("island")));
-        BasicSpriteManager.storeSpriteData(Player.class, new BasicSpriteInfo(AssetsTextureLoader.jsonData.get("player")));
-        BasicSpriteManager.storeSpriteData(LaserBeam.class, new BasicSpriteInfo(AssetsTextureLoader.jsonData.get("laserBeam")));
+        BasicSpriteManager.storeSpriteData(BasicEnemy.class, new BasicSpriteInfo(TextureLoader.jsonData.get("enemy")));
+        BasicSpriteManager.storeSpriteData(Coins.class, new BasicSpriteInfo(TextureLoader.jsonData.get("coin")));
+        BasicSpriteManager.storeSpriteData(CosmicBullet.class, new BasicSpriteInfo(TextureLoader.jsonData.get("bullet")));
+        BasicSpriteManager.storeSpriteData(Room.class, new BasicSpriteInfo(TextureLoader.jsonData.get("island")));
+        BasicSpriteManager.storeSpriteData(Player.class, new BasicSpriteInfo(TextureLoader.jsonData.get("player")));
+        BasicSpriteManager.storeSpriteData(LaserBeam.class, new BasicSpriteInfo(TextureLoader.jsonData.get("laserBeam")));
     }
-    public static void loadAssets() {
+    public static void preloadAssets() {
         preloadWeaponsData();
         preloadBasicData();
     }

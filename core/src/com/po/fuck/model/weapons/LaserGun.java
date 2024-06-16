@@ -12,7 +12,7 @@ public final class LaserGun extends Gun {
         cooldown = LASERGUN_COOLDOWN;
 
 
-        WeaponSpriteInfo info = WeaponSpriteManager.getWeaponSpriteInfo(this.getClass());
+        info = WeaponSpriteManager.getWeaponSpriteInfo(this.getClass());
         geometryData.setHeight(info.getHeight());
         geometryData.setWidth(info.getWidth());
     }

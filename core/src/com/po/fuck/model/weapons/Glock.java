@@ -11,7 +11,7 @@ import com.po.fuck.model.Sprites.WeaponSpriteInfo;
 public final class Glock extends Gun {
     {
         cooldown = GLOCK_COOLDOWN;
-        WeaponSpriteInfo info = WeaponSpriteManager.getWeaponSpriteInfo(this.getClass());
+        info = WeaponSpriteManager.getWeaponSpriteInfo(this.getClass());
         geometryData.setHeight(info.getHeight());
         geometryData.setWidth(info.getWidth());
     }

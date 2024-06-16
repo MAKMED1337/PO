@@ -3,16 +3,16 @@ package com.po.fuck.view.classdrawers;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.po.fuck.AssetsManagement.AssetsTextureLoader;
+import com.po.fuck.AssetsManagement.TextureLoader;
 import com.po.fuck.model.Sprites.BasicSpriteInfo;
 
 public class Misc {
 
     public static  Animation<TextureRegion> getAnimation(BasicSpriteInfo info) {
 
-        Texture animatedTexture = AssetsTextureLoader.getTexture(info.getPath());
-        int frameWidth = (int) info.getSize().y;
-        int frameHeight = (int) info.getSize().x;
+        Texture animatedTexture = TextureLoader.getTexture(info.getPath());
+        int frameWidth = (int) info.getWidth();
+        int frameHeight = (int) info.getHeight();
         int height = animatedTexture.getHeight();
         int width = animatedTexture.getWidth();
         if (width % frameWidth != 0 || height % frameHeight != 0) {
@@ -28,7 +28,7 @@ public class Misc {
             for (int j = 0; j < frameColumnsCount; j++) framesOneDimension[id++] = frames[i][j];
         }
 
-        Animation<TextureRegion> animation = new Animation<>(info.getFrameDur(), framesOneDimension);
+        Animation<TextureRegion> animation = new Animation<>(info.getFrameDuration(), framesOneDimension);
         animation.setPlayMode(Animation.PlayMode.LOOP);
         return animation;
     }
