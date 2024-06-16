@@ -2,13 +2,23 @@ package com.po.fuck.model.position;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class GeometryData {
-    protected Vector2 position;
-    protected float rotation; /* in rads */
+public class GeometryData extends PositionData {
+//    protected float rotation; /* in rads */
     protected float width;
     protected float height;
 
-    public GeometryData(){}
+    public GeometryData(){
+        super();
+    }
+
+    public GeometryData(PositionData positionData, Vector2 size){
+        super(positionData);
+        if(size.x <= 0 || size.y <= 0)
+            throw new RuntimeException("Height and width have to be positive");
+        height = size.x;
+        width = size.y;
+    }
+
 
     public GeometryData(Vector2 position, float width, float height, float rotation){
         if(width <= 0 || height <= 0)
@@ -26,13 +36,6 @@ public class GeometryData {
         this.height = other.height;
     }
 
-    public Vector2 getPosition(){
-        return position.cpy();
-    }
-
-    public void setPosition(Vector2 newPosition){
-        this.position = newPosition.cpy();
-    }
 
     public float getWidth(){
         return width;
@@ -54,22 +57,6 @@ public class GeometryData {
             throw new RuntimeException("Height must be positive");
         }
         this.height = height;
-    }
-
-    public float getRotationRad(){
-        return rotation;
-    }
-
-    public void setRotationRad(float angle){
-        rotation = angle;
-    }
-
-    public float getRotationDeg(){
-        return (float) (rotation * 180 / Math.PI);
-    }
-
-    public void setRotationDeg(float angle){
-        rotation = (float) (angle * Math.PI / 180f);
     }
 
     public Vector2 getSize(){

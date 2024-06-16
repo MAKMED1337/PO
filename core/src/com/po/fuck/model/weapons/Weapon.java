@@ -29,4 +29,5 @@ public abstract class Weapon implements PositionDrawable {
             return new Vector2();
         return aiming.cpy().sub(owner.getPosition());
     }
+
 }

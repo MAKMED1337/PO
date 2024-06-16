@@ -5,6 +5,7 @@ import static com.po.fuck.model.constants.BalanceConstants.PLAYERS_HEALTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.controller.KeyboardController;
 import com.po.fuck.controller.MouseController;
 import com.po.fuck.model.constants.BalanceConstants;
@@ -14,6 +15,7 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.BasicMovement;
 import com.po.fuck.model.movement.Boost;
 import com.po.fuck.model.position.GeometryData;
+import com.po.fuck.model.position.PositionData;
 import com.po.fuck.model.weapons.LaserGun;
 
 /**
@@ -34,8 +36,10 @@ public class Player extends Entity {
     private final Managed<KeyboardController> keyboardController = Manager.create(new KeyboardController(this));
     private final Managed<MouseController> mouseController = Manager.create(new MouseController(this));
 
-    Player(GeometryData geometryData) {
-        super(geometryData, PLAYERS_HEALTH);
+    Player(PositionData positionData) {
+        super(new GeometryData(positionData,
+                BasicSpriteManager.getBasicSpriteInfo(Player.class).getSize()),
+                PLAYERS_HEALTH);
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(keyboardController.get());

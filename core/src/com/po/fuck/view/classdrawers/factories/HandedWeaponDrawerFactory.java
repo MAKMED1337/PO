@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+
+import com.po.fuck.AssetsManagement.BasicSpriteManager;
+import com.po.fuck.AssetsManagement.WeaponSpriteManager;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.HandedWeapon;
 import com.po.fuck.model.weapons.LaserGun;
@@ -15,24 +18,24 @@ import static com.po.fuck.model.constants.LayeringConstants.WEAPON;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class HandedWeaponDrawerFactory {
+
     static {
-        Renderer.addDrawer(Glock.class, HandedWeaponDrawerFactory.get(Glock.class, getAnimation("glock3.png")));
-        Renderer.addDrawer(LaserGun.class,
-                HandedWeaponDrawerFactory.get(LaserGun.class, getAnimation("laser_gun2.png")));
+        Renderer.addDrawer(Glock.class, HandedWeaponDrawerFactory.get(Glock.class));
+        Renderer.addDrawer(LaserGun.class, HandedWeaponDrawerFactory.get(LaserGun.class));
     }
 
-    public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation) {
+    public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz){
+        Animation<TextureRegion> animation = getAnimation(WeaponSpriteManager.getWeaponSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {
                 return WEAPON;
             }
-
             @Override
             public void draw(CenterDrawer drawer, T weapon) {
                 Sprite handedWeaponSprite = new Sprite(animation.getKeyFrame(0));
                 Vector2 position = weapon.getPosition();
-                if (weapon.getAimPosition() != null) {
+                if (weapon.getAimPosition() != null){
                     Vector2 direction = weapon.getDirection();
                     float angle = direction.angleDeg();
                     handedWeaponSprite.setRotation(-angle);
@@ -42,4 +45,5 @@ public class HandedWeaponDrawerFactory {
             }
         };
     }
+
 }

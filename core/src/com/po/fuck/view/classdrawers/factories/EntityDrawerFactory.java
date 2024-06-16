@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.enemies.BasicEnemy;
@@ -16,13 +17,14 @@ import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class EntityDrawerFactory {
+
     static {
-        Renderer.addDrawer(Player.class,
-                EntityDrawerFactory.get(Player.class, getAnimation("FUCKerWithoutHands2.png")));
-        Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class, getAnimation("player2.png")));
+        Renderer.addDrawer(Player.class, EntityDrawerFactory.get(Player.class));
+        Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class));
     }
 
-    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation) {
+    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz){
+        Animation<TextureRegion> animation = getAnimation(BasicSpriteManager.getBasicSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {
@@ -41,4 +43,5 @@ public class EntityDrawerFactory {
             }
         };
     }
+
 }
