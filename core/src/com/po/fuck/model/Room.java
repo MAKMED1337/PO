@@ -14,6 +14,7 @@ import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
+import com.po.fuck.model.position.PositionData;
 import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 public class Room implements PositionDrawable, Updatable {
@@ -34,7 +35,7 @@ public class Room implements PositionDrawable, Updatable {
     Room (Vector2 tillingPosition) {
         this.tillingPosition = tillingPosition;
         BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
-        this.geometryData = new GeometryData(new Vector2(), info.getWidth(), info.getHeight(), 0);
+        this.geometryData = new GeometryData(new PositionData(new Vector2(), 0), info.getFrameSize());
     }
 
     Room(Vector2 tillingPosition, float width, float height) {
@@ -55,10 +56,10 @@ public class Room implements PositionDrawable, Updatable {
         Vector2 offset = new Vector2(geometryData.getWidth() - 200, geometryData.getHeight() - 300);
 
         // top left
-        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f), 0)));
+        Manager.create(new BasicEnemy(new PositionData(center.cpy().mulAdd(offset, -0.5f), 0)));
 
         // bottom right
-        Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f),0)));
+        Manager.create(new BasicEnemy(new PositionData(center.cpy().mulAdd(offset, 0.5f),0)));
     }
 
     public Vector2 getPosition() {

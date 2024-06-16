@@ -13,10 +13,10 @@ import com.po.fuck.model.collections.All;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.BasicMovement;
 import com.po.fuck.model.position.GeometryData;
+import com.po.fuck.model.position.PositionData;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.Weapon;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 /**
  * Class representing an enemy entity in the game.
@@ -28,13 +28,12 @@ public final class BasicEnemy extends Entity implements Updatable {
         movement = Manager.create(new BasicMovement(this, BASIC_ENEMY_SPEED));
         teamTag = ENEMY_TEAM_TAG;
         reward = BASIC_ENEMY_REWARD;
-        BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
-        geometryData.setHeight(info.getHeight());
-        geometryData.setWidth(info.getWidth());
     }
 
-    public BasicEnemy(GeometryData geometryData) {
-        super(geometryData, BASIC_ENEMY_HEALTH);
+    public BasicEnemy(PositionData positionData) {
+        super(new GeometryData(positionData,
+        BasicSpriteManager.getBasicSpriteInfo(BasicEnemy.class).getFrameSize()),
+        BASIC_ENEMY_HEALTH);
     }
 
     @Override

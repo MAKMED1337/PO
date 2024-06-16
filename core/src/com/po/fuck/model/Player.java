@@ -5,7 +5,6 @@ import static com.po.fuck.model.Constants.PLAYERS_HEALTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.controller.KeyboardController;
 import com.po.fuck.controller.MouseController;
@@ -14,8 +13,8 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.BasicMovement;
 import com.po.fuck.model.movement.Boost;
 import com.po.fuck.model.position.GeometryData;
+import com.po.fuck.model.position.PositionData;
 import com.po.fuck.model.weapons.LaserGun;
-import com.po.fuck.view.Sprites.BasicSpriteInfo;
 
 /**
  * Class representing the player entity in the game.
@@ -29,17 +28,16 @@ public class Player extends Entity {
                         new BasicMovement(this, DEFAULT_SPEED),
                         Constants.BOOST_DISTANCE, Constants.BOOST_DURATION, Constants.BOOST_COOLDOWN));
         teamTag = Constants.PLAYER_TEAM_TAG;
-        BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
-        geometryData.setHeight(info.getHeight());
-        geometryData.setWidth(info.getWidth());
     }
 
     // Controllers
     private final Managed<KeyboardController> keyboardController = Manager.create(new KeyboardController(this));
     private final Managed<MouseController> mouseController = Manager.create(new MouseController(this));
 
-    Player(GeometryData geometryData) {
-        super(geometryData, PLAYERS_HEALTH);
+    Player(PositionData positionData) {
+        super(new GeometryData(positionData,
+                BasicSpriteManager.getBasicSpriteInfo(Player.class).getFrameSize()),
+                PLAYERS_HEALTH);
 
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(keyboardController.get());

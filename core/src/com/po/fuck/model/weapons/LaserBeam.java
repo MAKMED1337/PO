@@ -22,7 +22,7 @@ public final class LaserBeam extends Bullet {
         damage = LASER_BEAM_DAMAGE;
         lifeTime = LASER_BEAM_LIFE_TIME;
         geometryData = new GeometryData();
-        BasicSpriteInfo info =  BasicSpriteManager.getBasicSpriteInfo(this.getClass());
+        BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
         geometryData.setWidth(info.getWidth());
         geometryData.setHeight(info.getHeight());
     }

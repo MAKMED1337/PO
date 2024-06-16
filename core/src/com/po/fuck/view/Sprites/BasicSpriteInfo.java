@@ -15,7 +15,7 @@ import com.badlogic.gdx.utils.JsonValue;
 
 public class BasicSpriteInfo {
     public String path;
-    public Vector2 size;
+    private Vector2 size;
 
     public double frameDuration;
 
