@@ -1,7 +1,7 @@
 package com.po.fuck.model.weapons;
 
-import static com.po.fuck.model.constants.BulletsConstants.LASER_BEAM_DAMAGE;
-import static com.po.fuck.model.constants.BulletsConstants.LASER_BEAM_LIFE_TIME;
+import static com.po.fuck.model.constants.BalanceConstants.LASER_BEAM_DAMAGE;
+import static com.po.fuck.model.constants.BalanceConstants.LASER_BEAM_LIFE_TIME;
 
 import java.util.List;
 

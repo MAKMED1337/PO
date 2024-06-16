@@ -15,18 +15,18 @@ public class ConstantsLoader {
         }
     }
 
-    protected static String loadConstant(String name, Properties properties) {
+    protected static String loadConstant(Properties properties, String name) {
         String value = properties.getProperty(name);
         if(value == null)
             throw new RuntimeException(name + " is null");
         return value;
     }
 
-    protected static int loadInt(String name, Properties properties){
-        return Integer.valueOf(loadConstant(name, properties));
+    protected static int loadInt(Properties properties, String name){
+        return Integer.valueOf(loadConstant(properties, name));
     }
 
-    protected static float loadFloat(String name, Properties properties){
-        return Float.valueOf(loadConstant(name, properties));
+    protected static float loadFloat(Properties properties, String name){
+        return Float.valueOf(loadConstant(properties, name));
     }
 }

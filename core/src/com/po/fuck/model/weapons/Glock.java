@@ -1,6 +1,6 @@
 package com.po.fuck.model.weapons;
 
-import static com.po.fuck.model.constants.BulletsConstants.GLOCK_COOLDOWN;
+import static com.po.fuck.model.constants.BalanceConstants.GLOCK_COOLDOWN;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
