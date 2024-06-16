@@ -1,6 +1,6 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.model.constants.CameraConstants.CAMERA_SPEED;
+import static com.po.fuck.model.constants.CameraConstants.SPEED;
 
 import com.badlogic.gdx.math.Vector2;
 
@@ -11,7 +11,7 @@ public final class ObjectFollower implements Updatable {
     @Override
     public void update(float delta) {
         // https://lisyarus.github.io/blog/posts/exponential-smoothing.html
-        float factor = 1 - (float) Math.exp(-delta * CAMERA_SPEED);
+        float factor = 1 - (float) Math.exp(-delta * SPEED);
         position.add(target.cpy().sub(position).scl(factor));
     }
 
