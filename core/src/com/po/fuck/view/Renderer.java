@@ -3,6 +3,7 @@ package com.po.fuck.view;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -26,7 +27,6 @@ import static com.po.fuck.view.Constants.GAME_WIDTH;
  * Class responsible for rendering game objects.
  */
 public class Renderer {
-    public static final int MAX_Z = 20;
     static private Map<Class<?>, ObjectDrawer<?>> drawers = new HashMap<>();
 
     static { // TODO: remove this
@@ -50,11 +50,8 @@ public class Renderer {
     /**
      * Splits drawables into their respective layers
      */
-    protected ArrayList<Drawable>[] getLayers(DrawableCollection drawableCollection) {
-        @SuppressWarnings("unchecked")
-        ArrayList<Drawable> layers[] = new ArrayList[MAX_Z];
-        for (int i = 0; i < MAX_Z; ++i)
-            layers[i] = new ArrayList<>();
+    protected TreeMap<Integer, ArrayList<Drawable>> getLayers(DrawableCollection drawableCollection) {
+        TreeMap<Integer, ArrayList<Drawable>> layers = new TreeMap<>();
 
         for (Drawable drawable : drawableCollection) {
             @SuppressWarnings("unchecked")
@@ -63,7 +60,7 @@ public class Renderer {
                 throw new RuntimeException("No ClassDrawer found for " + drawable.getClass().toString());
             }
 
-            layers[classDrawer.getZ()].add(drawable);
+            layers.computeIfAbsent(classDrawer.getZ(), x -> new ArrayList<>()).add(drawable);
         }
         return layers;
     }
@@ -80,7 +77,7 @@ public class Renderer {
 
         followingDrawer.batch.begin();
 
-        for (ArrayList<Drawable> layer : getLayers(drawableCollection)) {
+        for (ArrayList<Drawable> layer : getLayers(drawableCollection).values()) {
             for (Drawable drawable : layer) {
                 @SuppressWarnings("unchecked")
                 ObjectDrawer<Drawable> classDrawer = (ObjectDrawer<Drawable>) getDrawer(drawable.getClass());
