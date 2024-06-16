@@ -35,10 +35,12 @@ public final class BasicEnemy extends Entity implements Updatable {
     @Override
     public void update(float delta) {
         Entity target = GeometryMisc.closest(this, All.entityCollection.getOpponents(this.teamTag));
-        if (target == null) return;
+        if (target == null)
+            return;
         Vector2 targetPosition = target.getPosition();
         Weapon actualWeapon = weapon.get();
-        if (actualWeapon == null) return;
+        if (actualWeapon == null)
+            return;
 
         actualWeapon.aim(targetPosition);
         actualWeapon.attack();

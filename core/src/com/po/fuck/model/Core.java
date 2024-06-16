@@ -7,14 +7,16 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
+import com.po.fuck.model.enemies.Spawner;
 import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 
-public class Core implements Updatable {
-    public Managed<Player> player;
-    public static Managed<Coins> coinsCounter;
+public final class Core implements Updatable {
+    private Managed<Player> player;
+    private Managed<Coins> coinsCounter;
+    private Spawner spawner;
     public static Managed<ObjectFollower> objectFollower;
 
     public static void initialize() {
@@ -22,7 +24,6 @@ public class Core implements Updatable {
         All.initialize();
 
         objectFollower = Manager.create(new ObjectFollower());
-        coinsCounter = Manager.create(new Coins());
     }
 
     public Core() {
@@ -30,12 +31,17 @@ public class Core implements Updatable {
                 new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth(),
                 new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight(), 0)));
 
+        coinsCounter = Manager.create(new Coins());
+        spawner = new Spawner(coinsCounter.get());
+
         Manager.create(new Room(new Vector2(0, 0),
                 new Sprite(new Texture("island2.png")).getWidth(),
-                new Sprite(new Texture("island2.png")).getHeight()));
+                new Sprite(new Texture("island2.png")).getHeight(),
+                spawner));
         Manager.create(new Room(new Vector2(1, 0),
                 new Sprite(new Texture("island2.png")).getWidth(),
-                new Sprite(new Texture("island2.png")).getHeight()));
+                new Sprite(new Texture("island2.png")).getHeight(),
+                spawner));
 
         // Creating some game borders to destroy the bullets that went off the map.
         // We can not use here VERTICAL/HORIZONTAL, because if something went off the
