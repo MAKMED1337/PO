@@ -5,10 +5,9 @@ import com.po.fuck.model.position.GeometryData;
 
 public interface PositionDrawable extends Drawable {
 
-    default public Vector2 getPosition(){
+    default public Vector2 getPosition() {
         return getGeometryData().getPosition();
     }
 
     public GeometryData getGeometryData();
 }
-

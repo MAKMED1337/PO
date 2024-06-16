@@ -9,10 +9,8 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class GameObjectDrawerFactory {
-
-    public static <T extends GameObject> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
+    public static <T extends GameObject> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation) {
         return new ObjectDrawer<T>() {
-
             @Override
             public void draw(CenterDrawer drawer, T object) {
                 Sprite gameObjectSprite = new Sprite(animation.getKeyFrame(0));
@@ -21,5 +19,4 @@ public class GameObjectDrawerFactory {
             }
         };
     }
-
 }

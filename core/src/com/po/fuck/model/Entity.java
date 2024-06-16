@@ -1,7 +1,5 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.model.Constants.ENTITY_LAYER;
-
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.Movement;
@@ -28,11 +26,6 @@ public class Entity extends GameObject {
         return teamTag;
     }
 
-    @Override
-    public int getZ() {
-        return ENTITY_LAYER;
-    }
-
     public boolean isAlive() {
         return immortal || healthPoints > 0;
     }
@@ -50,15 +43,15 @@ public class Entity extends GameObject {
         return true;
     }
 
-    public float getHP(){
+    public float getHP() {
         return healthPoints;
     }
 
-    public Managed<Movement> getMovement(){
+    public Managed<Movement> getMovement() {
         return movement;
     }
 
-    public Managed<Weapon> getWeapon(){
+    public Managed<Weapon> getWeapon() {
         return weapon;
     }
 

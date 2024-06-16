@@ -1,6 +1,5 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.model.Constants.BACKGROUND_LAYER;
 import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
 
 import java.util.List;
@@ -15,8 +14,6 @@ import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.view.CenterDrawer;
-import com.po.fuck.model.Updatable;
 
 public class Room implements PositionDrawable, Updatable {
     public Vector2 tillingPosition;
@@ -40,11 +37,6 @@ public class Room implements PositionDrawable, Updatable {
         geometryData.setWidth(width);
     }
 
-    @Override
-    public int getZ() {
-        return BACKGROUND_LAYER;
-    }
-
     protected void spawnEnemies() {
         Vector2 center = getPosition();
 
@@ -53,13 +45,13 @@ public class Room implements PositionDrawable, Updatable {
 
         // top left
         Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f),
-                                    new Sprite(new Texture("player2.png")).getWidth(),
-                                    new Sprite(new Texture("player2.png")).getHeight(),0)));
+                new Sprite(new Texture("player2.png")).getWidth(),
+                new Sprite(new Texture("player2.png")).getHeight(), 0)));
 
         // bottom right
         Manager.create(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f),
-                                    new Sprite(new Texture("player2.png")).getWidth(),
-                                    new Sprite(new Texture("player2.png")).getHeight(),0)));
+                new Sprite(new Texture("player2.png")).getWidth(),
+                new Sprite(new Texture("player2.png")).getHeight(), 0)));
     }
 
     public Vector2 getPosition() {
@@ -105,7 +97,7 @@ public class Room implements PositionDrawable, Updatable {
         // List of all the entities inside this room.
         List<Collidable> inside = All.collidableCollection
                 .collides(GeometryMisc.createRectangle(
-                    new GeometryData(getPosition(), geometryData.getWidth(), geometryData.getHeight(), 0)));
+                        new GeometryData(getPosition(), geometryData.getWidth(), geometryData.getHeight(), 0)));
 
         if (state == State.NOT_ENTERED) {
             // If the player has not entered before this time, we need to check if he has

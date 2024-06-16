@@ -2,10 +2,11 @@ package com.po.fuck.model.collections;
 
 import java.util.ArrayList;
 
+import java.util.Iterator;
 import com.po.fuck.model.lifetime.ClassData;
 import com.po.fuck.model.lifetime.Manager;
 
-public abstract class SimpleCollection<T> {
+public abstract class SimpleCollection<T> implements Iterable<T> {
     protected SimpleCollection(Class<T> cls) {
         Manager.registerClass(new ClassData<T>(
                 cls,
@@ -21,5 +22,10 @@ public abstract class SimpleCollection<T> {
 
     public void remove(T object) {
         objects.remove(object);
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return objects.iterator();
     }
 }

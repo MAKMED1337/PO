@@ -13,19 +13,23 @@ import com.po.fuck.view.GifDecoder;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
+import static com.po.fuck.model.Constants.WEAPON_LAYER;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class BulletDrawerFactory {
-
     static {
-        Renderer.addDrawer(CosmicBullet.class, BulletDrawerFactory.get(CosmicBullet.class, getAnimation("bullet2.png")));
+        Renderer.addDrawer(CosmicBullet.class,
+                BulletDrawerFactory.get(CosmicBullet.class, getAnimation("bullet2.png")));
         Renderer.addDrawer(LaserBeam.class, BulletDrawerFactory.get(LaserBeam.class,
-            GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read()
-        )));
+                GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("laser3.gif").read())));
     }
 
-    public static <T extends Bullet> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation){
+    public static <T extends Bullet> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation) {
         return new ObjectDrawer<T>() {
+            @Override
+            public int getZ() {
+                return WEAPON_LAYER;
+            }
 
             @Override
             public void draw(CenterDrawer drawer, T object) {
@@ -36,5 +40,4 @@ public class BulletDrawerFactory {
             }
         };
     }
-    
 }
