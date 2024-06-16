@@ -10,11 +10,11 @@ public final class EntityCollection extends SimpleCollection<Entity> {
         super(Entity.class);
     }
 
-    public List<Entity> getTeam (int teamTag) {
+    public List<Entity> getTeam(int teamTag) {
         return objects.stream().filter(o -> o.getTeamTag() == teamTag).collect(Collectors.toList());
     }
 
-    public List<Entity> getOpponents (int teamTag) {
+    public List<Entity> getOpponents(int teamTag) {
         return objects.stream().filter(o -> o.getTeamTag() != teamTag).collect(Collectors.toList());
     }
 }
