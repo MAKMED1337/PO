@@ -1,7 +1,5 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.model.constants.PositionConstants.GAME_BORDER;
-
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
@@ -35,17 +33,6 @@ public class Core implements Updatable {
         Manager.create(new Room(new Vector2(1, 0),
                         new Sprite(new Texture("island2.png")).getWidth(),
                         new Sprite(new Texture("island2.png")).getHeight()));
-
-        // Creating some game borders to destroy the bullets that went off the map.
-        // We can not use here VERTICAL/HORIZONTAL, because if something went off the
-        // map, then we want to catch with a thick wall, because it can be laggy or
-        // something else.
-        final int HUGE = 1000, HUGE2 = 2 * HUGE, SIZE = GAME_BORDER + HUGE2;
-        Manager.create(new InvisibleWall(new Vector2(-GAME_BORDER - HUGE, 0), new Vector2(HUGE2, SIZE)));
-        Manager.create(new InvisibleWall(new Vector2(-GAME_BORDER + HUGE, 0), new Vector2(HUGE2, SIZE)));
-
-        Manager.create(new InvisibleWall(new Vector2(0, -GAME_BORDER - HUGE), new Vector2(SIZE, HUGE2)));
-        Manager.create(new InvisibleWall(new Vector2(0, -GAME_BORDER + HUGE), new Vector2(SIZE, HUGE2)));
     }
 
     @Override

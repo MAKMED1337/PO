@@ -5,7 +5,6 @@ import java.util.Properties;
 
 import static com.po.fuck.model.constants.ConstantsLoader.loadProperties;
 import static com.po.fuck.model.constants.ConstantsLoader.loadFloat;
-import static com.po.fuck.model.constants.ConstantsLoader.loadInt;
 
 public final class PositionConstants extends BaseConstants {
     private static final String PATH = Paths.get(PROPERTIES_FOLDER, "/position.properties").toString();
@@ -13,6 +12,4 @@ public final class PositionConstants extends BaseConstants {
 
     public static final float   DEFAULT_DISTANCE_FACTOR        = loadFloat(PROPERTIES, "DEFAULT_DISTANCE_FACTOR");
     public static final float   DEFAULT_MAX_DISTANCE_FROM_BODY = loadFloat(PROPERTIES, "DEFAULT_MAX_DISTANCE_FROM_BODY");
-
-    public static final int     GAME_BORDER = loadInt(PROPERTIES, "GAME_BORDER");
 }
