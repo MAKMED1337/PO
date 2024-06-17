@@ -15,8 +15,7 @@ public abstract class Gun extends HandedWeapon implements Updatable {
     protected Vector2 muzzlePosition;
 
     protected Vector2 handedPosition;
-    protected<T>  void setPositions(Class<T> clz) {
-        WeaponSpriteInfo info = weaponSpriteLoader.getSpriteInfo(this.getClass());
+    protected void setInfo(WeaponSpriteInfo info) {
         muzzlePosition = info.muzzlePosition;
         handedPosition = info.muzzlePosition;
         geometryData.setSize(info.getSize());

@@ -10,7 +10,7 @@ import com.po.fuck.model.sprites.WeaponSpriteInfo;
 public final class Glock extends Gun {
     {
         cooldown = GLOCK_COOLDOWN;
-        setPositions(this.getClass());
+        setInfo(weaponSpriteLoader.getSpriteInfo(this.getClass()));
     }
 
     public Glock(Entity owner) {

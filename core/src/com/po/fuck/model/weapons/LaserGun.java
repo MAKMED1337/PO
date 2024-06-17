@@ -11,7 +11,7 @@ public final class LaserGun extends Gun {
     {
         cooldown = LASERGUN_COOLDOWN;
 
-        setPositions(this.getClass());
+        setInfo(weaponSpriteLoader.getSpriteInfo(this.getClass()));
     }
 
     public LaserGun(Entity owner) {
