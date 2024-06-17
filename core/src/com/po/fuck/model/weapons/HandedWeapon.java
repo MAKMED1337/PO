@@ -1,7 +1,7 @@
 package com.po.fuck.model.weapons;
 
-import static com.po.fuck.model.Constants.DEFAULT_DISTANCE_FACTOR;
-import static com.po.fuck.model.Constants.DEFAULT_MAX_DISTANCE_FROM_BODY;
+import static com.po.fuck.model.constants.PositionConstants.DEFAULT_DISTANCE_FACTOR;
+import static com.po.fuck.model.constants.PositionConstants.DEFAULT_MAX_DISTANCE_FROM_BODY;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;

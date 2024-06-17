@@ -1,17 +1,17 @@
 package com.po.fuck.model.weapons;
 
-import static com.po.fuck.model.Constants.LASERGUN_COOLDOWN;
+import static com.po.fuck.assetsManagement.SpriteLoaders.weaponSpriteLoader;
+import static com.po.fuck.model.constants.BalanceConstants.LASERGUN_COOLDOWN;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
+import com.po.fuck.model.sprites.WeaponSpriteInfo;
 
 public final class LaserGun extends Gun {
     {
         cooldown = LASERGUN_COOLDOWN;
-        geometryData.setHeight(new Sprite(new Texture("laser_gun2.png")).getHeight());
-        geometryData.setWidth(new Sprite(new Texture("laser_gun2.png")).getWidth());
+
+        setInfo(weaponSpriteLoader.getSpriteInfo(this.getClass()));
     }
 
     public LaserGun(Entity owner) {

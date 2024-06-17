@@ -1,5 +1,8 @@
 package com.po.fuck.view;
 
+import static com.po.fuck.view.Constants.GAME_HEIGHT;
+import static com.po.fuck.view.Constants.GAME_WIDTH;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,17 +12,14 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.model.ObjectFollower;
-import com.po.fuck.model.drawables.Drawable;
 import com.po.fuck.model.collections.DrawableCollection;
+import com.po.fuck.model.drawables.Drawable;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.EntityDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.HandedWeaponDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.RoomDrawerFactory;
-
-import static com.po.fuck.view.Constants.GAME_HEIGHT;
-import static com.po.fuck.view.Constants.GAME_WIDTH;
 
 /**
  * Class responsible for rendering game objects.

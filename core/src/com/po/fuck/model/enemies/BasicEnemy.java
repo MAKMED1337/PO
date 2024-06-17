@@ -1,10 +1,5 @@
 package com.po.fuck.model.enemies;
 
-import static com.po.fuck.model.Constants.BASIC_ENEMY_SPEED;
-import static com.po.fuck.model.Constants.BASIC_ENEMY_HEALTH;
-import static com.po.fuck.model.Constants.BASIC_ENEMY_REWARD;
-import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
-
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;
@@ -12,8 +7,16 @@ import com.po.fuck.model.collections.All;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.BasicMovement;
 import com.po.fuck.model.position.GeometryData;
+import com.po.fuck.model.position.PositionData;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.Weapon;
+
+import static com.po.fuck.assetsManagement.SpriteLoaders.basicSpriteLoader;
+import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_HEALTH;
+import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_REWARD;
+import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_SPEED;
+import static com.po.fuck.model.constants.TagsConstants.ENEMY_TEAM_TAG;
+
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -28,8 +31,10 @@ public final class BasicEnemy extends Entity implements Updatable {
         reward = BASIC_ENEMY_REWARD;
     }
 
-    public BasicEnemy(GeometryData geometryData) {
-        super(geometryData, BASIC_ENEMY_HEALTH);
+    public BasicEnemy(PositionData position) {
+        super(new GeometryData(position,
+        basicSpriteLoader.getSpriteInfo(BasicEnemy.class).getSize()),
+        BASIC_ENEMY_HEALTH);
     }
 
     @Override

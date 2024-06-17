@@ -1,5 +1,9 @@
 package com.po.fuck.view.classdrawers.factories;
 
+import static com.po.fuck.assetsManagement.SpriteLoaders.weaponSpriteLoader;
+import static com.po.fuck.model.constants.LayeringConstants.WEAPON;
+import static com.po.fuck.view.classdrawers.Misc.getAnimation;
+
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,21 +15,18 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
-import static com.po.fuck.model.Constants.WEAPON_LAYER;
-import static com.po.fuck.view.classdrawers.Misc.getAnimation;
-
 public class HandedWeaponDrawerFactory {
     public static void initialize() {
-        Renderer.addDrawer(Glock.class, HandedWeaponDrawerFactory.get(Glock.class, getAnimation("glock3.png")));
-        Renderer.addDrawer(LaserGun.class,
-                HandedWeaponDrawerFactory.get(LaserGun.class, getAnimation("laser_gun2.png")));
+        Renderer.addDrawer(Glock.class, HandedWeaponDrawerFactory.get(Glock.class));
+        Renderer.addDrawer(LaserGun.class, HandedWeaponDrawerFactory.get(LaserGun.class));
     }
 
-    public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation) {
+    public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz) {
+        Animation<TextureRegion> animation = getAnimation(weaponSpriteLoader.getSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {
-                return WEAPON_LAYER;
+                return WEAPON;
             }
 
             @Override
@@ -42,4 +43,5 @@ public class HandedWeaponDrawerFactory {
             }
         };
     }
+
 }

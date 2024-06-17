@@ -1,6 +1,7 @@
 package com.po.fuck.view.classdrawers.factories;
 
-import static com.po.fuck.model.Constants.ENTITY_LAYER;
+import static com.po.fuck.assetsManagement.SpriteLoaders.basicSpriteLoader;
+import static com.po.fuck.model.constants.LayeringConstants.ENTITY;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -17,16 +18,16 @@ import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class EntityDrawerFactory {
     public static void initialize() {
-        Renderer.addDrawer(Player.class,
-                EntityDrawerFactory.get(Player.class, getAnimation("FUCKerWithoutHands2.png")));
-        Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class, getAnimation("player2.png")));
+        Renderer.addDrawer(Player.class, EntityDrawerFactory.get(Player.class));
+        Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class));
     }
 
-    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz, Animation<TextureRegion> animation) {
+    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz) {
+        Animation<TextureRegion> animation = getAnimation(basicSpriteLoader.getSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {
-                return ENTITY_LAYER;
+                return ENTITY;
             }
 
             @Override
@@ -41,4 +42,5 @@ public class EntityDrawerFactory {
             }
         };
     }
+
 }

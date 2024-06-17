@@ -1,11 +1,10 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.model.Constants.ENEMY_TEAM_TAG;
+import static com.po.fuck.assetsManagement.SpriteLoaders.basicSpriteLoader;
+import static com.po.fuck.model.constants.TagsConstants.ENEMY_TEAM_TAG;
 
 import java.util.List;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collision.Collidable;
@@ -15,6 +14,8 @@ import com.po.fuck.model.enemies.Spawner;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
+import com.po.fuck.model.position.PositionData;
+import com.po.fuck.model.sprites.BasicSpriteInfo;
 
 public class Room implements PositionDrawable, Updatable {
     public Vector2 tillingPosition;
@@ -32,12 +33,14 @@ public class Room implements PositionDrawable, Updatable {
     @SuppressWarnings("unchecked")
     protected Managed<InvisibleWall> walls[] = new Managed[4];
 
-    Room(Vector2 tillingPosition, float width, float height, Spawner spawner) {
+    public Room(Vector2 tillingPosition, Spawner spawner) {
         this.tillingPosition = tillingPosition;
-        this.geometryData = new GeometryData();
-        geometryData.setHeight(height);
-        geometryData.setWidth(width);
         this.spawner = spawner;
+
+        BasicSpriteInfo info = basicSpriteLoader.getSpriteInfo(this.getClass());
+        this.geometryData = new GeometryData(new PositionData(
+                new Vector2(info.getWidth() * tillingPosition.x, info.getHeight() * tillingPosition.y)),
+                info.getSize());
     }
 
     protected void spawnEnemies() {
@@ -47,18 +50,14 @@ public class Room implements PositionDrawable, Updatable {
         Vector2 offset = new Vector2(geometryData.getWidth() - 200, geometryData.getHeight() - 300);
 
         // top left
-        spawner.spawn(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, -0.5f),
-                new Sprite(new Texture("player2.png")).getWidth(),
-                new Sprite(new Texture("player2.png")).getHeight(), 0)));
+        spawner.spawn(new BasicEnemy(new PositionData(center.cpy().mulAdd(offset, -0.5f), 0)));
 
         // bottom right
-        spawner.spawn(new BasicEnemy(new GeometryData(center.cpy().mulAdd(offset, 0.5f),
-                new Sprite(new Texture("player2.png")).getWidth(),
-                new Sprite(new Texture("player2.png")).getHeight(), 0)));
+        spawner.spawn(new BasicEnemy(new PositionData(center.cpy().mulAdd(offset, 0.5f), 0)));
     }
 
     public Vector2 getPosition() {
-        return new Vector2(geometryData.getWidth() * tillingPosition.x, geometryData.getHeight() * tillingPosition.y);
+        return geometryData.getPosition();
     }
 
     protected void clear() {

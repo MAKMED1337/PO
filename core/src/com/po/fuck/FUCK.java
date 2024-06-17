@@ -2,6 +2,7 @@ package com.po.fuck;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.po.fuck.assetsManagement.SpriteLoaders;
 import com.po.fuck.controller.Controller;
 import com.po.fuck.model.Core;
 import com.po.fuck.view.Renderer;
@@ -14,6 +15,7 @@ public class FUCK extends ApplicationAdapter {
 
     @Override
     public void create() {
+        SpriteLoaders.initialize();
         Core.initialize();
         Renderer.initialize();
 

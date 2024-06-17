@@ -2,16 +2,24 @@ package com.po.fuck.model.position;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class GeometryData {
-    protected Vector2 position;
-    protected float rotation; /* in rads */
+public class GeometryData extends PositionData {
     protected float width;
     protected float height;
 
-    public GeometryData(){}
+    public GeometryData() {
+        super();
+    }
 
-    public GeometryData(Vector2 position, float width, float height, float rotation){
-        if(width <= 0 || height <= 0)
+    public GeometryData(PositionData positionData, Vector2 size) {
+        super(positionData);
+        if (size.x <= 0 || size.y <= 0)
+            throw new RuntimeException("Height and width have to be positive");
+        height = size.y;
+        width = size.x;
+    }
+
+    public GeometryData(Vector2 position, float width, float height, float rotation) {
+        if (width <= 0 || height <= 0)
             throw new RuntimeException("Height and width have to be positive");
         this.position = position.cpy();
         this.rotation = rotation;
@@ -19,60 +27,41 @@ public class GeometryData {
         this.height = height;
     }
 
-    public GeometryData(GeometryData other){
+    public GeometryData(GeometryData other) {
         this.position = other.position.cpy();
         this.rotation = other.rotation;
         this.width = other.width;
         this.height = other.height;
     }
 
-    public Vector2 getPosition(){
-        return position.cpy();
-    }
-
-    public void setPosition(Vector2 newPosition){
-        this.position = newPosition.cpy();
-    }
-
-    public float getWidth(){
+    public float getWidth() {
         return width;
     }
 
-    public void setWidth(float width){
-        if(width <= 0){
+    public void setWidth(float width) {
+        if (width <= 0) {
             throw new RuntimeException("Width must be positive");
         }
-        this.width = width; 
+        this.width = width;
     }
 
-    public float getHeight(){
+    public float getHeight() {
         return height;
     }
 
-    public void setHeight(float height){
-        if(height <= 0){
+    public void setHeight(float height) {
+        if (height <= 0) {
             throw new RuntimeException("Height must be positive");
         }
         this.height = height;
     }
 
-    public float getRotationRad(){
-        return rotation;
+    public void setSize(Vector2 size) {
+        width = size.x;
+        height = size.y;
     }
 
-    public void setRotationRad(float angle){
-        rotation = angle;
-    }
-
-    public float getRotationDeg(){
-        return (float) (rotation * 180 / Math.PI);
-    }
-
-    public void setRotationDeg(float angle){
-        rotation = (float) (angle * Math.PI / 180f);
-    }
-
-    public Vector2 getSize(){
+    public Vector2 getSize() {
         return new Vector2(width, height);
     }
 }
