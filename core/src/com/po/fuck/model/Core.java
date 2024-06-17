@@ -55,6 +55,10 @@ public final class Core implements Updatable {
         Manager.create(new InvisibleWall(new Vector2(0, -GAME_BORDER + HUGE), new Vector2(SIZE, HUGE2)));
     }
 
+    public Player getPlayer() {
+        return player.get();
+    }
+
     @Override
     public void update(float delta) {
         if (player.get() == null)

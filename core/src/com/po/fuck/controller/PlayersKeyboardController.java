@@ -1,5 +1,7 @@
 package com.po.fuck.controller;
 
+import java.util.function.Supplier;
+
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
@@ -8,15 +10,15 @@ import com.po.fuck.model.Updatable;
 import com.po.fuck.model.movement.Boost;
 import com.po.fuck.model.movement.Movement;
 
-public class KeyboardController extends InputAdapter implements Updatable {
-    private final Player player;
+public class PlayersKeyboardController extends InputAdapter implements Updatable {
+    private final Supplier<Player> playerSupplier;
 
     // Prevent the situation when the buttons were pressed before the game and did
     // not get register.
     private boolean W = false, A = false, S = false, D = false;
 
-    public KeyboardController(Player player) {
-        this.player = player;
+    public PlayersKeyboardController(Supplier<Player> playerSupplier) {
+        this.playerSupplier = playerSupplier;
     }
 
     private Vector2 getDirection() {
@@ -32,8 +34,11 @@ public class KeyboardController extends InputAdapter implements Updatable {
         return result;
     }
 
-    private Movement getMovement(){
-        return this.player.getMovement().get();
+    protected Movement getMovement() {
+        Player player = playerSupplier.get();
+        if (player == null)
+            return null;
+        return player.getMovement().get();
     }
 
     @Override
@@ -82,6 +87,8 @@ public class KeyboardController extends InputAdapter implements Updatable {
 
     @Override
     public void update(float delta) {
-        player.getMovement().get().setDirection(getDirection());
+        Movement movement = getMovement();
+        if (movement != null)
+            movement.setDirection(getDirection());
     }
 }
