@@ -1,6 +1,6 @@
 package com.po.fuck.model.weapons;
 
-import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.BalanceConstants.LASER_BEAM_DAMAGE;
 import static com.po.fuck.model.constants.BalanceConstants.LASER_BEAM_LIFE_TIME;
 
@@ -8,7 +8,6 @@ import java.util.List;
 
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
@@ -16,8 +15,6 @@ import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.Sprites.BasicSpriteInfo;
-
-import com.po.fuck.model.collections.All;
 
 public final class LaserBeam extends Bullet {
 

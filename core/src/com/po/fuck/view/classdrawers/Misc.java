@@ -3,7 +3,7 @@ package com.po.fuck.view.classdrawers;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.po.fuck.AssetsManagement.TextureLoader;
+import com.po.fuck.assetsManagement.TextureLoader;
 import com.po.fuck.model.Sprites.BasicSpriteInfo;
 
 public class Misc {

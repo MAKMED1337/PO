@@ -1,4 +1,4 @@
-package com.po.fuck.AssetsManagement;
+package com.po.fuck.assetsManagement;
 
 public class SpriteManagers {
     public static BasicSpriteManager basicSpriteManager = new BasicSpriteManager();

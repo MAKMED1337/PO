@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
-import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.weapons.Bullet;
 import com.po.fuck.model.weapons.CosmicBullet;
 import com.po.fuck.model.weapons.LaserBeam;
@@ -13,7 +12,7 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
-import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.LayeringConstants.WEAPON;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 

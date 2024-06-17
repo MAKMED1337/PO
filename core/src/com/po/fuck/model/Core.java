@@ -1,8 +1,8 @@
 package com.po.fuck.model;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.TextureLoader;
-import com.po.fuck.AssetsManagement.AssetsDataLoader;
+import com.po.fuck.assetsManagement.TextureLoader;
+import com.po.fuck.assetsManagement.AssetsDataLoader;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.model.lifetime.Destructable;

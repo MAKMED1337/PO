@@ -1,6 +1,6 @@
 package com.po.fuck.model.weapons;
 
-import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.BalanceConstants.COSMIC_BULLET_DAMAGE;
 import static com.po.fuck.model.constants.BalanceConstants.COSMIC_BULLET_LIFE_TIME;
 import static com.po.fuck.model.constants.BalanceConstants.COSMIC_BULLET_SPEED;

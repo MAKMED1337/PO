@@ -1,4 +1,4 @@
-package com.po.fuck.AssetsManagement;
+package com.po.fuck.assetsManagement;
 
 import com.po.fuck.model.Sprites.WeaponSpriteInfo;
 

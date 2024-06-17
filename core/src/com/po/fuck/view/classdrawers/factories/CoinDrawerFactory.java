@@ -1,6 +1,6 @@
 package com.po.fuck.view.classdrawers.factories;
 
-import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.LayeringConstants.GUI;
 import static com.po.fuck.view.Constants.WIDTH_OF_THE_COIN_COUNTER_DIGIT;
 import static com.po.fuck.view.Constants.COINS_COUNTER_POSITION;
@@ -13,7 +13,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.Coins;
 import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;

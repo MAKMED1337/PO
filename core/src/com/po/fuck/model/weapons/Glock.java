@@ -1,6 +1,6 @@
 package com.po.fuck.model.weapons;
 
-import static com.po.fuck.AssetsManagement.SpriteManagers.weaponSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteManagers.weaponSpriteManager;
 import static com.po.fuck.model.constants.BalanceConstants.GLOCK_COOLDOWN;
 
 import com.badlogic.gdx.math.Vector2;

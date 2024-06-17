@@ -1,6 +1,6 @@
 package com.po.fuck.view.classdrawers.factories;
 
-import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.LayeringConstants.ENTITY;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.enemies.BasicEnemy;

@@ -1,6 +1,6 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.BalanceConstants.DEFAULT_SPEED;
 import static com.po.fuck.model.constants.BalanceConstants.PLAYERS_HEALTH;
 

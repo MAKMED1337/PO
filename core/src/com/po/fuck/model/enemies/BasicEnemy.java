@@ -1,6 +1,5 @@
 package com.po.fuck.model.enemies;
 
-import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;
@@ -12,7 +11,7 @@ import com.po.fuck.model.position.PositionData;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.Weapon;
 
-import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_HEALTH;
 import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_REWARD;
 import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_SPEED;

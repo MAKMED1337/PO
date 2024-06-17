@@ -11,6 +11,11 @@ import com.badlogic.gdx.utils.JsonValue;
  * width - the frame width
  * height - the frame height
  * frameDuration - the time between frames in seconds
+ *
+ * The 3x3 frame grid is numbered as follows:
+ * 1 2 3
+ * 4 5 6
+ * 7 8 9
  */
 
 public class BasicSpriteInfo {

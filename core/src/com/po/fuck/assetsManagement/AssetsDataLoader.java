@@ -1,4 +1,4 @@
-package com.po.fuck.AssetsManagement;
+package com.po.fuck.assetsManagement;
 
 
 import com.po.fuck.model.Coins;
@@ -12,8 +12,8 @@ import com.po.fuck.model.weapons.LaserGun;
 import com.po.fuck.model.Sprites.BasicSpriteInfo;
 import com.po.fuck.model.Sprites.WeaponSpriteInfo;
 
-import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
-import static com.po.fuck.AssetsManagement.SpriteManagers.weaponSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteManagers.weaponSpriteManager;
 
 
 public class AssetsDataLoader {
