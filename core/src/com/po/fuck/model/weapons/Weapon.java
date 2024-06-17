@@ -14,7 +14,7 @@ public abstract class Weapon implements PositionDrawable {
         this.owner = owner;
     }
 
-    public Vector2 getAimPosition(){
+    public Vector2 getAimPosition() {
         return aiming.cpy();
     }
 

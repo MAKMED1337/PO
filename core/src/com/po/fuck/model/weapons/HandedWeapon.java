@@ -24,7 +24,7 @@ public abstract class HandedWeapon extends Weapon {
     }
 
     @Override
-    public Vector2 getPosition(){
+    public Vector2 getPosition() {
         return getGeometryData().getPosition();
     }
 }

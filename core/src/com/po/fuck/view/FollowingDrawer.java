@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.ObjectFollower;
 
 public class FollowingDrawer extends CenterDrawer {
-
     private ObjectFollower objectFollower;
 
     public FollowingDrawer(SpriteBatch batch, ObjectFollower objectFollowing) {

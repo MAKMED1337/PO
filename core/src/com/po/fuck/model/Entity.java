@@ -1,7 +1,7 @@
 package com.po.fuck.model;
 
-import java.util.concurrent.SubmissionPublisher;
 import java.util.concurrent.Flow.Subscriber;
+import java.util.concurrent.SubmissionPublisher;
 
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;

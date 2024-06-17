@@ -3,9 +3,9 @@ package com.po.fuck.model.movement;
 import static com.po.fuck.model.constants.PhysicsConstants.COLLISION_ITERATIONS;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.collections.All;
+import com.po.fuck.model.collision.Collidable;
 
 public abstract class Movement implements Updatable {
     protected Collidable collidable;

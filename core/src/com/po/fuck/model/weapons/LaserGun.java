@@ -5,7 +5,6 @@ import static com.po.fuck.model.constants.BalanceConstants.LASERGUN_COOLDOWN;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
-import com.po.fuck.model.sprites.WeaponSpriteInfo;
 
 public final class LaserGun extends Gun {
     {

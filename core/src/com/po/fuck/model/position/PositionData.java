@@ -12,12 +12,12 @@ public class PositionData {
     }
 
     public PositionData(Vector2 position, float rotation) {
-        this.position = new Vector2(position);
+        this.position = position.cpy();
         this.rotation = rotation;
     }
 
     public PositionData(Vector2 position) {
-        this.position = new Vector2(position);
+        this.position = position.cpy();
         rotation = 0;
     }
 

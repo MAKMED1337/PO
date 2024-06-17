@@ -1,9 +1,9 @@
 package com.po.fuck.model.collections;
 
-import com.po.fuck.model.Entity;
-
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.po.fuck.model.Entity;
 
 public final class EntityCollection extends SimpleCollection<Entity> {
     EntityCollection() {

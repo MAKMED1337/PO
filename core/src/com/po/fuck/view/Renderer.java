@@ -114,5 +114,4 @@ public class Renderer {
         }
         drawers.put(cls, classDrawer);
     }
-
 }

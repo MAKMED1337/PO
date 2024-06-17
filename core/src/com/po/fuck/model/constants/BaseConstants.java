@@ -4,6 +4,7 @@ import java.util.Properties;
 
 public class BaseConstants {
     protected static final String PROPERTIES_FOLDER = "../core/src/com/po/fuck/properties";
+
     protected static <T> void addProperty(Properties properties, String name, T value) {
         properties.setProperty(name, value.toString());
     }
