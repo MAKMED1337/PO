@@ -1,46 +1,46 @@
 package com.po.fuck.model;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.assetsManagement.SpriteLoaders;
+import com.po.fuck.assetsManagement.TextureLoader;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
-import com.po.fuck.model.position.GeometryData;
+import com.po.fuck.model.position.PositionData;
 
 public class Core implements Updatable {
+
     static { // TODO: remove
         forceInit(Destructable.class);
         forceInit(All.class);
     }
-    
+
     public static Managed<Player> player;
     public static Managed<Coins> coinsCounter;
     public static Managed<ObjectFollower> objectFollower;
 
     public static void initialize() {
+        TextureLoader.preloadTextures();
+        SpriteLoaders.preload();
+
         objectFollower = Manager.create(new ObjectFollower());
-        player = Manager.create(new Player(new GeometryData(new Vector2(),
-                                new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth(),
-                                new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight(),0)));
+        player = Manager.create(new Player(new PositionData()));
         coinsCounter = Manager.create(new Coins());
 
-        Manager.create(new Room(new Vector2(0, 0), 
-                        new Sprite(new Texture("island2.png")).getWidth(),
-                        new Sprite(new Texture("island2.png")).getHeight()));
-        Manager.create(new Room(new Vector2(1, 0),
-                        new Sprite(new Texture("island2.png")).getWidth(),
-                        new Sprite(new Texture("island2.png")).getHeight()));
+        Manager.create(new Room(new Vector2(0, 0)));
+        Manager.create(new Room(new Vector2(1, 0)));
+        // Creating some game borders to destroy the bullets that went off the map.
+        // We can not use here VERTICAL/HORIZONTAL, because if something went off the
+        // map, then we want to catch with a thick wall, because it can be laggy or
+        // something else.
     }
 
     @Override
     public void update(float delta) {
         if (player.get() == null)
-                player = Manager.create(new Player(new GeometryData(new Vector2(),
-                        new Sprite(new Texture("FUCKerWithoutHands2.png")).getWidth(),
-                        new Sprite(new Texture("FUCKerWithoutHands2.png")).getHeight(),0)));
+                player = Manager.create(new Player(new PositionData()));
 
         objectFollower.get().setTargetPosition(player.get().getPosition());
 

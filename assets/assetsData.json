@@ -1,0 +1,60 @@
+{
+  "glock":
+  {
+    "path": "glock2.png",
+    "muzzlePositionX": 100,
+    "muzzlePositionY": 54,
+    "holdingPositionX": 25,
+    "holdingPositionY": 24,
+    "frameWidth": 100,
+    "frameHeight": 64,
+    "frameDuration": 1.0
+  },
+  "laserGun":
+  {
+    "path": "laserGun2.png",
+    "muzzlePositionX": 200,
+    "muzzlePositionY": 39,
+    "holdingPositionX": 70,
+    "holdingPositionY": 29,
+    "frameDuration": 1.0,
+    "frameWidth": 200,
+    "frameHeight": 59
+  },
+  "laserBeam": {
+    "path": "laserBeamFrames.png",
+    "frameWidth": 1036,
+    "frameHeight": 130,
+    "frameDuration": 0.025
+  },
+  "player": {
+    "path": "FUCKerWithoutHands2.png",
+    "frameWidth": 90,
+    "frameHeight": 141,
+    "frameDuration": 1.0
+  },
+  "island": {
+    "path": "island2.png",
+    "frameWidth": 1728,
+    "frameHeight": 920,
+    "frameDuration": 1.0
+  },
+  "coin": {
+    "path": "coin3.png",
+    "frameDuration": 1.0,
+    "frameWidth": 40,
+    "frameHeight": 40
+  },
+  "bullet": {
+    "path": "bullet2.png",
+    "frameWidth": 100,
+    "frameHeight": 36,
+    "frameDuration": 1.0
+  },
+  "enemy": {
+    "path": "player2.png",
+    "frameWidth": 150,
+    "frameHeight": 150,
+    "frameDuration": 1.0
+  }
+}
