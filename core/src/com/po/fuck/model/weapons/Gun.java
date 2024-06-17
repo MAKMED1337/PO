@@ -10,7 +10,9 @@ import com.po.fuck.model.GeometryMisc;
 public abstract class Gun extends HandedWeapon implements Updatable {
     protected float cooldown;
     private float cooldownLeft = 0;
-    protected WeaponSpriteInfo info;
+    protected Vector2 muzzlePosition;
+
+    protected Vector2 handedPosition;
 
     Gun(Entity owner) {
         super(owner);
@@ -33,7 +35,7 @@ public abstract class Gun extends HandedWeapon implements Updatable {
 
         boolean flipped = direction.angleDeg() >= 90 && direction.angleDeg() <= 270;
         Vector2 finalPosition = GeometryMisc.getPointPositionOnFlippedFigure(gunPosition.cpy(), direction.angleDeg(),
-                info.muzzlePosition.cpy(), flipped);
+                muzzlePosition.cpy(), flipped);
 
         Manager.create(shoot(finalPosition, direction));
         cooldownLeft = cooldown;

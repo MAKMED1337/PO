@@ -5,13 +5,15 @@ import static com.po.fuck.model.constants.BalanceConstants.LASERGUN_COOLDOWN;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
+import com.po.fuck.model.sprites.WeaponSpriteInfo;
 
 public final class LaserGun extends Gun {
     {
         cooldown = LASERGUN_COOLDOWN;
 
-
-        info = weaponSpriteLoader.getSpriteInfo(this.getClass());
+        WeaponSpriteInfo info = weaponSpriteLoader.getSpriteInfo(this.getClass());
+        muzzlePosition = info.muzzlePosition;
+        handedPosition = info.muzzlePosition;
         geometryData.setSize(info.getSize());
     }
 

@@ -29,8 +29,4 @@ public class SpriteLoader {
     public <T> BasicSpriteInfo getSpriteInfo(Class<T> cls) {
         return spriteData.get(cls);
     }
-
-    public <T> void storeSpriteData(Class<T> clz, BasicSpriteInfo data) {
-        spriteData.put(clz, data);
-    }
 }
