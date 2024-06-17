@@ -11,7 +11,7 @@ import com.po.fuck.model.position.PositionData;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.Weapon;
 
-import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteLoaders.basicSpriteLoader;
 import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_HEALTH;
 import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_REWARD;
 import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_SPEED;
@@ -33,7 +33,7 @@ public final class BasicEnemy extends Entity implements Updatable {
 
     public BasicEnemy(PositionData position) {
         super(new GeometryData(position,
-        basicSpriteManager.getBasicSpriteInfo(BasicEnemy.class).getSize()),
+        basicSpriteLoader.getSpriteInfo(BasicEnemy.class).getSize()),
         BASIC_ENEMY_HEALTH);
     }
 

@@ -57,7 +57,8 @@ public class GeometryData extends PositionData {
         this.height = height;
     }
     public void setSize(Vector2 size) {
-        width = size.x; height = size.y;
+        width = size.x;
+        height = size.y;
     }
     public Vector2 getSize(){
         return new Vector2(width, height);

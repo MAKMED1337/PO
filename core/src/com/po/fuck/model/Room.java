@@ -1,6 +1,6 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteLoaders.basicSpriteLoader;
 import static com.po.fuck.model.constants.TagsConstants.ENEMY_TEAM_TAG;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class Room implements PositionDrawable, Updatable {
 
     public Room (Vector2 tillingPosition) {
         this.tillingPosition = tillingPosition;
-        BasicSpriteInfo info = basicSpriteManager.getBasicSpriteInfo(this.getClass());
+        BasicSpriteInfo info = basicSpriteLoader.getSpriteInfo(this.getClass());
         this.geometryData = new GeometryData(new PositionData(
                 new Vector2(info.getWidth() * tillingPosition.x, info.getHeight() * tillingPosition.y)),
                 info.getSize());

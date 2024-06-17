@@ -1,16 +1,14 @@
 package com.po.fuck.model;
 
 import com.badlogic.gdx.math.Vector2;
+import com.po.fuck.assetsManagement.SpriteLoaders;
 import com.po.fuck.assetsManagement.TextureLoader;
-import com.po.fuck.assetsManagement.AssetsDataLoader;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
 import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.PositionData;
-
-import static java.lang.System.exit;
 
 public class Core implements Updatable {
 
@@ -25,7 +23,7 @@ public class Core implements Updatable {
 
     public static void initialize() {
         TextureLoader.preloadTextures();
-        AssetsDataLoader.preloadAssets();
+        SpriteLoaders.preload();
 
         objectFollower = Manager.create(new ObjectFollower());
         player = Manager.create(new Player(new PositionData()));

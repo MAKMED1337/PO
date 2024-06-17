@@ -1,6 +1,6 @@
 package com.po.fuck.model;
 
-import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
+import static com.po.fuck.assetsManagement.SpriteLoaders.basicSpriteLoader;
 import static com.po.fuck.model.constants.BalanceConstants.DEFAULT_SPEED;
 import static com.po.fuck.model.constants.BalanceConstants.PLAYERS_HEALTH;
 
@@ -38,7 +38,7 @@ public class Player extends Entity {
 
     Player(PositionData positionData) {
         super(new GeometryData(positionData,
-                basicSpriteManager.getBasicSpriteInfo(Player.class).getSize()),
+                basicSpriteLoader.getSpriteInfo(Player.class).getSize()),
                 PLAYERS_HEALTH);
 
         InputMultiplexer multiplexer = new InputMultiplexer();
