@@ -7,10 +7,10 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 
 public class TextureLoader {
-
     private static AssetManager manager = new AssetManager();
     public static final JsonValue jsonData = (new JsonReader()).parse(Gdx.files.internal("assetsData.json"));
-    public static void preloadTextures() {
+
+    public static void preload() {
         for (JsonValue element : jsonData) {
             manager.load(element.getString("path"), Texture.class);
         }

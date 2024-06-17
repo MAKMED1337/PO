@@ -1,5 +1,8 @@
 package com.po.fuck.model;
 
+import java.util.concurrent.Flow.Subscriber;
+import java.util.concurrent.SubmissionPublisher;
+
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.Movement;
@@ -16,10 +19,16 @@ public class Entity extends GameObject {
     public final float MAX_HEALTH_POINTS;
     protected boolean immortal = false;
 
+    private SubmissionPublisher<Entity> deathPublisher = new SubmissionPublisher<>();
+
     public Entity(GeometryData geometryData, float HP) {
         super(geometryData);
         this.MAX_HEALTH_POINTS = HP;
         this.healthPoints = HP;
+    }
+
+    public void onDeath(Subscriber<Entity> subscriber) {
+        deathPublisher.subscribe(subscriber);
     }
 
     public int getTeamTag() {
@@ -35,16 +44,23 @@ public class Entity extends GameObject {
             return false;
 
         healthPoints = Math.max(0, healthPoints - damage);
-        if (healthPoints == 0) {
-            Core.coinsCounter.get().addCoins(reward);
-            Manager.destroyRaw(this);
-        }
+        if (healthPoints == 0)
+            die();
 
         return true;
     }
 
+    protected void die() {
+        deathPublisher.submit(this);
+        Manager.destroyRaw(this);
+    }
+
     public float getHP() {
         return healthPoints;
+    }
+
+    public int getReward() {
+        return reward;
     }
 
     public Managed<Movement> getMovement() {

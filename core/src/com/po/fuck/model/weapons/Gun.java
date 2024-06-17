@@ -1,13 +1,11 @@
 package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.model.sprites.WeaponSpriteInfo;
 import com.po.fuck.model.Entity;
+import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
-import com.po.fuck.model.GeometryMisc;
-
-import static com.po.fuck.assetsManagement.SpriteLoaders.weaponSpriteLoader;
+import com.po.fuck.model.sprites.WeaponSpriteInfo;
 
 public abstract class Gun extends HandedWeapon implements Updatable {
     protected float cooldown;
@@ -15,11 +13,13 @@ public abstract class Gun extends HandedWeapon implements Updatable {
     protected Vector2 muzzlePosition;
 
     protected Vector2 handedPosition;
+
     protected void setInfo(WeaponSpriteInfo info) {
         muzzlePosition = info.muzzlePosition;
         handedPosition = info.muzzlePosition;
         geometryData.setSize(info.getSize());
     }
+
     Gun(Entity owner) {
         super(owner);
     }

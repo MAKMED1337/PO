@@ -1,5 +1,8 @@
 package com.po.fuck.view;
 
+import static com.po.fuck.view.RenderConstants.HEIGHT;
+import static com.po.fuck.view.RenderConstants.WIDTH;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +12,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.po.fuck.model.ObjectFollower;
-import com.po.fuck.model.drawables.Drawable;
 import com.po.fuck.model.collections.DrawableCollection;
+import com.po.fuck.model.drawables.Drawable;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.view.classdrawers.factories.BulletDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.CoinDrawerFactory;
@@ -18,22 +21,18 @@ import com.po.fuck.view.classdrawers.factories.EntityDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.HandedWeaponDrawerFactory;
 import com.po.fuck.view.classdrawers.factories.RoomDrawerFactory;
 
-import static com.po.fuck.model.Core.forceInit;
-import static com.po.fuck.view.Constants.GAME_HEIGHT;
-import static com.po.fuck.view.Constants.GAME_WIDTH;
-
 /**
  * Class responsible for rendering game objects.
  */
 public class Renderer {
     static private Map<Class<?>, ObjectDrawer<?>> drawers = new HashMap<>();
 
-    static { // TODO: remove this
-        forceInit(BulletDrawerFactory.class);
-        forceInit(EntityDrawerFactory.class);
-        forceInit(HandedWeaponDrawerFactory.class);
-        forceInit(RoomDrawerFactory.class);
-        forceInit(CoinDrawerFactory.class);
+    public static void initialize() {
+        BulletDrawerFactory.initialize();
+        EntityDrawerFactory.initialize();
+        HandedWeaponDrawerFactory.initialize();
+        RoomDrawerFactory.initialize();
+        CoinDrawerFactory.initialize();
     }
 
     private OrthographicCamera camera;
@@ -41,7 +40,7 @@ public class Renderer {
 
     public Renderer(ObjectFollower objectFollower) {
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
+        camera.setToOrtho(false, WIDTH, HEIGHT);
         followingDrawer = new FollowingDrawer(new SpriteBatch(), objectFollower);
     }
 
@@ -115,5 +114,4 @@ public class Renderer {
         }
         drawers.put(cls, classDrawer);
     }
-
 }

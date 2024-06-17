@@ -1,5 +1,12 @@
 package com.po.fuck.model.enemies;
 
+import static com.po.fuck.assetsManagement.SpriteLoaders.basicSpriteLoader;
+import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_HEALTH;
+import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_REWARD;
+import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_SPEED;
+import static com.po.fuck.model.constants.TagsConstants.ENEMY_TEAM_TAG;
+
+import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.Updatable;
@@ -10,14 +17,6 @@ import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.position.PositionData;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.Weapon;
-
-import static com.po.fuck.assetsManagement.SpriteLoaders.basicSpriteLoader;
-import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_HEALTH;
-import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_REWARD;
-import static com.po.fuck.model.constants.BalanceConstants.BASIC_ENEMY_SPEED;
-import static com.po.fuck.model.constants.TagsConstants.ENEMY_TEAM_TAG;
-
-import com.badlogic.gdx.math.Vector2;
 
 /**
  * Class representing an enemy entity in the game.
@@ -33,17 +32,19 @@ public final class BasicEnemy extends Entity implements Updatable {
 
     public BasicEnemy(PositionData position) {
         super(new GeometryData(position,
-        basicSpriteLoader.getSpriteInfo(BasicEnemy.class).getSize()),
-        BASIC_ENEMY_HEALTH);
+                basicSpriteLoader.getSpriteInfo(BasicEnemy.class).getSize()),
+                BASIC_ENEMY_HEALTH);
     }
 
     @Override
     public void update(float delta) {
         Entity target = GeometryMisc.closest(this, All.entityCollection.getOpponents(this.teamTag));
-        if (target == null) return;
+        if (target == null)
+            return;
         Vector2 targetPosition = target.getPosition();
         Weapon actualWeapon = weapon.get();
-        if (actualWeapon == null) return;
+        if (actualWeapon == null)
+            return;
 
         actualWeapon.aim(targetPosition);
         actualWeapon.attack();

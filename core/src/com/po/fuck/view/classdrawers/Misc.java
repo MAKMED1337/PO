@@ -7,9 +7,7 @@ import com.po.fuck.assetsManagement.TextureLoader;
 import com.po.fuck.model.sprites.BasicSpriteInfo;
 
 public class Misc {
-
-    public static  Animation<TextureRegion> getAnimation(BasicSpriteInfo info) {
-
+    public static Animation<TextureRegion> getAnimation(BasicSpriteInfo info) {
         Texture animatedTexture = TextureLoader.getTexture(info.getPath());
         int frameWidth = (int) info.getWidth();
         int frameHeight = (int) info.getHeight();
@@ -25,7 +23,8 @@ public class Misc {
 
         int id = 0;
         for (int i = 0; i < frameRowsCount; i++) {
-            for (int j = 0; j < frameColumnsCount; j++) framesOneDimension[id++] = frames[i][j];
+            for (int j = 0; j < frameColumnsCount; j++)
+                framesOneDimension[id++] = frames[i][j];
         }
 
         Animation<TextureRegion> animation = new Animation<>(info.getFrameDuration(), framesOneDimension);

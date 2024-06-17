@@ -1,63 +1,55 @@
 package com.po.fuck.model;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.assetsManagement.SpriteLoaders;
-import com.po.fuck.assetsManagement.TextureLoader;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collections.DrawableCollection;
+import com.po.fuck.model.enemies.Spawner;
 import com.po.fuck.model.lifetime.Destructable;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.PositionData;
 
-public class Core implements Updatable {
-
-    static { // TODO: remove
-        forceInit(Destructable.class);
-        forceInit(All.class);
-    }
-
-    public static Managed<Player> player;
-    public static Managed<Coins> coinsCounter;
-    public static Managed<ObjectFollower> objectFollower;
+public final class Core implements Updatable {
+    private Managed<Player> player;
+    private Managed<Coins> coinsCounter;
+    private Spawner spawner;
+    public Managed<ObjectFollower> objectFollower;
 
     public static void initialize() {
-        TextureLoader.preloadTextures();
-        SpriteLoaders.preload();
+        Destructable.register();
+        All.initialize();
+    }
 
-        objectFollower = Manager.create(new ObjectFollower());
+    public Core() {
         player = Manager.create(new Player(new PositionData()));
-        coinsCounter = Manager.create(new Coins());
 
-        Manager.create(new Room(new Vector2(0, 0)));
-        Manager.create(new Room(new Vector2(1, 0)));
-        // Creating some game borders to destroy the bullets that went off the map.
-        // We can not use here VERTICAL/HORIZONTAL, because if something went off the
-        // map, then we want to catch with a thick wall, because it can be laggy or
-        // something else.
+        coinsCounter = Manager.create(new Coins());
+        spawner = new Spawner(coinsCounter.get());
+        objectFollower = Manager.create(new ObjectFollower());
+
+        Manager.create(new Room(new Vector2(0, 0), spawner));
+        Manager.create(new Room(new Vector2(1, 0), spawner));
+    }
+
+    public Player getPlayer() {
+        return player.get();
+    }
+
+    public ObjectFollower getObjectFollower() {
+        return objectFollower.get();
     }
 
     @Override
     public void update(float delta) {
         if (player.get() == null)
-                player = Manager.create(new Player(new PositionData()));
+            player = Manager.create(new Player(new PositionData()));
 
         objectFollower.get().setTargetPosition(player.get().getPosition());
 
         All.updatableCollection.update(delta);
     }
 
-    public DrawableCollection getDrawableCollection(){
+    public DrawableCollection getDrawableCollection() {
         return All.drawableCollection;
-    }
-
-    // https://stackoverflow.com/questions/3560103/how-to-force-a-class-to-be-initialised
-    public static <T> Class<T> forceInit(Class<T> klass) {
-        try {
-            Class.forName(klass.getName(), true, klass.getClassLoader());
-        } catch (ClassNotFoundException e) {
-            throw new AssertionError(e);  // Can't happen
-        }
-        return klass;
     }
 }

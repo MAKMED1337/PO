@@ -17,13 +17,12 @@ import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
 public class EntityDrawerFactory {
-
-    static {
+    public static void initialize() {
         Renderer.addDrawer(Player.class, EntityDrawerFactory.get(Player.class));
         Renderer.addDrawer(BasicEnemy.class, EntityDrawerFactory.get(BasicEnemy.class));
     }
 
-    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz){
+    public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz) {
         Animation<TextureRegion> animation = getAnimation(basicSpriteLoader.getSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
@@ -43,5 +42,4 @@ public class EntityDrawerFactory {
             }
         };
     }
-
 }

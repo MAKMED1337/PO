@@ -28,7 +28,8 @@ public class BasicMovement extends Movement {
      * Updates the position of the object based on its current direction and speed.
      *
      * @param delta The time elapsed since the last update, in seconds.
-     *              This parameter allows the object to adjust its movement based on the
+     *              This parameter allows the object to adjust its movement based on
+     *              the
      *              passage of time and ensures smooth animation and interaction.
      */
     @Override

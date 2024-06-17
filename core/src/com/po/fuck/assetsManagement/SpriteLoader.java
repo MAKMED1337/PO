@@ -1,5 +1,8 @@
 package com.po.fuck.assetsManagement;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.po.fuck.model.Coins;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.Room;
@@ -7,11 +10,6 @@ import com.po.fuck.model.enemies.BasicEnemy;
 import com.po.fuck.model.sprites.BasicSpriteInfo;
 import com.po.fuck.model.weapons.CosmicBullet;
 import com.po.fuck.model.weapons.LaserBeam;
-
-import java.util.HashMap;
-import java.util.Map;
-
-
 
 public class SpriteLoader {
 

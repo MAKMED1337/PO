@@ -4,13 +4,8 @@ import static com.po.fuck.assetsManagement.SpriteLoaders.basicSpriteLoader;
 import static com.po.fuck.model.constants.BalanceConstants.DEFAULT_SPEED;
 import static com.po.fuck.model.constants.BalanceConstants.PLAYERS_HEALTH;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
-import com.po.fuck.controller.KeyboardController;
-import com.po.fuck.controller.MouseController;
 import com.po.fuck.model.constants.BalanceConstants;
 import com.po.fuck.model.constants.TagsConstants;
-import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.movement.BasicMovement;
 import com.po.fuck.model.movement.Boost;
@@ -28,29 +23,14 @@ public class Player extends Entity {
         movement = Manager.create(
                 new Boost(
                         new BasicMovement(this, DEFAULT_SPEED),
-                        BalanceConstants.BOOST_DISTANCE, BalanceConstants.BOOST_DURATION, BalanceConstants.BOOST_COOLDOWN));
+                        BalanceConstants.BOOST_DISTANCE, BalanceConstants.BOOST_DURATION,
+                        BalanceConstants.BOOST_COOLDOWN));
         teamTag = TagsConstants.PLAYER_TEAM_TAG;
     }
-
-    // Controllers
-    private final Managed<KeyboardController> keyboardController = Manager.create(new KeyboardController(this));
-    private final Managed<MouseController> mouseController = Manager.create(new MouseController(this));
 
     Player(PositionData positionData) {
         super(new GeometryData(positionData,
                 basicSpriteLoader.getSpriteInfo(Player.class).getSize()),
                 PLAYERS_HEALTH);
-
-        InputMultiplexer multiplexer = new InputMultiplexer();
-        multiplexer.addProcessor(keyboardController.get());
-        multiplexer.addProcessor(mouseController.get());
-        Gdx.input.setInputProcessor(multiplexer);
-    }
-
-    @Override
-    public void destructor() {
-        keyboardController.destroy();
-        mouseController.destroy();
-        super.destructor();
     }
 }

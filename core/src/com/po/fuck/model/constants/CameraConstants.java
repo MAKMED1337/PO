@@ -1,10 +1,10 @@
 package com.po.fuck.model.constants;
 
+import static com.po.fuck.model.constants.ConstantsLoader.loadFloat;
+import static com.po.fuck.model.constants.ConstantsLoader.loadProperties;
+
 import java.nio.file.Paths;
 import java.util.Properties;
-
-import static com.po.fuck.model.constants.ConstantsLoader.loadProperties;
-import static com.po.fuck.model.constants.ConstantsLoader.loadFloat;;
 
 public final class CameraConstants extends BaseConstants {
     private static final String PATH = Paths.get(PROPERTIES_FOLDER, "/camera.properties").toString();

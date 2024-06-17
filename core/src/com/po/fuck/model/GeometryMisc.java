@@ -1,6 +1,7 @@
 package com.po.fuck.model;
 
 import java.util.List;
+
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.position.GeometryData;
@@ -36,14 +37,16 @@ public class GeometryMisc {
     }
 
     /**
-     * Finds the closest {@link Entity} to the specified main entity from a list of entities.
+     * Finds the closest {@link Entity} to the specified main entity from a list of
+     * entities.
      *
-     * @param <A> the type of the main entity, extending {@link Entity}
+     * @param <A>  the type of the main entity, extending {@link Entity}
      * @param main the main entity from which distances are measured
      * @param list a list of entities to compare against the main entity
-     * @return the {@link Entity} that is closest to the main entity, or {@code null} if the list is empty
+     * @return the {@link Entity} that is closest to the main entity, or
+     *         {@code null} if the list is empty
      */
-    public static<A extends Entity> Entity closest(A main, List<? extends Entity> list) {
+    public static <A extends Entity> Entity closest(A main, List<? extends Entity> list) {
         Entity closestEntity = null;
         for (Entity entity : list) {
             if (closestEntity == null || distance(main, closestEntity) > distance(main, entity))
@@ -53,20 +56,24 @@ public class GeometryMisc {
     }
 
     /**
-     * Creates a rectangular {@link Polygon} based on the provided position and sprite.
+     * Creates a rectangular {@link Polygon} based on the provided position and
+     * sprite.
      * Rotates the rectangle based on the given rotation.
      *
-     * <p>The rectangle will be centered on the provided position, with its size
-     * determined by the given width and height.</p>
-     * 
-     * @param geometryData the data of the rectangle
-     * @param geometryData.position the center position of the rectangle, represented as a {@link Vector2}
-     * @param geometryData.width the width of the rectangle
-     * @param geometryData.height the height of the rectangle
+     * <p>
+     * The rectangle will be centered on the provided position, with its size
+     * determined by the given width and height.
+     * </p>
+     *
+     * @param geometryData          the data of the rectangle
+     * @param geometryData.position the center position of the rectangle,
+     *                              represented as a {@link Vector2}
+     * @param geometryData.width    the width of the rectangle
+     * @param geometryData.height   the height of the rectangle
      * @param geometryData.rotation the rotation of the rectangle; 0 is facing right
      * @return a {@link Polygon} representing the rectangle
      */
-    public static Polygon createRectangle(GeometryData geometryData){
+    public static Polygon createRectangle(GeometryData geometryData) {
         Vector2 size = geometryData.getSize();
         size.scl(0.5f);
 
@@ -82,7 +89,8 @@ public class GeometryMisc {
         return polygon;
     }
 
-    public static Vector2 getPointPositionOnFlippedFigure(Vector2 spritePosition, float rotationDeg, Vector2 point, boolean flipped) {
+    public static Vector2 getPointPositionOnFlippedFigure(Vector2 spritePosition, float rotationDeg, Vector2 point,
+            boolean flipped) {
         point.rotateDeg(rotationDeg);
         Vector2 finalPosition = spritePosition.cpy();
         return (flipped ? finalPosition.add(point) : finalPosition.sub(point));

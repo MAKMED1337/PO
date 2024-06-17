@@ -39,6 +39,7 @@ public class BasicSpriteInfo {
     public float getHeight() {
         return size.y;
     }
+
     public float getWidth() {
         return size.x;
     }

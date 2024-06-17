@@ -1,8 +1,8 @@
 package com.po.fuck.model.collections;
 
 import java.util.ArrayList;
-
 import java.util.Iterator;
+
 import com.po.fuck.model.lifetime.ClassData;
 import com.po.fuck.model.lifetime.Manager;
 

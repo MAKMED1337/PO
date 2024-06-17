@@ -10,6 +10,7 @@ import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.drawables.PositionDrawable;
 import com.po.fuck.model.enemies.BasicEnemy;
+import com.po.fuck.model.enemies.Spawner;
 import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
@@ -19,6 +20,7 @@ import com.po.fuck.model.sprites.BasicSpriteInfo;
 public class Room implements PositionDrawable, Updatable {
     public Vector2 tillingPosition;
     protected GeometryData geometryData;
+    protected Spawner spawner;
 
     private enum State {
         NOT_ENTERED,
@@ -31,8 +33,10 @@ public class Room implements PositionDrawable, Updatable {
     @SuppressWarnings("unchecked")
     protected Managed<InvisibleWall> walls[] = new Managed[4];
 
-    public Room (Vector2 tillingPosition) {
+    public Room(Vector2 tillingPosition, Spawner spawner) {
         this.tillingPosition = tillingPosition;
+        this.spawner = spawner;
+
         BasicSpriteInfo info = basicSpriteLoader.getSpriteInfo(this.getClass());
         this.geometryData = new GeometryData(new PositionData(
                 new Vector2(info.getWidth() * tillingPosition.x, info.getHeight() * tillingPosition.y)),
@@ -46,10 +50,10 @@ public class Room implements PositionDrawable, Updatable {
         Vector2 offset = new Vector2(geometryData.getWidth() - 200, geometryData.getHeight() - 300);
 
         // top left
-        Manager.create(new BasicEnemy(new PositionData(center.cpy().mulAdd(offset, -0.5f), 0)));
+        spawner.spawn(new BasicEnemy(new PositionData(center.cpy().mulAdd(offset, -0.5f), 0)));
 
         // bottom right
-        Manager.create(new BasicEnemy(new PositionData(center.cpy().mulAdd(offset, 0.5f),0)));
+        spawner.spawn(new BasicEnemy(new PositionData(center.cpy().mulAdd(offset, 0.5f), 0)));
     }
 
     public Vector2 getPosition() {
