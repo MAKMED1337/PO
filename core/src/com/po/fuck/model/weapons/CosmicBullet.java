@@ -6,7 +6,6 @@ import static com.po.fuck.model.constants.BalanceConstants.COSMIC_BULLET_LIFE_TI
 import static com.po.fuck.model.constants.BalanceConstants.COSMIC_BULLET_SPEED;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.Sprites.BasicSpriteInfo;
 

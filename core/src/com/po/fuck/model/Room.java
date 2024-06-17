@@ -6,7 +6,6 @@ import static com.po.fuck.model.constants.TagsConstants.ENEMY_TEAM_TAG;
 import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.collision.Collidable;
 import com.po.fuck.model.drawables.PositionDrawable;

@@ -40,7 +40,7 @@ public class Core implements Updatable {
     @Override
     public void update(float delta) {
         if (player.get() == null)
-                player = Manager.create(new Player(new PositionData(new Vector2(), 0)));
+                player = Manager.create(new Player(new PositionData()));
 
         objectFollower.get().setTargetPosition(player.get().getPosition());
 
