@@ -35,7 +35,9 @@ public class Room implements PositionDrawable, Updatable {
     public Room (Vector2 tillingPosition) {
         this.tillingPosition = tillingPosition;
         BasicSpriteInfo info = basicSpriteManager.getBasicSpriteInfo(this.getClass());
-        this.geometryData = new GeometryData(new PositionData(), info.getSize());
+        this.geometryData = new GeometryData(new PositionData(
+                new Vector2(info.getWidth() * tillingPosition.x, info.getHeight() * tillingPosition.y)),
+                info.getSize());
     }
 
     protected void spawnEnemies() {
@@ -52,7 +54,7 @@ public class Room implements PositionDrawable, Updatable {
     }
 
     public Vector2 getPosition() {
-        return new Vector2(geometryData.getWidth() * tillingPosition.x, geometryData.getHeight() * tillingPosition.y);
+        return geometryData.getPosition();
     }
 
     protected void clear() {
