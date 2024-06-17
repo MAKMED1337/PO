@@ -1,4 +1,4 @@
-package com.po.fuck.model.Sprites;
+package com.po.fuck.model.sprites;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonValue;

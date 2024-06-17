@@ -14,7 +14,7 @@ import com.po.fuck.model.GeometryMisc;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.collections.All;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.model.Sprites.BasicSpriteInfo;
+import com.po.fuck.model.sprites.BasicSpriteInfo;
 
 public final class LaserBeam extends Bullet {
 

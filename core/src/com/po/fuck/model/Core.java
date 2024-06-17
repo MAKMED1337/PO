@@ -10,6 +10,8 @@ import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.PositionData;
 
+import static java.lang.System.exit;
+
 public class Core implements Updatable {
 
     static { // TODO: remove

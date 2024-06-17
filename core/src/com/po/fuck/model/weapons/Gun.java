@@ -1,7 +1,7 @@
 package com.po.fuck.model.weapons;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.model.Sprites.WeaponSpriteInfo;
+import com.po.fuck.model.sprites.WeaponSpriteInfo;
 import com.po.fuck.model.Entity;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;

@@ -9,8 +9,8 @@ import com.po.fuck.model.weapons.CosmicBullet;
 import com.po.fuck.model.weapons.Glock;
 import com.po.fuck.model.weapons.LaserBeam;
 import com.po.fuck.model.weapons.LaserGun;
-import com.po.fuck.model.Sprites.BasicSpriteInfo;
-import com.po.fuck.model.Sprites.WeaponSpriteInfo;
+import com.po.fuck.model.sprites.BasicSpriteInfo;
+import com.po.fuck.model.sprites.WeaponSpriteInfo;
 
 import static com.po.fuck.assetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.assetsManagement.SpriteManagers.weaponSpriteManager;

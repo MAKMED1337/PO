@@ -1,6 +1,6 @@
 package com.po.fuck.assetsManagement;
 
-import com.po.fuck.model.Sprites.BasicSpriteInfo;
+import com.po.fuck.model.sprites.BasicSpriteInfo;
 
 import java.util.HashMap;
 import java.util.Map;

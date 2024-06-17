@@ -7,7 +7,7 @@ import static com.po.fuck.model.constants.BalanceConstants.COSMIC_BULLET_SPEED;
 
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.position.GeometryData;
-import com.po.fuck.model.Sprites.BasicSpriteInfo;
+import com.po.fuck.model.sprites.BasicSpriteInfo;
 
 public final class CosmicBullet extends Bullet {
     {

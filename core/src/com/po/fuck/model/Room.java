@@ -14,7 +14,7 @@ import com.po.fuck.model.lifetime.Managed;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.position.GeometryData;
 import com.po.fuck.model.position.PositionData;
-import com.po.fuck.model.Sprites.BasicSpriteInfo;
+import com.po.fuck.model.sprites.BasicSpriteInfo;
 
 public class Room implements PositionDrawable, Updatable {
     public Vector2 tillingPosition;
