@@ -12,7 +12,9 @@ public final class Controller {
     private InputMultiplexer multiplexer = new InputMultiplexer();
 
     public Controller(Core core) {
-        mouseController = Manager.create(new PlayersMouseController(core::getPlayer));
+        mouseController = Manager.create(new PlayersMouseController(core::getPlayer,
+                local -> core.getObjectFollower().getPosition().add(local)));
+
         keyboardController = Manager.create(new PlayersKeyboardController(core::getPlayer));
         multiplexer.addProcessor(keyboardController.get());
         multiplexer.addProcessor(mouseController.get());

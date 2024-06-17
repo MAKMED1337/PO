@@ -17,13 +17,11 @@ public final class Core implements Updatable {
     private Managed<Player> player;
     private Managed<Coins> coinsCounter;
     private Spawner spawner;
-    public static Managed<ObjectFollower> objectFollower;
+    public Managed<ObjectFollower> objectFollower;
 
     public static void initialize() {
         Destructable.register();
         All.initialize();
-
-        objectFollower = Manager.create(new ObjectFollower());
     }
 
     public Core() {
@@ -33,6 +31,7 @@ public final class Core implements Updatable {
 
         coinsCounter = Manager.create(new Coins());
         spawner = new Spawner(coinsCounter.get());
+        objectFollower = Manager.create(new ObjectFollower());
 
         Manager.create(new Room(new Vector2(0, 0),
                 new Sprite(new Texture("island2.png")).getWidth(),
@@ -57,6 +56,10 @@ public final class Core implements Updatable {
 
     public Player getPlayer() {
         return player.get();
+    }
+
+    public ObjectFollower getObjectFollower() {
+        return objectFollower.get();
     }
 
     @Override

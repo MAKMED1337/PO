@@ -3,12 +3,12 @@ package com.po.fuck.controller;
 import static com.po.fuck.view.Constants.GAME_HEIGHT;
 import static com.po.fuck.view.Constants.GAME_WIDTH;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.model.Core;
 import com.po.fuck.model.Player;
 import com.po.fuck.model.Updatable;
 import com.po.fuck.model.weapons.Weapon;
@@ -18,9 +18,11 @@ public final class PlayersMouseController extends InputAdapter implements Updata
     private Vector2 lastLocalPosition = new Vector2();
 
     private final Supplier<Player> playerSupplier;
+    private final Function<Vector2, Vector2> translateCoordinates;
 
-    public PlayersMouseController(Supplier<Player> playerSupplier) {
+    public PlayersMouseController(Supplier<Player> playerSupplier, Function<Vector2, Vector2> translateCoordinates) {
         this.playerSupplier = playerSupplier;
+        this.translateCoordinates = translateCoordinates;
     }
 
     protected Weapon getWeapon() {
@@ -63,7 +65,7 @@ public final class PlayersMouseController extends InputAdapter implements Updata
         // Second, we need to add our relative position to the camera's position
         // (because we are both centered in the center of the screen) to obtain global
         // world's position.
-        Vector2 actualPosition = centerPosition.cpy().add(Core.objectFollower.get().getPosition());
+        Vector2 actualPosition = translateCoordinates.apply(centerPosition.cpy());
 
         Weapon weapon = getWeapon();
         if (weapon == null)

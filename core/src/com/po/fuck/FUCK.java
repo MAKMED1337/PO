@@ -19,7 +19,7 @@ public class FUCK extends ApplicationAdapter {
 
         core = new Core();
         controller = new Controller(core);
-        renderer = new Renderer(Core.objectFollower.get());
+        renderer = new Renderer(core.getObjectFollower());
     }
 
     @Override
