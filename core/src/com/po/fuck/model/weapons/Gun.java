@@ -7,13 +7,20 @@ import com.po.fuck.model.Updatable;
 import com.po.fuck.model.lifetime.Manager;
 import com.po.fuck.model.GeometryMisc;
 
+import static com.po.fuck.assetsManagement.SpriteLoaders.weaponSpriteLoader;
+
 public abstract class Gun extends HandedWeapon implements Updatable {
     protected float cooldown;
     private float cooldownLeft = 0;
     protected Vector2 muzzlePosition;
 
     protected Vector2 handedPosition;
-
+    protected<T>  void setPositions(Class<T> clz) {
+        WeaponSpriteInfo info = weaponSpriteLoader.getSpriteInfo(this.getClass());
+        muzzlePosition = info.muzzlePosition;
+        handedPosition = info.muzzlePosition;
+        geometryData.setSize(info.getSize());
+    }
     Gun(Entity owner) {
         super(owner);
     }

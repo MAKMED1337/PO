@@ -11,10 +11,7 @@ public final class LaserGun extends Gun {
     {
         cooldown = LASERGUN_COOLDOWN;
 
-        WeaponSpriteInfo info = weaponSpriteLoader.getSpriteInfo(this.getClass());
-        muzzlePosition = info.muzzlePosition;
-        handedPosition = info.muzzlePosition;
-        geometryData.setSize(info.getSize());
+        setPositions(this.getClass());
     }
 
     public LaserGun(Entity owner) {
