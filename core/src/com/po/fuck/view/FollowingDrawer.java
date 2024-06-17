@@ -1,7 +1,7 @@
 package com.po.fuck.view;
 
-import static com.po.fuck.view.Constants.GAME_HEIGHT;
-import static com.po.fuck.view.Constants.GAME_WIDTH;
+import static com.po.fuck.view.RenderConstants.HEIGHT;
+import static com.po.fuck.view.RenderConstants.WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,23 +12,22 @@ public class FollowingDrawer extends CenterDrawer {
 
     private ObjectFollower objectFollower;
 
-    public FollowingDrawer(SpriteBatch batch, ObjectFollower objectFollowing){
+    public FollowingDrawer(SpriteBatch batch, ObjectFollower objectFollowing) {
         super(batch);
         this.objectFollower = objectFollowing;
     }
 
     @Override
-public void draw(Sprite sprite, Vector2 position) {
-    super.draw(sprite,
-        position.cpy()
-            // Calculating relative position by subtracting the position of the object being followed
-            .sub(this.objectFollower.getPosition())
-            // Centering the sprite on the screen by adding half the game width and height
-            .add(GAME_WIDTH / 2, GAME_HEIGHT / 2)
-    );
-}
+    public void draw(Sprite sprite, Vector2 position) {
+        super.draw(sprite,
+                position.cpy()
+                        // Calculating relative position by subtracting the position of the object being
+                        // followed
+                        .sub(this.objectFollower.getPosition())
+                        // Centering the sprite on the screen by adding half the game width and height
+                        .add(WIDTH / 2, HEIGHT / 2));
+    }
 
-    
     @Override
     public void drawGlobal(Sprite sprite, Vector2 globalPosition) {
         super.draw(sprite, globalPosition);

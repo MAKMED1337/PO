@@ -1,7 +1,7 @@
 package com.po.fuck.view;
 
-import static com.po.fuck.view.Constants.GAME_HEIGHT;
-import static com.po.fuck.view.Constants.GAME_WIDTH;
+import static com.po.fuck.view.RenderConstants.HEIGHT;
+import static com.po.fuck.view.RenderConstants.WIDTH;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +40,7 @@ public class Renderer {
 
     public Renderer(ObjectFollower objectFollower) {
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
+        camera.setToOrtho(false, WIDTH, HEIGHT);
         followingDrawer = new FollowingDrawer(new SpriteBatch(), objectFollower);
     }
 

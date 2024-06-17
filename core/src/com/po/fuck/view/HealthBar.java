@@ -5,9 +5,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.po.fuck.model.Entity;
 
-import static com.po.fuck.view.Constants.HEALTHBAR_HEIGHT;
-import static com.po.fuck.view.Constants.HEALTHBAR_WIDTH;
-import static com.po.fuck.view.Constants.HEALTHBAR_OFFSET;
+import static com.po.fuck.view.RenderConstants.HEALTHBAR_HEIGHT;
+import static com.po.fuck.view.RenderConstants.HEALTHBAR_WIDTH;
+import static com.po.fuck.view.RenderConstants.HEALTHBAR_OFFSET;
 import static com.po.fuck.view.DrawableMisc.createTexture;
 
 public final class HealthBar {
@@ -23,7 +23,7 @@ public final class HealthBar {
     public void draw(CenterDrawer drawer){
         healthBarSprite = new Sprite(createTexture(HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT, Color.GREEN));
         backgroundSprite = new Sprite(createTexture(HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT, Color.RED));
-        
+
         float healthPercentage = 1.0f * entity.getHP() / entity.MAX_HEALTH_POINTS;
         healthBarSprite.setSize((float) Math.ceil(healthPercentage * HEALTHBAR_WIDTH), HEALTHBAR_HEIGHT);
 

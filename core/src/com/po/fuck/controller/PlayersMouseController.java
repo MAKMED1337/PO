@@ -1,7 +1,7 @@
 package com.po.fuck.controller;
 
-import static com.po.fuck.view.Constants.GAME_HEIGHT;
-import static com.po.fuck.view.Constants.GAME_WIDTH;
+import static com.po.fuck.view.RenderConstants.HEIGHT;
+import static com.po.fuck.view.RenderConstants.WIDTH;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -34,8 +34,8 @@ public final class PlayersMouseController extends InputAdapter implements Updata
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        lastLocalPosition = new Vector2((float) (screenX * GAME_WIDTH) / Gdx.graphics.getWidth(),
-                (float) (screenY * GAME_HEIGHT) / Gdx.graphics.getHeight());
+        lastLocalPosition = new Vector2((float) (screenX * WIDTH) / Gdx.graphics.getWidth(),
+                (float) (screenY * HEIGHT) / Gdx.graphics.getHeight());
         return true;
     }
 
@@ -60,7 +60,7 @@ public final class PlayersMouseController extends InputAdapter implements Updata
     public void update(float delta) {
         // First, we need to calculate our aiming position relative to the center of the
         // screen.
-        Vector2 centerPosition = lastLocalPosition.cpy().sub(GAME_WIDTH / 2, GAME_HEIGHT / 2);
+        Vector2 centerPosition = lastLocalPosition.cpy().sub(WIDTH / 2, HEIGHT / 2);
 
         // Second, we need to add our relative position to the camera's position
         // (because we are both centered in the center of the screen) to obtain global
