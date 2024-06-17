@@ -13,6 +13,7 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
+import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.LayeringConstants.WEAPON;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
@@ -24,7 +25,7 @@ public class BulletDrawerFactory {
     }
 
     public static <T extends Bullet> ObjectDrawer<T> get(Class<T> clz){
-        Animation<TextureRegion> animation = getAnimation(BasicSpriteManager.getBasicSpriteInfo(clz));
+        Animation<TextureRegion> animation = getAnimation(basicSpriteManager.getBasicSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {

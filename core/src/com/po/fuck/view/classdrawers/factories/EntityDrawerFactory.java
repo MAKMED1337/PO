@@ -1,5 +1,6 @@
 package com.po.fuck.view.classdrawers.factories;
 
+import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.LayeringConstants.ENTITY;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
@@ -24,7 +25,7 @@ public class EntityDrawerFactory {
     }
 
     public static <T extends Entity> ObjectDrawer<T> get(Class<T> clz){
-        Animation<TextureRegion> animation = getAnimation(BasicSpriteManager.getBasicSpriteInfo(clz));
+        Animation<TextureRegion> animation = getAnimation(basicSpriteManager.getBasicSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {

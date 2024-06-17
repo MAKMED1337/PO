@@ -10,6 +10,7 @@ import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 import com.po.fuck.model.Room;
 
+import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
 public class RoomDrawerFactory {
@@ -20,7 +21,7 @@ public class RoomDrawerFactory {
     }
 
     public static <T extends Room> ObjectDrawer<T> get(Class<T> clz){
-        Animation<TextureRegion> animation = getAnimation(BasicSpriteManager.getBasicSpriteInfo(clz));
+        Animation<TextureRegion> animation = getAnimation(basicSpriteManager.getBasicSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public void draw(CenterDrawer drawer, T object) {

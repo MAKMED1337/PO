@@ -14,6 +14,7 @@ import com.po.fuck.view.CenterDrawer;
 import com.po.fuck.view.Renderer;
 import com.po.fuck.view.classdrawers.ObjectDrawer;
 
+import static com.po.fuck.AssetsManagement.SpriteManagers.weaponSpriteManager;
 import static com.po.fuck.model.constants.LayeringConstants.WEAPON;
 import static com.po.fuck.view.classdrawers.Misc.getAnimation;
 
@@ -25,7 +26,7 @@ public class HandedWeaponDrawerFactory {
     }
 
     public static <T extends HandedWeapon> ObjectDrawer<T> get(Class<T> clz){
-        Animation<TextureRegion> animation = getAnimation(WeaponSpriteManager.getWeaponSpriteInfo(clz));
+        Animation<TextureRegion> animation = getAnimation(weaponSpriteManager.getWeaponSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {

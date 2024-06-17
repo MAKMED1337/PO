@@ -1,5 +1,6 @@
 package com.po.fuck.model.weapons;
 
+import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.BalanceConstants.LASER_BEAM_DAMAGE;
 import static com.po.fuck.model.constants.BalanceConstants.LASER_BEAM_LIFE_TIME;
 
@@ -24,7 +25,7 @@ public final class LaserBeam extends Bullet {
         damage = LASER_BEAM_DAMAGE;
         lifeTime = LASER_BEAM_LIFE_TIME;
         geometryData = new GeometryData();
-        BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
+        BasicSpriteInfo info = basicSpriteManager.getBasicSpriteInfo(this.getClass());
         geometryData.setWidth(info.getWidth());
         geometryData.setHeight(info.getHeight());
     }

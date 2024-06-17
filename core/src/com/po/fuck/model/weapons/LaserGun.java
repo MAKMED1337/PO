@@ -1,10 +1,9 @@
 package com.po.fuck.model.weapons;
 
+import static com.po.fuck.AssetsManagement.SpriteManagers.weaponSpriteManager;
 import static com.po.fuck.model.constants.BalanceConstants.LASERGUN_COOLDOWN;
 
 import com.badlogic.gdx.math.Vector2;
-import com.po.fuck.AssetsManagement.WeaponSpriteManager;
-import com.po.fuck.model.Sprites.WeaponSpriteInfo;
 import com.po.fuck.model.Entity;
 
 public final class LaserGun extends Gun {
@@ -12,7 +11,7 @@ public final class LaserGun extends Gun {
         cooldown = LASERGUN_COOLDOWN;
 
 
-        info = WeaponSpriteManager.getWeaponSpriteInfo(this.getClass());
+        info = weaponSpriteManager.getWeaponSpriteInfo(this.getClass());
         geometryData.setHeight(info.getHeight());
         geometryData.setWidth(info.getWidth());
     }

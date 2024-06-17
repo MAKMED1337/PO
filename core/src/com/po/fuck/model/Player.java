@@ -1,11 +1,11 @@
 package com.po.fuck.model;
 
+import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.BalanceConstants.DEFAULT_SPEED;
 import static com.po.fuck.model.constants.BalanceConstants.PLAYERS_HEALTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.po.fuck.AssetsManagement.BasicSpriteManager;
 import com.po.fuck.controller.KeyboardController;
 import com.po.fuck.controller.MouseController;
 import com.po.fuck.model.constants.BalanceConstants;
@@ -38,7 +38,7 @@ public class Player extends Entity {
 
     Player(PositionData positionData) {
         super(new GeometryData(positionData,
-                BasicSpriteManager.getBasicSpriteInfo(Player.class).getSize()),
+                basicSpriteManager.getBasicSpriteInfo(Player.class).getSize()),
                 PLAYERS_HEALTH);
 
         InputMultiplexer multiplexer = new InputMultiplexer();

@@ -1,5 +1,6 @@
 package com.po.fuck.view.classdrawers.factories;
 
+import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.LayeringConstants.GUI;
 import static com.po.fuck.view.Constants.WIDTH_OF_THE_COIN_COUNTER_DIGIT;
 import static com.po.fuck.view.Constants.COINS_COUNTER_POSITION;
@@ -27,7 +28,7 @@ public class CoinDrawerFactory {
     }
 
     public static <T extends Coins> ObjectDrawer<T> get(Class<T> clz){
-        Animation<TextureRegion> animation = getAnimation(BasicSpriteManager.getBasicSpriteInfo(clz));
+        Animation<TextureRegion> animation = getAnimation(basicSpriteManager.getBasicSpriteInfo(clz));
         return new ObjectDrawer<T>() {
             @Override
             public int getZ() {

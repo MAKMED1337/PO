@@ -1,5 +1,6 @@
 package com.po.fuck.model.weapons;
 
+import static com.po.fuck.AssetsManagement.SpriteManagers.basicSpriteManager;
 import static com.po.fuck.model.constants.BalanceConstants.COSMIC_BULLET_DAMAGE;
 import static com.po.fuck.model.constants.BalanceConstants.COSMIC_BULLET_LIFE_TIME;
 import static com.po.fuck.model.constants.BalanceConstants.COSMIC_BULLET_SPEED;
@@ -14,7 +15,7 @@ public final class CosmicBullet extends Bullet {
         damage = COSMIC_BULLET_DAMAGE;
         lifeTime = COSMIC_BULLET_LIFE_TIME;
         geometryData = new GeometryData();
-        BasicSpriteInfo info = BasicSpriteManager.getBasicSpriteInfo(this.getClass());
+        BasicSpriteInfo info = basicSpriteManager.getBasicSpriteInfo(this.getClass());
         geometryData.setSize(new Vector2(info.getWidth(), info.getHeight()));
 
     }
